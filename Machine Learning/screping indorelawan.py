@@ -19,7 +19,7 @@ wait = WebDriverWait(driver, 10)
 
 #Opening Google maps 
 driver.get("https://www.indorelawan.org/o/organization/search")
-time.sleep(2)
+time.sleep(5)
 file = open('Data_Base_Yayasan/indorelawan.csv', 'w', newline='')
 writer = csv.writer(file)
 nomor = 0
@@ -34,7 +34,7 @@ while True :
             keahlian_2=driver.find_element_by_xpath('//*[@id="root"]/div/section/section/div/div[1]/main/div/div[3]/div/div['+str(i)+']/div/div/div/div[2]/div[2]/div[1]/div[2]/span').text
             lokasi= driver.find_element_by_xpath('//*[@id="root"]/div/section/section/div/div[1]/main/div/div[3]/div/div['+str(i)+']/div/div/div/div[2]/div[2]/span').text
             print(str(nomor)+" ; "+nama+" ; "+keahlian_1+" ; "+keahlian_2+" ; "+lokasi)
-            writer.writerow([str(nomor),nama,keahlian_1,keahlian_2,lokasi,telepon])
+            writer.writerow([str(nomor),nama,keahlian_1,keahlian_2,lokasi])
         next= driver.find_element_by_class_name('ant-pagination-next').click()
         time.sleep(5)
 
