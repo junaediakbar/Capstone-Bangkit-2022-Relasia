@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RelasiaHelpSeekerApp">
         <activity
-            android:name=".MainActivity"
+            android:name="com.c22ps099.relasiahelpseekerapp.ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

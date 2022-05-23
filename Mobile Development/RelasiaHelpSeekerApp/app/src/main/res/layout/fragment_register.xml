@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout3"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.login.LoginFragment">
+
+        <ImageView
+            android:id="@+id/img_register"
+            android:layout_width="0dp"
+            android:layout_height="170dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="84dp"
+            android:layout_marginEnd="56dp"
+            android:src="@drawable/login_img"
+            android:transitionName="goToImg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/register_img" />
+
+        <TextView
+            android:id="@+id/auth_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/register"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/username_input"
+            app:layout_constraintTop_toBottomOf="@+id/img_register" />
+
+
+        <com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
+            android:id="@+id/username_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="56dp"
+            android:drawableStart="@drawable/ic_baseline_people_alt_24"
+            android:drawablePadding="4dp"
+            android:hint="@string/username_hint"
+            android:minHeight="48dp"
+            android:transitionName="email_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/auth_title"
+            tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+        <com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
+            android:id="@+id/email_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="56dp"
+            android:drawableStart="@drawable/ic_baseline_people_alt_24"
+            android:drawablePadding="4dp"
+            android:hint="@string/email_hint"
+            android:minHeight="48dp"
+            android:transitionName="email_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/username_input"
+            tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+        <com.c22ps099.relasiahelpseekerapp.view.editText.PasswordEditText
+            android:id="@+id/password_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
+            android:drawablePadding="4dp"
+            android:hint="@string/password_hint"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:transitionName="password_input"
+            app:layout_constraintEnd_toEndOf="@+id/username_input"
+            app:layout_constraintStart_toStartOf="@+id/username_input"
+            app:layout_constraintTop_toBottomOf="@+id/email_input" />
+
+        <com.c22ps099.relasiahelpseekerapp.view.editText.PasswordEditText
+            android:id="@+id/password_input2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
+            android:drawablePadding="4dp"
+            android:hint="@string/confirm_password_hint"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:transitionName="password_input"
+            app:layout_constraintEnd_toEndOf="@+id/username_input"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/username_input"
+            app:layout_constraintTop_toBottomOf="@+id/password_input" />
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rounded_shape"
+            android:text="@string/register"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:transitionName="action_btn"
+            app:layout_constraintEnd_toEndOf="@+id/password_input"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/password_input"
+            app:layout_constraintTop_toBottomOf="@+id/password_input2"
+            tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/username_input"
+            app:layout_constraintEnd_toEndOf="@+id/password_input"
+            app:layout_constraintHorizontal_bias="0.515"
+            app:layout_constraintStart_toStartOf="@+id/password_input" />
+
+        <TextView
+            android:id="@+id/loading_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/logging_in"
+            app:layout_constraintEnd_toEndOf="@+id/progress"
+            app:layout_constraintStart_toStartOf="@+id/progress"
+            app:layout_constraintTop_toBottomOf="@+id/progress" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/loading_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:constraint_referenced_ids="loading_text,progress" />
+
+        <ImageView
+            android:id="@+id/or_line"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/or_line"
+            app:layout_constraintEnd_toEndOf="@+id/btn_register"
+            app:layout_constraintStart_toStartOf="@+id/btn_register"
+            app:layout_constraintTop_toBottomOf="@+id/btn_register"
+            tools:ignore="ImageContrastCheck,ImageContrastCheck" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/round_button"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_google"
+            app:layout_constraintEnd_toEndOf="@+id/or_line"
+            app:layout_constraintStart_toStartOf="@+id/or_line"
+            app:layout_constraintTop_toBottomOf="@+id/or_line"
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="84dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/or_line"
+            app:layout_constraintStart_toStartOf="@+id/or_line"
+            app:layout_constraintTop_toBottomOf="@+id/imageButton">
+
+
+            <TextView
+                android:id="@+id/login_sentence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:text="Do you have an account?" />
+
+            <TextView
+                android:id="@+id/tvLoginNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:transitionName="go_btn"
+                android:text="Login Now"
+                android:textStyle="bold"
+                tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
