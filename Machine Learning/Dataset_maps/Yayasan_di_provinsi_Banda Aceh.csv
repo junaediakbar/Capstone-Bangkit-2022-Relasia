@@ -1,0 +1,29 @@
+Nomor,Nama,Label,Alamat,Telephone
+1,b'PW LPBI NU ACEH',Organisasi Sukarelawan,"Jln. Ir. Mohd Taher No. 9 Bayu, Lamcot, Kec. Lueng Bata, Kota Banda Aceh, Aceh 23122",None
+2,b'Sekretariat RAPI Lokal Peukan Bada',Organisasi Sukarelawan,"Jl. Prof. Dr. Ibrahim Hasan No.51-55, Payatieng, Kec. Peukan Bada, Kota Banda Aceh, Aceh 23232",None
+3,b'Dermaga Basarnas',Organisasi Sukarelawan,"H78V+GVJ, Ulee Lheue, Kec. Meuraxa, Kota Banda Aceh, Aceh",None
+4,b'KSR Markas PMI Kota Banda Aceh',Organisasi Sukarelawan,"Jl. Stadion H. Dimurthala No.2-4, Kota Baru, Kec. Kuta Alam, Kota Banda Aceh, Aceh 24415",None
+5,b'Markas MRI Wilayah Aceh',Organisasi Sukarelawan,"Jl. Tgk, H. M. Daud Beureueh No.46, Keuramat, Kec. Kuta Alam, Kota Banda Aceh, Aceh 23126",0852-6009-2355
+6,b'Sekretariat KSR-PMI Unit 03 Abulyatama Aceh',Organisasi Sukarelawan,"Universitas Abulyatama, Jl. Blang Bintang Lama, Lampoh Keude, Kec. Kuta Baro, Kabupaten Aceh Besar, Aceh 23372",0823-4055-1268
+7,b'Sekretariatan RAPI Lokal Kuta Baro Wilayah Aceh Besar',Organisasi Sukarelawan,"G9MW+W3M, Lambro Bileu, Kec. Kuta Baro, Kabupaten Aceh Besar, Aceh 24415",None
+8,b'Satgas RAPI ZWM Sabang',Organisasi Sukarelawan,"V8W8+4JM, Jl. Teuku Umar, Kuta Ateueh, Sukakarya, Kota Sabang, Aceh",None
+9,b'Dompet Dhuafa Aceh',Organisasi Amal,"Lamseupeung, Kec. Lueng Bata, Kota Banda Aceh, Aceh 23127",0822-1144-7601
+10,b'Posko Sekolah Relawan untuk Gempa Pidie Jaya',Organisasi Sukarelawan,"752X+2VX, Tueng Kluet, Kec. Trienggadeng, Kabupaten Pidie Jaya, Aceh",0811-1191-916
+11,b'Sekretariat RAPI ZWQ Aceh Jaya',Organisasi Sukarelawan,"JHPJ+7VR, Bahagia, Kec. Krueng Sabee, Kabupaten Aceh Jaya, Aceh 23655",None
+12,b'Posko Satgas Sar',Organisasi Sukarelawan,"66PV+4J2, Jalan Lintas Medan Jalan Banda Aceh, Dayah Timu, Kec. Meureudu, Kabupaten Pidie Jaya, Aceh",None
+13,b'Kantor Satgas Sar Pidie',Organisasi Sukarelawan,"9XC4+GQR, Cot Teungoh, Kec. Pidie, Kabupaten Pidie, Aceh 24112",0822-8156-2520
+14,b'Kwarcab Nagan Raya',Organisasi Sukarelawan,"4897+MFF, Ujong Fatihah, Kec. Kuala, Kabupaten Nagan Raya, Aceh 23671",0852-6003-0066
+15,b'DPC Projo',Organisasi Sukarelawan,"54JR+FG8, Kuta Blang, Kec. Banda Sakti, Kota Lhokseumawe, Aceh",None
+16,b'Sekretariat RAPI Nagan Raya',Organisasi Sukarelawan,"48GF+VWG, Ujong Fatihah, Kec. Kuala, Kabupaten Nagan Raya, Aceh 23671",None
+17,b'DPD LEMBATU LHOKSEUMAWE',Organisasi Sukarelawan,"Jl. B Jl. Medan - Banda Aceh No.85, Desa Blan Panyang, Kec. Muara Satu, Kota Lhokseumawe, Aceh 24352",None
+18,b'DINAS RAPI BENER MERIAH',Organisasi Sukarelawan,"PV36+CQH, Serule Kayu, Kec. Bukit, Kabupaten Bener Meriah, Aceh 24582",None
+19,b'Kantor laki dpc aceh timur',Organisasi Sukarelawan,"Seuneubok Jl., Kec. Idi Tunong, kab aceh timur, Aceh 24455",None
+20,b'Posko Relawan BERSATU',Organisasi Sukarelawan,"HMGM+WG4, Jl. Brigjend Katamso, A U R, Kec. Medan Maimun, Kota Medan, Sumatera Utara 20212",None
+21,b'Sekretariat Pramuka Unimal',Organisasi Sukarelawan,"6337+V8G, Blang Pulo, Kec. Muara Satu, Kota Lhokseumawe, Aceh 24355",None
+22,"b'""URKA"" Unit Relawan Kemanusiaan'",Organisasi Sukarelawan,"Jl. Sisingamangaraja Gg. Bilal, Nangka, Kec. Binjai Utara, Kota Binjai, Sumatera Utara 20742",0831-9819-1905
+23,b'Sekrerariat II Komunitas PADI Medan',Organisasi Sukarelawan,"HJ6J+5M4, Gg. Pribadi I, Tj. Sari, Kec. Medan Selayang, Kota Medan, Sumatera Utara 20132",None
+24,b'Posko Pelangi Relawan JAS',Organisasi Sukarelawan,"HJGG+WGF, Sunggal, Kec. Medan Sunggal, Kota Medan, Sumatera Utara 20122",None
+25,b'PMI Cabang Aceh Jaya',Organisasi Sukarelawan,"JHMW+WPX, Dayah Baro, Kec. Krueng Sabee, Kabupaten Aceh Jaya, Aceh 23655",None
+26,b'Kcp Cgm Wilayah Selam Viii',Organisasi Sukarelawan,"Jl. Selam VIII No.38, Tegal Sari Mandala I, Kec. Medan Denai, Kota Medan, Sumatera Utara 20224",None
+27,b'Palang Merah Indonesia',Organisasi Sukarelawan,"F98G+894, Ameria Bahagia, Kec. Simeulue Tim., Kabupaten Simeulue, Aceh 24782",None
+28,b'PMI Kabupaten Aceh Utara',Organisasi Sukarelawan,"3884+XV6, Alue Mudem, Kec. Lhoksukon, Kabupaten Aceh Utara, Aceh 24386",None
