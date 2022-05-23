@@ -41,6 +41,13 @@ class LoginFragment : Fragment() {
                     )
                 )
             }
+            btnLogin.setOnClickListener {
+                val navigateAction = LoginFragmentDirections
+                    .actionLoginFragmentToHomeFragment()
+                navigateAction.token = "token"
+                findNavController().navigate(navigateAction)
+            }
+
         }
     }
 

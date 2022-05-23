@@ -38,15 +38,37 @@
         <action
             android:id="@+id/action_homeFragment_to_accountFragment"
             app:destination="@id/accountFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_bookmarkFragment"
+            app:destination="@id/bookmarkFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_missionFragment"
+            app:destination="@id/missionFragment" />
     </fragment>
     <fragment
         android:id="@+id/formFragment"
         android:name="com.c22ps099.relasiahelpseekerapp.ui.form.FormFragment"
         android:label="fragment_form"
-        tools:layout="@layout/fragment_form" />
+        tools:layout="@layout/fragment_form">
+        <argument
+            android:name="token"
+            android:defaultValue=""
+            app:argType="string" />
+
+    </fragment>
     <fragment
         android:id="@+id/accountFragment"
         android:name="com.c22ps099.relasiahelpseekerapp.ui.account.AccountFragment"
         android:label="fragment_account"
         tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/bookmarkFragment"
+        android:name="com.c22ps099.relasiahelpseekerapp.BookmarkFragment"
+        android:label="fragment_bookmark"
+        tools:layout="@layout/fragment_bookmark" />
+    <fragment
+        android:id="@+id/missionFragment"
+        android:name="com.c22ps099.relasiahelpseekerapp.MissionFragment"
+        android:label="fragment_mission"
+        tools:layout="@layout/fragment_mission" />
 </navigation>

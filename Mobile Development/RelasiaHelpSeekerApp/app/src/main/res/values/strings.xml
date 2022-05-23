@@ -11,4 +11,23 @@
     <string name="register">Register</string>
     <string name="username_hint">Username</string>
     <string name="confirm_password_hint">Confirm Password</string>
+    <string name="requirements">Requirements</string>
+    <string name="requirements_description">Input your requirements</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="name_hint">Nama</string>
+    <string name="name_kegiatan_hint">Nama Kegiatan</string>
+    <string name="ask_for_help">Ask for help</string>
+    <string name="form_subtitle">Please make sure your input is valid</string>
+    <string name="location_hint">Location</string>
+    <string name="city_hint">City</string>
+    <string name="province_hint">Province</string>
+    <string name="amount_hint">Amount of helper</string>
+    <string name="date_start_hint">Start date</string>
+    <string name="date_end_hint">Due to</string>
+    <string name="photo_hint">Photo</string>
+    <string name="notes">Notes</string>
+    <string name="mission">Missions</string>
+    <string name="account">Account</string>
+    <string name="bookmarks">Bookmarks</string>
 </resources>

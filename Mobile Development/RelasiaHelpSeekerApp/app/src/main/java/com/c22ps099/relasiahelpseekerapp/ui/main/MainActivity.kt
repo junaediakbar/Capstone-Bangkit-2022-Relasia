@@ -3,6 +3,7 @@ package com.c22ps099.relasiahelpseekerapp.ui.main
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.activity.viewModels
@@ -10,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.data.SessionPreferences
 import com.c22ps099.relasiahelpseekerapp.databinding.ActivityMainBinding
 
@@ -21,18 +26,35 @@ class MainActivity : AppCompatActivity() {
         SessionViewModel.Factory(SessionPreferences.getInstance(dataStore))
     }
 
-    private lateinit var binding: ActivityMainBinding
+    private var _binding: ActivityMainBinding? = null
+    private val binding get() = _binding
 
     private var token = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
 
         viewModel.getToken().observe(this) {
             token = it
+        }
 
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment
+        val navController = navHostFragment.navController
+
+        if (navController != null) {
+            binding?.bottomNavigation?.setupWithNavController(navController)
+        }
+
+        navController?.addOnDestinationChangedListener { _, destination, _ ->
+            if(destination.id == R.id.loginFragment || destination.id == R.id.registerFragment|| destination.id ==R.id.formFragment) {
+
+                binding?.bottomNavigation?.visibility  = View.GONE
+            } else {
+
+                binding?.bottomNavigation?.visibility  =View.VISIBLE
+            }
         }
     }
 
