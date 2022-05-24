@@ -14,7 +14,7 @@ import time
 import csv
 
 #Loading Selenium Webdriver 
-driver= webdriver.Chrome(r'C:\Users\USER ACCOUNT\Desktop\Projek\chromedriver\chromedriver.exe')
+driver= webdriver.Chrome(r'C:\Users\hello\OneDrive\Documents\Kuliah\Bangkit 2022 Folder\Capstone Project\Capstone-Bangkit-2022-Relasia\Machine Learning\chromedriver.exe')
 wait = WebDriverWait(driver, 10)
 
 #Opening Google maps 
@@ -32,9 +32,9 @@ while True :
             nama= driver.find_element_by_xpath('//*[@id="root"]/div/section/section/div/div[1]/main/div/div[3]/div/div['+str(i)+']/div/div/div/div[2]/div[1]').text
             keahlian_1= driver.find_element_by_xpath('//*[@id="root"]/div/section/section/div/div[1]/main/div/div[3]/div/div['+str(i)+']/div/div/div/div[2]/div[2]/div[1]/div[1]/span').text
             keahlian_2=driver.find_element_by_xpath('//*[@id="root"]/div/section/section/div/div[1]/main/div/div[3]/div/div['+str(i)+']/div/div/div/div[2]/div[2]/div[1]/div[2]/span').text
-            lokasi= driver.find_element_by_xpath('//*[@id="root"]/div/section/section/div/div[1]/main/div/div[3]/div/div['+str(i)+']/div/div/div/div[2]/div[2]/span').text
-            print(str(nomor)+" ; "+nama+" ; "+keahlian_1+" ; "+keahlian_2+" ; "+lokasi)
-            writer.writerow([str(nomor),nama,keahlian_1,keahlian_2,lokasi])
+            # lokasi= driver.find_element_by_xpath('//*[@id="root"]/div/section/section/div/div[1]/main/div/div[3]/div/div['+str(i)+']/div/div/div/div[2]/div[2]/span').text
+            print(str(nomor)+nama+keahlian_1+keahlian_2)
+            writer.writerow([str(nomor),nama,keahlian_1,keahlian_2])
         next= driver.find_element_by_class_name('ant-pagination-next').click()
         time.sleep(5)
 
