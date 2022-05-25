@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginVertical="16dp"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardElevation="6dp"
+    card_view:strokeColor="@color/grey"
+    card_view:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_mission_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/mission_photo"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/foto_erupsi" />
+
+        <TextView
+            android:id="@+id/tv_mission_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/mission_title"
+            android:textSize="18sp"
+            card_view:layout_constraintEnd_toEndOf="@id/iv_mission_photo"
+            card_view:layout_constraintStart_toStartOf="@id/iv_mission_photo"
+            card_view:layout_constraintTop_toBottomOf="@+id/iv_mission_photo" />
+
+        <TextView
+            android:id="@+id/tv_mission_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/mission_date"
+            android:textSize="14sp"
+            card_view:layout_constraintEnd_toEndOf="@id/iv_mission_photo"
+            card_view:layout_constraintStart_toStartOf="@id/iv_mission_photo"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_mission_title" />
+
+        <TextView
+            android:id="@+id/tv_mission_city"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Lumajang, Jawa Timur"
+            android:textSize="14sp"
+            card_view:layout_constraintEnd_toEndOf="@id/iv_mission_photo"
+            card_view:layout_constraintStart_toStartOf="@id/iv_mission_photo"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_mission_date" />
+
+        <ProgressBar
+            android:id="@+id/pb_applicant"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:max="100"
+            android:progress="80"
+            android:progressTint="#209720"
+            card_view:layout_constraintEnd_toStartOf="@id/tv_applicant"
+            card_view:layout_constraintStart_toStartOf="@id/iv_mission_photo"
+            card_view:layout_constraintTop_toTopOf="@+id/tv_applicant" />
+
+        <TextView
+            android:id="@+id/tv_applicant"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:drawableEnd="@drawable/ic_baseline_people_alt_24"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+            android:text="4/5"
+            android:textSize="14sp"
+            card_view:layout_constraintEnd_toEndOf="@id/iv_mission_photo"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_mission_city" />
+
+        <Button
+            android:id="@+id/btn_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="150dp"
+            android:layout_marginBottom="18dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Details"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toStartOf="@id/btn_bookmark"
+            card_view:layout_constraintStart_toStartOf="@id/iv_mission_photo"
+            card_view:layout_constraintTop_toBottomOf="@id/tv_applicant" />
+
+        <ImageButton
+            android:id="@+id/btn_bookmark"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:background="@drawable/ic_outline_bookmark_border_24"
+            card_view:layout_constraintBottom_toBottomOf="@id/btn_details"
+            card_view:layout_constraintEnd_toEndOf="@id/iv_mission_photo"
+            card_view:layout_constraintTop_toTopOf="@+id/btn_details" />
+
+        <ImageButton
+            android:id="@+id/btn_unbookmark"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:background="@drawable/ic_baseline_bookmark_24"
+            android:visibility="invisible"
+            card_view:layout_constraintBottom_toBottomOf="@id/btn_details"
+            card_view:layout_constraintEnd_toEndOf="@id/iv_mission_photo"
+            card_view:layout_constraintTop_toTopOf="@+id/btn_details" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
