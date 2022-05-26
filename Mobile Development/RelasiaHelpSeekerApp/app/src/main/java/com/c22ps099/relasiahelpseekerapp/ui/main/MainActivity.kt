@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.c22ps099.relasiahelpseekerapp.R
@@ -36,6 +35,8 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
+        supportActionBar?.hide()
+
         viewModel.getToken().observe(this) {
             token = it
         }
@@ -43,11 +44,9 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment
         val navController = navHostFragment.navController
 
-        if (navController != null) {
-            binding?.bottomNavigation?.setupWithNavController(navController)
-        }
+        binding?.bottomNavigation?.setupWithNavController(navController)
 
-        navController?.addOnDestinationChangedListener { _, destination, _ ->
+        navController.addOnDestinationChangedListener { _, destination, _ ->
             if(destination.id == R.id.loginFragment || destination.id == R.id.registerFragment|| destination.id ==R.id.formFragment) {
 
                 binding?.bottomNavigation?.visibility  = View.GONE

@@ -1,25 +1,24 @@
-package com.c22ps099.relasiahelpseekerapp.ui.account
+package com.c22ps099.relasiahelpseekerapp.ui.bookmarks
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.c22ps099.relasiahelpseekerapp.R
-import com.c22ps099.relasiahelpseekerapp.databinding.FragmentAccountBinding
+import androidx.fragment.app.Fragment
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentBookmarksBinding
 
 
-class AccountFragment : Fragment() {
 
-    private var binding: FragmentAccountBinding? = null
+class BookmarksFragment : Fragment() {
+
+    private var binding: FragmentBookmarksBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentAccountBinding.inflate(inflater, container, false)
+        binding = FragmentBookmarksBinding.inflate(inflater, container, false)
         return binding?.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
