@@ -63,12 +63,12 @@
         tools:layout="@layout/fragment_account" />
     <fragment
         android:id="@+id/bookmarkFragment"
-        android:name="com.c22ps099.relasiahelpseekerapp.BookmarkFragment"
+        android:name="com.c22ps099.relasiahelpseekerapp.ui.bookmarks.BookmarksFragment"
         android:label="fragment_bookmark"
-        tools:layout="@layout/fragment_bookmark" />
+        tools:layout="@layout/fragment_bookmarks" />
     <fragment
         android:id="@+id/missionFragment"
-        android:name="com.c22ps099.relasiahelpseekerapp.MissionFragment"
+        android:name="com.c22ps099.relasiahelpseekerapp.ui.missions.MissionsFragment"
         android:label="fragment_mission"
-        tools:layout="@layout/fragment_mission" />
+        tools:layout="@layout/fragment_missions" />
 </navigation>

@@ -43,6 +43,7 @@
             android:layout_marginEnd="32dp"
             android:drawableStart="@drawable/ic_baseline_format_list_bulleted_24"
             android:drawablePadding="4dp"
+            android:editable="false"
             android:hint="@string/name_kegiatan_hint"
             android:minHeight="48dp"
             android:transitionName="email_input"
@@ -58,6 +59,7 @@
             android:layout_marginTop="16dp"
             android:drawableStart="@drawable/ic_baseline_place_24"
             android:drawablePadding="4dp"
+            android:editable="false"
             android:hint="@string/location_hint"
             android:minHeight="48dp"
             android:transitionName="email_input"
@@ -66,6 +68,8 @@
             app:layout_constraintStart_toStartOf="@+id/et_form_activity"
             app:layout_constraintTop_toBottomOf="@+id/et_form_activity"
             tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+
 
         <com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
             android:id="@+id/et_form_city"
@@ -241,12 +245,12 @@
             android:paddingEnd="18dp"
             android:text="@string/requirements"
             android:textAllCaps="false"
+            android:textColor="@color/blue_munshell"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/et_form_photo2"
             app:layout_constraintTop_toBottomOf="@+id/spinner"
             tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TextContrastCheck,TextContrastCheck"
-            tools:targetApi="m"
-            android:textColor="@color/blue_munshell" />
+            tools:targetApi="m" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_notes"
@@ -263,12 +267,12 @@
             android:paddingEnd="18dp"
             android:text="@string/notes"
             android:textAllCaps="false"
+            android:textColor="@color/blue_munshell"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="@+id/spinner"
             app:layout_constraintTop_toBottomOf="@+id/spinner"
             tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TextContrastCheck,TextContrastCheck"
-            tools:targetApi="m"
-            android:textColor="@color/blue_munshell" />
+            tools:targetApi="m" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
