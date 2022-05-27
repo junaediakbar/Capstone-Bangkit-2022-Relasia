@@ -1,0 +1,181 @@
+Nomor,Nama,Label,Alamat,Telephone
+1,b'Satu aspal indonesia',Organisasi Sukarelawan,"1, Jl. Guntur No.38, RT.8/RW.1, Ps. Manggis, Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12980",0812-9377-8974
+2,b'Indorelawan',Organisasi Nonprofit,"Jl. Panglima Polim V No.60, RT.1/RW.7, Melawai, Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12160",0811-9777-140
+3,b'Harapan jaya',Organisasi Sukarelawan,"9, Jl. Tebet Timur Dalam V No.9 9 5, RT.9/RW.5, Tebet Tim., Kec. Tebet, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12820",None
+4,b'TAMBAK 325',Organisasi Sukarelawan,"Jl. Nanas III No.11-13, RW.3, Utan Kayu Sel., Kec. Matraman, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13120",None
+5,b'DIMENSI',Organisasi Sukarelawan,"Jl. Kramat Lontar Gg. 2 No.3, RT.2/RW.1, Paseban, Kec. Senen, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10440",None
+6,b'Markas Komando TAGANA Indonesia',Organisasi Sukarelawan,"Jl. Salemba Raya No.28, RT.5/RW.6, Kenari, Kec. Senen, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10340",None
+7,b'Pimpinan Pusat Satuan Relawan Indonesia Raya',Organisasi Sukarelawan,"Jl. Bacang III No.9, RT.6/RW.1, Kramat Pela, Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12130",None
+8,b'Inti Demokrasi Kebangsaan (InDeKs)',Organisasi Sukarelawan,"Jl. Tebet Barat Dalam IV No.6, RT.17/RW.6, Tebet Bar., Kec. Tebet, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12810",(021) 22983407
+9,b'Idvolunteering',Organisasi Sukarelawan,"Jl. Medan Merdeka Barat No.12, RT.2/RW.3, Gambir, Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10110",None
+10,b'Komunitas Relawan Emergensi Kesehatan Indonesia (KREKI)',Organisasi Sukarelawan,"Wisma 76, Letjen S. Parman St No.Kav. 76, RT.4/RW.3, Slipi, Palmerah, West Jakarta City, Jakarta 11410",(021) 25678989
+11,b'Sekretariat Nasional Jokowi',Organisasi Sukarelawan,"Jl. Cikatomas 1 No.7, RT.5/RW.7, Rw. Bar., Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12810",None
+12,b'IKPP 06',Organisasi Sukarelawan,"PRJJ+XHP, RT.6/RW.5, Kalibata, Kec. Pancoran, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12740",0896-0268-0398
+13,b'GDD Nusantara',Organisasi Sukarelawan,"Jl. Pancoran Timur VIII No.6A, RT.8/RW.8, Pengadegan, Kec. Pancoran, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12770",None
+14,b'Posko Relawan Kohadja',Organisasi Sukarelawan,"Jalan Budi Mulia No 10, RT.06 / RW.10, Pademangan Barat, Pademangan, RT.9, Pademangan Bar., Kec. Pademangan, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14420",0812-8173-7572
+15,b'Barat Center GRIYA AGUS SYLVI',Organisasi Sukarelawan,"F Jl. Jend. Basuki Rachmat No.19, RT.2/RW.9, Rw. Bunga, Kecamatan Jatinegara, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13350",None
+16,b'DPP BARANUSA',Organisasi Sukarelawan,"Jl. Pisangan Baru Tengah IV No.39A, RT.3/RW.4, Pisangan Baru, Kec. Matraman, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13110",None
+17,b'Sahabat Anak Manggarai',Organisasi Sukarelawan,"Jl. Manggarai Utara 5 No.8, RT.5/RW.1, Manggarai, Kec. Tebet, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12850",None
+18,b'SUAKA',Organisasi Sukarelawan,"LBH Jakarta Office, LBH Jakarta Building, 2nd Floor, Jalan Diponegoro No.74, Menteng, RT.9/RW.2, Pegangsaan, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10320",None
+19,b'POSKO KOPPASANDI',Organisasi Sukarelawan,"Jl. Cipinang Cempedak Raya No.05 kel, RT.7/RW.8, Cipinang Cempedak, Kecamatan Jatinegara, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13330",0821-2495-5599
+20,b'Camp 382 Kwitang',Organisasi Sukarelawan,"RR8P+PM9, Jl. Kembang, RT.7/RW.1, Kwitang, Kec. Senen, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10420",0812-1278-6442
+21,b'TRN',Organisasi Sukarelawan,"2, Jl. Kencana Permai III No.19 2 15, RT.2/RW.15, Pd. Pinang, Kec. Kby. Lama, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12310",(021) 27654197
+22,b'DPP',Organisasi Sukarelawan,0857-7655-8900,None
+23,b'Health Activator Indonesia',Organisasi Sukarelawan,"Jl. Gading Kirana Timur IX No.22, Klp. Gading Bar., Jakarta, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14240",0851-5900-6059
+24,b'BC A.E.R.I JAKARTA',Organisasi Sukarelawan,"Jalan D.I Panjaitan #28, Jatinegara, RT.3/RW.5, Rw. Bunga, Jakarta Timur, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13340",0878-7082-9701
+25,b'MASBAN Foundation',Organisasi Sukarelawan,"Jl. Perumahan Taman Kota No.16, RT.14/RW.5, Kembangan Utara, Kec. Kembangan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11610",None
+26,b'Markas BARA JP Pematangsiantar',Organisasi Sukarelawan,"Jl. Kartini Raya No.28A, RT.14/RW.5, Kartini, Kecamatan Sawah Besar, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10750",0821-6000-9690
+27,b'warriors all base',Organisasi Sukarelawan,"harsono RM, RT.9/RW.4, Ragunan, Pasar Minggu, South Jakarta City, Jakarta 12650",0857-1013-5005
+28,b'Relawan Siaga',Organisasi Sukarelawan,"Jl. Raya Condet No.18A, RT.9/RW.5, Cililitan, Kec. Kramat jati, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13530",None
+29,b'SAHABAT PEDULI YATIM DUAFA',Organisasi Sukarelawan,"Jl. H. DJain No.rt001, RT.006/RW.003, rw008, Kec. Jatiasih, Kota Bks, Jawa Barat 17421",None
+30,"b""Werkgroep '72""",Organisasi Sukarelawan,"Nederlandse Inter-community School – Jalan NIS 1,Kenanga Terusan, Ampera Raya, Cilandak, RT.4/RW.3, Cilandak Tim., Kec. Ps. Minggu, Jakarta, Daerah Khusus Ibukota Jakarta 12560",None
+31,b'FORKABI DPRT KARANG ANYAR',Organisasi Sukarelawan,"Jalan A Ujung, RW.7, Karang Anyar, Kecamatan Sawah Besar, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10740",None
+32,b'Posko Sedekah Barang Bekas',Organisasi Sukarelawan,"PQQM+5CQ, RT.1/RW.16, Pd. Pinang, Kec. Kby. Lama, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12310",None
+33,b'KORPS NASIONAL MENWA INDONESIA',Organisasi Pelayanan Sosial,"Jalan Mayjend. Sutoyo Kav. 22 - Kel. Cawang, Kramat Jati, Gedung Cawang Kencana - Lt. B1 Suit B01b - Jakarta Timur, RT.7/RW.6, Cawang, Jakarta, East Jakarta City, Jakarta 13630",None
+34,b'Akademi Relawan',Organisasi Sukarelawan,"Jl. Palapa XV No.1, Ps. Minggu, Kec. Ps. Minggu, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12520",0811-9940-920
+35,b'Base Camp IM Jkt',Organisasi Sukarelawan,"Gg. Melati No.8 12 2, RW.3, Pd. Bambu, Kec. Duren Sawit, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13430",None
+36,b'Lembaga Bantuan Hukum Garuda Kencana Indonesia',Organisasi Sukarelawan,"Jl. Kemanggisan Raya No.1b, RT.4/RW.5, Kb. Jeruk, Kec. Kb. Jeruk, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11530",0856-9195-5919
+37,b'Rumah relawan ganjar1st Jakarta Barat',Organisasi Sukarelawan,"Jl. Kedoya Raya No.20, Kedoya Utara, Kec. Kb. Jeruk, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11520",0813-8802-1825
+38,b'HAREJO KECAMATAN JATI ASIH',Organisasi Sukarelawan,"PW8W+VGQ, RT.005/RW.003 JKI, Jatikramat, Kec. Jatiasih, Kota Bks, Jawa Barat 17421",0812-8387-7234
+39,b'Sekretariat Batak Center',Organisasi Sukarelawan,"Jl. Tanah Abang II No.41D, RT.1/RW.4, Petojo Sel., Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10160",(021) 3515626
+40,b'DPP BARA JP',Organisasi Sukarelawan,"Jl. Kayu Putih Utara III No.B No.29, RT.2/RW.8, Pulo Gadung, Kec. Pulo Gadung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13260",(021) 22483603
+41,b'Kantor TurunTangan Pusat',Organisasi Sukarelawan,"Jl. Ciasem II No.1 No.9, RT.2/RW.4, Rw. Bar., Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12180",None
+42,b'Cyber Indonesia',Organisasi Sukarelawan,"JR9R+8PM, Mekar Jaya, Kec. Sukmajaya, Kota Depok, Jawa Barat 16411",None
+43,b'SARNAS HIDAYATULLAH',Organisasi Sukarelawan,"Komplek Gedung Dakwah Hidayatullah, Jl. Cipinang Cempedak I Jatinegara Polonia Otista No.14, RT.2/RW.4, Cipinang Cempedak, Kecamatan Jatinegara, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13340",(021) 8190049
+44,b'Relawan Merah Putih Tangsel',Organisasi Sukarelawan,0813-1919-3886,None
+45,b'Kwartir Daerah Gerakan Pramuka DKI Jakarta',Organisasi Sukarelawan,"9, Jl. Pangeran Diponegoro No.26, RT.9/RW.7, Menteng, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10310",None
+46,b'Relawan Riders Indonesia',Organisasi Sukarelawan,"Jl. Panjang Jl. Komp. Green Garden No.8, RT.5/RW.8, Kedoya Utara, Kec. Kb. Jeruk, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11520",0813-1866-6286
+47,b'Rumah Belajar Senen',Organisasi Sukarelawan,"Jl. Dahlia No.1, RT.13/RW.1, Kramat, Kec. Senen, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10450",0877-8099-6896
+48,b'BaPeNa PPNI',Organisasi Sukarelawan,"MRJP+3R8, Jl. Lenteng Agung Raya, RT.6/RW.5, Lenteng Agung, Kec. Jagakarsa, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12630",None
+49,b'Volunteers',Organisasi Sukarelawan,"Jl. Jawa 9 Blok B9 No.7, RT.005/RW.27, Jatiranggon, Kec. Jatisampurna, Kota Bks, Jawa Barat 17432",(021) 8486797
+50,b'Stay Relawan Ambulance Tangerang',Organisasi Sukarelawan,"Jl. Boulevard Raya, Klp. Gading Tim., Kec. Klp. Gading, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta",None
+51,b'Saung GAZA',Organisasi Sukarelawan,"Jl. H. Amsar No.22, RT.5/RW.4, Cipedak, Kec. Jagakarsa, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12630",None
+52,b'Mako TR-CANTIGI',Organisasi Sukarelawan,"MVRC+FPW, Jl. TB Simatupang, RT.3/RW.3, Susukan, Kec. Ciracas, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13830",None
+53,b'RESUSILA 7791',Organisasi Sukarelawan,"Jl. Lenteng Agung Raya No.95, RT.1/RW.3, Srengseng Sawah, Kec. Jagakarsa, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12630",None
+54,b'Sekretariat Relawan Patwal Ambulance Indonesia',Organisasi Sukarelawan,"Jl. Gurame Tim. No.17, Bambu Apus, Kec. Pamulang, Kota Tangerang Selatan, Banten 15415",None
+55,b'Markas Relawan Ambulance Pamulang',Organisasi Sukarelawan,"Jl. Taman Fasco No.25, RT.3/RW.4, Serua, Kec. Ciputat, Kota Tangerang Selatan, Banten 15414",None
+56,b'Organisasi Himpunan Pengusaha Online (HIPO)',Organisasi Sukarelawan,"Jl. Lap. Tembak No.3, RT.7/RW.7, Klp. Dua Wetan, Kec. Ciracas, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13730",0812-8627-5388
+57,b'Sekretariat GEPRINDO',Organisasi Sukarelawan,"Komplek Mitra Sunter Boulevard, Blok D No 3A, Sunter, Jakarta Utara, RT.9/RW.11, Sunter Jaya, Kec. Tj. Priok, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14350",0815-1011-1315
+58,b'Posyandu Kasih Ibu 1 - Jatirahayu',Organisasi Sukarelawan,"Jl. Amanah Jl. Bulak Tinggi Raya No.Rt 011, RT.009/RW.016, Jatirahayu, Kec. Pd. Melati, Kota Bks, Jawa Barat 17414",0813-1507-4500
+59,b'Sukses Dimasa muda',Organisasi Sukarelawan,0813-8694-4004,None
+60,b'Roemah Djoeang kota Bekasi',Organisasi Sukarelawan,"Jalan raya Jatikramat, Pertigaan Jl. Raya Kodau No.49, RT.004/RW.003, Jatikramat, Kec. Jatiasih, Kota Bks, Jawa Barat 17421",None
+61,b'Mabes GEMAPETA DKI Jakarta',Organisasi Sukarelawan,"Jl. TB Simatupang No.23, RT.2/RW.4, Rambutan, Kec. Ciracas, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13830",None
+62,b'Erhan House',Organisasi Sukarelawan,"JPX8+865, Jl. Bisma 7, Pd. Benda, Kec. Pamulang, Kota Tangerang Selatan, Banten 15315",None
+63,"b'(KOBAR) jasa, relawan,Penyalur, bansos dan sodaqoh'",Organisasi Sukarelawan,"Jl. Tj. Pura Jl. Kp. Koang, RT.4/RW.5, Pegadungan, Kec. Kalideres, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11830",0896-0284-3539
+64,b'IKABOGA Indonesia',Organisasi Sukarelawan,"Jl. Kramat Lontar No.57i, RT.4/RW.1, Paseban, Kec. Senen, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10330",(021) 3152240
+65,b'Tauhid Preuner dtpeduli',Organisasi Sukarelawan,"R2F6+HWP, Unnamed Road, Bahagia, Kec. Babelan, Kabupaten Bekasi, Jawa Barat 17610",0858-8528-2753
+66,b'Komando Nasional Resimen Mahasiswa Indonesia (KONAS MENWA INDONESIA)',Organisasi Sukarelawan,"Jl. Kramat Baru No.11A, RW.2, Kramat, Kec. Senen, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10450",None
+67,b'Mako Sahabat Siap Selamat',Organisasi Sukarelawan,"Jl. Al-Hidayah No.61, RT.6/RW.3, Bedahan, Kec. Sawangan, Kota Depok, Jawa Barat 16519",0877-9685-4114
+68,b'PMR GAHITA',Organisasi Sukarelawan,"Jalan Cendrawasih 1 No.59 RT.05/RW.02 Sawah Baru (Samping Masjid Nurul Iman). Kelurahan, Sawah Baru, Kec. Ciputat, Kota Tangerang Selatan, Banten 15413",0812-1960-6358
+69,b'DPP PEMUDA BRAVO 5',Organisasi Sukarelawan,"Jl. Suryopranoto No.48A, RT.12/RW.7, Petojo Sel., Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10130",None
+70,b'HAREJO KOTA BEKASI',Organisasi Sukarelawan,"M2H5+FR6, RT.002/RW.006, Padurenan, Kec. Mustika Jaya, Kota Bks, Jawa Barat 16340",0812-8853-4446
+71,b'DPP Projo',Organisasi Sukarelawan,"9, Jl. Pancoran Timur Raya No.37, RT.9/RW.8, Pengadegan, Kec. Pancoran, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12770",(021) 22709235
+72,b'GOEBOEG BOEROEH',Organisasi Sukarelawan,"Jl. Cakung Cilincing Raya No.168, RT.11/RW.4, Semper Bar., Kec. Cilincing, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14130",None
+73,b'Organisasi pemuda peduli',Organisasi Sukarelawan,"Jl, raya salembaran Gg.SMA 5 KAB.TANGERANG RT001 RW 006, Kota Tangerang, Banten 15214",None
+74,b'Sekretariat MRI Jakarta Raya',Organisasi Sukarelawan,"No.120, Jl. K.H. Mas Mansyur, RT.1/RW.17, Kebon Melati, Tanah Abang, Central Jakarta City, Jakarta 10230",0838-7181-5672
+75,b'KRI Bekasi Pos Rescue',Organisasi Sukarelawan,"P26M+47G, RT.006/RW.012, Mustika Jaya, Kec. Mustika Jaya, Kota Bks, Jawa Barat 17158",None
+76,b'Cahaya Peduli',Organisasi Sukarelawan,"Jalan Lingkar Luar Barat no 23 B-C, RT.13/RW.7, Duri Kosambi, Kecamatan Cengkareng, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11750",(021) 50112150
+77,b'Yayasan Esa Qolbu cabang',Organisasi Sukarelawan,"perumahan griya satria pesona, Blk. A2 No.1, Jawa Barat 17511",0857-9218-8739
+78,b'Nunung Team Jabodetabek Raya',Organisasi Sukarelawan,"Jl. Rw. Kucing No.3, RT.003/RW.003, Neglasari, Kec. Neglasari, Kota Tangerang, Banten 15129",0813-8827-3219
+79,b'BC RPAI Korwil Depok',Organisasi Sukarelawan,"Jl. Margonda Raya No.127, Kemiri Muka, Kecamatan Beji, Kota Depok, Jawa Barat 16424",None
+80,b'Computer for Change',Organisasi Sukarelawan,"Jl. Salam Raya No.19 A, RT.6/RW.6, Sukabumi Utara, Kec. Kb. Jeruk, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11540",None
+81,b'Kantor Sukarelawan PMI Jakarta Barat',Organisasi Sukarelawan,"Jl. Raya Kramat Semanan No.22, RT.8/RW.2, Semanan, Kec. Kalideres, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11850",None
+82,b'Masyarakat Relawan Indonesia',Asosiasi atau Organisasi,"Menara 165, lantai 11, Jl. TB. Simatupang Kav. 1, Cilandak Timur, RT.7/RW.6, Cilandak Tim., Kec. Ps. Minggu, Jakarta, Daerah Khusus Ibukota Jakarta 12560",(021) 29406565
+83,b'Omah LS Tangerang',Organisasi Sukarelawan,"Jl. Raya Inpres, RT.3/RW.2, Kp. Tengah, Kec. Kramat jati, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13540",0878-7947-9262
+84,b'Team Rescue Ambulance Jakarta',Organisasi Sukarelawan,"Jl. Budi Mulia No.89, RT.9/RW.12, Pademangan Bar., Kec. Pademangan, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14420",0877-8817-1696
+85,b'DPC LVRI Tangsel',Organisasi Sukarelawan,"Jl. Pemuda No.4, RT.1/RW.6, Ciputat, Kec. Ciputat, Kota Tangerang Selatan, Banten 15411",0838-1365-1005
+86,b'MAC LASKAR MERAH PUTIH CIBITUNG',Organisasi Sukarelawan,"P3QP+GP9, Wanasari, Kec. Cibitung, Kabupaten Bekasi, Jawa Barat 17520",0877-8232-2286
+87,b'Basecamp BHEQCOT Adventure',Organisasi Sukarelawan,"6, Jl. Bintaro Permai II No.7, RW.9, Bintaro, Kec. Pesanggrahan, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12330",0858-9496-3616
+88,b'LPBI NU JAKARTA',Organisasi Sukarelawan,"Jl. Utan Kayu Raya No.112, RT.1/RW.9, Utan Kayu Utara, Kec. Matraman, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13120",(021) 8573160
+89,b'Rumah Belajar Mifasol',Organisasi Sukarelawan,"JR5V+677, Unnamed Road, Abadijaya, Kec. Sukmajaya, Kota Depok, Jawa Barat 16411",0812-9464-8559
+90,b'R.A.B ( RELAWAN AMBULANCE BEKASI )',Organisasi Sukarelawan,"P2V4+X2M, Gg. Melati III, RT.002/RW.008, Margahayu, Kec. Bekasi Tim., Kota Bks, Jawa Barat 17113",None
+91,b'Seketariat Tagana Kota Tangerang',Organisasi Sukarelawan,"Gd. Nyimas Melati, Jl. Raya Daan Mogot No.59, RT.001/RW.001, Sukarasa, Kec. Tangerang, Kota Tangerang, Banten 15111",None
+92,b'Markas Pos 3 KATANA Jatimulya',Organisasi Sukarelawan,"Jl.Jampang Rt.03/007 No.21, Jatimulya, Kec. Tambun Sel., Kabupaten Bekasi, Jawa Barat 17510",None
+93,b'Posko KOMUNITAS PEDULI LINGKUNGAN',Organisasi Sukarelawan,"P283+9M7, Jl. Bojong Asri VIII, RT.001/RW.013, Bojong Rawalumbu, Kec. Rawalumbu, Kota Bks, Jawa Barat 17116",0813-1115-9748
+94,"b'Sandoel RSUD Koja, rno'",Organisasi Sukarelawan,"Sandoel RSUD, rno, Jl. Deli, RT.11/RW.7, Koja, Kec. Koja, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14220",None
+95,b'Posko Stapala',Organisasi Sukarelawan,"Kampus Sekolah Tinggi Akuntansi Negara (STAN Jl. Bintaro Utama, Sektor V Bintaro, Jurang Manggu Tim., Kec. Pd. Aren, Kota Tangerang Selatan, Banten 15222",None
+96,b'Khalisa Residence',Organisasi Sukarelawan,"Kompas Indah Estate, Jl. Puring No.2 - 3, Mekarsari, Kec. Tambun Sel., Kabupaten Bekasi, Jawa Barat 17510",None
+97,b'Basecamp Sekolah Relawan',Yayasan,"Jl. Sawi No.139, Beji, Kecamatan Beji, Kota Depok, Jawa Barat 16421",(021) 77805706
+98,b'BPPKB RANTING BATU JAYA KEC. BATU CEPER',Organisasi Sukarelawan,"Jl. Garuda No.85, RT.002/RW.005, Batujaya, Kec. Batuceper, Kota Tangerang, Banten 15121",0878-7602-7246
+99,b'GRIB DPD Kosambi',Organisasi Sukarelawan,"Jl. Raya Salembaran, RT.1/RW.1, Salembaran Jati, Kec. Kosambi, Kabupaten Tangerang, Banten 15214",0877-1889-1211
+100,b'jihadzulfiqar',Organisasi Sukarelawan,"jl jambudipa RT 01 / RW 07 No. 100, Cilebut Tim., Kec. Sukaraja, Kabupaten Bogor, Jawa Barat 16710",None
+101,b'Indonesia Untuk Kemanusiaan',Organisasi Pelayanan Sosial,"Jl. Cikini Raya No.43, RW.1, Cikini, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10330",0812-1343-4560
+102,b'GEMAWIRA BEKASI',Organisasi Sukarelawan,"Jl. Komp. Bkkbn Jl. Bayan II No.1, RT.003/RW.027, Mustika Jaya, Kec. Mustika Jaya, Kota Bks, Jawa Barat 17158",None
+103,b'KAWAN Ben-Pi',Organisasi Sukarelawan,"MPJJ+8MJ, Bambu Apus, Kec. Pamulang, Kota Tangerang Selatan, Banten 15414",None
+104,b'Pusat penyaluran bantuan ( PPB )',Organisasi Sukarelawan,"Gg. Toer No.57, RT.2/RW.6, Parung, Kec. Parung, Kabupaten Bogor, Jawa Barat 16330",None
+105,b'Sekretariat DPC PROJO',Organisasi Sukarelawan,"HXQ5+2VC, Cileungsi Kidul, Kec. Cileungsi, Kabupaten Bogor, Jawa Barat 16820",None
+106,b'RELAWAN NUSANTARA BOGOR',Organisasi Sukarelawan,"Jl. Achmad Adnawijaya No.8, RT.02/RW.11, Tegal Gundil, Kec. Bogor Utara, Kota Bogor, Jawa Barat 16152",0812-8389-1486
+107,b'CREW B-MV',Organisasi Sukarelawan,"Jl. Setapak No.52, RT.1/RW.6, Jampang, Kec. Kemang, Kabupaten Bogor, Jawa Barat 16310",None
+108,b'tangger channel',Organisasi Sukarelawan,"Jl. Sultan Ageng Tirtayasa No.55, RT.001/RW.003, Sudimara Pinang, Kec. Pinang, Kota Tangerang, Banten 15145",0815-9988-327
+109,b'MIRACLE BUILDING (kantor IAKMI Pusat)',Organisasi Sukarelawan,"QWGG+2PP, Perumnas Klender, Jl. Malaka Raya, RT.12/RW.6, Malaka Sari, Durensawit, East Jakarta City, Jakarta 13460",None
+110,b'selshoppp',Organisasi Sukarelawan,"Kontrakan Ijo, Jl. KH. Agus Salim Gg. Pedul, RT.010/RW.008, Duren Jaya, Kec. Bekasi Tim., Kota Bks, Jawa Barat 17112",0857-7202-1000
+111,b'C.T.I.A TANGERANG RAYA',Organisasi Sukarelawan,"Gg. Pelopor, RT.005/RW.006, Buaran Indah, Kec. Tangerang, Kota Tangerang, Banten 15119",None
+112,b'Relawan TIK Bogor',Organisasi Sukarelawan,"Jl. Bogor Indah Plaza Jl. Sholeh Iskandar No.B2, RT.04/RW.09, Kedungbadak, Kec. Tanah Sereal, Kota Bogor, Jawa Barat 16144",None
+113,b'ACTION PROJECT INDONESIA',Organisasi Amal,"Jln Pancawarga 41 Rusunawa Cipinang Besar Selatan Blok C Lantai Dasar RT 017 RW 005 Kantor Sekretariat RT 017, RT.17/RW.5, Cipinang Besar Sel., Jakarta, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13410",0895-2458-2808
+114,b'Komunitas Loba Mere',Organisasi Sukarelawan,"Jl. Raya Cikaret Gg. H. Saiyan No.7, Pakansari, Kec. Cibinong, Kabupaten Bogor, Jawa Barat 16914",0878-7492-4095
+115,b'Komunitas Memberi Indonesia',Klub Sosial,"No, Jl. Beton No.21F, RT.10/RW.17, 13210, RT.1/RW.17, Kayu Putih, Kec. Pulo Gadung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13210",None
+116,b'PRESIDIUM KABUPATEN BEKASI UTARA',Organisasi Sukarelawan,"VX5R+CGW, Jl. Taruma Jaya Jl. Kp. Pamahan Setya Mulya, Setia Asih, Kec. Tarumajaya, Kabupaten Bekasi, Jawa Barat",0813-8047-2425
+117,b'FUDIKI - Forum UKM Digital Kreatif Indonesia',Organisasi Sukarelawan,"Jl. Kamboja No.5B, RT.1/RW.5, Tugu, Kec. Cimanggis, Kota Depok, Jawa Barat 16451",0811-1885-533
+118,b'goodbyesampah',Organisasi Sukarelawan,"jl. calgary 1 H no.9, Pasirranji, Kec. Cikarang Pusat, Kabupaten Bekasi, Jawa Barat 17811",None
+119,b'Givree.ID',Organisasi Sukarelawan,"Jalan Bukit VII Bukit, Jl. Cirendeu Raya No.C5/11, Pisangan, Kec. Ciputat Tim., Kota Tangerang Selatan, Banten 15419",0816-1923-733
+120,b'Institut Kemandirian',Organisasi Sukarelawan,"Gedung Jannah, Jl. Zaitun II Komp. Perum Villa Ilhami, Klp. Dua, Kec. Klp. Dua, Kabupaten Tangerang, Banten 15811",(021) 5463118
+121,b'Basecamp ALAMBARA ADVENTURE',Organisasi Sukarelawan,"PQW6+FVW, RT.1/RW.2, Pesanggrahan, Kec. Pesanggrahan, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12320",0857-1455-1666
+122,b'PERKUMPULAN PEMANTAU ASET NEGARA',Organisasi Sukarelawan,"WFJV+4GP, Kp Margahayu, Gn. Sari, Kec. Mauk, Kabupaten Tangerang, Banten 15530",None
+123,b'Panti Asuhan Al-Ikhwaniyah',Organisasi Sukarelawan,"Balekambang Kramat Jl. Raya Condet No.6, RT.9/RW.2, Jati Padang, Jakarta Timur, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13530",0851-0038-2484
+124,b'RELAWAN KAMPUNG',Organisasi Sukarelawan,"Kp Sukarame Jln. Puncak kaba, Kabupaten Cianjur, Jawa Barat",None
+125,"b""POSKO REMAJA PEDULI YATIM& DHU'AFA""",Organisasi Sukarelawan,"FMPV+QM6, Mekarsari, Kec. Ranca Bungur, Kabupaten Bogor, Jawa Barat 16310",None
+126,b'Sukarelawan montana',Organisasi Sukarelawan,"7253+WF2, Jl. Kebun Raya Cibodas, Cimacan, Kec. Cipanas, Kabupaten Cianjur, Jawa Barat 43253",None
+127,b'Mitra GDEC',Organisasi Sukarelawan,"Jl. Telaga Warna III No.22, RT.01/RW.05, Baranangsiang, Kec. Bogor Tim., Kota Bogor, Jawa Barat 16143",None
+128,b'Relawan Militan Prabowo Sekertariat',Organisasi Sukarelawan,"M8CH+Q75, Jl. Surotokunto, Warungbambu, Kec. Karawang Tim., Kabupaten Karawang, Jawa Barat 41371",None
+129,b'Komunitas Peduli Ciliwung',Organisasi Sukarelawan,"Jl. Sempur Kaler No.62, RT.05/RW.01, Sempur, Kecamatan Bogor Tengah, Kota Bogor, Jawa Barat 16129",(0251) 8333308
+130,b'Sekretariat komunitas KP2C',Organisasi Sukarelawan,"Jl. Bumi Mutiara Blok JI 1 No.17, Bojong Kulur, Kec. Gn. Putri, Kabupaten Bogor, Jawa Barat 16969",0856-0909-0959
+131,"b'Volunteer Company Indonesia , Tangerang'",Organisasi Sukarelawan,"Melati mas vista v9/21 Tangerang Selatan , Bsd City, Jelupang, Kec. Serpong Utara, Kota Tangerang Selatan, Banten 15323",0821-5653-0600
+132,b'MAPALA STACIA UMJ',Organisasi Sukarelawan,"MQW9+GGF, Cireundeu, Kec. Ciputat Tim., Kota Tangerang Selatan, Banten 15419",(021) 74709328
+133,b'GARBI - Gerakan Arah Baru',Organisasi Sukarelawan,"GR9F+F8V, Jl. Raya Jl. Tegar Beriman, Tengah, Kec. Cibinong, Kabupaten Bogor, Jawa Barat 16914",0822-1195-5277
+134,b'BPPKB BANTEN SEINDONESIA',Organisasi Sukarelawan,"kp.betong ds.gandaria RT.001 RW.003 prov., Mekar Baru, Kec. Mekar Baru, Kabupaten Tangerang, Banten 15550",0856-9181-8887
+135,b'MAKO CABANG WIBERA PEJUANG SILIWANGGI INDONESIA',Organisasi Sukarelawan,"Jl. Lkr. Leuwiliang, Leuwiliang, Kec. Leuwiliang, Kabupaten Bogor, Jawa Barat 16640",0878-7220-1746
+136,b'Unv - Country Office For Indonesia',Asosiasi atau Organisasi,"Menara Thamrin, Jl. M.H. Thamrin No.3, RT.10/RW.10, Kb. Sirih, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10340",(021) 29802300
+137,b'POSKO TAGANA JAKARTA UTARA',Organisasi Sukarelawan,"Jl. Kramat Jaya Raya No.27, RT.006/RW.1, Tugu Utara, Kec. Koja, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14260",None
+138,b'Institut Pemberdayaan Masyarakat (IPM)',Organisasi Sukarelawan,"H3MM+JGX, Sindangmulya, Kec. Cibarusah, Kabupaten Bekasi, Jawa Barat 17340",0812-9458-0808
+139,b'LP2KP DPW DKI JAKARTA',Organisasi Sukarelawan,"Jl. Raya Prepedan Gg H Komay No.7, RT.11/RW.9, Kamal, Kec. Kalideres, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11810",0882-8925-3317
+140,b'JARINGAN JOJON SUHENDAR (JJS)',Organisasi Sukarelawan,"Kp. Kubang Asem, RT.007/RW.002, Cikeusal, Kec. Cikeusal, Kabupaten Serang, Banten 72175",None
+141,b'JL. KARANGSINOM-TEGALSARI NO.33',Organisasi Sukarelawan,"JCHR+78H, Kp, Jl. Sadang, RT.10/RW.04, Karangsinom, Kec. Tirtamulya, Kabupaten Karawang, Jawa Barat 41372",0888-0999-7732
+142,b'KSR PMI Unit UIN Syarif Hidayatullah Jakarta',Organisasi Sukarelawan,"MQV4+C2V, Cemp. Putih, Kec. Ciputat Tim., Kota Tangerang Selatan, Banten 15412",None
+143,b'Markas Garda Hijau Puk Spkep Spsi Pt Nok Indonesia',Organisasi Sukarelawan,"Jl. Sulawesi II No.4, Gandamekar, Kec. Cikarang Bar., Kabupaten Bekasi, Jawa Barat 17530",0813-8831-0653
+144,b'Rekrutmen RELAWAN BERAKSI',Organisasi Sukarelawan,"Jl re Martadinata 017/009 no 87, Kabupaten Purwakarta, Jawa Barat 41111",0898-4714-332
+145,b'PGRI Cabang Kotabaru',Organisasi Sukarelawan,"HFXJ+H8M, Jl. Raya Kota Baru Karawang, Wancimekar, Kec. Kota Baru, Kabupaten Karawang, Jawa Barat 41374",None
+146,b'Karang Taruna Unit RW 012 Kebon Jeruk',Balai masyarakat,"Jl. Budhi II No.1, RT.2/RW.4, Kb. Jeruk, Kec. Kb. Jeruk, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11530",0877-8150-0180
+147,b'Peminjaman Inkubator Gratis Depok - Cilodong',Organisasi Sukarelawan,"Kompek Kemang Swatama Residence Blok J no 27, Kalibaru, Cilodong, Depok City, West Java 16413",0812-1999-9797
+148,b'Duriat Pageuh',Organisasi Sukarelawan,"H92P+228, Karanganyar, Kec. Klari, Kabupaten Karawang, Jawa Barat 41371",0853-1115-6837
+149,b'Relawan Siaga Condet',Organisasi Nonprofit,"Jl. Raya Condet No.18, RT.5/RW.3, Batu Ampar, Kec. Kramat jati, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13530",None
+150,b'baraya cinengah',Organisasi Sukarelawan,"72WP+25X, jl. hanjawar kota bunga, Cibadak, Kec. Sukaresmi, Kabupaten Cianjur, Daerah Khusus Ibukota Jakarta 43253",None
+151,b'ACT Bogor Barat',Organisasi Sukarelawan,"Jl. Raya Cibanteng No.155, Cibanteng, Kec. Ciampea, Kabupaten Bogor, Jawa Barat 16620",0811-8119-554
+152,b'ChurChat - Curhat by Chat 24 jam',Organisasi Pelayanan Sosial,"masjid Al-Ittihad, Jl. Kemanggisan ilir Gg. 3, Belakang Deket Gang Zigzag No.30A, RT.004/RW.13, Palmerah, Kec. Palmerah, Daerah Khusus Ibukota Jakarta 11480",None
+153,b'Patwal Single Riders',Organisasi Sukarelawan,"Jl. H. Dehir, Jatiluhur, Kec. Jatiasih, Kota Bks, Jawa Barat 17425",0896-6851-1576
+154,b'Greenpeace Indonesia',Lembaga Swadaya Masyarakat (LSM),"Mega Plaza Building Lt. 5, Jl. HR. Rasuna Said Kav. C3, RT.3/RW.1, Karet, Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12920",(021) 5212552
+155,b'Rumah KBPGB (Keluarga Besar Pendaki Gunung Banten)',Organisasi Sukarelawan,"Linkungan Sayabulu Tower, Jl. Sayabulu, RT.2/RW.7, Kec. Serang, Kota Serang, Banten 42116",None
+156,b'Team liwet',Organisasi Sukarelawan,"4W2W+VP2, Sukajaya, Kec. Sukabumi, Kabupaten Sukabumi, Jawa Barat 43151",0816-4642-343
+157,b'Posko Bencana Bogor Barat',Organisasi Sukarelawan,"FGC6+55M, Jl. Nasional 11, Bunar, Kec. Cigudeg, Kabupaten Bogor, Jawa Barat 16660",None
+158,b'Komunitas Sukarelawan Cirebon',Organisasi Sukarelawan,"Gedung Kantor SEB LOGISTICS, Ruko Perum Tirta Plumbon indah, Jl. Raya Plumbon - Palimanan No.KM.11, Gombang, Kabupaten Cirebon, Jawa Barat 45155",0815-6477-8879
+159,b'Wakil U.R.C / BOCIS',Organisasi Sukarelawan,"FVQX+7GM, Samping desa, Pasir Mukti, Kabupaten Bogor, Jawa Barat 16810",0895-3970-63374
+160,b'Sekretariat tapak rimba',Organisasi Sukarelawan,"Unnamed Road, Nagrak, Kec. Cisaat, Kabupaten Sukabumi, Jawa Barat 43152",0895-1909-3767
+161,b'Gedung Kwarcab Pramuka Kota Tangerang',Organisasi Sukarelawan,"Jl. Mayjen Sutoyo No.mor 9, RT.002/RW.001, Sukarasa, Kec. Tangerang, Kota Tangerang, Banten 15111",None
+162,b'Sekretariat BKM Rahayu',Organisasi Sukarelawan,"JF69+746, Pucung, Kec. Kota Baru, Kabupaten Karawang, Jawa Barat 41374",None
+163,b'Save the Children Indonesia',Organisasi Nonprofit,"Jl. Bangka IX No.40AB, RT.1/RW.10, Pela Mampang, Kec. Mampang Prpt., Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12720",(021) 7824418
+164,b'sekretariat jakapala pusat',Organisasi Sukarelawan,0858-9186-4007,None
+165,b'SOSIAL LINGKUNGAN INOVASI MANDIRI',Organisasi Sukarelawan,"kp bojongsirna desa, Tj. Karya, Kec. Samarang, Kabupaten Garut, Jawa Barat 44161",None
+166,b'Posko Pokdarkamtibmas Jajaran 10.19 Polsek Jatiuwung',Organisasi Sukarelawan,"QJX3+JCF, Jl. Empu Sendok Raya, RT.003/RW.003, Cibodas Baru, Kec. Cibodas, Kota Tangerang, Banten 15138",None
+167,b'Sekretariat BPKel Ormas Oi Linglung Kota bogor',Organisasi Pelayanan Sosial,"Kp cipaku sukawarna Rt02/10 kel, RT.02/RW.10, Cipaku, Kec. Bogor Sel., Kota Bogor, Jawa Barat 16133",0895-1670-7554
+168,b'Rumah Yatim - Kalibata',Organisasi Nonprofit,"Jl. Kalibata Raya No.2 Rawa Jati, Pancoran, RT.10/RW.3, Rawajati, Kec. Pancoran, Jakarta, Daerah Khusus Ibukota Jakarta 12750",(021) 7949328
+169,b'Sekretariat GPO',Organisasi Sukarelawan,"Sukatani, Kec. Pacet, Kabupaten Cianjur, Jawa Barat 43253",0838-1708-6049
+170,b'Herman Suherman Bupati Cianjur',Organisasi Sukarelawan,"Jl Al Mukhtar No 6 Blk Residence, Desa, RT.002/RW.015, Limbangansari, Kec. Cianjur, Kabupaten Cianjur, Jawa Barat 43211",None
+171,b'Gamers Indonesia',Organisasi Nonprofit,"Jl.Poltangan Raya, Jl. Jaidi, No. 52, RT 03/011, Pejaten Timur, RT.3/RW.11, Pejaten Tim., Kec. Ps. Minggu, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12510",None
+172,b'Penggiat Alam Terbuka (PAT) CANTIGI',Organisasi Sukarelawan,"5Q45+RJ3, Parungkuda, Kec. Parungkuda, Kabupaten Sukabumi, Jawa Barat 43357",None
+173,b'Bank Sampah Dan Tanaman Organik',Organisasi Sukarelawan,"Jl. Sasak Papan No.79, Pasirsari, Cikarang Sel., Kabupaten Bekasi, Jawa Barat 17530",None
+174,b'Jamkeswatch Purwasari',Organisasi Sukarelawan,"Kedungsari, RT.002/RW.004, Cengkong, Kec. Purwasari, Kabupaten Karawang, Jawa Barat 41373",0816-1789-0889
+175,b'Komunitas Taufan',Asosiasi atau Organisasi,"Perumahan Cassiavera, Jl. Kayu Manis No.6, RT.2/RW.5, Bale Kambang, Kramat Jati, East Jakarta City, Jakarta 13530",None
+176,b'Rumah Yatim - Lebak Bulus',Organisasi Nonprofit,"Jl. Lb. Bulus I No.36, RT.3/RW.4, Cilandak Bar., Kec. Cilandak, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12440",(021) 40000867
+177,b'Independen Pekerja Sosial Profesional Indonesia (IPSPI)',Organisasi Pelayanan Sosial,"Jl. Dewi Sartika No.200, RW.5, Cawang, Kec. Matraman, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13630",None
+178,b'Markas PMI Kabupaten Serang',Organisasi Sukarelawan,"Jl. Jend. Sudirman No.27, Sumurpecung, Kec. Serang, Kota Serang, Banten 42118",(0254) 201657
+179,b'Komunitas SBOP ( Sanggar Belajar Orang Pinggiran )',Taman Komunitas,"Jl. Komp. PT. SPS, RT.3/RW.5, Rorotan, Kec. Cilincing, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14140",0895-3173-2340
+180,b'SEKRETARIAT ORARI LOKAL CIANJUR',Organisasi Sukarelawan,"Komplek GGM Panembong, Jl. Ir. H. Juanda No.53, Limbangansari, Kec. Cianjur, Kabupaten Cianjur, Jawa Barat 43211",None

@@ -1,0 +1,185 @@
+Nomor,Nama,Label,Alamat,Telephone
+1,b'Posko Relawan PTBC',Organisasi Sukarelawan,"Jl. Taman Kumudasmoro 1 No. K8, Bongsari, Kec. Semarang Barat, Kota Semarang, Jawa Tengah 50148",None
+2,b'Pasukan Kurang Turu Ketepeng',Organisasi Sukarelawan,"Jl. Tengiri Raya No.48 RT 003/05, Bandarharjo, Kec. Semarang Utara, Kota Semarang, Jawa Tengah 50175",None
+3,b'Dr. Wahidin 46',Organisasi Sukarelawan,"XCMH+98J, Kaliwiru, Kec. Candisari, Kota Semarang, Jawa Tengah 50253",None
+4,b'base camp resopala',Organisasi Sukarelawan,"Jl. Wonodri Sendang IV No.1048, Wonodri, Kec. Semarang Sel., Kota Semarang, Jawa Tengah 50242",None
+5,b'PAGAR KAKI LANGIT',Organisasi Sukarelawan,"XCVV+G6H, Jl. Lamper Tengah, Lamper Tengah, Semarang, Kota Semarang, Jawa Tengah 50248",None
+6,b'Posko KSR-PMI Unit Unwahas',Organisasi Sukarelawan,"Jl. Menoreh Tengah X No.22, Sampangan, Kec. Gajahmungkur, Kota Semarang, Jawa Tengah 50232",None
+7,b'Tim Resik-Resik Masjid',Organisasi Sukarelawan,"Masjid Al-Istiqomah, Jl. Jati Raya No.1, Srondol Wetan, Kec. Banyumanik, Kota Semarang, Jawa Tengah 50264",None
+8,b'UKM KSR PMI UNISSULA',Organisasi Sukarelawan,"Terboyo Kulon, Kec. Genuk, Kota Semarang, Jawa Tengah 50112",0822-4705-7999
+9,b'Posko Pasukan Kurang Turu Ketepeng Semarang',Organisasi Sukarelawan,"Jl. Tengiri Raya No.10, Old Town, Bandarharjo, Kec. Semarang Utara, Kota Semarang, Jawa Tengah 50175",None
+10,b'semarang peduli',Organisasi Sukarelawan,"Gabu Raya, Tambangan, Kec. Mijen, Kota Semarang, Jawa Tengah 50215",(024) 70444501
+11,b'NEZA GARUDA YAKSA',Organisasi Sukarelawan,"2955+RJR, Purwoyoso, Kec. Ngaliyan, Kota Semarang, Jawa Tengah 50184",0813-9087-0460
+12,b'Markas KSR PMI Unit UIN Walisongo',Organisasi Sukarelawan,"284X+XJ6, Tambakaji, Kec. Ngaliyan, Kota Semarang, Jawa Tengah 50185",None
+13,"b""RELAWAN SADAR QUR'AN REPUBLIK INDONESIA""",Organisasi Sukarelawan,"Perum Pantura Indah Gang Kenanga No.08, RT.01/RW.10, Sekopek Kulon, Sarirejo, Kec. Kaliwungu, Kabupaten Kendal, Jawa Tengah 51372",0895-3841-12284
+14,b'IIWC of PKBI',Organisasi Sukarelawan,"Jl. Jembawan Raya No.8, Kalibanteng Kulon, Kec. Semarang Barat, Kota Semarang, Jawa Tengah 50146",(024) 7603503
+15,b'Garangan Adventure',Organisasi Sukarelawan,"Jl. Mintojiwo Raya No.17, RW.4, Gisikdrono, Kec. Semarang Barat, Kota Semarang, Jawa Tengah 50148",None
+16,b'posko BPBD SAYUNG',Organisasi Sukarelawan,"3G54+8QF, Purwosari Tengah, Purwosari, Kec. Sayung, Kabupaten Demak, Jawa Tengah 59563",None
+17,b'DULUR GANJAR PRANOWO KOTA SEMARANG',Organisasi Sukarelawan,"Jl. Puri Asri Perdana, Padangsari, Kec. Banyumanik, Kota Semarang, Jawa Tengah 50267",0812-2933-0870
+18,b'BC RELINTAS',Organisasi Sukarelawan,"Jl. Ki Penjawi No.104, Sidorejo Lor, Kec. Sidorejo, Kota Salatiga, Jawa Tengah 50714",0815-6561-452
+19,b'Saka Wanabakti Kota Semarang',Organisasi Sukarelawan,"Jalan Dokter Cipto No.99, Sarirejo, Kec. Semarang Tim., Kota Semarang, Jawa Tengah 50124",None
+20,b'Cakruk Baca Bergerak',Organisasi Sukarelawan,"Dsn. Demangan RT/RW : 10/04, Demangan, Kadirejo, Kec. Pabelan, Kabupaten Semarang, Jawa Tengah 50771",0823-2251-8667
+21,b'Rumah wiyata wiwin',Organisasi Sukarelawan,"M9QF+F7Q, Gertas, Brongkol, Kec. Jambu, Kabupaten Semarang, Jawa Tengah 50663",None
+22,b'Sekretariat BPK Oi DEMAK',Organisasi Sukarelawan,"WHWG+FCP, Jl. Kauman Rimbulor, Karangawen, Kec. Karangawen, Kabupaten Demak, Jawa Tengah 59566",0815-7517-6789
+23,b'Tower Relawan Mta Cangkringan',Organisasi Sukarelawan,"9CHR+4CW, Unnamed Road, Plaserejo, Umbulharjo, Kec. Cangkringan, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55583",0813-9290-9987
+24,b'Kantor GBS (Gerakan Bakti Sosial) Yogyakakarta',Organisasi Sukarelawan,"Jl. Onggomertan, No.105, Nayan RT.03, RW.25, Nayan, Maguwoharjo, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55282",None
+25,b'Maghrib Humanity (MH) 1830 - Sekre',Organisasi Sukarelawan,"Kranggahan I No. 8 , RT.1/RW.1, Kranggahan I, Trihanggo, Kec. Gamping, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55291",0857-2424-2900
+26,b'Komunitas Harapan',Organisasi Pelayanan Sosial,"Kauman, Kec. Semarang Tengah, Kota Semarang, Jawa Tengah 50139",0858-4882-4772
+27,b'PMR MTs Ismailiyyah',Organisasi Sukarelawan,"Jl. Raya Nalumsari No.24, Nalum, Nalumsari, Jepara, Kabupaten Jepara, Jawa Tengah 59466",None
+28,b'Induk Relawan ASC',Organisasi Sukarelawan,"H3GP+8P9, Prampelan, Adipuro, Kec. Kaliangkrik, Kabupaten Magelang, Jawa Tengah 56153",None
+29,b'KOSAPA 77',Organisasi Sukarelawan,"Jl. Kaliwaru No.2-A, Kaliwaru, Condongcatur, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55283",0877-3883-2845
+30,b'Sekretariat Nurul Insan Mandiri',Organisasi Sukarelawan,"M6VH+9X8, Unnamed Road, Bendomoro, Kemloko, Kec. Kranggan, Kabupaten Temanggung, Jawa Tengah 56271",0852-9212-3312
+31,b'Lindungi Hutan Kendal',Organisasi Sukarelawan,"Krajan, Bandengan, Kec. Kendal, Kabupaten Kendal, Jawa Tengah",0813-9388-8899
+32,b'Markas Relawan GURUH MERAPI Magelang',Organisasi Sukarelawan,"F87X+775, Jl. Babadan, Mangunsoko, Kec. Dukun, Kabupaten Magelang, Jawa Tengah 56482",None
+33,b'MAKO SAR RAJAWALI MERAH PUTIH',Organisasi Sukarelawan,"Jl. Satrio Wibowo Sel. No.1D, Purwosari, Kec. Laweyan, Kota Surakarta, Jawa Tengah 57142",0822-2332-6686
+34,b'education',Organisasi Sukarelawan,"6CWF+45W, Jl. Paingan, Krodan, Maguwoharjo, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281",None
+35,b'Posko Relawan Tunggul Wulung',Organisasi Sukarelawan,"G2XV+655, Jalan Dukuh Seti TPI, Tambak & Sawah, Banyutowo, Dukuhseti, Pati Regency, Central Java 59158",None
+36,b'Sekretariat Relawan Destana 005 Pengasih',Organisasi Sukarelawan,"Jl, Projo Martani No.5, Pengasih, Kec. Pengasih, Kabupaten Kulon Progo, Daerah Istimewa Yogyakarta 55652",None
+37,b'Rumah Relawan Ganjarist Prambanan',Organisasi Sukarelawan,"6GV6+CJW, Kongklangan, Kotesan, Kec. Prambanan, Kabupaten Klaten, Jawa Tengah 57454",None
+38,b'MAKO Induk FPMKI',Organisasi Sukarelawan,"9CQP+4XJ, Gondang, Tangkisan, Umbulharjo, Kec. Cangkringan, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55583",None
+39,b'ICJ UPDATE',Organisasi Sukarelawan,"Jl. Ngadisuryan, Patehan, Kecamatan Kraton, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55133",0856-4110-0611
+40,b'Kantor Pusat KRI',Organisasi Sukarelawan,"FQV7+VW6, Lemah Abang, Dibal, Kec. Ngemplak, Kabupaten Boyolali, Jawa Tengah 57375",None
+41,b'SEKRETARIAT BERSAMA RELAWAN BERBAH',Organisasi Sukarelawan,"5CVV+R4J, Berbah, Tegaltirto, Kec. Berbah, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55573",None
+42,b'ORGANISASI RELAWAN DAN BUDAYA',Organisasi Sukarelawan,"Jetis, Sendangsari, Kec. Pajangan, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55751",None
+43,b'PERDOKHI DIY',Organisasi Sukarelawan,"69HC+558, Senolowo, Sinduadi, Kec. Mlati, Kabupaten Sleman, Daerah Istimewa Yogyakarta",None
+44,b'POSKOR MDMC MIJEN DEMAK',Organisasi Sukarelawan,"6P4G+V6J, Mijen, Kec. Mijen, Kabupaten Demak, Jawa Tengah 59583",None
+45,b'Ambulance siaga jawa tengah',Organisasi Sukarelawan,"Namar, RT.07/RW.02, Lemahireng, Kec. Bawen, Kabupaten Semarang, Jawa Tengah 50552",0812-1597-5745
+46,b'Sekretariat Jaringan Relawan Pengurangan & Penanggulangan Bencana Kabupaten Pati',Organisasi Sukarelawan,"Jl. Merpati No.101, Pati Wetan/Dosoman, Pati Wetan, Kec. Pati, Kabupaten Pati, Jawa Tengah 59115",0852-9067-6940
+47,b'DESTANA MINOMARTANI',Organisasi Sukarelawan,"Komplek Kalurahan, Gantalan, Minomartani, Kec. Ngaglik, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55581",0877-1976-3400
+48,b'Markas Komando Satmenwa Kalimasada',Organisasi Sukarelawan,"UPN ""Veteran"" Yogyakarta, Jalan SWK 104,, Ngropoh, Condongcatur, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55283",None
+49,b'Mako Relawan Semin',Organisasi Sukarelawan,"Jl. Raya Semin Kemejing No.001, RT.003, Bendung, Kec. Semin, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55854",None
+50,b'Bescam kebtana',Organisasi Sukarelawan,"C4HR+JXC, Demangan, Kebonrejo, Kec. Salaman, Kabupaten Magelang, Jawa Tengah 56162",None
+51,b'Diska tagana',Organisasi Sukarelawan,"4X2H+CVQ, Jl. Syeh Jangkung 1, RT.02/RW.07, Rw. 6, Kayen, Kec. Kayen, Kabupaten Pati, Jawa Tengah 59171",None
+52,b'RELINDO (Indonesian Volunteers for Humanity) PengDa BOYOLALI',Organisasi Sukarelawan,"FM78+85J, Kantil, Teras, Kec. Teras, Kabupaten Boyolali, Jawa Tengah 57372",0812-1212-2927
+53,b'KRI BASECAMP JAMPEN',Organisasi Sukarelawan,"FQQV+FCV, jampen, RT.02/RW.06, Karang Pong, Kismoyoso, Kec. Ngemplak, Kabupaten Boyolali, Jawa Tengah 57375",0815-4842-0391
+54,b'KRI Kota Surakarta',Organisasi Sukarelawan,"CRQX+2WQ, Jl. Ir. Sutami, Jebres, Kec. Jebres, Kota Surakarta, Jawa Tengah 57125",0813-9345-9000
+55,b'Sekretariat Karang Taruna Desa Temulus',Organisasi Sukarelawan,"5V4W+WJ2 Balai Desa, Kambangan, Temulus, Kec. Mejobo, Kabupaten Kudus, Jawa Tengah 59381",0857-4007-0201
+56,b'PERKUMPULAN GARDA RELAWAN INDONESIA (GARIS)',Organisasi Sukarelawan,"6XRP+WH7, Sempulawang, Pegandan, Kec. Margorejo, Kabupaten Pati, Jawa Tengah 59163",None
+57,b'WIDIYANTA GOBUMI',Organisasi Sukarelawan,"FF3P+J9C, Gobumi, Mriyan, Tamansari, Kabupaten Boyolali, Jawa Tengah 57331",None
+58,b'BC KPG Regional Kudus',Organisasi Sukarelawan,"5WW2+4HV, Pikon, Tenggeles, Kec. Mejobo, Kabupaten Kudus, Jawa Tengah 59381",None
+59,b'Posko Relawan Ganefo',Organisasi Sukarelawan,"M385+V4G, Jelis, Katelan, Kec. Tangen, Kabupaten Sragen, Jawa Tengah 57261",None
+60,b'MAKO SAR MAGANA',Organisasi Sukarelawan,"9Q7Q+Q2M, Unnamed Road, Dusun I, Ngrombo, Kec. Baki, Kabupaten Sukoharjo, Jawa Tengah 57556",None
+61,b'Posko Relawan Bencana Jatinom',Organisasi Sukarelawan,"8HWV+VX5, Dusun 1, Jemawan, Kec. Jatinom, Kabupaten Klaten, Jawa Tengah 57481",None
+62,b'Sahabat Nurhidayat',Organisasi Sukarelawan,"Jl. Saman, Tanjung, Bangunharjo, Kec. Sewon, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55187",0859-6412-2256
+63,b'DPD ADO DIY',Organisasi Sukarelawan,"68FQ+6PM, guyangan, Jl. Ngapak - Kentheng, Area Sawah, Nogotirto, Kec. Gamping, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55592",None
+64,b'Mdmc Jateng Area 12',Organisasi Sukarelawan,"Jl. Garuda Mas No.3-7, Gatak, Pabelan, Kec. Kartasura, Kabupaten Sukoharjo, Jawa Tengah 57169",None
+65,"b""IBNU MAS'UD AS""",Organisasi Sukarelawan,"Bibis 04/10, Padangan, Jungke, Kec. Karanganyar, Kabupaten Karanganyar, Jawa Tengah 57113",0857-9943-0888
+66,b'POSKO BANSER SATKORYON NGAGLIK',Organisasi Sukarelawan,"Jl. Kaliurang No.11, Pedak, Sinduharjo, Kec. Ngaglik, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55581",None
+67,b'HOME BASE RELAWAN S.K.A.T',Organisasi Sukarelawan,"Desa Jurangjero, RT. 02 / RW. 02 Karanganom, Dusun I, Jurangjero, Kec. Karanganom, Kabupaten Klaten, Jawa Tengah 57475",0812-8181-7911
+68,b'MRI Kota Salatiga',Organisasi Sukarelawan,"Jl. Purbaya III Jl. Karang Alit No.Perum, Dukuh, Kec. Sidomukti, Kota Salatiga, Jawa Tengah 50722",0857-4019-7928
+69,b'MARKAS KSR UIN RM SAID',Organisasi Sukarelawan,"CPRM+GJ3, Jl. Pandawa 1, Dusun IV, Pucangan, Kec. Kartasura, Kabupaten Sukoharjo, Jawa Tengah 57168",None
+70,b'Karbolo Community',Organisasi Sukarelawan,"Unnamed Road, Mancasan, Ambarketawang, Kec. Gamping, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55294",0878-3844-6911
+71,b'Panggung Guyub',Organisasi Sukarelawan,"Gg. Yudistira No.15, Glondong, Panggungharjo, Kec. Sewon, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55188",None
+72,b'MAKO SEKRETARIAT MERAPI COMMUNITY 283 DIY',Organisasi Sukarelawan,"8C34+53C, Jl. Kaliurang, Turen, Sardonoharjo, Kec. Ngaglik, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55581",None
+73,b'Sekretariat Wongsalam',Organisasi Sukarelawan,"Jl. Citrosancakan No.8, Dusun 1, Gemolong, Kec. Gemolong, Kabupaten Sragen, Jawa Tengah 50274",None
+74,b'MAKO RESJU',Organisasi Sukarelawan,"8XWR+Q9F, Ngadirejo, Ngunut, Kec. Jumantono, Kabupaten Karanganyar, Jawa Tengah 57782",None
+75,b'Mako Relawan Karang',Organisasi Sukarelawan,"9473+VQ9, Karang Kulon, Karang, Kec. Karangpandan, Kabupaten Karanganyar, Jawa Tengah 57791",None
+76,b'POSKO BAMAS',Organisasi Sukarelawan,"9R8X+VG4, Jl. Ngleses, Samin, Pandeyan, Kec. Grogol, Kabupaten Sukoharjo, Jawa Tengah 57552",0822-2523-9189
+77,b'Posko tim kamboja',Organisasi Sukarelawan,"8GMF+C9R, Dusun 1, Keputran, Kec. Kemalang, Kabupaten Klaten, Jawa Tengah 57484",None
+78,b'Adisurya Comunication',Organisasi Sukarelawan,"H3GP+9R7, Prampelan, Adipuro, Kec. Kaliangkrik, Kabupaten Magelang, Jawa Tengah 56153",0878-3825-5452
+79,b'Pos 3 CODE X Relawan Jogja',Organisasi Sukarelawan,"59Q6+R3X, Jl. Komp. Taman Sari, Patehan, Kecamatan Kraton, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55133",0813-3787-5756
+80,b'SUKMADESI SAWIT',Organisasi Sukarelawan,"CMCH+Q37, Unnamed Road, Dusun 2, Gombang, Kec. Sawit, Kabupaten Boyolali, Jawa Tengah 57374",None
+81,b'mako RELAWAN GERDU',Organisasi Sukarelawan,"938W+WJM, Popongan, Gerdu, Kec. Karangpandan, Kabupaten Karanganyar, Jawa Tengah",None
+82,b'Edi Nugroho',Organisasi Sukarelawan,"274G+8MG, Tegalsari, RT.068, Srigading, Kec. Sanden, Kabupaten Bantul, Daerah Istimewa Yogyakarta",0813-9041-7771
+83,b'MAKO TIRTO RESCUE BERBAH',Organisasi Sukarelawan,"Blendangan, Tegaltirto, Kec. Berbah, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55573",None
+84,b'Korps Sukarela KSR Unit PMI Banjarnegara',Organisasi Sukarelawan,"Kantor PMI Banjarnegara, Jl. Letjend Suprapto No.74, Wangon, Kec. Banjarnegara, Kab. Banjarnegara, Jawa Tengah 53417",None
+85,b'JBS ( Joglo Samira Berkah )',Organisasi Sukarelawan,"Kebakan, Sapen, Kec. Mojolaban, Kabupaten Sukoharjo, Jawa Tengah 57554",0877-7462-7557
+86,b'BASECAMP KOPASTA',Organisasi Sukarelawan,"8J3F+JQR, Macanan, Karanganom, Kec. Klaten Utara, Kabupaten Klaten, Jawa Tengah",0812-1502-5851
+87,b'Sekretariat KPA Rajawali',Organisasi Sukarelawan,"Dusun I, Tarubatang, Kec. Selo, Kabupaten Boyolali, Jawa Tengah 57363",0878-3841-7950
+88,b'POSKO KATANA KRAJAN',Organisasi Sukarelawan,"Dusun 2, Krajan, Kec. Jatinom, Kabupaten Klaten, Jawa Tengah 57481",0838-7202-1315
+89,b'Mako Relawan Restu Ibu Klaten',Organisasi Sukarelawan,"6GVP+QWQ, Platar, Wirosari, Somopuro, Kec. Jogonalan, Kabupaten Klaten, Jawa Tengah 57452",None
+90,b'KOMUNITAS BANYU BENING',Organisasi Sukarelawan,"Karang, RT.02/RW.29, Karang, Sumberagung, Kec. Moyudan, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55563",None
+91,b'Posko Relawan Kecamatan Ngawen (RKN)',Organisasi Sukarelawan,"Jl. Klaten - Jatinom No.Km. 4, Dusun 2, Ngerangan, Kec. Ngawen, Kabupaten Klaten, Jawa Tengah 57466",None
+92,b'Basecamp satgas semut ireng',Organisasi Sukarelawan,"7WXF+8JW, Jl. Raya Jurang, Tergo, Kec. Dawe, Kabupaten Kudus, Jawa Tengah 59353",None
+93,b'Posko Banu - B4NU',Organisasi Sukarelawan,"Jl. Cangkringan No.01, Pakemtegal, Pakembinangun, Kec. Pakem, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55582",None
+94,b'Basecamp ICK Korwil Delanggu Raya',Organisasi Sukarelawan,"9MQX+C83, Jalan Lingkar, Gentan, Kepanjen, Delanggu, Klaten Regency, Central Java 57471",None
+95,b'POS 1 READ KARANGANYAR',Organisasi Sukarelawan,"Jl. Raya Solo-Tawangmangu No.126, Perum Uns, Sapen, Kec. Jaten, Kabupaten Karanganyar, Jawa Tengah 57554",None
+96,b'Posko SAR DIY Kuncen',Organisasi Sukarelawan,"Jl. Pakuncen RW No.36 RT 02, Pakuncen, Wirobrajan, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55253",0856-2745-525
+97,b'POS KSM GLAGAHARJO',Organisasi Sukarelawan,"Unnamed Road, Dengis, Glagaharjo, Kec. Cangkringan, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55583",None
+98,b'VIKING BATANG',Organisasi Sukarelawan,"Gg. Materos, RT.02/RW.R 02, Kalipucang Wetan, Kec. Batang, Kabupaten Batang, Jawa Tengah 21516",None
+99,b'Posko Mapala KAPAKATA INSTIPER',Organisasi Sukarelawan,"6CQG+997, Jl. Nangka II, Krodan, Maguwoharjo, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281",None
+100,b'Perpustakaan Rifka Annisa',Organisasi Sukarelawan,"Jl. Jambon IV, Komplek Jatimulyo Indah, Yogyakarta, Indonesia, Kricak, Kec. Tegalrejo, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55242",None
+101,b'Posko relawan gemawang',Organisasi Sukarelawan,"Jl. Karanganyar-Karangpandan No.27, Bendungan, Bangsri, Kec. Karangpandan, Kabupaten Karanganyar, Jawa Tengah 57791",0813-2711-6557
+102,b'Rumah Banyu Bening',Organisasi Sukarelawan,"Gantiwarno, Kampung, Kec. Ngawen, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55853",None
+103,b'Homebase Teras Kecil',Organisasi Sukarelawan,"Jl. Jend. A. Yani No.18, Karang Kulon, Papahan, Kec. Tasikmadu, Kabupaten Karanganyar, Jawa Tengah 57722",None
+104,b'Mabes FOR\xe2\x80\x99UP',Organisasi Sukarelawan,"Jl. Jend. Sudirman Tim. No.73, Wanarejan Selatan, Wanarejan Sel., Kec. Taman, Kabupaten Pemalang, Jawa Tengah 52361",None
+105,b'YPAC Nasional',Organisasi Sukarelawan,"Jl. LU. Adisucipto KM 7, Colomadu, Paulan Kulon, Paulan, Karanganyar, Kabupaten Karanganyar, Jawa Tengah 57176",(0271) 780075
+106,b'Shelter URC Klaten 2',Organisasi Sukarelawan,"Janidan, Ngadirejo, Kec. Kartasura, Kabupaten Sukoharjo, Jawa Tengah 57163",0813-3660-0398
+107,b'SEKRETARIAT RAGAMA',Organisasi Sukarelawan,"Jl. Ovensari Raya, Kembang, Duwet, Kec. Baki, Kabupaten Sukoharjo, Jawa Tengah 57556",0812-2971-753
+108,b'Basecamp Water Rescue Guruh Merapi',Organisasi Sukarelawan,"F65P+VCV, Gedongan, Blondo, Kec. Mungkid, Kabupaten Magelang, Jawa Tengah 56512",0896-3652-7649
+109,b'Indonesian Reformator Leaders',Organisasi Sukarelawan,"Brajan, Kasihan, perbatasan Yogya - Bantul, dekat UMY, Brajan, Tamantirto, Kec. Kasihan, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55184",None
+110,b'Posko Relawan RPM',Organisasi Sukarelawan,"Jl. Karangpandan-Ngargoyoso, Sidi, Nglegok, Kec. Ngargoyoso, Kabupaten Karanganyar, Jawa Tengah 57793",0813-9267-3458
+111,b'Taman Cerdas Lentera Merapi',Organisasi Sukarelawan,"8FP6+8H2, Suruh, Argomulyo, Kec. Cangkringan, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55583",None
+112,b'SAPALA IKIP PGRI WATES',Organisasi Sukarelawan,"45VG+82M, Gn. Gondang, Margosari, Kec. Pengasih, Kabupaten Kulon Progo, Daerah Istimewa Yogyakarta 55652",0823-6601-8399
+113,b'Padepokan Romo Yosep Suyatno',Organisasi Sukarelawan,"89VW+X6X, Jl. Jogja - Turi, Jambalangan, Purwobinangun, Kec. Pakem, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55582",None
+114,b'Mako mdmc klaten - sar muhammadiyah',Organisasi Sukarelawan,"7JV6+7Q3, Unnamed Road, Srogo, Mojayan, Kec. Klaten Tengah, Kabupaten Klaten, Jawa Tengah 57438",None
+115,b'Borsak Mangatasi Nababan',Organisasi Sukarelawan,"5FX7+WCJ, Jragung, Jogotirto, Kec. Berbah, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55573",0813-9394-4244
+116,b'Wani Perih ERT',Organisasi Sukarelawan,"Jl. Ngawen No.2011, Kp. Kidul, Kampung, Kec. Ngawen, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55853",None
+117,b'Posko Merapi Padepokan Yoseph Suyatno',Organisasi Sukarelawan,"9CM6+9GP, Kemiri, Purwobinangun, Kec. Pakem, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55582",0896-3966-0797
+118,b'MAKO TAGANA KARANGANYAR',Organisasi Sukarelawan,"CW4H+WF7, Manggung, Cangakan, Kec. Karanganyar, Kabupaten Karanganyar, Jawa Tengah 57716",None
+119,b'MAKOE EMERGENCY SKB',Organisasi Sukarelawan,"7GRH+F5, Mampiran, Joton, Kec. Jogonalan, Kabupaten Klaten, Jawa Tengah",0857-9917-8000
+120,b'sekretariat fastabiqul khairat squad',Organisasi Sukarelawan,"Jl letkol sosro sudiro No.3, RT.02/RW.08, Dusun V, Pliken, Kec. Kembaran, Kabupaten Banyumas, Jawa Tengah 53181",None
+121,b'Primapala Boyolali',Organisasi Sukarelawan,"HGM5+QHH, Dusun 4, Ngadirojo, Kec. Ampel, Kabupaten Boyolali, Jawa Tengah 57352",None
+122,b'KSR PMI Unit UNSIQ',Organisasi Sukarelawan,"Markas KSR PMI Unit UNSIQ, Gdg Kemahasiswaan UNSIQ Lt. 2, Jln KH. Hasyim Asy'ari, Kalibeber, Kec. Mojotengah, Kabupaten Wonosobo, Jawa Tengah 50517",0822-3435-5313
+123,b'MAKO DPD PETA JATENG',Organisasi Sukarelawan,"H24R+CJJ, Sungkul, Plumbungan, Kec. Karangmalang, Kabupaten Sragen, Jawa Tengah 57222",0812-2961-5100
+124,b'POSKO GABUNGAN MERAPI 2020',Organisasi Sukarelawan,"Jl. Palagan Tentara Pelajar No.km, RW.13, Kasenan, Donoharjo, Kec. Ngaglik, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55581",0856-4389-3649
+125,b'Mako BAGANa',Organisasi Sukarelawan,"93CR+CHH, Gedangan, Salam, Kec. Karangpandan, Kabupaten Karanganyar, Jawa Tengah 57791",0823-2226-1926
+126,b'Sekertariat MOSKOW(MioSkubekOwner)GK',Organisasi Sukarelawan,"3J5G+P5V, Grogol IV, Bejiharjo, Kec. Karangmojo, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55891",None
+127,b'Pos Pantau Jombor',Organisasi Sukarelawan,"mraen,RT 04/10, Gg. Menur, Mlati Dukuh, Sendangadi, Kec. Mlati, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55285",None
+128,b'Sekretariat MRI Kudus',Organisasi Sukarelawan,"6R4V+6CV, Candi Lor, Singocandi, Kec. Kota Kudus, Kabupaten Kudus, Jawa Tengah 59314",None
+129,b'Gg. Petraka',Organisasi Sukarelawan,"Jl. Tratai No.123, Tratebang Kidul, Tratebang, Kec. Wonokerto, Kabupaten Pekalongan, Jawa Tengah 51153",None
+130,b'Pos KBC',Organisasi Sukarelawan,"48QQ+8W8, Area Sawah, Pendowoharjo, Kec. Sewon, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55186",0812-5922-9858
+131,b'Mako Bandhang (Bangsri Tumandhang)',Organisasi Sukarelawan,"Bangsri, Kec. Karangpandan, Kabupaten Karanganyar, Jawa Tengah 57791",0857-0151-0900
+132,b'Kesekretariatan FKPM Paksi Katon Pajangan',Organisasi Sukarelawan,"Jetis, Sendangsari, Kecamatan Pajangan, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55751",0896-8560-6830
+133,b'IKKJ JOSS DIY',Organisasi Sukarelawan,"Jl. Ibu Ruswo No.35, Yudonegaran, Prawirodirjan, Kec. Gondomanan, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55121",0878-3999-5009
+134,b'Komunitas Sukarelawan Cirebon',Organisasi Sukarelawan,"Gedung Kantor SEB LOGISTICS, Ruko Perum Tirta Plumbon indah, Jl. Raya Plumbon - Palimanan No.KM.11, Gombang, Kabupaten Cirebon, Jawa Barat 45155",0815-6477-8879
+135,b'Sekretariat oprb borobudur',Organisasi Sukarelawan,"Ngadiwinatan 2, Ngadiwinata 2, Karanganyar, Kec. Borobudur, Kabupaten Magelang, Jawa Tengah 56553",0857-1970-3552
+136,b'NAGA BONAR (BANSER)',Organisasi Sukarelawan,"83VX+MJF, Guyangan, Kec. Trangkil, Kabupaten Pati, Jawa Tengah 59153",None
+137,b'Posko FPRB Srimulyo',Organisasi Sukarelawan,"5F87+Q98, Gg. Ngamarto, Payak Wetan, Srimulyo, Kec. Piyungan, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55792",None
+138,b'Rescue racing home 119',Organisasi Sukarelawan,"Gg. Bima No.2, RT.01/RW.03, Sitanjung, Pangenjurutengah, Kec. Purworejo, Kabupaten Purworejo, Jawa Tengah 54114",0857-0234-0088
+139,b'Posko Mudik Sp Lem Spsi Puk.kim Jaktim',Organisasi Sukarelawan,"4H72+9M9, Jalan Raya, Dusun Satu, Ambowetan, Ulujami, Pemalang Regency, Central Java 52371",None
+140,b'POS AJU KEMALANG',Organisasi Sukarelawan,"Posko aju, Dusun 1, Keputran, Kec. Kemalang, Kabupaten Klaten, Jawa Tengah 57484",None
+141,b'KSR PMI Unit VI Universitas Sanata Dharma',Organisasi Sukarelawan,"Student Center Lantai 2, Universitas Sanata Dharma, Jl. Tromol Pos 29, Santren, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281",None
+142,b'PASERNA / UBALOKA KEBUMEN',Organisasi Sukarelawan,"Jl. Kolonel Sugiono No.1, Keposan, Kebumen, Kec. Kebumen, Kabupaten Kebumen, Jawa Tengah 54311",None
+143,b'Garangan Adventure Korwil Magelang',Organisasi Sukarelawan,"Jl. Magelang No.20, Ngarancah, Tamanagung, Kec. Muntilan, Kabupaten Magelang, Jawa Tengah 56413",0857-1224-3978
+144,b'Relawan TIK Ngawi | RTIK Cabang Ngawi',Organisasi Sukarelawan,"PERUMAHAN MARDIASRI REGENCY NGAWI NO A.35, DS, Glagahan, Beran, Kec. Ngawi, Kabupaten Ngawi, Jawa Timur 63215",0812-5927-7750
+145,b'Mako Senkom MP Rembang',Organisasi Sukarelawan,"78VW+J5V, Kutoharjo, Kec. Rembang, Kabupaten Rembang, Jawa Tengah 59211",None
+146,b'Kantor Info Cegatan Klaten',Organisasi Sukarelawan,"8JC3+6MH, Kwarsa, Gergunung, Kec. Klaten Utara, Kabupaten Klaten, Jawa Tengah 57434",None
+147,b'BaseCamp BARET (Bangsri Rescue Team)',Organisasi Sukarelawan,"92JP+GPF, Ngumpeng, Bangsri, Kec. Karangpandan, Kabupaten Karanganyar, Jawa Tengah 57791",None
+148,b'Sekertariat IKMK UNY',Organisasi Sukarelawan,"Jl. Karangmalang Blok A No.4, Karang Malang, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281",0899-5129-826
+149,b'BAGANA 16X kab Karanganyar',Organisasi Sukarelawan,"93CR+CH3, Jl. Lawu, Gedangan, Salam, Kec. Karangpandan, Kabupaten Karanganyar, Jawa Tengah 57791",None
+150,"b'RAPI Pandak, Joglo Pinggir Sawah (JPS)'",Organisasi Sukarelawan,"Tirto, Triharjo, Kec. Pandak, Kabupaten Bantul, Daerah Istimewa Yogyakarta",0812-2622-616
+151,b'RAPI Lokal Kapanewon Pandak',Organisasi Sukarelawan,"Karangjoho RT 04, Tirto, Triharjo, Kec. Pandak, Kabupaten Bantul, Daerah Istimewa Yogyakarta 55761",None
+152,b'MARKAS BESAR DPW 2 BPBN KABUPATEN KEBUMEN',Organisasi Sukarelawan,"Jl. Ronggowarsito No 52a Dk. Saudagaran, RT.03/RW.04, Kedawung, Kec. Pejagoan, Kabupaten Kebumen, Jawa Tengah 54361",None
+153,b'Homestay Dindang',Organisasi Sukarelawan,"kenayan 01/29, Sanggrahan, Wedomartani, Kec. Ngemplak, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55584",0813-2895-2880
+154,b'Bc Garangan Adventure cabang Grobogan',Organisasi Sukarelawan,"Jl. Kuwu - Galeh No.67, Sengon, Banjarsari, Kec. Kradenan, Kabupaten Grobogan, Jawa Tengah 58182",0813-8002-9050
+155,b'Posko Ubaloka Kwarcab Karanganyar',Organisasi Sukarelawan,"Jl. Keleng - Karanganyar, Ngaliyan, Lalung, Kec. Karanganyar, Kabupaten Karanganyar, Jawa Tengah 57716",None
+156,b'KSR PMI Unit UNY',Organisasi Sukarelawan,"Student Center UNY Lantai 1 Sayap Timur, Jl. Karangmalang, Karangmalang, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281",0816-695-358
+157,b'ACT Cabang Sragen',Organisasi Sukarelawan,"GWJJ+6VH, Kebayanan 3, Masaran, Kec. Masaran, Kabupaten Sragen, Jawa Tengah 57282",0813-9011-8911
+158,b'Sekretariat Rescue DMC Solo Raya (RDMC)',Organisasi Sukarelawan,"FV36+RRP, Jl. Mojo, Gulon, Plesungan, Kec. Gondangrejo, Kabupaten Karanganyar, Jawa Tengah 57181",0895-3545-32324
+159,b'Kampung Tangguh Jogorogi',Organisasi Sukarelawan,"F7J3+6R8, Jegorogo, Jogorogo, Kec. Jogorogo, Kabupaten Ngawi, Jawa Timur 63262",None
+160,b'lazisnu tayu kulon',Organisasi Sukarelawan,"F26W+8W3, Tayu Kulon, Kec. Tayu, Kabupaten Pati, Jawa Tengah 59155",None
+161,b'Kantor SAR MTA Pusat',Organisasi Sukarelawan,"Jl. Cilosari No.214, Semanggi, Kec. Ps. Kliwon, Kota Surakarta, Jawa Tengah 57191",0813-9393-9234
+162,b'Indorelawan',Organisasi Nonprofit,"Jl. Panglima Polim V No.60, RT.1/RW.7, Melawai, Kec. Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12160",0811-9777-140
+163,b'Persatuan Wanita Olahraga Seluruh Indonesia',Organisasi Sukarelawan,"5WJC+MQR, Jl. Manyar I, Sukorejo, Giritirto, Kec. Wonogiri, Kabupaten Wonogiri, Jawa Tengah 57611",None
+164,b'MAKO KRI BOJONEGORO',Organisasi Sukarelawan,"Peting, Kalirejo, Kec. Ngraho, Kabupaten Bojonegoro, Jawa Timur",0857-3286-2810
+165,b'Padepokan GERPIK (Gerakan Peduli Kemanusiaan)',Organisasi Sukarelawan,"Jl. Dukuh Pakis V No.73, Dukuh Pakis, Kec. Dukuhpakis, Kota SBY, Jawa Timur 60225",0817-9358-560
+166,b'mdmc - LPB Muhammadiyah Klaten',Organisasi Sukarelawan,"Unnamed Road, Srogo, Mojayan, Kec. Klaten Tengah, Kabupaten Klaten, Jawa Tengah 57438",0877-3821-8908
+167,b'BASECAMP IEA WILAYAH WONOSOBO',Organisasi Sukarelawan,"PW6C+J6J, Mergosari, Menjer, Kec. Garung, Kabupaten Wonosobo, Jawa Tengah",None
+168,b'Satelit MDMC Gunungkidul (Muhammadiyah Disaster Management Center)',Organisasi Sukarelawan,"3H3R+FVW, Kemoro Sari II, Piyaman, Kec. Wonosari, Kabupaten Gunung Kidul, Daerah Istimewa Yogyakarta 55851",0818-0939-3773
+169,b'BC. Garangan Adventure Cabang PATI',Organisasi Sukarelawan,"Jl. Pemuda No.469, Sarirejo, Kec. Pati, Kabupaten Pati, Jawa Tengah 59118",None
+170,b'Saka Bhayangkara Kota Yogyakarta',Organisasi Sukarelawan,"59X6+XRV, Jl. Reksobayan, Ngupasan, Kec. Gondomanan, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55122",None
+171,b'Pusdiklat Palang Merah Indonesia Jawa Tengah',Organisasi Pelayanan Sosial,"XF94+R38, Sambiroto, Kec. Tembalang, Kota Semarang, Jawa Tengah 50276",None
+172,b'Rumah Relawan Ganjar1st Jawa Timur',Organisasi Sukarelawan,"Jalan Kupang Segunting 3/34 RT/RW 04/02, DR. Soetomo, Kec. Tegalsari, Kota SBY, Jawa Timur 60264",0878-5977-9799
+173,b'Yayasan Scleroderma Indonesia',Organisasi Sukarelawan,"Perumahan Kaligelang Permai Blok P no. 8, Broji, Kaligelang, Kec. Taman, Kabupaten Pemalang, Jawa Tengah 52361",None
+174,b'PMR WIRA SMAMKAR',Organisasi Sukarelawan,"MCV7+VP8, Sersan Sayuti, Dusun I Karang Anyar, Karanganyar, Kec. Karanganyar, Kabupaten Purbalingga, Jawa Tengah 53354",0856-2573-338
+175,b'Posko DPD DGP Kab.KEBUMEN (Dulur Ganjar Pranowo KEBUMEN)',Organisasi Sukarelawan,"Jl. Raya Kutoarjo-Kebumen No.44, Kunden, Pekunden, Kec. Kutowinangun, Kabupaten Kebumen, Jawa Tengah 54393",None
+176,b'SOSIAL LINGKUNGAN INOVASI MANDIRI',Organisasi Sukarelawan,"kp bojongsirna desa, Tj. Karya, Kec. Samarang, Kabupaten Garut, Jawa Barat 44161",None
+177,b'MAHAKARTA Search And Rescue of Yogyakarta',Jasa Les Privat,"Jl. Kaliurang, Candi Karang, Sardonoharjo, Kec. Sleman, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55581",None
+178,b'Dompet Dhuafa Volunteer Jawa Timur',Organisasi Sukarelawan,"002, Jl. Mleto No.49, RW.06, Klampis Ngasem, Kec. Sukolilo, Kota SBY, Jawa Timur 60117",0812-3986-4770
+179,b'SAR Daerah Jawa Tengah - SARDA JATENG',Lembaga Swadaya Masyarakat (LSM),"Jalan Sriwibowo Dalam VI/ Kav.115 RT 004/ RW 005, Kembangarum, Semarang Barat, Kembangarum, Kec. Semarang Barat, Kota Semarang, Jawa Tengah 50183",0812-2914-271
+180,b'KSR PMI UNIT VII UIN Sunan Kalijaga Yogyakarta',Organisasi Sukarelawan,"Gd. Student Center Lt. Dasar No.1.12 UIN Sunan Kalijaga, Papringan, Caturtunggal, Kec. Depok, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55281",None
+181,b'Posko TRC GAMPING',Organisasi Sukarelawan,"6867+47M, Area Sawah, Sidoarum, Kec. Godean, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55264",0877-3952-2698
+182,b'Komunitas Relawan Emergensi Kesehatan Indonesia (KREKI)',Organisasi Sukarelawan,"Wisma 76, Letjen S. Parman St No.Kav. 76, RT.4/RW.3, Slipi, Palmerah, West Jakarta City, Jakarta 11410",(021) 25678989
+183,b'Mapasadha (Mahasiswa Pecinta Alam Universitas Sanata Dharma',Organisasi Sukarelawan,"Jl. Stm.Mrican No.7500, Mrican, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281",0822-7981-4533
+184,b'Oi Bengawan Solo',Organisasi Sukarelawan,"Jl. Comal No.5, Semanggi, Kec. Ps. Kliwon, Kota Surakarta, Jawa Tengah 57117",0895-1031-6033

@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">RelasiaHelpSeekerApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">Login</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="login_btn">Login</string>
+    <string name="go_to_register_btn">Register Now</string>
+    <string name="logging_in">loading...</string>
+    <string name="register">Register</string>
+    <string name="username_hint">Username</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="requirements">Requirements</string>
+    <string name="requirements_description">Input your requirements</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="name_hint">Nama</string>
+    <string name="name_kegiatan_hint">Nama Kegiatan</string>
+    <string name="ask_for_help">Ask for help</string>
+    <string name="form_subtitle">Please make sure your input is valid</string>
+    <string name="location_hint">Location</string>
+    <string name="city_hint">City</string>
+    <string name="province_hint">Province</string>
+    <string name="amount_hint">Amount of helper</string>
+    <string name="date_start_hint">Start date</string>
+    <string name="date_end_hint">Due to</string>
+    <string name="photo_hint">Photo</string>
+    <string name="notes">Notes</string>
+    <string name="mission">Missions</string>
+    <string name="account">Account</string>
+    <string name="bookmarks">Bookmarks</string>
+    <string name="useremail_hint">johndoe@gmail.com</string>
+    <string name="real_name">Fullname</string>
+    <string name="birthdate_hint">Birthdate</string>
+    <string name="address_hint">Address</string>
+    <string name="phone_hint">Phone Number</string>
+    <string name="save">Save</string>
+    <string name="requirements_hint">contoh:\n 1. Berusia 18 tahun ke atas\n 2.Diutamakan laki-laki\n 3.Bersedia/berdomisili di Lumajang/sekitarnya</string>
+    <string name="notes_hint">contoh: diutamakan perempuan</string>
+</resources>

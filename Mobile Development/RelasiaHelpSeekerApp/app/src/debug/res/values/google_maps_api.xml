@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=05:46:A3:F4:1F:BA:9D:B9:1E:59:F3:60:E5:65:1D:EA:F9:68:9A:BB%3Bcom.c22ps099.relasiahelpseekerapp.ui.form
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    com.c22ps099.relasiahelpseekerapp.ui.form
+
+    SHA-1 certificate fingerprint:
+    05:46:A3:F4:1F:BA:9D:B9:1E:59:F3:60:E5:65:1D:EA:F9:68:9A:BB
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyA1sU7Hi0h-OA7-c1IF1KQNraentT1QuqQ</string>
+</resources>
