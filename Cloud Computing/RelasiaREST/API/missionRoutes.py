@@ -1,108 +1,147 @@
+from email import message
 from flask import Blueprint, request, jsonify
 from firebase_admin import firestore
+import datetime
+import hashlib
 
+# Initialization Database Reference
 db = firestore.client()
 volunteer_Ref = db.collection('volunteer')
+helpseeker_Ref = db.collection('helpseeker')
 mission_Ref = db.collection('mission')
 
 missionRoutes = Blueprint('missionRoutes', __name__)
 
+@missionRoutes.route('/', methods=['POST'])
+def addMission():
+    try:
+        # Composite mission_id from hash(helpseeker_id$title)
+        title = request.json['title']
+        helpseeker_id = request.json['id']
+        mission_id = hashlib.sha1((helpseeker_id + "$" + title).encode("utf-8")).hexdigest()
+        
+        helpseeker = helpseeker_Ref.document(helpseeker_id).get()
+        if helpseeker.exists:
+            mission = mission_Ref.document(mission_id).get()
+            if mission.exists:
+                # HTTP response code: 409 Conflict
+                return jsonify(message="Mission Exists"), 409
+            else:
+                # Add new mission to mission collection
+                mission_data = request.json
+                mission_data["timestamp"] = datetime.datetime.now()
+                mission_Ref.document(mission_id).set(mission_data)
 
-@missionRoutes.route('/edit', methods=['POST', 'PUT'])
+                # Add new mission to helpseeker collection
+                helpseeker_data = helpseeker.to_dict()
+                helpseeker_data["mission"].append(mission_id)
+                helpseeker_Ref.document(helpseeker_id).update(helpseeker_data)
+                
+                # HTTP response code: 201 Created
+                return jsonify(message="Successfully Created"), 201
+        else:
+            return f"Something error or user doesn't exist"
+    except Exception as e:
+        return f"An Error Occurred: {e}"
+
+@missionRoutes.route('/', methods=['PUT'])
 def editMission():
     try:
-        mission_id = request.args.get('id')
-        if mission_id:
-            mission_data = request.get_json(force=True)
+        mission_id = request.json["id"]
+        mission = mission_Ref.document(mission_id).get()
+
+        if mission.exists:
+            # Update a mission
+            mission_data = request.json["data"]
             mission_Ref.document(mission_id).update(mission_data)
-            return jsonify({"success": True}), 200
+
+            # HTTP Response Code: 200 OK
+            return jsonify(message="Successfully Updated"), 200
         else:
-            return jsonify({"status": "failed"}), 424
+            # HTTP response code: 400 Bad Request
+            return jsonify(message="Bad Request"), 400
     except Exception as e:
         return f"An Error Occurred: {e}"
 
-
-@missionRoutes.route('/<string:id>/', methods=['POST', 'PUT'])
-def editVolunteerStatus(id):
+@missionRoutes.route('/<string:mission_id>', methods=['PUT'])
+def confirmVolunteers(mission_id):
     try:
-        ref = mission_Ref.document(id)
-        checkRef = ref.get()
-        volunteer_id = request.args.get('volunteer')
-        if checkRef.exists:
-            if volunteer_id:
-                mission_data = mission_Ref.document(id).get().to_dict()
-                applied_volunteer = mission_data["applied_volunteer"]
-                for i in range(0, len(applied_volunteer)):
-                    if volunteer_id in applied_volunteer[i]["volunteer"]:
-                        applied_volunteer[i] = request.get_json(force=True)
-                        applied_volunteer[i]["volunteer"] = volunteer_id
-                        break
-                    else:
-                        return jsonify({"status": "failed"}), 424
-                mission_Ref.document(id).update(mission_data)
-                return jsonify({"status": "success"}), 201
-            else:
-                return jsonify({"status": "failed"}), 424
+        mission = mission_Ref.document(mission_id).get()
+        if mission.exists:
+            # Update Volunteers Status
+            status = request.json
+            volunteers = mission["volunteers"].update(status)
+            mission_Ref.document(mission_id).update(volunteers)
+
+            # HTTP Response Code: 200 OK
+            return jsonify(message="Successfully Updated"), 200
         else:
-            return jsonify({"status": "failed"}), 424
+            # HTTP response code: 400 Bad Request
+            return jsonify(message="Bad Request"), 400
     except Exception as e:
         return f"An Error Occurred: {e}"
 
-
-@missionRoutes.route('/delete', methods=['GET', 'DELETE'])
+@missionRoutes.route('/', methods=['DELETE'])
 def deleteMission():
     try:
-        mission_id = request.args.get('id')
-        if mission_id:
-            mission_data = mission_Ref.document(mission_id).get().to_dict()
-            applied_volunteer = mission_data["applied_volunteer"]
-            for i in range(0, len(applied_volunteer)):
-                volunteer_id = applied_volunteer[i]["volunteer"]
-                checkVolunteerId = volunteer_Ref.document(volunteer_id).get()
-                if checkVolunteerId.exists:
-                    volunteer_data = checkVolunteerId.to_dict()
-                    volunteer_data["mission"].remove(mission_id)
-                    volunteer_Ref.document(volunteer_id).update(volunteer_data)
-                else:
-                    return jsonify({"status": "failed"}), 424
-            mission_Ref.document(mission_id).delete()
-            return jsonify({"status": "success"}), 200
-        else:
-            return f"Something error or campaigns/users doesn't exist"
+        # Update mission on volunteer collection
+        mission_id = request.json["mission"]
+        mission_data = mission_Ref.document(mission_id).get().to_dict()
+        volunteers = mission_data["volunteers"]
+        for volunteer_id in volunteers.keys():
+            volunteer = volunteer_Ref.document(volunteer_id).get()
+            if volunteer.exists:
+                volunteer_data = volunteer.to_dict()
+                volunteer_data["mission"].remove(mission_id)
+                volunteer_Ref.document(volunteer_id).update(volunteer_data)
+        
+        mission_Ref.document(mission_id).delete()
+        
+        # HTTP Response Code: 200 OK
+        return jsonify(message="Successfully Deleted"), 200
     except Exception as e:
         return f"An Error Occurred: {e}"
-
 
 @missionRoutes.route('/', methods=['GET'])
 def getMission():
     try:
-        mission_id = request.args.get('id')
+        mission_id = request.json['mission']
         if mission_id:
+            # Get a mission from mission collection
             mission = mission_Ref.document(mission_id).get().to_dict()
-            applied_volunteer = mission["applied_volunteer"]
-            for i in range(0, len(applied_volunteer)):
-                volunteer_id = applied_volunteer[i]["volunteer"]
-                checkVolunteerId = volunteer_Ref.document(volunteer_id).get()
-                if checkVolunteerId.exists:
-                    volunter_data = checkVolunteerId.to_dict()
-                    applied_volunteer[i]["volunteer"] = volunter_data
+            volunteers = mission["volunteers"]
+
+            # Get all volunteers who join a mission from volunteer collection
+            for volunteer_id, status in volunteers.items():
+                volunteer = volunteer_Ref.document(volunteer_id).get()
+                if volunteer.exists:
+                    volunteer_data = volunteer.to_dict()
+                    volunteer_data['status'] = status
+                    volunteers[volunteer_id] = volunteer_data
+            
+            # HTTP Response Code: 200 OK
             return mission, 200
         else:
+            # Get all missions from mission collection
             all_mission = [doc.to_dict() for doc in mission_Ref.stream()]
+            
+            # HTTP Response Code: 200 OK
             return jsonify(all_mission), 200
     except Exception as e:
         return f"An Error Occurred: {e}"
 
-
-@missionRoutes.route('/image', methods=['GET'])
-def getMissionImage():
-    try:
-        mission_id = request.args.get('id')
-        if mission_id:
-            mission = mission_Ref.document(mission_id).get().to_dict()
-            image = mission["featured_image"]
-            return jsonify(image), 200
-        else:
-            return jsonify({"status": "failed"}), 424
-    except Exception as e:
-        return f"An Error Occurred: {e}"
+# I think it is not necessary because it has been covered by getMission()
+#
+# @missionRoutes.route('/image', methods=['GET'])
+# def getMissionImage():
+#     try:
+#         mission_id = request.json['mission']
+#         if mission_id:
+#             # Get all featured_image for mission from mission collection
+#             mission = mission_Ref.document(mission_id).get().to_dict()
+#             images = {mission_id : mission["featured_image"]}
+#             return jsonify(images), 200
+#         else:
+#             return jsonify(message="Bad Request"), 400
+#     except Exception as e:
+#         return f"An Error Occurred: {e}"
