@@ -28,7 +28,7 @@ def addVolunteer():
         return f"An Error Occurred: {e}"
 
 @volunteerRoutes.route('/<string:volunteer_id>/foundation', methods=['PUT'])
-def assignFoundation(volunteer_id):
+def registerFoundation(volunteer_id):
     try:
         foundation_id = request.json['foundation']
         foundation = foundation_Ref.document(foundation_id).get()
@@ -37,18 +37,17 @@ def assignFoundation(volunteer_id):
         if volunteer.exists and foundation.exists:
             foundation_data = foundation.to_dict()
         
-            if volunteer_id in foundation_data["members"].keys():
+            if volunteer_id in foundation_data["volunteers"].keys():
                 # HTTP response code: 409 Conflict
                 return jsonify(message="Volunteer Exists"), 409
-        
             else:
                 # Add new volunteer to foundation collection
-                foundation_data["members"][volunteer_id] = 'pending'
+                foundation_data["volunteers"][volunteer_id] = 'pending'
                 foundation_Ref.document(foundation_id).update(foundation_data)
 
             # Add new 
             volunteer_data = volunteer_Ref.document(id).get().to_dict()
-            volunteer_data["foundations"][foundation_id] = 'pending'
+            volunteer_data["foundations"].append(foundation_id)
             volunteer_Ref.document(volunteer_id).update(volunteer_data)
             
             # HTTP response code: 200 OK
@@ -161,6 +160,7 @@ def getVolunteer():
 
             # Get all foundations of volunteer from mission collection
             foundations = volunteer_data["foundation"]
+            volunteer_data["foundation"] = {}
             for foundation_id in foundations:
                 foundation_data = foundation_Ref.document(foundation_id).get().to_dict()
                 volunteer_data["foundation"][foundation_id] = foundation_data

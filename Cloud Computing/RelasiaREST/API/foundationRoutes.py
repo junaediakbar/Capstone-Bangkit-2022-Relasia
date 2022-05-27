@@ -7,101 +7,114 @@ volunteer_Ref = db.collection('volunteer')
 
 foundationRoutes = Blueprint('foundationRoutes', __name__)
 
-
 @foundationRoutes.route('/', methods=["POST"])
-def addFoundations():
+def addFoundation():
     try:
-        foundation_id = request.args.get('id')
-        if foundation_id:
-            data = request.get_json(force=True)
-            foundation_Ref.document(foundation_id).set(data)
-            return jsonify({"status": "success"}), 201
-        else:
-            return jsonify({"success": "failed"}), 424
+        foundation_id = request.json["id"]
+        foundation_data = request.json["data"]
+        foundation_Ref.document(foundation_id).set(foundation_data)
+
+        # HTTP response code: 201 Created
+        return jsonify(message="Successfully Created"), 201
+    
     except Exception as e:
         return f"An Error Occurred: {e}"
 
-
-@foundationRoutes.route('/<string:id>', methods=['POST'])
-def addFoundationsMember(id):
+@foundationRoutes.route('/<string:foundation_id>', methods=['PUT'])
+def validateMember(foundation_id):
     try:
-        ref = foundation_Ref.document(id)
-        checkRef = ref.get()
-        member_id = request.args.get('member')
-        if checkRef.exists:
-            foundation_data = foundation_Ref.document(id).get().to_dict()
-            if member_id in foundation_data["member"]:
-                return jsonify({"status": "failed"}), 424
-            else:
-                foundation_data["member"].append(member_id)
-                foundation_Ref.document(id).update(foundation_data)
+        foundation = foundation_Ref.document(foundation_id).get()
+        volunteer_id = request.json['member']
+        volunteer = foundation_Ref.document(volunteer_id).get()
+        status = request.json['status']
 
-            return jsonify({"status": "success"}), 201
+        if foundation.exists and volunteer.exists:
+            # Update members status in foundation collection
+            foundation_data = foundation.to_dict()
+            foundation_data["members"][volunteer_id] = status
+            foundation_Ref.document(foundation_id).update(foundation_data)
+
+            # HTTP response code: 200 OK
+            return jsonify(message="Successfully Updated"), 200
         else:
-            return jsonify({"success": "failed"}), 424
+            # HTTP response code: 400 Bad Request
+            return jsonify(message="Bad Request"), 400
+    
     except Exception as e:
         return f"An Error Occurred: {e}"
 
-
-@foundationRoutes.route('/edit', methods=['POST', 'PUT'])
-def update():
-    foundation_id = request.args.get('id')
+@foundationRoutes.route("/", methods=['PUT'])
+def editFoundation():
     try:
-        if foundation_id:
-            foundation_Ref.document(foundation_id).update(
-                request.get_json(force=True))
-            return jsonify({"success": True}), 200
+        foundation_id = request.json["id"]
+        foundation = foundation_Ref.document(foundation_id).get()
+        
+        if foundation.exists:
+            foundation_Ref.document(foundation_id).update(request.json["data"])
+            
+            # HTTP response code: 200 OK
+            return jsonify(message="Successfully Updated"), 200
         else:
-            return jsonify({"status": "failed"}), 424
+            # HTTP response code: 400 Bad Request
+            return jsonify(message="Bad Request"), 400
+    
     except Exception as e:
         return f"An Error Occurred: {e}"
 
-
-@foundationRoutes.route('/delete', methods=['GET', 'DELETE'])
+@foundationRoutes.route('/', methods=['DELETE'])
 def deleteFoundation():
-    foundations_id = request.args.get('id')
     try:
+        foundations_id = request.json["id"]
+        foundation = foundation_Ref.document(foundations_id).get()
+        
         if foundations_id:
-            foundation = foundation_Ref.document(
-                foundations_id).get().to_dict()
-            member = foundation["member"]
+            foundation_data = foundation.to_dict()
+            members = foundation_data["member"]
 
-            for i in range(0, len(member)):
-                member_id = member[i]
-                checkRef = volunteer_Ref.document(member_id).get()
-                if checkRef.exists:
-                    member_data = volunteer_Ref.document(
-                        member_id).get().to_dict()
-                    member_data["foundation"].remove(foundations_id)
-                    member_data.document(member_id).update(member_data)
+            for volunteer_id in members.keys():
+                volunteer = volunteer_Ref.document(volunteer_id).get()
+                
+                if volunteer.exists:
+                    # Update foundation of volunteer on volunteer collection
+                    volunteer_data = volunteer_Ref.document(volunteer_id).get().to_dict()
+                    volunteer_data["foundations"].remove(foundations_id)
+                    volunteer_Ref.document(volunteer_id).update(volunteer_data)
 
             foundation_Ref.document(foundations_id).delete()
-            return jsonify({"success": True}), 200
+            
+            # HTTP response code: 200 OK
+            return jsonify(message="Successfully Updated"), 200
         else:
-            return jsonify({"status": "failed"}), 424
+            # HTTP response code: 400 Bad Request
+            return jsonify(message="Bad Request"), 400
+    
     except Exception as e:
         return f"An Error Occurred: {e}"
-
 
 @foundationRoutes.route('/', methods=["GET"])
 def getFoundations():
     try:
-        foundation_id = request.args.get('id')
+        foundation_id = request.json["id"]
+        
         if foundation_id:
-            foundation = foundation_Ref.document(foundation_id).get().to_dict()
-            member = foundation["member"]
-            for i in range(0, len(member)):
-                member_id = member[i]
-                checkRef = volunteer_Ref.document(member_id).get()
-                if checkRef.exists:
-                    member_data = volunteer_Ref.document(
-                        member_id).get().to_dict()
-                    foundation["member"][i] = member_data
+            foundation_data = foundation_Ref.document(foundation_id).get().to_dict()
+            
+            # Get all volunteer of foundation from volunteer collection
+            volunteers = foundation_data["volunteers"]
+            foundation_data["volunteers"] = {}
+            
+            for volunteer_id in volunteers:
+                volunteer_data = volunteer_Ref.document(volunteer_id).get().to_dict()
+                foundation_data["volunteers"][volunteer_id] = volunteer_data
 
-            return foundation, 200
+            # HTTP response code: 200 OK
+            return foundation_data, 200
         else:
-            all_foundations = [doc.to_dict()
-                               for doc in foundation_Ref.stream()]
+            # Get all foundations from foundation collection
+            all_foundations = [doc.to_dict() for doc in foundation_Ref.stream()]
+            
+            # HTTP response code: 200 OK
             return jsonify(all_foundations), 200
+    
     except Exception as e:
         return f"An Error Occurred: {e}"

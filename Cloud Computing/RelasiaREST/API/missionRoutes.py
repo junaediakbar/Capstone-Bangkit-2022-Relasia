@@ -105,22 +105,22 @@ def deleteMission():
 @missionRoutes.route('/', methods=['GET'])
 def getMission():
     try:
-        mission_id = request.json['mission']
+        mission_id = request.json['id']
         if mission_id:
-            # Get a mission from mission collection
-            mission = mission_Ref.document(mission_id).get().to_dict()
-            volunteers = mission["volunteers"]
-
+            mission_data = mission_Ref.document(mission_id).get().to_dict()
+            
             # Get all volunteers who join a mission from volunteer collection
+            volunteers = mission_data["volunteers"]
+            mission_data["volunteers"] = {}
             for volunteer_id, status in volunteers.items():
                 volunteer = volunteer_Ref.document(volunteer_id).get()
                 if volunteer.exists:
                     volunteer_data = volunteer.to_dict()
                     volunteer_data['status'] = status
-                    volunteers[volunteer_id] = volunteer_data
-            
+                    mission_data["volunteers"][volunteer_id] = volunteer_data
+
             # HTTP Response Code: 200 OK
-            return mission, 200
+            return mission_data, 200
         else:
             # Get all missions from mission collection
             all_mission = [doc.to_dict() for doc in mission_Ref.stream()]
