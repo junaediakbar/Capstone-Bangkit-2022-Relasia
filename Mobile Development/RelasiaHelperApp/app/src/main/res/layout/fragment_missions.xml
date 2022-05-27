@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/inter_bold"
         android:paddingVertical="8dp"
         android:text="Missions"
@@ -23,14 +24,15 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:layout_marginTop="16dp"
+        android:background="?attr/colorOnPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_missions"
         app:tabGravity="fill"
         app:tabMaxWidth="0dp"
         app:tabMode="fixed"
-        app:tabTextColor="@android:color/white"
+        app:tabTextAppearance="@style/tab_text"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ScrollView

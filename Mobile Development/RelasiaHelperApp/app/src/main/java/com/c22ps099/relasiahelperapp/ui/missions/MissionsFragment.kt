@@ -1,60 +1,67 @@
 package com.c22ps099.relasiahelperapp.ui.missions
 
+import android.content.res.Configuration
+import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.c22ps099.relasiahelperapp.R
+import com.c22ps099.relasiahelperapp.adapter.SectionsPagerAdapter
+import com.c22ps099.relasiahelperapp.databinding.FragmentMissionsBinding
+import com.google.android.material.tabs.TabLayoutMediator
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MissionsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MissionsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_missions, container, false)
-    }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MissionsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MissionsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        const val EXTRA_USER = "extra_user"
+
+        @StringRes
+        private val TAB_TITLES = intArrayOf(
+            R.string.tab_text_1,
+            R.string.tab_text_2
+        )
+    }
+
+    private lateinit var missionsViewModel: MissionsViewModel
+    private var binding: FragmentMissionsBinding? = null
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        missionsViewModel =
+            ViewModelProvider(this)[MissionsViewModel::class.java]
+        binding = FragmentMissionsBinding.inflate(inflater, container, false)
+        return binding?.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding?.apply {
+
+        }
+
+        val viewPager = binding?.viewPager
+        viewPager?.adapter = SectionsPagerAdapter(activity as AppCompatActivity, "Test User")
+        when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+            Configuration.UI_MODE_NIGHT_YES -> viewPager?.setBackgroundColor(Color.DKGRAY)
+            Configuration.UI_MODE_NIGHT_NO -> viewPager?.setBackgroundColor(Color.LTGRAY)
+            else -> viewPager?.setBackgroundColor(Color.TRANSPARENT)
+        }
+
+        val tabs = binding?.tabs
+        tabs?.setSelectedTabIndicatorColor(Color.parseColor("#3587A4"))
+        if (tabs != null && viewPager != null) {
+            TabLayoutMediator(tabs, viewPager) { tab, position ->
+                tab.text = resources.getString(TAB_TITLES[position])
+            }.attach()
+        }
     }
 }
