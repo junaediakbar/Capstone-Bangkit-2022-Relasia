@@ -1,4 +1,4 @@
-package com.c22ps099.relasiahelperapp.view
+package com.c22ps099.relasiahelperapp.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

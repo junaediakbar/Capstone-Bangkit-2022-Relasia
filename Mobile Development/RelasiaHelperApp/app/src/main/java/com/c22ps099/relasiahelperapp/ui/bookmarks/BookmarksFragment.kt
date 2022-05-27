@@ -1,4 +1,4 @@
-package com.c22ps099.relasiahelperapp.view
+package com.c22ps099.relasiahelperapp.ui.bookmarks
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
