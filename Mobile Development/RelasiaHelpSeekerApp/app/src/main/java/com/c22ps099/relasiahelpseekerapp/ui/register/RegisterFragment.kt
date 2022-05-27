@@ -13,13 +13,14 @@ import com.c22ps099.relasiahelpseekerapp.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedElementEnterTransition = TransitionInflater.from(context)
             .inflateTransition(android.R.transition.move)
     }
+
     private var binding: FragmentRegisterBinding? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

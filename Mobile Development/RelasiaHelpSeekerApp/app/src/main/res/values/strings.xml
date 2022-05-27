@@ -38,4 +38,16 @@
     <string name="save">Save</string>
     <string name="requirements_hint">contoh:\n 1. Berusia 18 tahun ke atas\n 2.Diutamakan laki-laki\n 3.Bersedia/berdomisili di Lumajang/sekitarnya</string>
     <string name="notes_hint">contoh: diutamakan perempuan</string>
+    <string name="mission_title">Semeru Eruption 2021</string>
+    <string name="mission_date">24 Agustus 2021</string>
+    <string name="mission_place">Lumajang, Jawa Timur</string>
+    <string name="mission_req">1. Berusia 18 tahun ke atas\n 2.Diutamakan laki-laki\n 3.Bersedia/berdomisili di Lumajang/sekitarnya</string>
+    <string name="mission_note">Diutamakan laki-laki</string>
+    <string name="mission_cp">Contact Person</string>
+    <string name="mission_photo">mission photo</string>
+    <string name="volunteer_name">Agus Raharjo</string>
+    <string name="volunteer_age">24 Years Old</string>
+    <string name="mission_volunteer">Volunteers</string>
+    <string name="detail_skill">Detail Skills</string>
+    <string name="detail_address">Detail Address</string>
 </resources>

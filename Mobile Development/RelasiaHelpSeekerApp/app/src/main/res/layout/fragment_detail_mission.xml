@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detail.DetailMissionFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp">
+
+        <ImageView
+            android:id="@+id/iv_detail_mission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/foto_erupsi"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_mission_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/mission_title"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@id/btn_bookmark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_detail_mission" />
+
+        <ImageButton
+            android:id="@+id/btn_bookmark"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/ic_bookmark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_mission_title" />
+
+        <ImageButton
+            android:id="@+id/btn_unbookmark"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/ic_unbookmark"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_mission_title" />
+
+        <TextView
+            android:id="@+id/tv_mission_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/mission_date"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/tv_mission_title"
+            app:layout_constraintStart_toStartOf="@id/tv_mission_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_mission_title" />
+
+        <TextView
+            android:id="@+id/tv_mission_city"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/mission_place"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/tv_mission_title"
+            app:layout_constraintStart_toStartOf="@id/tv_mission_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_mission_date" />
+
+        <ProgressBar
+            android:id="@+id/pb_applicant"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:max="100"
+            android:progress="80"
+            android:progressTint="#209720"
+            app:layout_constraintEnd_toStartOf="@id/tv_applicant"
+            app:layout_constraintStart_toStartOf="@id/tv_mission_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_applicant" />
+
+        <TextView
+            android:id="@+id/tv_applicant"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:drawableEnd="@drawable/ic_baseline_people_alt_24"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+            android:text="4/5"
+            app:layout_constraintEnd_toEndOf="@id/btn_bookmark"
+            app:layout_constraintTop_toBottomOf="@+id/tv_mission_city" />
+
+        <TextView
+            android:id="@+id/tv_mission_req_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/requirements"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@id/tv_applicant"
+            app:layout_constraintStart_toStartOf="@id/tv_mission_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_applicant" />
+
+        <TextView
+            android:id="@+id/tv_mission_req"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="1. Isi persyaratan"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/tv_mission_req_title"
+            app:layout_constraintStart_toStartOf="@id/tv_mission_req_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_mission_req_title" />
+
+        <TextView
+            android:id="@+id/tv_mission_note_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/notes"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@id/tv_applicant"
+            app:layout_constraintStart_toStartOf="@id/tv_mission_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_mission_req" />
+
+        <TextView
+            android:id="@+id/tv_mission_note"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Isi catatan"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/tv_mission_req_title"
+            app:layout_constraintStart_toStartOf="@id/tv_mission_req_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_mission_note_title" />
+
+        <TextView
+            android:id="@+id/tv_mission_cp_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/mission_cp"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@id/tv_applicant"
+            app:layout_constraintStart_toStartOf="@id/tv_mission_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_mission_note" />
+
+        <TextView
+            android:id="@+id/tv_mission_cp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="- 085111222333"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/tv_mission_req_title"
+            app:layout_constraintStart_toStartOf="@id/tv_mission_req_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_mission_cp_title" />
+
+        <TextView
+            android:id="@+id/tv_mission_volunteer_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/mission_volunteer"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@id/tv_applicant"
+            app:layout_constraintStart_toStartOf="@id/tv_mission_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_mission_cp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tv_volunteer_registered"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_mission_volunteer_title"
+            tools:listitem="@layout/item_registered_volunteer" />
+
+        <Button
+            android:id="@+id/btn_apply"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Apply"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/tv_mission_cp_title"
+            app:layout_constraintStart_toStartOf="@id/tv_mission_cp_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_volunteer_registered" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

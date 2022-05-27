@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginVertical="8dp"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardElevation="6dp"
+    card_view:strokeColor="@color/grey"
+    card_view:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/ib_accept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="8dp"
+            android:background="?background"
+            android:src="@drawable/ic_true"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="@+id/tv_volunteer_place"
+            card_view:layout_constraintTop_toTopOf="@+id/ib_reject"
+            card_view:layout_constraintVertical_bias="1.0"
+            card_view:tint="@color/light_green" />
+
+        <ImageButton
+            android:id="@+id/ib_reject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="?background"
+            android:src="@drawable/ic_close"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="@+id/tv_volunteer_place"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_volunteer_place"
+            card_view:tint="@color/warm_red" />
+
+        <ImageView
+            android:id="@+id/iv_mission_photo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/mission_photo"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toStartOf="@+id/tv_volunteer_name"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/random_ava" />
+
+        <TextView
+            android:id="@+id/tv_volunteer_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/volunteer_name"
+            android:textSize="14sp"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toEndOf="@id/iv_mission_photo"
+            card_view:layout_constraintTop_toTopOf="@+id/iv_mission_photo" />
+
+        <TextView
+            android:id="@+id/tv_volunteer_age"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/volunteer_age"
+            android:textSize="11sp"
+            card_view:layout_constraintEnd_toEndOf="@id/tv_volunteer_name"
+            card_view:layout_constraintStart_toStartOf="@id/tv_volunteer_name"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_volunteer_name" />
+
+        <TextView
+            android:id="@+id/tv_mission_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/status_border"
+            android:fontFamily="@font/roboto_bold"
+            android:paddingHorizontal="9dp"
+            android:paddingVertical="3dp"
+            android:text="Diterima"
+            android:textColor="@color/light_green"
+            android:textSize="11sp"
+            card_view:layout_constraintStart_toStartOf="@+id/tv_volunteer_place"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_volunteer_place" />
+
+        <TextView
+            android:id="@+id/tv_volunteer_place"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Lumajang, Jawa Timur"
+            android:textSize="12sp"
+            card_view:layout_constraintEnd_toEndOf="@id/tv_volunteer_name"
+            card_view:layout_constraintStart_toStartOf="@id/tv_volunteer_name"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_volunteer_age" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
