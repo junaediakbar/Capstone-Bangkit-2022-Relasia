@@ -14,7 +14,6 @@ import com.c22ps099.relasiahelpseekerapp.ui.login.LoginFragmentDirections
 
 class HomeFragment : Fragment() {
 
-
     private var binding: FragmentHomeBinding? = null
 
     override fun onCreateView(

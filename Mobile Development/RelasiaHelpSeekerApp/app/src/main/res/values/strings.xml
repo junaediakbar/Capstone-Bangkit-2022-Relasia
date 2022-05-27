@@ -30,4 +30,12 @@
     <string name="mission">Missions</string>
     <string name="account">Account</string>
     <string name="bookmarks">Bookmarks</string>
+    <string name="useremail_hint">johndoe@gmail.com</string>
+    <string name="real_name">Fullname</string>
+    <string name="birthdate_hint">Birthdate</string>
+    <string name="address_hint">Address</string>
+    <string name="phone_hint">Phone Number</string>
+    <string name="save">Save</string>
+    <string name="requirements_hint">contoh:\n 1. Berusia 18 tahun ke atas\n 2.Diutamakan laki-laki\n 3.Bersedia/berdomisili di Lumajang/sekitarnya</string>
+    <string name="notes_hint">contoh: diutamakan perempuan</string>
 </resources>
