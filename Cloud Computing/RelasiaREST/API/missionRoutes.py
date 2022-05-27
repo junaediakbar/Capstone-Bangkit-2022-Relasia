@@ -46,40 +46,6 @@ def addMission():
         return f"An Error Occurred: {e}"
 
 
-@missionRoutes.route('/', methods=['POST'])
-def addMission():
-    try:
-        # Composite mission_id from hash(helpseeker_id$title)
-        title = request.json['title']
-        helpseeker_id = request.json['id']
-        mission_id = hashlib.sha1(
-            (helpseeker_id + "$" + title).encode("utf-8")).hexdigest()
-
-        helpseeker = helpseeker_Ref.document(helpseeker_id).get()
-        if helpseeker.exists:
-            mission = mission_Ref.document(mission_id).get()
-            if mission.exists:
-                # HTTP response code: 409 Conflict
-                return jsonify(message="Mission Exists"), 409
-            else:
-                # Add new mission to mission collection
-                mission_data = request.json
-                mission_data["timestamp"] = datetime.datetime.now()
-                mission_Ref.document(mission_id).set(mission_data)
-
-                # Add new mission to helpseeker collection
-                helpseeker_data = helpseeker.to_dict()
-                helpseeker_data["missions"].append(mission_id)
-                helpseeker_Ref.document(helpseeker_id).update(helpseeker_data)
-
-                # HTTP response code: 201 Created
-                return jsonify(message="Successfully Created"), 201
-        else:
-            return f"Something error or user doesn't exist"
-    except Exception as e:
-        return f"An Error Occurred: {e}"
-
-
 @missionRoutes.route('/', methods=['PUT'])
 def editMission():
     try:
