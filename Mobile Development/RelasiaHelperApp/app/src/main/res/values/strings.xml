@@ -23,4 +23,6 @@
     <string name="mission_req">Persyaratan</string>
     <string name="mission_note">Catatan</string>
     <string name="mission_cp">Kontak</string>
+    <string name="tab_text_1">Active</string>
+    <string name="tab_text_2">Inactive</string>
 </resources>
