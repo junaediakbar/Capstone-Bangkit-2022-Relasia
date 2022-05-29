@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_bookmarks"
+        android:id="@+id/bookmarksFragment"
         android:icon="@drawable/ic_baseline_bookmark_24"
         android:title="@string/title_bookmarks" />
 
     <item
-        android:id="@+id/navigation_missions"
+        android:id="@+id/missionsFragment"
         android:icon="@drawable/ic_baseline_list_alt_24"
         android:title="@string/title_missions" />
 
     <item
-        android:id="@+id/navigation_profile"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="@string/title_profile" />
 </menu>

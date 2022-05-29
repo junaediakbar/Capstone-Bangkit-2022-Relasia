@@ -10,10 +10,16 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.c22ps099.relasiahelperapp.R
 import com.c22ps099.relasiahelperapp.adapter.SectionsPagerAdapter
 import com.c22ps099.relasiahelperapp.databinding.FragmentMissionsBinding
+import com.c22ps099.relasiahelperapp.ui.home.HomeFragmentDirections
+import com.c22ps099.relasiahelperapp.ui.login.LoginFragment
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class MissionsFragment : Fragment() {
@@ -30,6 +36,7 @@ class MissionsFragment : Fragment() {
 
     private lateinit var missionsViewModel: MissionsViewModel
     private var binding: FragmentMissionsBinding? = null
+    private lateinit var googleAuth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,6 +51,29 @@ class MissionsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        googleAuth = Firebase.auth
+        val firebaseUser = googleAuth.currentUser
+
+        if (firebaseUser == null) {
+            val navigateAction = MissionsFragmentDirections
+                .actionMissionsFragmentToLoginFragment()
+            findNavController().navigate(navigateAction)
+
+            val mLoginFragment = LoginFragment()
+            val mFragmentManager = parentFragmentManager
+            mFragmentManager.beginTransaction().apply {
+                replace(
+                    R.id.nav_host_fragment,
+                    mLoginFragment,
+                    LoginFragment::class.java.simpleName
+                )
+//                addToBackStack(null)
+                setReorderingAllowed(true)
+                commit()
+            }
+        }
+
         binding?.apply {
 
         }
