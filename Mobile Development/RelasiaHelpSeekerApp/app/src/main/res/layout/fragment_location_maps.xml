@@ -10,6 +10,7 @@
 
     app:behavior_hideable="false"
     app:behavior_peekHeight="144dp"
+    tools:context=".ui.form.MapsDialog"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <fragment
@@ -24,7 +25,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_search_location"
-        tools:context=".ui.form.MapsDialog" />
+        />
 
     <fragment
         android:id="@+id/et_search_location"
