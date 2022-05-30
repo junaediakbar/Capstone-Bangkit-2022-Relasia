@@ -5,6 +5,9 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.view.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.c22ps099.relasiahelpseekerapp.R
@@ -77,7 +80,7 @@ class FormFragment : Fragment() {
                 when (event?.action) {
                     MotionEvent.ACTION_DOWN ->{
                         val datePickerDialog = DatePickerDialog(requireContext(),
-                            { view, myear, mmonth, mdayOfMonth ->
+                            { _, myear, mmonth, mdayOfMonth ->
                                 etFormDateEnd.setText("$mdayOfMonth/$mmonth/$myear")
                             }, year, month, day
                         )
@@ -87,6 +90,7 @@ class FormFragment : Fragment() {
 
                 v?.onTouchEvent(event) ?: true
             }
+
             etFormDateStart.showSoftInputOnFocus=false
             etFormDateStart.setOnTouchListener { v, event ->
                 val cal = Calendar.getInstance()
@@ -97,7 +101,7 @@ class FormFragment : Fragment() {
                 when (event?.action) {
                     MotionEvent.ACTION_DOWN ->{
                         val datePickerDialog = DatePickerDialog(requireContext(),
-                            { view, myear, mmonth, mdayOfMonth ->
+                            { _, myear, mmonth, mdayOfMonth ->
                                 etFormDateStart.setText("$mdayOfMonth/$mmonth/$myear")
                             }, year, month, day
                         )
@@ -111,6 +115,34 @@ class FormFragment : Fragment() {
         val location =FormFragmentArgs.fromBundle(arguments as Bundle).location
         binding?.apply {
             etFormLocation.setText(location)
+        }
+
+        val genders = resources.getStringArray(R.array.Categories)
+
+        // access the spinner
+        binding?.spCategories?.apply {
+            val adp = ArrayAdapter(
+                context,
+                android.R.layout.simple_spinner_item, genders
+            )
+            adapter = adp
+            onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View, position: Int, id: Long
+                ) {
+                    Toast.makeText(
+                        context,
+                        getString(R.string.selected_item) + " " +
+                                "" + genders[position], Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    // write code to perform some action
+                }
+            }
         }
     }
 

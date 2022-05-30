@@ -50,4 +50,33 @@
     <string name="mission_volunteer">Volunteers</string>
     <string name="detail_skill">Detail Skills</string>
     <string name="detail_address">Detail Address</string>
+
+    <!--Data for Spinners    -->
+    <string name="selected_item">Selected item:</string>
+    <string name="form_volunteer">Form volunteer</string>
+
+    <string name="fill_volunteer_datas">Fill Volunteer Datas</string>
+    <string name="form_volunteer_subtitle">Tiga bidang yang diminati?</string>
+    <string name="form_volunteer_subtitle2">Form Instantion</string>
+    <string name="file_hint">Choose a File</string>
+    <string name="sk_description">* Masukkan file SK dari instansi relawan, sesuai dengan format berikut : Template SK</string>
+    <string-array name="Genders">
+        <item>Man</item>
+        <item>Woman</item>
+    </string-array>
+
+    <string-array name="Categories">
+        <item>Natural Disaster</item>
+        <item>Leadership and Organization	</item>
+        <item>Social Development</item>
+        <item>Environment</item>
+        <item>Education</item>
+        <item>Human Rights</item>
+        <item>Science and Technology</item>
+        <item>Youth Development</item>
+        <item>Gender Equality</item>
+        <item>Legal Support</item>
+        <item>Difability/Disability</item>
+    </string-array>
+
 </resources>
