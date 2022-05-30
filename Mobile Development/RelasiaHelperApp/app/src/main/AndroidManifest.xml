@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RelasiaHelperApp">
         <activity
-            android:name=".view.BaseActivity"
+            android:name=".ui.main.BaseActivity"
             android:exported="false" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
