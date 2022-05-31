@@ -44,6 +44,10 @@
         <action
             android:id="@+id/action_homeFragment_to_missionFragment"
             app:destination="@id/missionFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailMissionFragment"
+            app:destination="@id/detailMissionFragment" >
+        </action>
     </fragment>
     <fragment
         android:id="@+id/formFragment"
@@ -53,11 +57,13 @@
         <argument
             android:name="token"
             app:argType="string"
-            android:defaultValue=""/>
+            android:defaultValue="token"
+            app:nullable="true"/>
         <argument
             android:name="location"
             app:argType="string"
-            android:defaultValue=""/>
+            android:defaultValue=""
+            app:nullable="true"/>
         <argument
             android:name="latitude"
             android:defaultValue="0.0"
@@ -101,6 +107,10 @@
         android:name="com.c22ps099.relasiahelpseekerapp.ui.form.FormLocationFragment"
         android:label="fragment_form_location"
         tools:layout="@layout/fragment_form_location" >
+        <argument
+            android:name="address"
+            app:argType="string"
+            app:nullable="true"/>
         <action
             android:id="@+id/action_formLocationFragment_to_formFragment"
             app:destination="@id/formFragment" />
@@ -112,6 +122,22 @@
         tools:layout="@layout/fragment_splash" >
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/detailMissionFragment"
+        android:name="com.c22ps099.relasiahelpseekerapp.ui.detail.DetailMissionFragment"
+        android:label="fragment_detail_mission"
+        tools:layout="@layout/fragment_detail_mission" >
+        <argument
+            android:name="mission"
+            app:argType="com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionsResponseItem" />
     </fragment>
 </navigation>

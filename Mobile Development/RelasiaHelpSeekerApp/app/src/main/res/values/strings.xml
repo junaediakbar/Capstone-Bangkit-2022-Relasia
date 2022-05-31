@@ -60,6 +60,12 @@
     <string name="form_volunteer_subtitle2">Form Instantion</string>
     <string name="file_hint">Choose a File</string>
     <string name="sk_description">* Masukkan file SK dari instansi relawan, sesuai dengan format berikut : Template SK</string>
+    <string name="post_name">Semeru Eruption 2021</string>
+    <string name="post_date">21/5/2021-12/2/2022</string>
+    <string name="auth">Bearer %1$s</string>
+    <string name="missions_content_description">mission by %1$s</string>
+    <string name="mission_image">%s</string>
+    <string name="mission_user">%s</string>
     <string-array name="Genders">
         <item>Man</item>
         <item>Woman</item>

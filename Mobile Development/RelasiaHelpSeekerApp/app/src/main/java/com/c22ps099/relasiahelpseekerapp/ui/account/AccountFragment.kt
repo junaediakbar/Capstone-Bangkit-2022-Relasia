@@ -1,17 +1,15 @@
 package com.c22ps099.relasiahelpseekerapp.ui.account
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentAccountBinding
-import com.c22ps099.relasiahelpseekerapp.databinding.FragmentBookmarksBinding
 
 
 class AccountFragment : Fragment() {

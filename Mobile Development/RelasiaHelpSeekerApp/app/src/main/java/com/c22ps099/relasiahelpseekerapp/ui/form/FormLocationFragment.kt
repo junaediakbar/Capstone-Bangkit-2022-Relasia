@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.app.SharedElementCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.c22ps099.relasiahelpseekerapp.R
@@ -83,11 +84,12 @@ class FormLocationFragment : Fragment() {
             btnSaveLoc.setOnClickListener {
                 val navigateAction = FormLocationFragmentDirections
                     .actionFormLocationFragmentToFormFragment()
-                navigateAction.location = "${address?.name +" "+ etDetailLoc.text}"
+                navigateAction.location = "${address?.name +" "+ (etDetailLoc.text)}"
                 navigateAction.latitude = address?.latLng?.latitude.toString()
                 navigateAction.longitude = address?.latLng?.longitude.toString()
                 findNavController().navigate(navigateAction)
             }
         }
     }
+
 }
