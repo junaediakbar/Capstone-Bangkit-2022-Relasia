@@ -83,8 +83,13 @@ def getHelpseeker():
             all_helpseekers = [doc.to_dict()
                                for doc in helpseeker_Ref.stream()]
 
+            response = {
+                "length" : len(all_helpseekers),
+                "data" : all_helpseekers,
+            }
+
             # HTTP response code: 200 OK
-            return jsonify(all_helpseekers), 200
+            return jsonify(response), 200
 
     except Exception as e:
         return f"An Error Occurred: {e}"

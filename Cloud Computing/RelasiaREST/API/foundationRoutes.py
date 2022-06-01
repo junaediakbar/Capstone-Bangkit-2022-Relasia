@@ -130,8 +130,13 @@ def getFoundations():
             all_foundations = [doc.to_dict()
                                for doc in foundation_Ref.stream()]
 
+            response = {
+                "length" : len(all_foundations),
+                "data" : all_foundations,
+            }
+
             # HTTP response code: 200 OK
-            return jsonify(all_foundations), 200
+            return jsonify(response), 200
 
     except Exception as e:
         return f"An Error Occurred: {e}"

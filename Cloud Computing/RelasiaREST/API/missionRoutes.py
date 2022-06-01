@@ -1,6 +1,7 @@
+from ftplib import all_errors
 from flask import Blueprint, request, jsonify
 from firebase_admin import firestore
-import datetime
+from datetime import datetime
 import hashlib
 
 # Initialization Database Reference
@@ -152,5 +153,83 @@ def getMission():
             all_mission = [doc.to_dict() for doc in mission_Ref.stream()]
             # HTTP Response Code: 200 OK
             return jsonify(all_mission), 200
+    except Exception as e:
+        return f"An Error Occurred: {e}"
+
+
+@missionRoutes.route('/filtered', methods=['GET'])
+def getMissionHistoryFiltered():
+    try:
+        try:
+            # Get volunteer id from json body
+            volunteer_id = request.json["id"]
+        except:
+            # Get all missions from mission collection
+            all_mission = [doc.to_dict() for doc in mission_Ref.stream()]
+            # HTTP Response Code: 200 OK
+            return jsonify(all_mission), 200
+
+        volunteer = volunteer_Ref.document(volunteer_id).get()
+        if volunteer.exists:
+            volunteer_data = volunteer.to_dict()
+            # Getting filter data from json body
+            try:
+                filter = request.json["filter"]
+            except:
+                filter = ""
+
+            if filter:
+                mission_id = []
+                missions = volunteer_data["missions"]
+                # Filtering by each parameters
+                for id in missions:
+                    mission_data = mission_Ref.document(
+                        id).get().to_dict()
+                    mission_data["mission_id"] = id
+                    # if "active" in filter:
+                    #     if filter["active"] == "true":
+                    if "city" in filter:
+                        if filter["city"] == mission_data["city"]:
+                            mission_id.append(id)
+                    if "province" in filter:
+                        if filter["province"] == mission_data["province"]:
+                            mission_id.append(id)
+                    if "status" in filter:
+                        if filter["status"] == mission_data["volunteers"][volunteer_id]:
+                            mission_id.append(id)
+                    if "active" in filter:
+                        current = datetime.now().strftime("%Y/%m/%d")
+                        compare = datetime.strptime(mission_data["end_date"], "%d/%m/%Y").strftime("%Y/%m/%d")
+                        if filter["active"] == "Active" and current <= compare:
+                            mission_id.append(id)
+                        elif filter["active"] == "Inactive" and current > compare:
+                            mission_id.append(id)
+
+                # Remove id duplicate from filtering result
+                mission_id = list(dict.fromkeys(mission_id))
+
+                # Get all mission data by Mission ID
+                data = []
+                for id in mission_id:
+                    data.append(mission_Ref.document(id).get().to_dict())
+
+                response = {
+                    "length" : len(data),
+                    "data" : data,
+                }
+
+                # HTTP response code: 200 OK
+                return jsonify(response), 200
+            else:
+                response = {
+                    "length" : len(all_mission),
+                    "data" : all_mission,
+                }
+
+                # HTTP response code: 200 OK
+                return jsonify(response), 200
+        else:
+            # HTTP response code: 400 Bad Request
+            return jsonify(message="Bad Request"), 400
     except Exception as e:
         return f"An Error Occurred: {e}"
