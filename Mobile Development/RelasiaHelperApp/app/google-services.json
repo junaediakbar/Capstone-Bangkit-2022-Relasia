@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "843306914477",
+    "project_id": "relasia",
+    "storage_bucket": "relasia.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843306914477:android:325cf4963b43f3d9fcec24",
+        "android_client_info": {
+          "package_name": "com.c22ps099.relasiahelperapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "843306914477-aceb80jmel4ud2t7h4cv6v9s8vs7ta0h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.c22ps099.relasiahelperapp",
+            "certificate_hash": "597c48f70d8f920cbfd88e77b57fe249c9e4a40e"
+          }
+        },
+        {
+          "client_id": "843306914477-0t4jf8sh7t51707a7j8ae3b5h2foffbn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp_Dj2lAx1MB0P-DX1ztU0qGtcHNO9Lpc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "843306914477-0t4jf8sh7t51707a7j8ae3b5h2foffbn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

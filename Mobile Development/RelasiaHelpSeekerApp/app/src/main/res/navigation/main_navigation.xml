@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/splashFragment">
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.c22ps099.relasiahelpseekerapp.ui.login.LoginFragment"
@@ -52,8 +52,28 @@
         tools:layout="@layout/fragment_form">
         <argument
             android:name="token"
-            android:defaultValue=""
-            app:argType="string" />
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="location"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="latitude"
+            android:defaultValue="0.0"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="longitude"
+            android:defaultValue="0.0"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_formFragment_to_formSkillFragment"
+            app:destination="@id/formSkillFragment" />
+        <action
+            android:id="@+id/action_formFragment_to_formLocationFragment"
+            app:destination="@id/formLocationFragment" />
 
     </fragment>
     <fragment
@@ -71,4 +91,27 @@
         android:name="com.c22ps099.relasiahelpseekerapp.ui.missions.MissionsFragment"
         android:label="fragment_mission"
         tools:layout="@layout/fragment_missions" />
+    <fragment
+        android:id="@+id/formSkillFragment"
+        android:name="com.c22ps099.relasiahelpseekerapp.ui.form.FormSkillFragment"
+        android:label="fragment_form_skill"
+        tools:layout="@layout/fragment_form_skill" />
+    <fragment
+        android:id="@+id/formLocationFragment"
+        android:name="com.c22ps099.relasiahelpseekerapp.ui.form.FormLocationFragment"
+        android:label="fragment_form_location"
+        tools:layout="@layout/fragment_form_location" >
+        <action
+            android:id="@+id/action_formLocationFragment_to_formFragment"
+            app:destination="@id/formFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.c22ps099.relasiahelpseekerapp.ui.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

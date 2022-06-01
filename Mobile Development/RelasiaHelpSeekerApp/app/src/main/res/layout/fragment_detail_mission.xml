@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.DetailMissionFragment">
+    tools:context=".ui.detail.DetailMissionFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -39,7 +39,7 @@
             android:layout_width="42dp"
             android:layout_height="42dp"
             android:layout_marginEnd="16dp"
-            android:background="@drawable/ic_outline_bookmark_border_24"
+            android:background="@drawable/ic_bookmark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_mission_title" />
 
@@ -48,7 +48,7 @@
             android:layout_width="42dp"
             android:layout_height="42dp"
             android:layout_marginEnd="16dp"
-            android:background="@drawable/ic_baseline_bookmark_24"
+            android:background="@drawable/ic_unbookmark"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_mission_title" />
@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="Lumajang, Jawa Timur"
+            android:text="@string/mission_place"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@id/tv_mission_title"
             app:layout_constraintStart_toStartOf="@id/tv_mission_title"
@@ -110,7 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="@string/mission_req"
+            android:text="@string/requirements"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="@id/tv_applicant"
             app:layout_constraintStart_toStartOf="@id/tv_mission_title"
@@ -134,7 +134,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="@string/mission_note"
+            android:text="@string/notes"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="@id/tv_applicant"
             app:layout_constraintStart_toStartOf="@id/tv_mission_title"
@@ -176,17 +176,38 @@
             app:layout_constraintStart_toStartOf="@id/tv_mission_req_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_mission_cp_title" />
 
+        <TextView
+            android:id="@+id/tv_mission_volunteer_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/mission_volunteer"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@id/tv_applicant"
+            app:layout_constraintStart_toStartOf="@id/tv_mission_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_mission_cp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tv_volunteer_registered"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_mission_volunteer_title"
+            tools:listitem="@layout/item_registered_volunteer" />
+
         <Button
             android:id="@+id/btn_apply"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:fontFamily="@font/roboto_bold"
             android:text="Apply"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/tv_mission_cp_title"
             app:layout_constraintStart_toStartOf="@id/tv_mission_cp_title"
-            app:layout_constraintTop_toBottomOf="@id/tv_mission_cp" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_volunteer_registered" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

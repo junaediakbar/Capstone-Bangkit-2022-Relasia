@@ -585,6 +585,73 @@ Relasia REST-API: App to Database
         }
     }
     ```
+  - **Get Volunteer Mission History Filtered**
+
+      Method: **GET**
+
+      URL Route: `/mission/filtered`
+
+      Example:
+
+      `http://127.0.0.1:5000/mission/filtered` or `https://relasia-api.herokuapp.com/mission/filtered`
+
+      Example data that **required** & in the form of a **JSON Body**:
+
+      ```
+      {
+          "id": "volunteer.id",
+          "filter": {
+            "city": "City",
+            "province": "Province",
+            "status": "Status"
+      }
+      ```
+      
+      **Note:**
+      Only three types of filters work for now there are "city", "province", and "status".
+      
+      You can use this filter by using 1 or more filter types like:
+      
+      ```
+      {
+          "id": "volunteer.id",
+          "filter": {
+            "city": "City"
+      }
+      ```
+      
+      or
+      
+      ```
+      {
+          "id": "volunteer.id",
+          "filter": {
+            "city": "City",
+            "status": "Status"
+      }
+      ```
+      
+      or 
+      ```
+      {
+          "id": "volunteer.id",
+          "filter": {
+            "city": "City",
+            "province": "Province",
+      }
+      ```
+      etc.
+      
+      Example data that will be get is all mission which has been filtered according to the parameters:
+      ```
+      [
+        { Filtered Mission 1 Data },
+        { Filtered Mission 2 Data}, 
+        .
+        .
+        { Filtered Mission n Data}
+      ]
+      
 
   - **Add New Mission by Helpseeker**
 

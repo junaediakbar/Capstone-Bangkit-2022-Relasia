@@ -43,7 +43,6 @@
             android:layout_marginEnd="32dp"
             android:drawableStart="@drawable/ic_baseline_format_list_bulleted_24"
             android:drawablePadding="4dp"
-            android:editable="false"
             android:hint="@string/name_kegiatan_hint"
             android:minHeight="48dp"
             android:transitionName="email_input"
@@ -59,7 +58,6 @@
             android:layout_marginTop="16dp"
             android:drawableStart="@drawable/ic_baseline_place_24"
             android:drawablePadding="4dp"
-            android:editable="false"
             android:hint="@string/location_hint"
             android:minHeight="48dp"
             android:transitionName="email_input"
@@ -200,7 +198,7 @@
             tools:ignore="TextContrastCheck,TextContrastCheck" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/sp_categories"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -248,7 +246,7 @@
             android:textColor="@color/blue_munshell"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/et_form_photo2"
-            app:layout_constraintTop_toBottomOf="@+id/spinner"
+            app:layout_constraintTop_toBottomOf="@+id/sp_categories"
             tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TextContrastCheck,TextContrastCheck"
             tools:targetApi="m" />
 
@@ -269,8 +267,8 @@
             android:textAllCaps="false"
             android:textColor="@color/blue_munshell"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/spinner"
-            app:layout_constraintTop_toBottomOf="@+id/spinner"
+            app:layout_constraintEnd_toEndOf="@+id/sp_categories"
+            app:layout_constraintTop_toBottomOf="@+id/sp_categories"
             tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TextContrastCheck,TextContrastCheck"
             tools:targetApi="m" />
     </androidx.constraintlayout.widget.ConstraintLayout>

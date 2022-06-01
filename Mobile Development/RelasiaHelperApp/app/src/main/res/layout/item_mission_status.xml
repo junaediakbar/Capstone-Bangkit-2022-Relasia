@@ -20,6 +20,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="16dp"
+            android:scaleType="centerCrop"
             android:contentDescription="@string/mission_photo"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toStartOf="@+id/tv_mission_title"

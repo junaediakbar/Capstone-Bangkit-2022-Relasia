@@ -47,12 +47,12 @@ class MainActivity : AppCompatActivity() {
         binding?.bottomNavigation?.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if(destination.id == R.id.loginFragment || destination.id == R.id.registerFragment|| destination.id ==R.id.formFragment) {
-
-                binding?.bottomNavigation?.visibility  = View.GONE
-            } else {
+            if(destination.id == R.id.homeFragment || destination.id == R.id.accountFragment|| destination.id ==R.id.missionFragment|| destination.id==R.id.bookmarkFragment) {
 
                 binding?.bottomNavigation?.visibility  =View.VISIBLE
+            } else {
+
+                binding?.bottomNavigation?.visibility  = View.GONE
             }
         }
     }
