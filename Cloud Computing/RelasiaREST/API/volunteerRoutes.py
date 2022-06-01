@@ -181,8 +181,13 @@ def getVolunteer():
         else:
             all_volunteers = [doc.to_dict() for doc in volunteer_Ref.stream()]
 
+            response = {
+                "length" : len(all_volunteers),
+                "data" : all_volunteers,
+            }
+
             # HTTP response code: 200 OK
-            return jsonify(all_volunteers), 200
+            return jsonify(response), 200
 
     except Exception as e:
         return f"An Error Occurred: {e}"
