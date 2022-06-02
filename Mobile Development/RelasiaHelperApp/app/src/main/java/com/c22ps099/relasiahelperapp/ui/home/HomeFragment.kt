@@ -1,5 +1,6 @@
 package com.c22ps099.relasiahelperapp.ui.home
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,8 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.c22ps099.relasiahelperapp.R
+import com.c22ps099.relasiahelperapp.adapter.LoadingStateAdapter
+import com.c22ps099.relasiahelperapp.adapter.MissionListAdapter
+import com.c22ps099.relasiahelperapp.data.MissionDatabase
+import com.c22ps099.relasiahelperapp.data.MissionRepository
 import com.c22ps099.relasiahelperapp.databinding.FragmentHomeBinding
+import com.c22ps099.relasiahelperapp.network.ApiConfig
+import com.c22ps099.relasiahelperapp.ui.MissionFactory
 import com.c22ps099.relasiahelperapp.ui.login.LoginFragment
 import com.c22ps099.relasiahelperapp.ui.profile.ProfileFragment
 import com.google.firebase.auth.FirebaseAuth
@@ -27,7 +36,14 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         homeViewModel =
-            ViewModelProvider(this)[HomeViewModel::class.java]
+            ViewModelProvider(
+                this, MissionFactory(
+                    MissionRepository(
+                        MissionDatabase.getDatabase(requireContext()),
+                        ApiConfig.getApiService()
+                    )
+                )
+            )[HomeViewModel::class.java]
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding?.root
     }
@@ -51,12 +67,12 @@ class HomeFragment : Fragment() {
                     mLoginFragment,
                     LoginFragment::class.java.simpleName
                 )
-//                addToBackStack(null)
                 setReorderingAllowed(true)
                 commit()
             }
         }
 
+        val adapter = MissionListAdapter()
         binding?.apply {
             btnProfile.setOnClickListener {
                 val navigateAction = HomeFragmentDirections
@@ -76,6 +92,18 @@ class HomeFragment : Fragment() {
                     commit()
                 }
             }
+            rvMissions.layoutManager = if (resources.configuration.orientation
+                == Configuration.ORIENTATION_PORTRAIT
+            ) {
+                LinearLayoutManager(requireContext())
+            } else {
+                GridLayoutManager(requireContext(), 2)
+            }
+            rvMissions.adapter = adapter.withLoadStateFooter(
+                footer = LoadingStateAdapter {
+                    adapter.retry()
+                }
+            )
         }
     }
 }

@@ -25,4 +25,7 @@
     <string name="mission_cp">Kontak</string>
     <string name="tab_text_1">Active</string>
     <string name="tab_text_2">Inactive</string>
+    <string name="loading_data">Loading...</string>
+    <string name="error">Terdapat Kesalahan. Mohon coba lagi nanti</string>
+    <string name="refresh">Refresh</string>
 </resources>

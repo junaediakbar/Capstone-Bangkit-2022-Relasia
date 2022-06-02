@@ -1,13 +1,10 @@
 package com.c22ps099.relasiahelperapp.ui.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import androidx.paging.cachedIn
+import com.c22ps099.relasiahelperapp.data.MissionRepository
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(pref: MissionRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
+    val missions = pref.getMissionsPages().cachedIn(viewModelScope)
 }

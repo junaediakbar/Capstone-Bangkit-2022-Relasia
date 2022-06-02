@@ -47,7 +47,6 @@ class BookmarksFragment : Fragment() {
                     mLoginFragment,
                     LoginFragment::class.java.simpleName
                 )
-//                addToBackStack(null)
                 setReorderingAllowed(true)
                 commit()
             }

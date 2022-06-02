@@ -120,7 +120,6 @@ class LoginFragment : Fragment() {
             val mFragmentManager = parentFragmentManager
             mFragmentManager.beginTransaction().apply {
                 replace(R.id.nav_host_fragment, mHomeFragment, HomeFragment::class.java.simpleName)
-//                addToBackStack(null)
                 setReorderingAllowed(true)
                 commit()
             }
