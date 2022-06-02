@@ -26,18 +26,21 @@ Relasia REST-API: App to Database
     Example data that will be get:
 
     ```
-    [
-      {
-          "name": "Helpseeker Name",
-          "city": "Helpseeker City",
-          "mission": ["Mission 1", "Mission 2"]
-      },
-      {
-          "name": "Helpseeker Name 2",
-          "city": "Helpseeker City 2",
-          "mission": ["Mission 3", "Mission 4"]
-      }
-    ]
+    {
+        "length": 2,
+        "data": [
+            {
+                "name": "Helpseeker Name",
+                "city": "Helpseeker City",
+                "mission": ["Mission 1", "Mission 2"]
+            },
+            {
+                "name": "Helpseeker Name 2",
+                "city": "Helpseeker City 2",
+                "mission": ["Mission 3", "Mission 4"]
+            }
+        ]
+    }
     ```
 
   - **Get Specific Helpseeker**
@@ -151,36 +154,39 @@ Relasia REST-API: App to Database
     Example data that will be get:
 
     ```
-    [
-        {
-            "address": "Volunteer Address",
-            "birthyear": "Volunteer Birthyear",
-            "city": "Volunteer City",
-            "foundations": [
-                "Volunteer Foundation Id Collection"
-            ],
-            "gender": "false",
-            "missions": [
-                "Volunteer Mission id Collection"
-            ],
-            "name": "Volunteer Name",
-            "verified": "true"
-        },
-        {
-            "address": "Volunteer Address 2",
-            "birthyear": "Volunteer Birthyear 2",
-            "city": "Volunteer City 2",
-            "foundations": [
-                "Volunteer Foundation Id Collection"
-            ],
-            "gender": "false",
-            "missions": [
-                "Volunteer Mission id Collection"
-            ],
-            "name": "Volunteer Name 2",
-            "verified": "true"
-        }
-    ]
+    {
+        "length": 2,
+        "data": [
+            {
+                "address": "Volunteer Address",
+                "birthyear": "Volunteer Birthyear",
+                "city": "Volunteer City",
+                "foundations": [
+                    "Volunteer Foundation Id Collection"
+                ],
+                "gender": "false",
+                "missions": [
+                    "Volunteer Mission id Collection"
+                ],
+                "name": "Volunteer Name",
+                "verified": "true"
+            },
+            {
+                "address": "Volunteer Address 2",
+                "birthyear": "Volunteer Birthyear 2",
+                "city": "Volunteer City 2",
+                "foundations": [
+                    "Volunteer Foundation Id Collection"
+                ],
+                "gender": "false",
+                "missions": [
+                    "Volunteer Mission id Collection"
+                ],
+                "name": "Volunteer Name 2",
+                "verified": "true"
+            }
+        ]
+    }
     ```
 
   - **Get Specific Volunteer**
@@ -325,7 +331,7 @@ Relasia REST-API: App to Database
 
 - ### Foundation
 
-  - **Get All Foundartion**
+  - **Get All Foundation**
 
     Method: **GET**
 
@@ -338,26 +344,29 @@ Relasia REST-API: App to Database
     Example data that will be get:
 
     ```
-    [
-        {
-            "address": "Foundation Address,
-            "call_center": "Foundation Call Center",
-            "city": "Foundation City",
-            "name": "Foundation Name",
-            "volunteers": {
-                Volunteer Status Collection
+    {
+        "length": 2,
+        "data": [
+            {
+                "address": "Foundation Address,
+                "call_center": "Foundation Call Center",
+                "city": "Foundation City",
+                "name": "Foundation Name",
+                "volunteers": {
+                    Volunteer Status Collection
+                }
+            },
+            {
+                "address": "Foundation Address 2,
+                "call_center": "Foundation Call Center 2",
+                "city": "Foundation City 2",
+                "name": "Foundation Name 2",
+                "volunteers": {
+                    Volunteer Status Collection
+                }
             }
-        },
-        {
-            "address": "Foundation Address 2,
-            "call_center": "Foundation Call Center 2",
-            "city": "Foundation City 2",
-            "name": "Foundation Name 2",
-            "volunteers": {
-                Volunteer Status Collection
-            }
-        }
-    ]
+        ]
+    }
     ```
 
   - **Get Specific Foundation**
@@ -484,18 +493,87 @@ Relasia REST-API: App to Database
 
   - **Get All Mission**
 
-  Method: **GET**
+    Method: **GET**
 
-  URL Route: `/mission/`
+    URL Route: `/mission/`
 
-  Example:
+    Example:
 
-  `http://127.0.0.1:5000/mission/` or `https://relasia-api.herokuapp.com/mission/`
+    `http://127.0.0.1:5000/mission/` or `https://relasia-api.herokuapp.com/mission/`
 
-  Example data that will be get:
+    Example data that will be get:
 
-  ```
-  [
+    ```
+    {
+          "length": 2,
+          "data": [
+              {
+                  "address": "Mission Address",
+                  "category": "Mission Category",
+                  "city": "Mission City",
+                  "end_date": "Mission End_date",
+                  "featured_image": [
+                      Mission Image Collection
+                  ],
+                  "id": "Mission Helpseeker ID",
+                  "note": "Mission Note",
+                  "number_of_needs": "Mission Needed",
+                  "province": "Mission Province",
+                  "requirement": "Mission Requirement",
+                  "start_date": "Mission Start_date",
+                  "timestamp": "Mission timestamp",
+                  "title": "Mission Title",
+                  "volunteers": {
+                      --Volunteer Apllied and their Status--
+                      "volunteer_id": "volunteer status"
+                  }
+              },
+              {
+                  "address": "Mission Address 2",
+                  "category": "Mission Category 2",
+                  "city": "Mission City 2",
+                  "end_date": "Mission End_date 2",
+                  "featured_image": [
+                      Mission Image Collection 2
+                  ],
+                  "id": "Mission Helpseeker ID 2",
+                  "note": "Mission Note 2",
+                  "number_of_needs": "Mission Needed 2",
+                  "province": "Mission Province 2",
+                  "requirement": "Mission Requirement 2",
+                  "start_date": "Mission Start_date 2",
+                  "timestamp": "Mission timestamp 2",
+                  "title": "Mission Title 2",
+                  "volunteers": {
+                      --Volunteer Apllied and their Status--
+                      "volunteer_id": "volunteer status 2"
+                  }
+              }
+          ]
+    }
+    ```
+
+    - **Get Specific Mission**
+
+      Method: **GET**
+
+      URL Route: `/mission/`
+
+      Example:
+
+      `http://127.0.0.1:5000/mission/` or `https://relasia-api.herokuapp.com/mission`
+
+      Example data that **required** & in the form of a **JSON Body**:
+
+      ```
+      {
+          "id": "mission.id"
+      }
+      ```
+
+      Example data that will be get:
+
+      ```
       {
           "address": "Mission Address",
           "category": "Mission Category",
@@ -504,239 +582,177 @@ Relasia REST-API: App to Database
           "featured_image": [
               Mission Image Collection
           ],
-          "id": "Mission Helpseeker ID",
+          "id": {
+              Helpseeker Detailed Data who request the mission
+          },
           "note": "Mission Note",
-          "number_of_needs": "Mission Needed",
+          "number_of_needs": "Mission Number Need",
           "province": "Mission Province",
           "requirement": "Mission Requirement",
-          "start_date": "Mission Start_date",
-          "timestamp": "Mission timestamp",
+          "start_date": "Mission Start_Date",
+          "timestamp": "Mission Timestamp",
           "title": "Mission Title",
           "volunteers": {
-              --Volunteer Apllied and their Status--
-              "volunteer_id": "volunteer status"
-          }
-      },
-      {
-          "address": "Mission Address 2",
-          "category": "Mission Category 2",
-          "city": "Mission City 2",
-          "end_date": "Mission End_date 2",
-          "featured_image": [
-              Mission Image Collection 2
-          ],
-          "id": "Mission Helpseeker ID 2",
-          "note": "Mission Note 2",
-          "number_of_needs": "Mission Needed 2",
-          "province": "Mission Province 2",
-          "requirement": "Mission Requirement 2",
-          "start_date": "Mission Start_date 2",
-          "timestamp": "Mission timestamp 2",
-          "title": "Mission Title 2",
-          "volunteers": {
-              --Volunteer Apllied and their Status--
-              "volunteer_id": "volunteer status 2"
+              Mission Applied Volunteer Detailed data who join the mission
           }
       }
-  ]
-  ```
+      ```
+    - **Get Volunteer Mission History Filtered**
 
-  - **Get Specific Mission**
+        Method: **GET**
 
-    Method: **GET**
+        URL Route: `/mission/filtered`
 
-    URL Route: `/mission/`
+        Example:
 
-    Example:
+        `http://127.0.0.1:5000/mission/filtered` or `https://relasia-api.herokuapp.com/mission/filtered`
 
-    `http://127.0.0.1:5000/mission/` or `https://relasia-api.herokuapp.com/mission`
+        Example data that **required** & in the form of a **JSON Body**:
 
-    Example data that **required** & in the form of a **JSON Body**:
-
-    ```
-    {
-        "id": "mission.id"
-    }
-    ```
-
-    Example data that will be get:
-
-    ```
-    {
-        "address": "Mission Address",
-        "category": "Mission Category",
-        "city": "Mission City",
-        "end_date": "Mission End_date",
-        "featured_image": [
-            Mission Image Collection
-        ],
-        "id": {
-            Helpseeker Detailed Data who request the mission
-        },
-        "note": "Mission Note",
-        "number_of_needs": "Mission Number Need",
-        "province": "Mission Province",
-        "requirement": "Mission Requirement",
-        "start_date": "Mission Start_Date",
-        "timestamp": "Mission Timestamp",
-        "title": "Mission Title",
-        "volunteers": {
-            Mission Applied Volunteer Detailed data who join the mission
+        ```
+        {
+            "id": "volunteer.id",
+            "filter": {
+              "city": "City",
+              "province": "Province",
+              "status": "Status Volunteer"
+              "active": "Active/Inactive" (Case Sensitive)
         }
-    }
-    ```
-  - **Get Volunteer Mission History Filtered**
+        ```
 
-      Method: **GET**
+        **Note:**
+        Only four types of filters work for now there are "city", "province", "status", and "active".
 
-      URL Route: `/mission/filtered`
+        You can use this filter by using 1 or more filter types like:
+
+        ```
+        {
+            "id": "volunteer.id",
+            "filter": {
+              "city": "City"
+        }
+        ```
+
+        or
+
+        ```
+        {
+            "id": "volunteer.id",
+            "filter": {
+              "city": "City",
+              "status": "Status"
+        }
+        ```
+
+        or 
+        ```
+        {
+            "id": "volunteer.id",
+            "filter": {
+              "city": "City",
+              "province": "Province",
+        }
+        ```
+        etc.
+
+        Example data that will be get is all mission which has been filtered according to the parameters:
+        ```
+        {
+          "length": n,
+          "data": [
+              { Filtered Mission 1 Data },
+              { Filtered Mission 2 Data}, 
+              .
+              .
+              { Filtered Mission n Data}
+            ]
+        }
+        ```
+
+    - **Add New Mission by Helpseeker**
+
+      Method: **POST**
+
+      URL Route: `/mission/`
 
       Example:
 
-      `http://127.0.0.1:5000/mission/filtered` or `https://relasia-api.herokuapp.com/mission/filtered`
+      `http://127.0.0.1:5000/mission/` or `[https://relasia-api.herokuapp.com/mission/`
 
       Example data that **required** & in the form of a **JSON Body**:
 
       ```
       {
-          "id": "volunteer.id",
-          "filter": {
-            "city": "City",
-            "province": "Province",
-            "status": "Status"
+          "id": "Helpseeker ID"
+          "title": "Mission Title",
+          "address": "Mission Address",
+          "city": "Mission City",
+          "province": "Mission Province",
+          "number_of_needs": "Mission numbers of Volunter needed",
+          "start_date": "Mission Start Date",
+          "end_date": "Mission End Date",
+          "featured_image": ["MissionImage1.jpg", "MissionImage2.jpg"],
+          "category": "Mission Category",
+          "requirement": "Mission Requirement",
+          "note": "Mission Note",
+          "volunteers": {}
       }
       ```
-      
-      **Note:**
-      Only three types of filters work for now there are "city", "province", and "status".
-      
-      You can use this filter by using 1 or more filter types like:
-      
+
+    - **Edit Mission Data**
+
+      Method: **PUT**
+
+      URL Route: `/mission/`
+
+      Example:
+
+      `http://127.0.0.1:5000/mission/` or `[https://relasia-api.herokuapp.com/mission/`
+
+      Example data that **required** & in the form of a **JSON Body**:
+
       ```
       {
-          "id": "volunteer.id",
-          "filter": {
-            "city": "City"
+          "id": "mission.id",
+          "data": {
+              Field of data that will be changed
+          }
       }
       ```
-      
-      or
-      
+
+    - **Comfirm Volunteer Status on Mission**
+
+      Method: **PUT**
+
+      URL Route: `/mission/<mission_id>`
+
+      Example:
+
+      `http://127.0.0.1:5000/mission/mission.id` or `[https://relasia-api.herokuapp.com/mission/mission.id`
+
+      Example data that **required** & in the form of a **JSON Body**:
+
       ```
       {
-          "id": "volunteer.id",
-          "filter": {
-            "city": "City",
-            "status": "Status"
+          "volunteer": "volunteer.id",
+          "status": "volunteer status"
       }
       ```
-      
-      or 
+
+    - **Delete Foundation Data**
+
+      Method: **DELETE**
+
+      URL Route: `/mission/`
+
+      Example:
+
+      `http://127.0.0.1:5000/mission/` or `[https://relasia-api.herokuapp.com/mission/`
+
+      Example data that **required** & in the form of a **JSON Body**:
+
       ```
       {
-          "id": "volunteer.id",
-          "filter": {
-            "city": "City",
-            "province": "Province",
+          "mission": "mission.id"
       }
       ```
-      etc.
-      
-      Example data that will be get is all mission which has been filtered according to the parameters:
-      ```
-      [
-        { Filtered Mission 1 Data },
-        { Filtered Mission 2 Data}, 
-        .
-        .
-        { Filtered Mission n Data}
-      ]
-      
-
-  - **Add New Mission by Helpseeker**
-
-    Method: **POST**
-
-    URL Route: `/mission/`
-
-    Example:
-
-    `http://127.0.0.1:5000/mission/` or `[https://relasia-api.herokuapp.com/mission/`
-
-    Example data that **required** & in the form of a **JSON Body**:
-
-    ```
-    {
-        "id": "Helpseeker ID"
-        "title": "Mission Title",
-        "address": "Mission Address",
-        "city": "Mission City",
-        "province": "Mission Province",
-        "number_of_needs": "Mission numbers of Volunter needed",
-        "start_date": "Mission Start Date",
-        "end_date": "Mission End Date",
-        "featured_image": ["MissionImage1.jpg", "MissionImage2.jpg"],
-        "category": "Mission Category",
-        "requirement": "Mission Requirement",
-        "note": "Mission Note",
-        "volunteers": {}
-    }
-    ```
-
-  - **Edit Mission Data**
-
-    Method: **PUT**
-
-    URL Route: `/mission/`
-
-    Example:
-
-    `http://127.0.0.1:5000/mission/` or `[https://relasia-api.herokuapp.com/mission/`
-
-    Example data that **required** & in the form of a **JSON Body**:
-
-    ```
-    {
-        "id": "mission.id",
-        "data": {
-            Field of data that will be changed
-        }
-    }
-    ```
-
-  - **Comfirm Volunteer Status on Mission**
-
-    Method: **PUT**
-
-    URL Route: `/mission/<mission_id>`
-
-    Example:
-
-    `http://127.0.0.1:5000/mission/mission.id` or `[https://relasia-api.herokuapp.com/mission/mission.id`
-
-    Example data that **required** & in the form of a **JSON Body**:
-
-    ```
-    {
-        "volunteer": "volunteer.id",
-        "status": "volunteer status"
-    }
-    ```
-
-  - **Delete Foundation Data**
-
-    Method: **DELETE**
-
-    URL Route: `/mission/`
-
-    Example:
-
-    `http://127.0.0.1:5000/mission/` or `[https://relasia-api.herokuapp.com/mission/`
-
-    Example data that **required** & in the form of a **JSON Body**:
-
-    ```
-    {
-        "mission": "mission.id"
-    }
-    ```
