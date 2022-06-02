@@ -8,11 +8,17 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_latest_posts"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_centerVertical="false"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/rv_nearest_instantion"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_sec_post"
         tools:listitem="@layout/item_post" />
 
@@ -120,7 +126,8 @@
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tv_sec_post"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/rv_latest_posts"
         app:layout_constraintTop_toBottomOf="@+id/tv_sec_post2"
         tools:listitem="@layout/item_post" />
 

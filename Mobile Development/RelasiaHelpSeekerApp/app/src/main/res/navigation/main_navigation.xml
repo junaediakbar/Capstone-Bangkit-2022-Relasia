@@ -136,8 +136,5 @@
         android:name="com.c22ps099.relasiahelpseekerapp.ui.detail.DetailMissionFragment"
         android:label="fragment_detail_mission"
         tools:layout="@layout/fragment_detail_mission" >
-        <argument
-            android:name="mission"
-            app:argType="com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionsResponseItem" />
     </fragment>
 </navigation>

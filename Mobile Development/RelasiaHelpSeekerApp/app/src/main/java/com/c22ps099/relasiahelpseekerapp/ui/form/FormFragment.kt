@@ -21,10 +21,12 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.c22ps099.relasiahelpseekerapp.R
+import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionItem
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentFormBinding
 import com.c22ps099.relasiahelpseekerapp.misc.*
 import com.google.firebase.FirebaseApp
@@ -41,13 +43,14 @@ class FormFragment : Fragment() {
 
     private var token: String? = ""
 
-    private var timeNow: String?=""
+    private var timeNow: String? = ""
 
+    private var category: String? = ""
 
     private var imagesUri = mutableListOf<Uri>()
     private var imagesLink = mutableListOf<String?>()
 
-    val scope = CoroutineScope(Job() + Dispatchers.Main)
+    private val scope = CoroutineScope(Job() + Dispatchers.Main)
     private var binding: FragmentFormBinding? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -86,6 +89,7 @@ class FormFragment : Fragment() {
             findNavController().navigateUp()
         }
     }
+
     private fun allPermissionGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(
             activity?.baseContext as Context,
@@ -130,12 +134,12 @@ class FormFragment : Fragment() {
                         val datePickerDialog = DatePickerDialog(
                             requireContext(),
                             { _, myear, mmonth, mdayOfMonth ->
-                                val dd = if(mdayOfMonth>10){
-                                     mdayOfMonth
-                                }else  "0$mdayOfMonth"
-                                val mm = if(mmonth>10){
+                                val dd = if (mdayOfMonth > 10) {
                                     mdayOfMonth
-                                }else  "0$mmonth"
+                                } else "0$mdayOfMonth"
+                                val mm = if (mmonth > 10) {
+                                    mdayOfMonth
+                                } else "0$mmonth"
 
                                 etFormDateStart.setText("$dd/$mm/$myear")
                             }, year, month, day
@@ -200,7 +204,7 @@ class FormFragment : Fragment() {
                         parent: AdapterView<*>,
                         view: View, position: Int, id: Long
                     ) {
-
+                        category = categories[position]
                     }
 
                     override fun onNothingSelected(parent: AdapterView<*>) {
@@ -244,7 +248,7 @@ class FormFragment : Fragment() {
                             parent: AdapterView<*>,
                             view: View, position: Int, id: Long
                         ) {
-
+                            viewModel.updateCity(cities[position])
                         }
 
                         override fun onNothingSelected(parent: AdapterView<*>) {
@@ -255,7 +259,6 @@ class FormFragment : Fragment() {
             }
         }
     }
-
 
     private fun setChipButton() {
         binding?.apply {
@@ -271,12 +274,10 @@ class FormFragment : Fragment() {
         }
     }
 
-
-
     @SuppressLint("ClickableViewAccessibility")
-    private fun setUploadButton(){
+    private fun setUploadButton() {
         binding?.apply {
-            btnUploadImage.setOnClickListener{
+            btnUploadImage.setOnClickListener {
                 startGallery()
             }
         }
@@ -296,20 +297,20 @@ class FormFragment : Fragment() {
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
         if (result.resultCode == RESULT_OK) {
-            if(result.data?.clipData != null){
+            if (result.data?.clipData != null) {
                 val count = result.data!!.clipData!!.itemCount
 
                 for (i in 0 until count) {
-                    val imageUri: Uri =  result.data!!.clipData!!.getItemAt(i).uri
+                    val imageUri: Uri = result.data!!.clipData!!.getItemAt(i).uri
 
                     imagesUri.add(imageUri)
                     binding?.apply {
-                        btnUploadImage.visibility= visibility(false)
+                        btnUploadImage.visibility = visibility(false)
                         tvUploadImages.apply {
-                            if(count>3){
-                                text = "3 file/s attached"
-                            }else{
-                                text = "$count file/s attached"
+                            text = if (count > 3) {
+                                "3 file/s attached"
+                            } else {
+                                "$count file/s attached"
                             }
 
                         }
@@ -319,29 +320,74 @@ class FormFragment : Fragment() {
         }
     }
 
-    private fun setSubmitButton(){
-        viewModel.time.observe(viewLifecycleOwner){
+    private fun setSubmitButton() {
+        viewModel.time.observe(viewLifecycleOwner) {
             timeNow = it
         }
 
         binding?.apply {
             btnSubmit.setOnClickListener {
-                uploadImages()
+              scope.launch { uploadImages() }
+//                scope.launch { uploadForm() }
             }
         }
     }
 
+    private fun uploadForm() {
+
+        var volunteers = mutableMapOf("one" to "test", "two" to "test2", "three" to "ssas")
+        binding?.apply {
+            val mission = MissionItem(
+                etFormDateEnd.text.toString(),
+                "Notes:bla bla",
+                etFormLocation.text.toString(),
+                viewModel.city.toString(),
+                "requirements: bla",
+                etFormActivity.text.toString(),
+                volunteers,
+                imagesLink,
+                etFormAmount.text.toString(),
+                viewModel.province.toString(),
+                "helpseeker.id",
+                category,
+                etFormDateStart.text.toString(),
+                timeStamp
+            )
+                viewModel.postMision(mission)
+                viewModel.isSuccess.observe(viewLifecycleOwner) {
+                    it.getContentIfNotHandled()?.let { success ->
+                        if (success) {
+                            showSuccessDialog(requireContext())
+                        }
+                    }
+                }
+                viewModel.error.observe(viewLifecycleOwner) {
+
+                    it.getContentIfNotHandled()?.let { message ->
+                        showMessage(message)
+                    }
+
+                }
+
+
+        }
+
+    }
+    private fun showMessage(message: String) {
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+    }
+
     private fun uploadImages() {
         for (i in 0 until imagesUri.size) {
-            if(i<3){
+            if (i < 3) {
                 scope.launch {
-                    uploadToFirebase(imagesUri[i], timeNow+"(${i+1})")
+                    uploadToFirebaseStorage(imagesUri[i], timeNow + "(${i + 1})")
                 }
             }
         }
     }
 
-    fun uploadToFirebase(imgUri: Uri?,filename:String?) {
+    private fun uploadToFirebaseStorage(imgUri: Uri?, filename: String?) {
         var link: String
         val ref = FirebaseStorage.getInstance().getReference("images/${filename}")
         val uploadTask = ref.putFile(imgUri!!)
@@ -357,7 +403,7 @@ class FormFragment : Fragment() {
             if (task.isSuccessful) {
                 link = task.result.toString()
                 imagesLink.add(link)
-                Log.v("Link","===>$link")
+                Log.v("Link", "===>$link")
                 Toast.makeText(activity, link, Toast.LENGTH_SHORT).show()
 
             } else {

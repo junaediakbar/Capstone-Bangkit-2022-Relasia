@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.c22ps099.relasiahelpseekerapp.R
-import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionsResponseItem
+import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionItem
+
 import com.c22ps099.relasiahelpseekerapp.databinding.ItemPostBinding
 
-class ListMissionsAdapter (var listMissionResponse: List<MissionsResponseItem>):
+class ListMissionsAdapter (var listMissionResponse: List<MissionItem>):
     RecyclerView.Adapter<ListMissionsAdapter.MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = ItemPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -27,10 +28,10 @@ class ListMissionsAdapter (var listMissionResponse: List<MissionsResponseItem>):
 
     class MyViewHolder(private var binding: ItemPostBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(mission: MissionsResponseItem) {
+        fun bind(mission: MissionItem) {
             binding.tvVolunteerName.text = mission.title
             Glide.with(binding.root)
-                .load(mission.featuredImage[0])
+                .load(mission.featuredImage?.get(0))
                 .apply(
                     RequestOptions.placeholderOf(R.drawable.ic_loading)
                         .error(R.drawable.ic_error)
@@ -40,7 +41,7 @@ class ListMissionsAdapter (var listMissionResponse: List<MissionsResponseItem>):
         }
     }
     interface OnItemClickCallback {
-        fun onItemClicked(mission: MissionsResponseItem)
+        fun onItemClicked(mission: MissionItem)
     }
 
     private lateinit var onItemClickCallback: OnItemClickCallback

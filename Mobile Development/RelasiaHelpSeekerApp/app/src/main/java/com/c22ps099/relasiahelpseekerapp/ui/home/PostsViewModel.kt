@@ -6,9 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.c22ps099.relasiahelpseekerapp.data.api.ApiConfig
+import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionItem
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.GeneralResponse
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionsResponse
-import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionsResponseItem
+
 import com.c22ps099.relasiahelpseekerapp.misc.Event
 import com.google.gson.Gson
 import retrofit2.Call
@@ -17,8 +18,8 @@ import retrofit2.Response
 
 
 class PostsViewModel(private val token: String): ViewModel(){
-    private val _missions = MutableLiveData<List<MissionsResponseItem>>()
-    val missions: LiveData<List<MissionsResponseItem>> = _missions
+    private val _missions = MutableLiveData<List<MissionItem>>()
+    val missions: LiveData<List<MissionItem>> = _missions
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -43,7 +44,7 @@ class PostsViewModel(private val token: String): ViewModel(){
                     _isLoading.value = false
 
                     if (response.isSuccessful) {
-                        _missions.value = response.body()?.missionsResponse
+                        _missions.value = response.body()?.data as List<MissionItem>?
                         Log.v("ini adalah mission:", "${_missions.value?.size}")
                     } else {
                         val errorMessage = Gson().fromJson(

@@ -1,18 +1,15 @@
 <resources>
     <string name="app_name">RelasiaHelpSeekerApp</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login">Login</string>
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
     <string name="login_btn">Login</string>
-    <string name="go_to_register_btn">Register Now</string>
     <string name="logging_in">loading...</string>
     <string name="register">Register</string>
     <string name="username_hint">Username</string>
     <string name="confirm_password_hint">Confirm Password</string>
     <string name="requirements">Requirements</string>
-    <string name="requirements_description">Input your requirements</string>
     <string name="submit">Submit</string>
     <string name="cancel">Cancel</string>
     <string name="name_hint">Nama</string>
@@ -25,13 +22,10 @@
     <string name="amount_hint">Amount of helper</string>
     <string name="date_start_hint">Start date</string>
     <string name="date_end_hint">Due to</string>
-    <string name="photo_hint">Photo</string>
     <string name="notes">Notes</string>
     <string name="mission">Missions</string>
-    <string name="account">Account</string>
     <string name="bookmarks">Bookmarks</string>
     <string name="useremail_hint">johndoe@gmail.com</string>
-    <string name="real_name">Fullname</string>
     <string name="birthdate_hint">Birthdate</string>
     <string name="address_hint">Address</string>
     <string name="phone_hint">Phone Number</string>
@@ -41,8 +35,6 @@
     <string name="mission_title">Semeru Eruption 2021</string>
     <string name="mission_date">24 Agustus 2021</string>
     <string name="mission_place">Lumajang, Jawa Timur</string>
-    <string name="mission_req">1. Berusia 18 tahun ke atas\n 2.Diutamakan laki-laki\n 3.Bersedia/berdomisili di Lumajang/sekitarnya</string>
-    <string name="mission_note">Diutamakan laki-laki</string>
     <string name="mission_cp">Contact Person</string>
     <string name="mission_photo">mission photo</string>
     <string name="volunteer_name">Agus Raharjo</string>
@@ -63,9 +55,6 @@
     <string name="post_name">Semeru Eruption 2021</string>
     <string name="post_date">21/5/2021-12/2/2022</string>
     <string name="auth">Bearer %1$s</string>
-    <string name="missions_content_description">mission by %1$s</string>
-    <string name="mission_image">%s</string>
-    <string name="mission_user">%s</string>
     <string name="upload_image_file">Image File</string>
     <string name="permission_denied">Access Denied</string>
     <string-array name="Genders">

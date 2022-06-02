@@ -51,7 +51,8 @@ class HomeFragment : Fragment() {
         val setLayoutManager = if (activity?.applicationContext
                 ?.resources?.configuration?.orientation == Configuration.ORIENTATION_PORTRAIT
         ) {
-            LinearLayoutManager(context)
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
         } else {
             GridLayoutManager(context, 2)
         }
@@ -63,32 +64,32 @@ class HomeFragment : Fragment() {
                 addItemDecoration(
                     DividerItemDecoration(
                         requireContext(),
-                        LinearLayoutManager.VERTICAL
+                        LinearLayoutManager.HORIZONTAL
                     )
                 )
             }
         }
 
-//        viewModel.apply {
-//            missions.observe(viewLifecycleOwner) {
-//                binding?.rvLatestPosts?.adapter = ListMissionsAdapter(it)
-//                Log.v("ukuran", "${it.size}")
-//            }
-//
-//            isLoading.observe(viewLifecycleOwner) {
-//                showLoading(it)
-//            }
-//
-//            error.observe(viewLifecycleOwner) {
-//
-//                it.getContentIfNotHandled()?.let { message ->
-//                    showMessage(message)
-//                    viewModel.getAllMissions()
-//                }
-//
-//            }
-//
-//        }
+        viewModel.apply {
+            missions.observe(viewLifecycleOwner) {
+                binding?.rvLatestPosts?.adapter = ListMissionsAdapter(it)
+                Log.v("ukuran", "${it.size}")
+            }
+
+            isLoading.observe(viewLifecycleOwner) {
+                showLoading(it)
+            }
+
+            error.observe(viewLifecycleOwner) {
+
+                it.getContentIfNotHandled()?.let { message ->
+                    showMessage(message)
+                    viewModel.getAllMissions()
+                }
+
+            }
+
+        }
     }
 
     private fun showLoading(isLoading: Boolean) {

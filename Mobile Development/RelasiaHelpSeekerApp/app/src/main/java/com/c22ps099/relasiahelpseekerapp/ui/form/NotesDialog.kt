@@ -24,9 +24,13 @@ class NotesDialog : BottomSheetDialogFragment() {
         return binding?.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        //TODO: Implement logic
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding?.apply {
+            btnPositive.setOnClickListener{
+
+            }
+        }
     }
     override fun getTheme(): Int {
         return R.style.AppBottomSheetDialogTheme
