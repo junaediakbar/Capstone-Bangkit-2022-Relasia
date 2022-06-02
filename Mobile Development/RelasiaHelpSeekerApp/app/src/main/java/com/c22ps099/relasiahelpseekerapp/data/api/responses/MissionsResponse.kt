@@ -10,15 +10,6 @@ data class MissionsResponse(
 	val missionsResponse: List<MissionsResponseItem>
 )
 
-data class Volunteers(
-
-	@field:SerializedName("volunteer_id")
-	val volunteerId: String,
-
-	@field:SerializedName("volunteer_id2")
-	val volunteerId2: String
-)
-
 @Parcelize
 data class MissionsResponseItem(
 
@@ -59,5 +50,9 @@ data class MissionsResponseItem(
 	val startDate: String,
 
 	@field:SerializedName("timestamp")
-	val timestamp: String
+	val timestamp: String,
+
+	@field:SerializedName("volunteers")
+	val volunteers: Map<String,String>
+	
 ): Parcelable

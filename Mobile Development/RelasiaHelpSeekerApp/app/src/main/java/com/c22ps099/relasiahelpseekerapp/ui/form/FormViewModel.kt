@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.c22ps099.relasiahelpseekerapp.ui.home.PostsViewModel
-import com.c22ps099.relasiahelpseekerapp.utils.itemsKab
+import com.c22ps099.relasiahelpseekerapp.misc.itemsKab
+import com.c22ps099.relasiahelpseekerapp.misc.timeStamp
 
 class FormViewModel(private val token: String) : ViewModel() {
     private val _province = MutableLiveData<String>()
@@ -13,6 +13,14 @@ class FormViewModel(private val token: String) : ViewModel() {
 
     private val _cities = MutableLiveData<Array<String>>()
     val cities: LiveData<Array<String>> = _cities
+
+    private val _time =  MutableLiveData<String>()
+    val time: LiveData<String> = _time
+
+    init {
+        _time.value = timeStamp
+    }
+
 
     fun updateProvince(prov: String){
         _province.value=prov

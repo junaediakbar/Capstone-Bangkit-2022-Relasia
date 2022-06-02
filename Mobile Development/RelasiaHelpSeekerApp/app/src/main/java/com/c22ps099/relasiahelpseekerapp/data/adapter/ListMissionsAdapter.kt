@@ -1,54 +1,51 @@
 package com.c22ps099.relasiahelpseekerapp.data.adapter
 
-import android.graphics.drawable.Drawable
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.Target
+import com.bumptech.glide.request.RequestOptions
 import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionsResponseItem
 import com.c22ps099.relasiahelpseekerapp.databinding.ItemPostBinding
-import com.c22ps099.relasiahelpseekerapp.ui.home.HomeFragmentDirections
 
-class ListMissionsAdapter(private val listUser:ArrayList<MissionsResponseItem>) : RecyclerView.Adapter<ListMissionsAdapter.ListViewHolder>() {
+class ListMissionsAdapter (var listMissionResponse: List<MissionsResponseItem>):
+    RecyclerView.Adapter<ListMissionsAdapter.MyViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val itemView = ItemPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MyViewHolder(itemView)
+    }
 
-    inner class ListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        private val binding = ItemPostBinding.bind(itemView)
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        holder.bind(listMissionResponse[position])
+        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listMissionResponse[position]) }
 
-        fun bind(mission: MissionsResponseItem){
-            Glide.with(itemView.context)
+    }
+
+
+    override fun getItemCount() = listMissionResponse.size
+
+    class MyViewHolder(private var binding: ItemPostBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(mission: MissionsResponseItem) {
+            binding.tvVolunteerName.text = mission.title
+            Glide.with(binding.root)
                 .load(mission.featuredImage[0])
+                .apply(
+                    RequestOptions.placeholderOf(R.drawable.ic_loading)
+                        .error(R.drawable.ic_error)
+                )
                 .into(binding.ivMissionPhoto)
-            binding.tvVolunteerName.text = StringBuilder("@").append(mission.title)
-            binding.tvVolunteerPlace.text = mission.city
 
-            Log.v("photoUrl","ini urlnya ${mission.featuredImage[0]}")
-//            binding.btnInformation.setOnClickListener {
-//                val intent = Intent(itemView.context, UserDetails::class.java)
-//                intent.putExtra(UserDetails.USER, user)
-//                itemView.context.startActivity(intent)
-//            }
         }
     }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListMissionsAdapter.ListViewHolder {
-        val view:View = LayoutInflater.from(parent.context).inflate(R.layout.item_post, parent, false)
-        return ListViewHolder(view)
+    interface OnItemClickCallback {
+        fun onItemClicked(mission: MissionsResponseItem)
     }
 
-    override fun onBindViewHolder(holder: ListMissionsAdapter.ListViewHolder, position: Int) {
-        holder.bind(listUser[position])
+    private lateinit var onItemClickCallback: OnItemClickCallback
 
-    }
-
-    override fun getItemCount(): Int {
-        return listUser.size
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
     }
 }

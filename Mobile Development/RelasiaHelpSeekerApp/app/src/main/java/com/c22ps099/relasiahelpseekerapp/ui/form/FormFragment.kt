@@ -1,22 +1,37 @@
 package com.c22ps099.relasiahelpseekerapp.ui.form
 
+import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity.RESULT_OK
 import android.app.DatePickerDialog
-import android.app.Dialog
+import android.content.Context
+import android.content.Intent
+import android.content.Intent.ACTION_GET_CONTENT
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
-import android.view.*
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.MotionEvent
+import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentFormBinding
-import com.c22ps099.relasiahelpseekerapp.ui.home.PostsViewModel
-import com.c22ps099.relasiahelpseekerapp.utils.itemsKab
-import com.c22ps099.relasiahelpseekerapp.utils.itemsProv
+import com.c22ps099.relasiahelpseekerapp.misc.*
+import com.google.firebase.FirebaseApp
+import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.*
 import java.util.*
+
 
 class FormFragment : Fragment() {
 
@@ -26,28 +41,59 @@ class FormFragment : Fragment() {
 
     private var token: String? = ""
 
+    private var timeNow: String?=""
+
+
+    private var imagesUri = mutableListOf<Uri>()
+    private var imagesLink = mutableListOf<String?>()
+
+    val scope = CoroutineScope(Job() + Dispatchers.Main)
     private var binding: FragmentFormBinding? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentFormBinding.inflate(inflater, container, false)
+        FirebaseApp.initializeApp(requireContext())
 
         return binding?.root
-
     }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (!allPermissionGranted()) {
+            launcherPermissionRequest.launch(REQUIRED_PERMISSIONS)
+        }
+
         setStringInput()
-        setImageInput()
         setDateInput()
         setChipButton()
         setDropDown()
+        setUploadButton()
+        setSubmitButton()
+
     }
 
-    @SuppressLint("ClickableViewAccessibility")
+    private val launcherPermissionRequest = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) {
+        if (!allPermissionGranted()) {
+            binding?.root?.let {
+                showSnackbar(it, getString(R.string.permission_denied))
+            }
+
+            findNavController().navigateUp()
+        }
+    }
+    private fun allPermissionGranted() = REQUIRED_PERMISSIONS.all {
+        ContextCompat.checkSelfPermission(
+            activity?.baseContext as Context,
+            it
+        ) == PackageManager.PERMISSION_GRANTED
+    }
+
+    @SuppressLint("ClickableViewAccessibility", "SetTextI18n")
     private fun setDateInput() {
         binding?.apply {
             etFormDateEnd.showSoftInputOnFocus = false
@@ -84,7 +130,14 @@ class FormFragment : Fragment() {
                         val datePickerDialog = DatePickerDialog(
                             requireContext(),
                             { _, myear, mmonth, mdayOfMonth ->
-                                etFormDateStart.setText("$mdayOfMonth/$mmonth/$myear")
+                                val dd = if(mdayOfMonth>10){
+                                     mdayOfMonth
+                                }else  "0$mdayOfMonth"
+                                val mm = if(mmonth>10){
+                                    mdayOfMonth
+                                }else  "0$mmonth"
+
+                                etFormDateStart.setText("$dd/$mm/$myear")
                             }, year, month, day
                         )
                         datePickerDialog.show()
@@ -96,24 +149,10 @@ class FormFragment : Fragment() {
         }
     }
 
-    @SuppressLint("ClickableViewAccessibility")
-    private fun setImageInput() {
-        binding?.apply {
-            etFormPhoto.setOnTouchListener { v, event ->
-                when (event?.action) {
-                    MotionEvent.ACTION_DOWN -> {
-
-                    }
-                }
-                v?.onTouchEvent(event) ?: true
-            }
-        }
-    }
 
     @SuppressLint("ClickableViewAccessibility")
     private fun setStringInput() {
         binding?.apply {
-
             etFormLocation.showSoftInputOnFocus = false
             etFormLocation.setOnTouchListener { v, event ->
                 when (event?.action) {
@@ -137,12 +176,7 @@ class FormFragment : Fragment() {
                 }
             }
 
-            btnSubmit.setOnClickListener {
-                val dialog = Dialog(requireContext())
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-                dialog.setContentView(R.layout.dialog_form_success)
-                dialog.show()
-            }
+
         }
         val location = FormFragmentArgs.fromBundle(arguments as Bundle).location
         binding?.apply {
@@ -237,9 +271,116 @@ class FormFragment : Fragment() {
         }
     }
 
+
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun setUploadButton(){
+        binding?.apply {
+            btnUploadImage.setOnClickListener{
+                startGallery()
+            }
+        }
+    }
+
+    private fun startGallery() {
+        val intent = Intent()
+        intent.action = ACTION_GET_CONTENT
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
+        intent.type = "image/*"
+        val chooser = Intent.createChooser(intent, "Choose a Picture")
+        launcherIntentGallery.launch(chooser)
+    }
+
+    @SuppressLint("SetTextI18n")
+    private val launcherIntentGallery = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            if(result.data?.clipData != null){
+                val count = result.data!!.clipData!!.itemCount
+
+                for (i in 0 until count) {
+                    val imageUri: Uri =  result.data!!.clipData!!.getItemAt(i).uri
+
+                    imagesUri.add(imageUri)
+                    binding?.apply {
+                        btnUploadImage.visibility= visibility(false)
+                        tvUploadImages.apply {
+                            if(count>3){
+                                text = "3 file/s attached"
+                            }else{
+                                text = "$count file/s attached"
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setSubmitButton(){
+        viewModel.time.observe(viewLifecycleOwner){
+            timeNow = it
+        }
+
+        binding?.apply {
+            btnSubmit.setOnClickListener {
+                uploadImages()
+            }
+        }
+    }
+
+    private fun uploadImages() {
+        for (i in 0 until imagesUri.size) {
+            if(i<3){
+                scope.launch {
+                    uploadToFirebase(imagesUri[i], timeNow+"(${i+1})")
+                }
+            }
+        }
+    }
+
+    fun uploadToFirebase(imgUri: Uri?,filename:String?) {
+        var link: String
+        val ref = FirebaseStorage.getInstance().getReference("images/${filename}")
+        val uploadTask = ref.putFile(imgUri!!)
+
+        uploadTask.continueWithTask { task ->
+            if (!task.isSuccessful) {
+                task.exception?.let {
+                    throw it
+                }
+            }
+            ref.downloadUrl
+        }.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                link = task.result.toString()
+                imagesLink.add(link)
+                Log.v("Link","===>$link")
+                Toast.makeText(activity, link, Toast.LENGTH_SHORT).show()
+
+            } else {
+                Toast.makeText(activity, "Error when upload files", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        scope.cancel()
+    }
+
     companion object {
+        private val REQUIRED_PERMISSIONS = mutableListOf(
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ).apply {
+            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+                add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            }
+        }.toTypedArray()
         const val EXTRA_LOC = "extra_location"
         const val EXTRA_TOKEN = "extra_token"
     }
-
 }

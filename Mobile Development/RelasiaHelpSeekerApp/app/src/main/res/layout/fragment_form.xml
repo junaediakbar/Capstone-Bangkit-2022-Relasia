@@ -148,63 +148,15 @@
             app:layout_constraintTop_toBottomOf="@+id/et_form_date_start"
             tools:ignore="TextContrastCheck,TextContrastCheck" />
 
-        <com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
-            android:id="@+id/et_form_photo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:drawableStart="@drawable/ic_baseline_insert_photo_24"
-            android:drawablePadding="4dp"
-            android:hint="@string/photo_hint"
-            android:minHeight="48dp"
-            android:transitionName="email_input"
-            app:layout_constraintEnd_toEndOf="@+id/et_form_activity"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/et_form_activity"
-            app:layout_constraintTop_toBottomOf="@+id/et_form_date_end"
-            tools:ignore="TextContrastCheck,TextContrastCheck,DuplicateSpeakableTextCheck,DuplicateSpeakableTextCheck" />
-
-        <com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
-            android:id="@+id/et_form_photo2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:drawableStart="@drawable/ic_baseline_insert_photo_24"
-            android:drawablePadding="4dp"
-            android:hint="@string/photo_hint"
-            android:minHeight="48dp"
-            android:transitionName="email_input"
-            app:layout_constraintEnd_toEndOf="@+id/et_form_activity"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/et_form_activity"
-            app:layout_constraintTop_toBottomOf="@+id/et_form_photo"
-            tools:ignore="TextContrastCheck,TextContrastCheck" />
-
-        <com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
-            android:id="@+id/et_form_photo3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:drawableStart="@drawable/ic_baseline_insert_photo_24"
-            android:drawablePadding="4dp"
-            android:hint="@string/photo_hint"
-            android:minHeight="48dp"
-            android:transitionName="email_input"
-            app:layout_constraintEnd_toEndOf="@+id/et_form_activity"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/et_form_activity"
-            app:layout_constraintTop_toBottomOf="@+id/et_form_photo2"
-            tools:ignore="TextContrastCheck,TextContrastCheck" />
-
         <Spinner
             android:id="@+id/sp_categories"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="@+id/et_form_photo3"
-            app:layout_constraintStart_toStartOf="@+id/et_form_photo3"
-            app:layout_constraintTop_toBottomOf="@+id/et_form_photo3"
+            app:layout_constraintEnd_toEndOf="@+id/et_form_date_end"
+            app:layout_constraintStart_toStartOf="@+id/et_form_date_end"
+            app:layout_constraintTop_toBottomOf="@+id/btn_upload_image"
             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
         <Button
@@ -220,9 +172,8 @@
             android:textSize="16sp"
             android:transitionName="action_btn"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/et_form_photo3"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/et_form_photo3"
+            app:layout_constraintEnd_toEndOf="@+id/sp_categories"
+            app:layout_constraintStart_toStartOf="@+id/sp_categories"
             app:layout_constraintTop_toBottomOf="@+id/btn_persyaratan"
             app:layout_constraintVertical_bias="0.0"
             tools:ignore="TextContrastCheck,TextContrastCheck" />
@@ -244,7 +195,7 @@
             android:textAllCaps="false"
             android:textColor="@color/blue_munshell"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/et_form_photo2"
+            app:layout_constraintStart_toStartOf="@+id/sp_categories"
             app:layout_constraintTop_toBottomOf="@+id/sp_categories"
             tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TextContrastCheck,TextContrastCheck"
             tools:targetApi="m" />
@@ -270,6 +221,33 @@
             app:layout_constraintTop_toBottomOf="@+id/sp_categories"
             tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TextContrastCheck,TextContrastCheck"
             tools:targetApi="m" />
+
+        <Button
+            android:id="@+id/btn_upload_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:drawableStart="@drawable/ic_baseline_insert_photo_24"
+            android:drawableLeft="@drawable/ic_baseline_insert_photo_24"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:text="@string/upload_image_file"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/et_form_date_end"
+            app:layout_constraintTop_toBottomOf="@+id/et_form_date_end" />
+
+        <TextView
+            android:id="@+id/tv_upload_images"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Choose max. 3 images"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_upload_image"
+            app:layout_constraintEnd_toEndOf="@+id/et_form_date_end"
+            app:layout_constraintStart_toEndOf="@+id/btn_upload_image"
+            app:layout_constraintTop_toTopOf="@+id/btn_upload_image" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

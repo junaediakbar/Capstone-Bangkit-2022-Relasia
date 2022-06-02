@@ -1,5 +1,6 @@
 package com.c22ps099.relasiahelpseekerapp.ui.home
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,9 +9,8 @@ import com.c22ps099.relasiahelpseekerapp.data.api.ApiConfig
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.GeneralResponse
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionsResponse
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionsResponseItem
-import com.c22ps099.relasiahelpseekerapp.utils.Event
+import com.c22ps099.relasiahelpseekerapp.misc.Event
 import com.google.gson.Gson
-import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,7 +30,7 @@ class PostsViewModel(private val token: String): ViewModel(){
         getAllMissions()
     }
 
-    private fun getAllMissions() {
+    fun getAllMissions() {
         _isLoading.value = true
 
 
@@ -44,12 +44,14 @@ class PostsViewModel(private val token: String): ViewModel(){
 
                     if (response.isSuccessful) {
                         _missions.value = response.body()?.missionsResponse
+                        Log.v("ini adalah mission:", "${_missions.value?.size}")
                     } else {
                         val errorMessage = Gson().fromJson(
                             response.errorBody()?.charStream(),
                             GeneralResponse::class.java
                         )
                         _error.value = Event(errorMessage.message)
+                        Log.e("err","${_error.value}")
                     }
                 }
 

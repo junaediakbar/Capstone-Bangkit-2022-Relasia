@@ -1,4 +1,4 @@
-package com.c22ps099.relasiahelpseekerapp.utils
+package com.c22ps099.relasiahelpseekerapp.misc
 
 val itemsProv: Array<String> =
     arrayOf(

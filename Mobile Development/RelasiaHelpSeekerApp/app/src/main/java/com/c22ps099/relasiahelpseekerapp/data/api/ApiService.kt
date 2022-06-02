@@ -21,7 +21,6 @@ interface ApiService {
     ): Call<GeneralResponse>
 
 
-    @Headers("Content-Type: application/json")
     @GET("mission")
     fun getAllMissions(
     ): Call<MissionsResponse>

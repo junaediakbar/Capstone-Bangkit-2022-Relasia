@@ -2,24 +2,20 @@ package com.c22ps099.relasiahelpseekerapp.ui.home
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.data.adapter.ListMissionsAdapter
-import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionsResponseItem
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentHomeBinding
-import com.c22ps099.relasiahelpseekerapp.databinding.ItemPostBinding
-import com.c22ps099.relasiahelpseekerapp.utils.visibility
 
 class HomeFragment : Fragment() {
 
@@ -43,27 +39,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val layoutManager = if (activity?.applicationContext
-//                ?.resources?.configuration?.orientation == Configuration.ORIENTATION_PORTRAIT
-//        ) {
-//            LinearLayoutManager(requireContext())
-//        } else {
-//            GridLayoutManager(requireContext(), 2)
-//        }
-
-        viewModel.apply {
-            missions.observe(viewLifecycleOwner) {
-                val listMissionsAdapter = ListMissionsAdapter(ArrayList(it))
-                binding?.apply {
-                    rvLatestPosts.apply {
-                        adapter = listMissionsAdapter
-                        layoutManager = LinearLayoutManager(context)
-                        setHasFixedSize(true)
-                    }
-                }
-            }
-        }
-
         binding?.apply {
             btnAskHelp.setOnClickListener {
                 val navigateAction = HomeFragmentDirections
@@ -72,6 +47,56 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(navigateAction)
             }
         }
+
+        val setLayoutManager = if (activity?.applicationContext
+                ?.resources?.configuration?.orientation == Configuration.ORIENTATION_PORTRAIT
+        ) {
+            LinearLayoutManager(context)
+        } else {
+            GridLayoutManager(context, 2)
+        }
+
+        binding?.apply {
+            rvLatestPosts.apply {
+                setHasFixedSize(true)
+                layoutManager = setLayoutManager
+                addItemDecoration(
+                    DividerItemDecoration(
+                        requireContext(),
+                        LinearLayoutManager.VERTICAL
+                    )
+                )
+            }
+        }
+
+//        viewModel.apply {
+//            missions.observe(viewLifecycleOwner) {
+//                binding?.rvLatestPosts?.adapter = ListMissionsAdapter(it)
+//                Log.v("ukuran", "${it.size}")
+//            }
+//
+//            isLoading.observe(viewLifecycleOwner) {
+//                showLoading(it)
+//            }
+//
+//            error.observe(viewLifecycleOwner) {
+//
+//                it.getContentIfNotHandled()?.let { message ->
+//                    showMessage(message)
+//                    viewModel.getAllMissions()
+//                }
+//
+//            }
+//
+//        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding?.progressBar?.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    private fun showMessage(message: String) {
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 
 }

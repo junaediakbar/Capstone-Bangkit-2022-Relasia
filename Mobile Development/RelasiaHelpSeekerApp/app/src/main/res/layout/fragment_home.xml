@@ -8,8 +8,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_latest_posts"
-        android:layout_width="250dp"
-        android:layout_height="400dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="false"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@+id/rv_nearest_instantion"
@@ -123,4 +123,14 @@
         app:layout_constraintStart_toStartOf="@+id/tv_sec_post"
         app:layout_constraintTop_toBottomOf="@+id/tv_sec_post2"
         tools:listitem="@layout/item_post" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
