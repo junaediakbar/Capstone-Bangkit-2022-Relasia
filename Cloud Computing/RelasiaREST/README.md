@@ -13,16 +13,13 @@ Relasia REST-API: App to Database
 
 - ### Helpseeker
 
-  - **Get Helpseeker**
+  URL Route:
+    `http://127.0.0.1:5000/helpseeker/`
+  or
+    `https://relasia-api.herokuapp.com/helpseeker/`
 
-    Method: **GET**
-
-    URL Route: `/helpseeker/`
-
-    Example:
-
-    `http://127.0.0.1:5000/helpseeker/` or `https://relasia-api.herokuapp.com/helpseeker/`
-
+  - **[GET]** *Get Helpseeker*
+    
     Request:
 
     ```
@@ -38,131 +35,76 @@ Relasia REST-API: App to Database
         "id": "kijang.satu",
         "name": "Helpseeker Name",
         "city": "Helpseeker City",
-        "phone": "0821123456789",
-        "mission": [
-            {
-                "id" : "Mission Pertama",
-                "helpseeker" : "kijang.satu",
-                "title" : "Mission Title",
-                "requirement" : "Mission Requirement",
-                "note" : "Mission Note",
-                "category" : "Mission Category",
-                "address" : "Mission Address",
-                "city" : "Mission City",
-                "province" : "Mission Province",
-                "start_date" : "01/01/2022",
-                "end_date" : "02/02/2022",
-                "featured_image" : [
-                    "link image 1",
-                    "link image 2"
-                ],
-                "number_of_needs" : "5",
-                "volunteers" : [
-                    {
-                        "id" : "volunteer.pertama",
-                        "status" : "pending"
-                    },
-                    {
-                        "id" : "volunteer.kedua",
-                        "status" : "pending"
-                    },
-                ],
-            },
-            {
-                "id" : "Mission Kedua",
-                "helpseeker" : "kijang.satu",
-                "title" : "Mission Title",
-                "requirement" : "Mission Requirement",
-                "note" : "Mission Note",
-                "category" : "Mission Category",
-                "address" : "Mission Address",
-                "city" : "Mission City",
-                "province" : "Mission Province",
-                "start_date" : "01/01/2022",
-                "end_date" : "02/02/2022",
-                "featured_image" : [
-                    "link image 1",
-                    "link image 2"
-                ],
-                "number_of_needs" : "5",
-                "volunteers" : [
-                    {
-                        "id" : "volunteer.pertama",
-                        "status" : "pending"
-                    },
-                    {
-                        "id" : "volunteer.kedua",
-                        "status" : "pending"
-                    },
-                ],
-            }
-        ]
+        "phone": "0821123456789"
     }
     ```
 
-  - **Add New Helpseeker**
+  - **[POST]** *Add New Helpseeker*
 
-    Method: **POST**
-
-    URL Route: `/helpseeker/`
-
-    Example:
-
-    `http://127.0.0.1:5000/helpseeker/` or `https://relasia-api.herokuapp.com/helpseeker/`
-
-    Example data that **required** & in the form of a **JSON Body**:
+    Request:
 
     ```
     {
         "id": "helpseeker.id",
-        "data": {
+        "name": "Helpseeker Name",
+        "city": "Helpseeker City",
+        "phone": "082123456789"
+    }
+    ```
+    
+    Response:
+    ```
+    {
+        "message" : "Successfully Created",
+        "data" : {
+            "id": "helpseeker.id",
             "name": "Helpseeker Name",
             "city": "Helpseeker City",
-            "missions": []
+            "phone": "082123456789"
         }
     }
     ```
 
-  - **Edit Helpseeker Data**
-
-    Method: **PUT**
-
-    URL Route: `/helpseeker/`
-
-    Example:
-
-    `http://127.0.0.1:5000/helpseeker/`
-
-    or
-
-    `[https://relasia-api.herokuapp.com/helpseeker/`
-
-    Example data that **required** & in the form of a **JSON Body**:
-
+  - **[PUT]** *Edit Helpseeker*
+    
+    Request:
+    
     ```
     {
         "id": "helpseeker.id",
-        "data": {
-            Field of data that will be changed
+        "name": "Helpseeker Name", (optional)
+        "city": "Helpseeker City", (optional)
+        "phone": "082123456789" (optional)
+    }
+    ```
+    
+    Response:
+    ```
+    {
+        "message" : "Successfully Created",
+        "data" : {
+            "id": "helpseeker.id",
+            "name": "Helpseeker Name",
+            "city": "Helpseeker City",
+            "phone": "0821123456789"
         }
     }
     ```
 
-  - **Delete Helpseeker Data**
+  - **[DELETE]** *Delete Helpseeker**
 
-    Method: **DELETE**
-
-    URL Route: `/helpseeker/`
-
-    Example:
-
-    `http://127.0.0.1:5000/helpseeker/` or `[https://relasia-api.herokuapp.com/helpseeker/`
-
-    Example data that **required** & in the form of a **JSON Body**:
-
+    Request:
+    
     ```
     {
         "id": "helpseeker.id"
+    }
+    ```
+    
+    Response:
+    ```
+    {
+        "message" : "Successfully Deleted"
     }
     ```
 
