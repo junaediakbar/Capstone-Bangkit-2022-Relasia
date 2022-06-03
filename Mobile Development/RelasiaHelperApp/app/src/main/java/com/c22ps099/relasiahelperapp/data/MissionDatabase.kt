@@ -4,13 +4,17 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
+import com.c22ps099.relasiahelperapp.utils.ImageTypeConverters
+
 
 @Database(
     entities = [MissionDataItem::class, RemoteKeys::class],
     version = 1,
     exportSchema = false
 )
+@TypeConverters(ImageTypeConverters::class)
 abstract class MissionDatabase : RoomDatabase() {
     abstract fun missionDao(): MissionDao
     abstract fun remoteKeysDao(): RemoteKeysDao

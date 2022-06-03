@@ -35,15 +35,14 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProvider(
-                this, MissionFactory(
-                    MissionRepository(
-                        MissionDatabase.getDatabase(requireContext()),
-                        ApiConfig.getApiService()
-                    )
+        homeViewModel = ViewModelProvider(
+            this, MissionFactory(
+                MissionRepository(
+                    MissionDatabase.getDatabase(requireContext()),
+                    ApiConfig.getApiService()
                 )
-            )[HomeViewModel::class.java]
+            )
+        )[HomeViewModel::class.java]
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding?.root
     }
@@ -104,6 +103,10 @@ class HomeFragment : Fragment() {
                     adapter.retry()
                 }
             )
+
+            homeViewModel.missions.observe(viewLifecycleOwner) {
+                adapter.submitData(lifecycle, it)
+            }
         }
     }
 }

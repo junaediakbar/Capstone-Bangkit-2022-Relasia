@@ -48,10 +48,11 @@ class BaseActivity : AppCompatActivity() {
         binding?.navView?.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.loginFragment || destination.id == R.id.registerFragment) {
-                binding?.navView?.visibility = View.GONE
-            } else {
-                binding?.navView?.visibility = View.VISIBLE
+            when (destination.id) {
+                R.id.loginFragment -> binding?.navView?.visibility = View.GONE
+                R.id.registerFragment -> binding?.navView?.visibility = View.GONE
+                R.id.missionDetailFragment -> binding?.navView?.visibility = View.GONE
+                else -> binding?.navView?.visibility = View.VISIBLE
             }
         }
     }

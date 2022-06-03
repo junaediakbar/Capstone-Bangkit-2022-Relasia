@@ -1,13 +1,10 @@
 package com.c22ps099.relasiahelperapp.adapter
 
-import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.app.ActivityOptionsCompat
-import androidx.core.util.Pair
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -16,9 +13,11 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.c22ps099.relasiahelperapp.R
 import com.c22ps099.relasiahelperapp.databinding.ItemMissionBinding
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 import com.c22ps099.relasiahelperapp.ui.missionDetail.MissionDetailFragment
+
 
 class MissionListAdapter :
     PagingDataAdapter<MissionDataItem, MissionListAdapter.MissionHolder>(DIFF_CALLBACK) {
@@ -59,47 +58,40 @@ class MissionListAdapter :
             binding.apply {
                 tvMissionTitle.text = data.title
                 tvMissionCity.text = data.city
-                tvMissionCity.text = tvMissionCity.text.toString() + data.province
+                tvMissionCity.text = tvMissionCity.text.toString() + ", " + data.province
                 tvMissionDate.text = data.startDate
-                tvMissionDate.text = tvMissionDate.text.toString() + data.endDate
+                tvMissionDate.text = tvMissionDate.text.toString() + " - " + data.endDate
                 tvApplicant.text = data.numberOfNeeds
             }
-//            val url = data.photoUrl
-//            Glide.with(binding.imgStoryUser.context)
-//                .load(url)
-//                .listener(object : RequestListener<Drawable> {
-//                    override fun onLoadFailed(
-//                        e: GlideException?,
-//                        model: Any?,
-//                        target: Target<Drawable>?,
-//                        isFirstResource: Boolean
-//                    ): Boolean {
-//                        return false
-//                    }
-//
-//                    override fun onResourceReady(
-//                        resource: Drawable?,
-//                        model: Any?,
-//                        target: Target<Drawable>?,
-//                        dataSource: DataSource?,
-//                        isFirstResource: Boolean
-//                    ): Boolean {
-//                        return false
-//                    }
-//                })
-//                .into(binding.imgStoryUser)
+            val url = data.featuredImage[0]
+            Glide.with(binding.ivMissionPhoto.context)
+                .load(url)
+                .listener(object : RequestListener<Drawable> {
+                    override fun onLoadFailed(
+                        e: GlideException?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        return false
+                    }
 
-//                itemView.setOnClickListener {
-//                    val optionsCompat: ActivityOptionsCompat =
-//                        ActivityOptionsCompat.makeSceneTransitionAnimation(
-//                            itemView.context as Activity,
-//                            Pair(binding.imgStoryUser, "profile"),
-//                            Pair(binding.tvStoryUser, "name"),
-//                        )
-//                    val intent = Intent(itemView.context, MissionDetailFragment::class.java)
-//                    intent.putExtra(MissionDetailFragment.EXTRA_MISSION, data)
-//                    itemView.context.startActivity(intent, optionsCompat.toBundle())
-//                }
+                    override fun onResourceReady(
+                        resource: Drawable?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        dataSource: DataSource?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        return false
+                    }
+                })
+                .into(binding.ivMissionPhoto)
+
+            binding.btnDetails.setOnClickListener {
+                val bundle = bundleOf(MissionDetailFragment.EXTRA_MISSION to data)
+                itemView.findNavController().navigate(R.id.missionDetailFragment, bundle)
+            }
         }
     }
 }

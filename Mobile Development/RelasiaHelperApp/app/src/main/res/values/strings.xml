@@ -28,4 +28,5 @@
     <string name="loading_data">Loading...</string>
     <string name="error">Terdapat Kesalahan. Mohon coba lagi nanti</string>
     <string name="refresh">Refresh</string>
+    <string name="title_mission_detail">Mission Detail</string>
 </resources>

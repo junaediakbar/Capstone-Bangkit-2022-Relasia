@@ -7,11 +7,12 @@
     tools:context=".ui.main.BaseActivity">
 
     <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="8dp"
+        android:background="@drawable/bottom_nav_shadow"
         android:translationZ="90dp"
-        app:layout_constraintBottom_toTopOf="@+id/nav_view"
-        android:background="@drawable/bottom_nav_shadow"/>
+        app:layout_constraintBottom_toTopOf="@+id/nav_view" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"

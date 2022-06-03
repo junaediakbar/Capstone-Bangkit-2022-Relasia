@@ -45,11 +45,8 @@ data class MissionDataItem(
 	@field:SerializedName("title")
 	val title: String,
 
-//	@field:SerializedName("volunteers")
-//	val volunteers: Volunteers,
-
-//	@field:SerializedName("featured_image")
-//	val featuredImage: List<String>,
+	@field:SerializedName("featured_image")
+	val featuredImage: List<String>,
 
 	@field:SerializedName("number_of_needs")
 	val numberOfNeeds: String,

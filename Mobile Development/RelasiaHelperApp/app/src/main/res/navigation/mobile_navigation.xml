@@ -104,4 +104,20 @@
             app:popUpToInclusive="true" />
     </fragment>
 
+    <fragment
+        android:id="@+id/missionDetailFragment"
+        android:name="com.c22ps099.relasiahelperapp.ui.missionDetail.MissionDetailFragment"
+        android:label="@string/title_mission_detail"
+        tools:layout="@layout/fragment_mission_detail">
+        <argument
+            android:name="token"
+            android:defaultValue=""
+            app:argType="string" />
+        <action
+            android:id="@+id/action_missionDetailFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
 </navigation>

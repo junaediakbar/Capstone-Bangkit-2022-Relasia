@@ -10,7 +10,7 @@ import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 @Dao
 interface MissionDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMission(stories: List<MissionDataItem>)
+    suspend fun insertMission(missions: List<MissionDataItem>)
 
     @Query("SELECT * FROM mission")
     fun getAllMission(): PagingSource<Int, MissionDataItem>

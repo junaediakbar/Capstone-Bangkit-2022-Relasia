@@ -72,15 +72,15 @@ class MissionRemoteMediator(
     private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, MissionDataItem>) =
         state.pages.lastOrNull {
             it.data.isNotEmpty()
-        }?.data?.lastOrNull()?.let { story ->
-            database.remoteKeysDao().getRemoteKeysId(story.id)
+        }?.data?.lastOrNull()?.let { mission ->
+            database.remoteKeysDao().getRemoteKeysId(mission.id)
         }
 
     private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, MissionDataItem>) =
         state.pages.firstOrNull {
             it.data.isNotEmpty()
-        }?.data?.firstOrNull()?.let { story ->
-            database.remoteKeysDao().getRemoteKeysId(story.id)
+        }?.data?.firstOrNull()?.let { mission ->
+            database.remoteKeysDao().getRemoteKeysId(mission.id)
         }
 
     private suspend fun getRemoteKeyClosestToCurrentPosition(state: PagingState<Int, MissionDataItem>) =

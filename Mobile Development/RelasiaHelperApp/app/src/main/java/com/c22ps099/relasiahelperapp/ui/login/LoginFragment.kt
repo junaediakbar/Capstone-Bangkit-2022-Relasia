@@ -33,7 +33,7 @@ class LoginFragment : Fragment() {
     companion object {
         private const val TAG = "LoginFragment"
         private const val WEB_CLIENT_ID =
-            "843306914477-0t4jf8sh7t51707a7j8ae3b5h2foffbn.apps.googleusercontent.com"
+            "269202247329-u5ad2hpor327e69ku1fjbjklksffdm50.apps.googleusercontent.com"
     }
 
     private lateinit var loginViewModel: LoginViewModel
