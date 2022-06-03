@@ -20,12 +20,12 @@ Relasia REST-API: App to Database
 
   - **[GET]** *Get Helpseeker*
     
+    Additional Route: `<string:id>`
+    
     Request:
 
     ```
-    {
-        "id": "kijang.satu"
-    }
+    (Null)
     ```
 
     Response:
@@ -120,12 +120,12 @@ Relasia REST-API: App to Database
 
   - **[GET]** *Get Volunteer*
   
+    Additional Route: `<string:id>`
+    
     Request:
 
     ```
-    {
-        "id": "volunteer.id"
-    }
+    (Null)
     ```
 
     Response:
@@ -281,12 +281,12 @@ Relasia REST-API: App to Database
 
   - **[GET]** *Get Foundation*
   
+    Additional Route: `<string:id>`
+    
     Request:
 
     ```
-    {
-        "id": "foundation.id"
-    }
+    (Null)
     ```
 
     Response:
@@ -424,6 +424,20 @@ Relasia REST-API: App to Database
     Default page: 1
     Default data on page: 5
     
+    Request:
+    ```
+    {
+        "page": "1",
+        "data_on_page": "5",
+        "volunteer": "volunteer.id",
+        "helpseeker": "helpseeker.id",
+        "city": "mission city",
+        "province": "mission province",
+        "status": "pending" | "accepted" | "rejected",
+        "active": "active" | "inactive",
+    }
+    ```
+    
     Response:
 
     ```
@@ -431,12 +445,6 @@ Relasia REST-API: App to Database
         "page": "1",
         "data_on_page": "5",
         "length": "10",
-        "volunteer": "volunteer.id",
-        "helpseeker": "helpseeker.id",
-        "city": "City",
-        "province": "Province",
-        "status": "Status Volunteer"
-        "active": "Active/Inactive"
         "data": [
             {
                 "id": "Mission Helpseeker ID",
@@ -499,14 +507,12 @@ Relasia REST-API: App to Database
 
   - **[GET]** *Get Spesific Missions*
     
-    Additional Route: `/`
-
-    Request:
+    Additional Route: `<string:id>`
     
+    Request:
+
     ```
-    {
-        "id": "mission.id"
-    }
+    (Null)
     ```
     
     Response:
