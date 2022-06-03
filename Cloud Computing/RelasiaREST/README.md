@@ -81,7 +81,7 @@ Relasia REST-API: App to Database
     Response:
     ```
     {
-        "message" : "Successfully Created",
+        "message" : "Successfully Updated",
         "data" : {
             "id": "helpseeker.id",
             "name": "Helpseeker Name",
@@ -110,191 +110,159 @@ Relasia REST-API: App to Database
 
 - ### Volunteer
 
-  - **Get All Volunteer**
+  URL Route: `/volunteer/`
 
-    Method: **GET**
+  Example:
 
-    URL Route: `/volunteer/`
+  `http://127.0.0.1:5000/volunteer/` or `https://relasia-api.herokuapp.com/volunteer/`
 
-    Example:
-
-    `http://127.0.0.1:5000/volunteer/` or `https://relasia-api.herokuapp.com/volunteer/`
-
-    Example data that will be get:
+  - **[GET]** *Get Volunteer*
+  
+    Request:
 
     ```
     {
-        "length": 2,
-        "data": [
-            {
-                "address": "Volunteer Address",
-                "birthyear": "Volunteer Birthyear",
-                "city": "Volunteer City",
-                "foundations": [
-                    "Volunteer Foundation Id Collection"
-                ],
-                "gender": "false",
-                "missions": [
-                    "Volunteer Mission id Collection"
-                ],
-                "name": "Volunteer Name",
-                "verified": "true"
-            },
-            {
-                "address": "Volunteer Address 2",
-                "birthyear": "Volunteer Birthyear 2",
-                "city": "Volunteer City 2",
-                "foundations": [
-                    "Volunteer Foundation Id Collection"
-                ],
-                "gender": "false",
-                "missions": [
-                    "Volunteer Mission id Collection"
-                ],
-                "name": "Volunteer Name 2",
-                "verified": "true"
-            }
-        ]
+        "id": "volunteer.id"
     }
     ```
 
-  - **Get Specific Volunteer**
-
-    Method: **GET**
-
-    URL Route: `/volunteer/`
-
-    Example:
-
-    `http://127.0.0.1:5000/volunteer/` or `https://relasia-api.herokuapp.com/volunteer/`
-
-    Example data that **required** & in the form of a **JSON Body**:
-
-    ```
-    {
-        "id": "volunteer.id",
-    }
-    ```
-
-    Example data that will be get:
+    Response:
 
     ```
     {
         "address": "Volunteer Address",
-        "birthyear": "Volunteer Birthyear",
+        "birthyear": "2000",
         "city": "Volunteer City",
-        "foundations": {
-            Every Foundation Collection Detail
-        },
-        "gender": "false",
-        "missions": {
-            Every Mission Collection Detail
-        },
+        "foundations": [
+            (List of string for each registered foundation id)
+        ],
+        "gender": "male",
         "name": "Volunteer Name 2",
         "verified": "true"
     }
     ```
 
-  - **Add New Volunteer**
-
-    Method: **POST**
-
-    URL Route: `/volunteer/`
-
-    Example:
-
-    `http://127.0.0.1:5000/volunteer/` or `https://relasia-api.herokuapp.com/volunteer/`
-
-    Example data that **required** & in the form of a **JSON Body**:
+  - **[POST]** *Add New Volunteer*
+  
+    Request:
 
     ```
     {
         "id": "volunteer.id",
+        "name": "Volunteer Name 2",
+        "gender": "male",
+        "birthyear": "2000",
+        "phone" : "0821123456789",
+        "address": "Volunteer Address",
+        "city": "Volunteer City" 
+    }
+    ```
+
+    Response:
+
+    ```
+    {
+        "message": "Successfully Created",
         "data": {
-            "name": "Name Volunteer",
-            "gender": "false",
-            "birthyear": "Volunteer Birthyear",
+            "id": "volunteer.id",
+            "name": "Volunteer Name 2",
+            "gender": "male",
+            "birthyear": "2000",
+            "phone" : "0821123456789",
             "address": "Volunteer Address",
             "city": "Volunteer City",
-            "foundations": [],
-            "missions": [],
             "verified": "false"
         }
     }
     ```
-
-  - **Registering Volunteer to Foundation**
-
-    Method: **PUT**
-
-    URL Route: `/volunteer/<volunteer_id>/foundation`
-
-    Example:
-
-    `http://127.0.0.1:5000/volunteer/volunteer.id/foundation` or `https://relasia-api.herokuapp.com/volunteer.id/foundation`
-
-    Example data that **required** & in the form of a **JSON Body**:
-
-    ```
-    {
-        "foundation": "foundation.id"
-    }
-    ```
-
-  - **Applying Volunteer to Mission**
-
-    Method: **PUT**
-
-    URL Route: `/volunteer/<volunteer_id>/mission`
-
-    Example:
-
-    `http://127.0.0.1:5000/volunteer/volunteer.id/mission` or `https://relasia-api.herokuapp.com/volunteer.id/mission`
-
-    Example data that **required** & in the form of a **JSON Body**:
-
-    ```
-    {
-        "mission": "mission.id"
-    }
-    ```
-
-  - **Edit Volunteer Data**
-
-    Method: **PUT**
-
-    URL Route: `/volunteer/`
-
-    Example:
-
-    `http://127.0.0.1:5000/volunteer/` or `[https://relasia-api.herokuapp.com/volunteer`
-
-    Example data that **required** & in the form of a **JSON Body**:
+  
+  - **[PUT]** *Edit Volunteer*
+  
+    Request:
 
     ```
     {
         "id": "volunteer.id",
-        "data": {
-            Field of data that will be changed
-        }
+        "address": "Volunteer Address",
+        "birthyear": "2000",
+        "city": "Volunteer City",
+        "gender": "male",
+        "name": "Volunteer Name 2",
+        "phone": "0821123456787"        
     }
     ```
 
-  - **Delete Volunteer Data**
-
-    Method: **DELETE**
-
-    URL Route: `/volunteer/`
-
-    Example:
-
-    `http://127.0.0.1:5000/volunteer/` or `[https://relasia-api.herokuapp.com/volunteer/`
-
-    Example data that **required** & in the form of a **JSON Body**:
+    Response:
 
     ```
     {
+        "message": "Successfully Updated",
+        "data": {
+            "id": "volunteer.id",
+            "name": "Volunteer Name 2",
+            "gender": "male",
+            "birthyear": "2000",
+            "address": "Volunteer Address",
+            "city": "Volunteer City",
+            "verified": "true"
+        }
+    }
+    ```
+    
+  - **[PUT]** *Register Foundation*
+    
+    Additional Route: `/<string:volunteer_id>/foundation`
+    
+    Request:
+
+    ```
+    {
+        "foundation": "foundation.id"       
+    }
+    ```
+
+    Response:
+
+    ```
+    {
+        "message": "Successfully Registered"
+    }
+    ```
+
+  - **[PUT]** *Apply Mission*
+    
+    Additional Route: `/<string:volunteer_id>/foundation`
+    
+    Request:
+
+    ```
+    {
+        "mission": "mission.id"       
+    }
+    ```
+
+    Response:
+
+    ```
+    {
+        "message": "Successfully Applied"
+    }
+    ```
+
+  - **[DELETE]** *Delete Volunteer**
+
+    Request:
+    
+    ```
+    {
         "id": "volunteer.id"
+    }
+    ```
+    
+    Response:
+    ```
+    {
+        "message" : "Successfully Deleted"
     }
     ```
 
