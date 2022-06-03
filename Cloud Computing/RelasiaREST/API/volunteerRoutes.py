@@ -8,25 +8,70 @@ mission_Ref = db.collection('mission')
 
 volunteerRoutes = Blueprint('volunteerRoutes', __name__)
 
+@volunteerRoutes.route('/<string:volunteer_id>', methods=['GET'])
+def getVolunteer(volunteer_id):
+    try:
+        volunteer_data = volunteer_Ref.document(volunteer_id).get().to_dict()
+
+        # Get all missions of volunteer from mission collection
+        missions = volunteer_data["missions"]
+        volunteer_data["missions"] = []
+        for mission_id in missions:
+            mission_data = mission_Ref.document(mission_id).get().to_dict()
+            volunteer_data["missions"].append(mission_data)
+
+        # Get all foundations of volunteer from mission collection
+        foundations = volunteer_data["foundations"]
+        volunteer_data["foundations"] = []
+        for foundation_id in foundations:
+            foundation_data = foundation_Ref.document(
+                foundation_id).get().to_dict()
+            volunteer_data["foundations"].append(foundation_data)
+
+        # HTTP response code: 200 OK
+        return volunteer_data, 200
+    except Exception as e:
+        return f"An Error Occurred: {e}"
 
 @volunteerRoutes.route('/', methods=['POST'])
 def addVolunteer():
     try:
-        volunteer_id = request.json['id']
-        volunteer_data = request.json['data']
+        data = request.json
+        data["foundations"] = []
+        data["missions"] = []
+        data["verified"] = "false"
 
-        volunteer = volunteer_Ref.document(volunteer_id).get()
+        volunteer = volunteer_Ref.document(data["id"]).get()
         if volunteer.exists:
             # HTTP response code: 409 Conflict
             return jsonify(message="Volunteer Exists"), 409
         else:
             # Add new volunteer to volunteer collection
-            volunteer_Ref.document(volunteer_id).set(volunteer_data)
+            volunteer_Ref.document(data["id"]).set(data)
             # HTTP Response Code: 201 Created
-            return jsonify(message="Successfully Created"), 201
+            return jsonify(message="Successfully Created", data=data), 201
     except Exception as e:
         return f"An Error Occurred: {e}"
 
+@volunteerRoutes.route('/', methods=['PUT'])
+def editVolunteer():
+    try:
+        volunteer_id = request.json["id"]
+        volunteer = volunteer_Ref.document(volunteer_id).get()
+
+        if volunteer.exists:
+            # Update volunteer on volunteer collection
+            volunteer_Ref.document(volunteer_id).update(request.json)
+            data = volunteer_Ref.document(volunteer_id).get().to_dict()
+
+            # HTTP response code: 200 OK
+            return jsonify(message="Successfully Updated", data=data), 200
+        else:
+            # HTTP response code: 400 Bad Request
+            return jsonify(message="Bad Request"), 400
+
+    except Exception as e:
+        return f"An Error Occurred: {e}"
 
 @volunteerRoutes.route('/<string:volunteer_id>/foundation', methods=['PUT'])
 def registerFoundation(volunteer_id):
@@ -38,12 +83,14 @@ def registerFoundation(volunteer_id):
         if volunteer.exists and foundation.exists:
             foundation_data = foundation.to_dict()
 
-            if volunteer_id in foundation_data["volunteers"].keys():
-                # HTTP response code: 409 Conflict
-                return jsonify(message="Volunteer Exists"), 409
+            for data in foundation_data["volunteers"]:
+                if volunteer_id == data["id"]:
+                    # HTTP response code: 409 Conflict
+                    return jsonify(message="Failed: Volunteer Exists"), 409
             else:
                 # Add new volunteer to foundation collection
-                foundation_data["volunteers"][volunteer_id] = 'pending'
+                foundation_data["volunteers"].append(
+                    {"id": volunteer_id, "status": "pending"})
                 foundation_Ref.document(foundation_id).update(foundation_data)
 
             # Add new
@@ -53,13 +100,12 @@ def registerFoundation(volunteer_id):
             volunteer_Ref.document(volunteer_id).update(volunteer_data)
 
             # HTTP response code: 200 OK
-            return jsonify(message="Successfully Updated"), 200
+            return jsonify(message="Successfully Registered"), 200
         else:
             # HTTP response code: 400 Bad Request
             return jsonify(message="Bad Request"), 400
     except Exception as e:
         return f"An Error Occurred: {e}"
-
 
 @volunteerRoutes.route('/<string:volunteer_id>/mission', methods=['PUT'])
 def applyMission(volunteer_id):
@@ -71,13 +117,15 @@ def applyMission(volunteer_id):
         if volunteer.exists and mission.exists:
             mission_data = mission.to_dict()
 
-            if volunteer_id in mission_data["volunteers"].keys():
-                # HTTP response code: 409 Conflict
-                return jsonify(message="Volunteer Exists"), 409
-            else:
-                # Update volunteer of a mission on mission collection
-                mission_data["volunteers"].update({volunteer_id: "pending"})
-                mission_Ref.document(mission_id).update(mission_data)
+            for data in mission_data["volunteers"]:
+                if volunteer_id == data["id"]:
+                    # HTTP response code: 409 Conflict
+                    return jsonify(message="Failed: Volunteer Exists"), 409
+
+            # Update volunteer of a mission on mission collection
+            mission_data["volunteers"].append(
+                {"id": volunteer_id, "status": "pending"})
+            mission_Ref.document(mission_id).update(mission_data)
 
             # Update mission of a volunteer on volunteer collection
             volunteer_data = volunteer.to_dict()
@@ -92,26 +140,6 @@ def applyMission(volunteer_id):
     except Exception as e:
         return f"An Error Occured: {e}"
 
-
-@volunteerRoutes.route('/', methods=['PUT'])
-def editVolunteer():
-    try:
-        volunteer_id = request.json["id"]
-        volunteer = volunteer_Ref.document(volunteer_id).get()
-        if volunteer.exists:
-            # Update volunteer on volunteer collection
-            volunteer_data = request.json["data"]
-            volunteer_Ref.document(volunteer_id).update(volunteer_data)
-            # HTTP response code: 200 OK
-            return jsonify(message="Successfully Updated"), 200
-        else:
-            # HTTP response code: 400 Bad Request
-            return jsonify(message="Bad Request"), 400
-
-    except Exception as e:
-        return f"An Error Occurred: {e}"
-
-
 @volunteerRoutes.route('/', methods=['DELETE'])
 def deleteVolunteer():
     volunteer_id = request.json['id']
@@ -125,7 +153,9 @@ def deleteVolunteer():
             missions = volunteer_data["missions"]
             for mission_id in missions:
                 mission_data = mission_Ref.document(mission_id).get().to_dict()
-                mission_data["volunteers"].pop(volunteer_id)
+                for data in mission_data["volunteers"]:
+                    if volunteer_id == data["id"]:
+                        mission_data["volunteers"].remove(data)
                 mission_Ref.document(mission_id).update(mission_data)
 
             # Update volunteer from all registered foundations on foundation collection
@@ -133,61 +163,18 @@ def deleteVolunteer():
             for foundation_id in foundations:
                 foundation_data = foundation_Ref.document(
                     foundation_id).get().to_dict()
-                print(foundation_data)
-                foundation_data["volunteers"].pop(volunteer_id)
-                foundation_Ref.document(foundation_id).update(foundation_data)
+                for data in foundation_data["volunteers"]:
+                    if volunteer_id == data["id"]:
+                        foundation_data["volunteers"].remove(data)
+                foundation_Ref.document(foundation_id).update(mission_data)
 
             # Delete volunteer from volunteer collection
             volunteer_Ref.document(volunteer_id).delete()
 
             # HTTP response code: 200 OK
-            return jsonify(message="Successfully Updated"), 200
+            return jsonify(message="Successfully Deleted"), 200
         else:
             # HTTP response code: 400 Bad Request
             return jsonify(message="Bad Request"), 400
-    except Exception as e:
-        return f"An Error Occurred: {e}"
-
-
-@volunteerRoutes.route('/', methods=['GET'])
-def getVolunteer():
-    try:
-        try:
-            volunteer_id = request.json["id"]
-        except:
-            volunteer_id = ""
-
-        if volunteer_id:
-            volunteer_data = volunteer_Ref.document(
-                volunteer_id).get().to_dict()
-
-            # Get all missions of volunteer from mission collection
-            missions = volunteer_data["missions"]
-            volunteer_data["missions"] = {}
-            for mission_id in missions:
-                mission_data = mission_Ref.document(mission_id).get().to_dict()
-                volunteer_data["missions"][mission_id] = mission_data
-
-            # Get all foundations of volunteer from mission collection
-            foundations = volunteer_data["foundations"]
-            volunteer_data["foundations"] = {}
-            for foundation_id in foundations:
-                foundation_data = foundation_Ref.document(
-                    foundation_id).get().to_dict()
-                volunteer_data["foundations"][foundation_id] = foundation_data
-
-            # HTTP response code: 200 OK
-            return volunteer_data, 200
-        else:
-            all_volunteers = [doc.to_dict() for doc in volunteer_Ref.stream()]
-
-            response = {
-                "length" : len(all_volunteers),
-                "data" : all_volunteers,
-            }
-
-            # HTTP response code: 200 OK
-            return jsonify(response), 200
-
     except Exception as e:
         return f"An Error Occurred: {e}"
