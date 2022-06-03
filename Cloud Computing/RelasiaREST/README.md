@@ -13,142 +13,7 @@ Relasia REST-API: App to Database
 
 - ### Helpseeker
 
-  - **Get All Helpseeker**
-
-    Method: **GET**
-
-    URL Route: `/helpseeker/`
-
-    Example:
-
-    `http://127.0.0.1:5000/helpseeker/` or `https://relasia-api.herokuapp.com/helpseeker/`
-
-    Request:
-    ```
-    (Null)
-    ```
-    
-    Response:
-
-    ```
-    {
-        "length": 2,
-        "data": [
-            {
-                "id": "helpseeker.pertama",
-                "name": "Helpseeker Name",
-                "city": "Helpseeker City",
-                "mission": [
-                    {
-                        "id" : "Mission Pertama",
-                        "helpseeker" : {
-                            "id" : "helpseeker.pertama",
-                            "name" : "Helpseeker Name",
-                            "phone" : "0821123456789"
-                        },
-                        "title" : "Mission Title",
-                        "requirement" : "Mission Requirement",
-                        "note" : "Mission Note",
-                        "address" : "Mission Address",
-                        "category" : "Mission Category",
-                        "city" : "Mission City",
-                        "province" : "Mission Province",
-                        "start_date" : "01/01/2022",
-                        "end_date" : "02/02/2022",
-                        "featured_image" : [
-                            "link image 1",
-                            "link image 2"
-                        ],
-                        "number_of_needs" : "5",
-                        "volunteers" : [
-                            {
-                                "id" : "volunteer.pertama",
-                                "status" : "pending"
-                            },
-                            {
-                                "id" : "volunteer.kedua",
-                                "status" : "pending"
-                            },
-                        ],
-                    },
-                    {
-                        "id" : "Mission Kedua",
-                        "helpseeker" : {
-                            "id" : "helpseeker.pertama",
-                            "name" : "Helpseeker Name",
-                            "phone" : "0821123456789"
-                        },
-                        "title" : "Mission Title",
-                        "requirement" : "Mission Requirement",
-                        "note" : "Mission Note",
-                        "address" : "Mission Address",
-                        "category" : "Mission Category",
-                        "city" : "Mission City",
-                        "province" : "Mission Province",
-                        "start_date" : "01/01/2022",
-                        "end_date" : "02/02/2022",
-                        "featured_image" : [
-                            "link image 1",
-                            "link image 2"
-                        ],
-                        "number_of_needs" : "5",
-                        "volunteers" : [
-                            {
-                                "id" : "volunteer.pertama",
-                                "status" : "pending"
-                            },
-                            {
-                                "id" : "volunteer.kedua",
-                                "status" : "pending"
-                            },
-                        ],
-                    }
-                ]
-            },
-            {
-                "id": "helpseeker.kedua",
-                "name": "Helpseeker Name",
-                "city": "Helpseeker City",
-                "mission": [
-                    {
-                        "id" : "Mission Ketiga",
-                        "helpseeker" : {
-                            "id" : "helpseeker.kedua",
-                            "name" : "Helpseeker Name",
-                            "phone" : "0821123456789"
-                        },
-                        "title" : "Mission Title",
-                        "requirement" : "Mission Requirement",
-                        "note" : "Mission Note",
-                        "address" : "Mission Address",
-                        "category" : "Mission Category",
-                        "city" : "Mission City",
-                        "province" : "Mission Province",
-                        "start_date" : "01/01/2022",
-                        "end_date" : "02/02/2022",
-                        "featured_image" : [
-                            "link image 1",
-                            "link image 2"
-                        ],
-                        "number_of_needs" : "5",
-                        "volunteers" : [
-                            {
-                                "id" : "volunteer.pertama",
-                                "status" : "pending"
-                            },
-                            {
-                                "id" : "volunteer.kedua",
-                                "status" : "pending"
-                            },
-                        ],
-                    }
-                ]
-            }
-        ]
-    }
-    ```
-
-  - **Get Specific Helpseeker**
+  - **Get Helpseeker**
 
     Method: **GET**
 
@@ -162,7 +27,7 @@ Relasia REST-API: App to Database
 
     ```
     {
-        "id": "helpseeker.pertama"
+        "id": "kijang.satu"
     }
     ```
 
@@ -170,22 +35,19 @@ Relasia REST-API: App to Database
 
     ```
     {
-        "id": "helpseeker.pertama",
+        "id": "kijang.satu",
         "name": "Helpseeker Name",
         "city": "Helpseeker City",
+        "phone": "0821123456789",
         "mission": [
             {
                 "id" : "Mission Pertama",
-                "helpseeker" : {
-                    "id" : "helpseeker.pertama",
-                    "name" : "Helpseeker Name",
-                    "phone" : "0821123456789"
-                },
+                "helpseeker" : "kijang.satu",
                 "title" : "Mission Title",
                 "requirement" : "Mission Requirement",
                 "note" : "Mission Note",
-                "address" : "Mission Address",
                 "category" : "Mission Category",
+                "address" : "Mission Address",
                 "city" : "Mission City",
                 "province" : "Mission Province",
                 "start_date" : "01/01/2022",
@@ -208,16 +70,12 @@ Relasia REST-API: App to Database
             },
             {
                 "id" : "Mission Kedua",
-                "helpseeker" : {
-                    "id" : "helpseeker.pertama",
-                    "name" : "Helpseeker Name",
-                    "phone" : "0821123456789"
-                },
+                "helpseeker" : "kijang.satu",
                 "title" : "Mission Title",
                 "requirement" : "Mission Requirement",
                 "note" : "Mission Note",
-                "address" : "Mission Address",
                 "category" : "Mission Category",
+                "address" : "Mission Address",
                 "city" : "Mission City",
                 "province" : "Mission Province",
                 "start_date" : "01/01/2022",
