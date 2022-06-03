@@ -23,21 +23,126 @@ Relasia REST-API: App to Database
 
     `http://127.0.0.1:5000/helpseeker/` or `https://relasia-api.herokuapp.com/helpseeker/`
 
-    Example data that will be get:
+    Request:
+    ```
+    (Null)
+    ```
+    
+    Response:
 
     ```
     {
         "length": 2,
         "data": [
             {
+                "id": "helpseeker.pertama",
                 "name": "Helpseeker Name",
                 "city": "Helpseeker City",
-                "mission": ["Mission 1", "Mission 2"]
+                "mission": [
+                    {
+                        "id" : "Mission Pertama",
+                        "helpseeker" : {
+                            "id" : "helpseeker.pertama",
+                            "name" : "Helpseeker Name",
+                            "phone" : "0821123456789"
+                        },
+                        "title" : "Mission Title",
+                        "requirement" : "Mission Requirement",
+                        "note" : "Mission Note",
+                        "address" : "Mission Address",
+                        "category" : "Mission Category",
+                        "city" : "Mission City",
+                        "province" : "Mission Province",
+                        "start_date" : "01/01/2022",
+                        "end_date" : "02/02/2022",
+                        "featured_image" : [
+                            "link image 1",
+                            "link image 2"
+                        ],
+                        "number_of_needs" : "5",
+                        "volunteers" : [
+                            {
+                                "id" : "volunteer.pertama",
+                                "status" : "pending"
+                            },
+                            {
+                                "id" : "volunteer.kedua",
+                                "status" : "pending"
+                            },
+                        ],
+                    },
+                    {
+                        "id" : "Mission Kedua",
+                        "helpseeker" : {
+                            "id" : "helpseeker.pertama",
+                            "name" : "Helpseeker Name",
+                            "phone" : "0821123456789"
+                        },
+                        "title" : "Mission Title",
+                        "requirement" : "Mission Requirement",
+                        "note" : "Mission Note",
+                        "address" : "Mission Address",
+                        "category" : "Mission Category",
+                        "city" : "Mission City",
+                        "province" : "Mission Province",
+                        "start_date" : "01/01/2022",
+                        "end_date" : "02/02/2022",
+                        "featured_image" : [
+                            "link image 1",
+                            "link image 2"
+                        ],
+                        "number_of_needs" : "5",
+                        "volunteers" : [
+                            {
+                                "id" : "volunteer.pertama",
+                                "status" : "pending"
+                            },
+                            {
+                                "id" : "volunteer.kedua",
+                                "status" : "pending"
+                            },
+                        ],
+                    }
+                ]
             },
             {
-                "name": "Helpseeker Name 2",
-                "city": "Helpseeker City 2",
-                "mission": ["Mission 3", "Mission 4"]
+                "id": "helpseeker.kedua",
+                "name": "Helpseeker Name",
+                "city": "Helpseeker City",
+                "mission": [
+                    {
+                        "id" : "Mission Ketiga",
+                        "helpseeker" : {
+                            "id" : "helpseeker.kedua",
+                            "name" : "Helpseeker Name",
+                            "phone" : "0821123456789"
+                        },
+                        "title" : "Mission Title",
+                        "requirement" : "Mission Requirement",
+                        "note" : "Mission Note",
+                        "address" : "Mission Address",
+                        "category" : "Mission Category",
+                        "city" : "Mission City",
+                        "province" : "Mission Province",
+                        "start_date" : "01/01/2022",
+                        "end_date" : "02/02/2022",
+                        "featured_image" : [
+                            "link image 1",
+                            "link image 2"
+                        ],
+                        "number_of_needs" : "5",
+                        "volunteers" : [
+                            {
+                                "id" : "volunteer.pertama",
+                                "status" : "pending"
+                            },
+                            {
+                                "id" : "volunteer.kedua",
+                                "status" : "pending"
+                            },
+                        ],
+                    }
+                ]
             }
         ]
     }
@@ -53,23 +158,87 @@ Relasia REST-API: App to Database
 
     `http://127.0.0.1:5000/helpseeker/` or `https://relasia-api.herokuapp.com/helpseeker/`
 
-    Example data that **required** & in the form of a **JSON Body**:
+    Request:
 
     ```
     {
-        "id": "helpseeker.id"
+        "id": "helpseeker.pertama"
     }
     ```
 
-    Example data that will be get:
+    Response:
 
     ```
     {
+        "id": "helpseeker.pertama",
         "name": "Helpseeker Name",
         "city": "Helpseeker City",
         "mission": [
-                    Every Mission Detail
-                 ]
+            {
+                "id" : "Mission Pertama",
+                "helpseeker" : {
+                    "id" : "helpseeker.pertama",
+                    "name" : "Helpseeker Name",
+                    "phone" : "0821123456789"
+                },
+                "title" : "Mission Title",
+                "requirement" : "Mission Requirement",
+                "note" : "Mission Note",
+                "address" : "Mission Address",
+                "category" : "Mission Category",
+                "city" : "Mission City",
+                "province" : "Mission Province",
+                "start_date" : "01/01/2022",
+                "end_date" : "02/02/2022",
+                "featured_image" : [
+                    "link image 1",
+                    "link image 2"
+                ],
+                "number_of_needs" : "5",
+                "volunteers" : [
+                    {
+                        "id" : "volunteer.pertama",
+                        "status" : "pending"
+                    },
+                    {
+                        "id" : "volunteer.kedua",
+                        "status" : "pending"
+                    },
+                ],
+            },
+            {
+                "id" : "Mission Kedua",
+                "helpseeker" : {
+                    "id" : "helpseeker.pertama",
+                    "name" : "Helpseeker Name",
+                    "phone" : "0821123456789"
+                },
+                "title" : "Mission Title",
+                "requirement" : "Mission Requirement",
+                "note" : "Mission Note",
+                "address" : "Mission Address",
+                "category" : "Mission Category",
+                "city" : "Mission City",
+                "province" : "Mission Province",
+                "start_date" : "01/01/2022",
+                "end_date" : "02/02/2022",
+                "featured_image" : [
+                    "link image 1",
+                    "link image 2"
+                ],
+                "number_of_needs" : "5",
+                "volunteers" : [
+                    {
+                        "id" : "volunteer.pertama",
+                        "status" : "pending"
+                    },
+                    {
+                        "id" : "volunteer.kedua",
+                        "status" : "pending"
+                    },
+                ],
+            }
+        ]
     }
     ```
 
