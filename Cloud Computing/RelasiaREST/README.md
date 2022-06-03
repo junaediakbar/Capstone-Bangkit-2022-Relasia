@@ -231,7 +231,7 @@ Relasia REST-API: App to Database
 
   - **[PUT]** *Apply Mission*
     
-    Additional Route: `/<string:volunteer_id>/foundation`
+    Additional Route: `/<string:volunteer_id>/mission`
     
     Request:
 
@@ -268,55 +268,15 @@ Relasia REST-API: App to Database
 
 - ### Foundation
 
-  - **Get All Foundation**
+  URL Route: `/foundation/`
 
-    Method: **GET**
+  Example:
 
-    URL Route: `/foundation/`
+  `http://127.0.0.1:5000/foundation/` or `https://relasia-api.herokuapp.com/foundation/`
 
-    Example:
-
-    `http://127.0.0.1:5000/foundation/` or `https://relasia-api.herokuapp.com/foundation/`
-
-    Example data that will be get:
-
-    ```
-    {
-        "length": 2,
-        "data": [
-            {
-                "address": "Foundation Address,
-                "call_center": "Foundation Call Center",
-                "city": "Foundation City",
-                "name": "Foundation Name",
-                "volunteers": {
-                    Volunteer Status Collection
-                }
-            },
-            {
-                "address": "Foundation Address 2,
-                "call_center": "Foundation Call Center 2",
-                "city": "Foundation City 2",
-                "name": "Foundation Name 2",
-                "volunteers": {
-                    Volunteer Status Collection
-                }
-            }
-        ]
-    }
-    ```
-
-  - **Get Specific Foundation**
-
-    Method: **GET**
-
-    URL Route: `/foundation/`
-
-    Example:
-
-    `http://127.0.0.1:5000/foundation/` or `https://relasia-api.herokuapp.com/foundation/`
-
-    Example data that **required** & in the form of a **JSON Body**:
+  - **[GET]** *Get Foundation*
+  
+    Request:
 
     ```
     {
@@ -324,61 +284,104 @@ Relasia REST-API: App to Database
     }
     ```
 
-    Example data that will be get:
-
-    ```
-    {
-        "address": "Foundation Address,
-        "call_center": "Foundation Call Center",
-        "city": "Foundation City",
-        "name": "Foundation Name",
-        "volunteers": {
-            Every Volunteers Detail
-        }
-    }
-    ```
-
-  - **Add New Foundation**
-
-    Method: **POST**
-
-    URL Route: `/foundation/`
-
-    Example:
-
-    `http://127.0.0.1:5000/foundation/` or `https://relasia-api.herokuapp.com/foundation/`
-
-    Example data that **required** & in the form of a **JSON Body**:
+    Response:
 
     ```
     {
         "id": "foundation.id",
+        "name": "Foundation Name",
+        "phone": "082199998888",
+        "address": "Foundation Address",
+        "city": "Foundation City",
+        "volunteers": [
+            {
+                "id": "volunteer.id",
+                "status": "pending"
+            },
+            {
+                "id": "volunteer.id",
+                "status": "pending"
+            }
+        ]
+    }
+    ```
+
+  - **[POST]** *Add New Foundation*
+  
+    Request:
+
+    ```
+    {
+        "id": "foundation.id",
+        "name": "Foundation Name",
+        "phone": "082199998888",
+        "address": "Foundation Address",
+        "city": "Foundation City"
+    }
+    ```
+
+    Response:
+
+    ```
+    {
+        "message": "Successfully Created",
         "data": {
-            "address": "Foundation address",
-            "call_center": "Foundation Call Center",
-            "city": "Foundation City",
-            "volunteers": {},
-            "name": "Foundation Name"
+            "id": "foundation.id",
+            "name": "Foundation Name",
+            "phone": "082199998888",
+            "address": "Foundation Address",
+            "city": "Foundation City"
+        }
+    }
+    ```
+    
+  - **[PUT]** *Edit Foundation*
+  
+    Request:
+
+    ```
+    {
+        "id": "foundation.id",
+        "name": "Foundation Name", (optional)
+        "phone": "082199998888", (optional)
+        "address": "Foundation Address", (optional)
+        "city": "Foundation City" (optional)
+    }
+    ```
+
+    Response:
+
+    ```
+    {
+        "message": "Successfully Updated",
+        "data": {
+            "id": "foundation.id",
+            "name": "Foundation Name",
+            "phone": "082199998888",
+            "address": "Foundation Address",
+            "city": "Foundation City"
         }
     }
     ```
 
-  - **Validate Foundation Members**
+  - **[PUT]** *Validate Members*
 
-    Method: **PUT**
+    Additional Route: `/<foundation_id>`
 
-    URL Route: `/foundation/<foundation_id>`
-
-    Example:
-
-    `http://127.0.0.1:5000/foundation/foundation.id` or `[https://relasia-api.herokuapp.com/foundation/foundation.id`
-
-    Example data that **required** & in the form of a **JSON Body**:
+    Request:
 
     ```
     {
-        "volunteer": "volunteer.id",
-        "status": "volunteer status"
+        "id": "volunteer.id",
+        "status": "accepted"
+    }
+    ```
+    
+    Response:
+
+    ```
+    {
+        "message": "Successfully Updated"
     }
     ```
 
@@ -387,42 +390,20 @@ Relasia REST-API: App to Database
     **If Volunteer status "accepted" in foundation one or more collection,
     Volunteer verified status will be "true"**
 
-  - **Edit Foundation Data**
+  - **[DELETE]** *Delete Foundation**
 
-    Method: **PUT**
-
-    URL Route: `/foundation/`
-
-    Example:
-
-    `http://127.0.0.1:5000/foundation/` or `[https://relasia-api.herokuapp.com/foundation/`
-
-    Example data that **required** & in the form of a **JSON Body**:
-
+    Request:
+    
     ```
     {
-        "id": "foundation id",
-        "data": {
-            Field of data that will be changed
-        }
+        "id": "foundation.id"
     }
     ```
-
-  - **Delete Foundation Data**
-
-    Method: **DELETE**
-
-    URL Route: `/foundation/`
-
-    Example:
-
-    `http://127.0.0.1:5000/foundation/` or `[https://relasia-api.herokuapp.com/foundation/`
-
-    Example data that **required** & in the form of a **JSON Body**:
-
+    
+    Response:
     ```
     {
-        "id": "foundation id"
+        "message" : "Successfully Deleted"
     }
     ```
 
