@@ -35,7 +35,8 @@ Relasia REST-API: App to Database
         "id": "kijang.satu",
         "name": "Helpseeker Name",
         "city": "Helpseeker City",
-        "phone": "0821123456789"
+        "phone": "0821123456789",
+        "missions": []
     }
     ```
 
@@ -60,7 +61,8 @@ Relasia REST-API: App to Database
             "id": "helpseeker.id",
             "name": "Helpseeker Name",
             "city": "Helpseeker City",
-            "phone": "082123456789"
+            "phone": "082123456789",
+            "missions": []
         }
     }
     ```
@@ -130,15 +132,16 @@ Relasia REST-API: App to Database
 
     ```
     {
-        "address": "Volunteer Address",
-        "birthyear": "2000",
-        "city": "Volunteer City",
-        "foundations": [
-            (List of string for each registered foundation id)
-        ],
-        "gender": "male",
-        "name": "Volunteer Name 2",
-        "verified": "true"
+       "address": "Volunteer Address",
+       "birthyear": "2000",
+       "city": "Volunteer City",
+       "foundations": [],
+       "gender": "male",
+       "id": "volunteer.baru",
+       "missions": [],
+       "name": "Volunteer baru",
+       "phone": "0821123456789",
+       "verified": "false"
     }
     ```
 
@@ -164,13 +167,15 @@ Relasia REST-API: App to Database
     {
         "message": "Successfully Created",
         "data": {
-            "id": "volunteer.id",
-            "name": "Volunteer Name 2",
-            "gender": "male",
-            "birthyear": "2000",
-            "phone" : "0821123456789",
             "address": "Volunteer Address",
+            "birthyear": "2000",
             "city": "Volunteer City",
+            "foundations": [],
+            "gender": "male",
+            "id": "volunteer.baru",
+            "missions": [],
+            "name": "Volunteer baru",
+            "phone": "0821123456789",
             "verified": "false"
         }
     }
@@ -415,35 +420,21 @@ Relasia REST-API: App to Database
 
   `http://127.0.0.1:5000/mission/` or `https://relasia-api.herokuapp.com/mission/`
 
-  - **[GET]** *Get All/Some Missions*
-
-    Request:
-    
-    ```
-    {
-        "page": "1",
-        "data_per_page": "2",
-        "filter": {
-            "volunteer": "volunteer.id", (optional)
-            "helpseeker": "helpseeker.id", (optional)
-            "city": "City", (optional)
-            "province": "Province", (optional)
-            "status": "Status Volunteer", (optional)
-            "active": "Active/Inactive" (optional)
-        }
-    }
-    ```
+  - **[GET]** *Get All Mission*
+    Default page: 1
+    Default data on page: 5
     
     Response:
 
     ```
     {
         "page": "1",
-        "data_per_page": "2",
+        "data_on_page": "5",
         "length": "10",
         "data": [
             {
                 "id": "Mission Helpseeker ID",
+                "helpseeker": "helpseeker.id",
                 "title": "Mission Title",
                 "category": "Mission Category",
                 "requirement": "Mission Requirement",
@@ -502,12 +493,14 @@ Relasia REST-API: App to Database
 
   - **[GET]** *Get Spesific Missions*
     
-    Additional Route: `/<mission.id>`
+    Additional Route: `/`
 
     Request:
     
     ```
-    (Null)
+    {
+        "id": "mission.id"
+    }
     ```
     
     Response:
@@ -515,6 +508,7 @@ Relasia REST-API: App to Database
     ```
     {
         "id": "Mission Helpseeker ID",
+        "helpseeker": "helpseeker.id",
         "title": "Mission Title",
         "category": "Mission Category",
         "requirement": "Mission Requirement",
