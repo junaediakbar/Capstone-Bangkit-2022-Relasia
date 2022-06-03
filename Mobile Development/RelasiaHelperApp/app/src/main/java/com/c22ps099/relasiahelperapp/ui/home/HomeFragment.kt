@@ -73,7 +73,7 @@ class HomeFragment : Fragment() {
 
         val adapter = MissionListAdapter()
         binding?.apply {
-            btnProfile.setOnClickListener {
+            btnNotification.setOnClickListener {
                 val navigateAction = HomeFragmentDirections
                     .actionHomeFragmentToProfileFragment()
                 findNavController().navigate(navigateAction)
@@ -104,9 +104,9 @@ class HomeFragment : Fragment() {
                 }
             )
 
-            homeViewModel.missions.observe(viewLifecycleOwner) {
-                adapter.submitData(lifecycle, it)
-            }
+//            homeViewModel.missions.observe(viewLifecycleOwner) {
+//                adapter.submitData(lifecycle, it)
+//            }
         }
     }
 }

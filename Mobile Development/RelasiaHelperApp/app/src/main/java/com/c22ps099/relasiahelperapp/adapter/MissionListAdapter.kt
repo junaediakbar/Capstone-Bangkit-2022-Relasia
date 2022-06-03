@@ -25,17 +25,10 @@ class MissionListAdapter :
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<MissionDataItem>() {
             override fun areItemsTheSame(oldItem: MissionDataItem, newItem: MissionDataItem) =
-                oldItem == newItem
+                oldItem.id == newItem.id
 
             override fun areContentsTheSame(oldItem: MissionDataItem, newItem: MissionDataItem) =
-                oldItem.title == newItem.title &&
-                        oldItem.startDate == newItem.startDate &&
-                        oldItem.endDate == newItem.endDate &&
-                        oldItem.city == newItem.city &&
-                        oldItem.province == newItem.province &&
-                        oldItem.endDate == newItem.endDate &&
-                        oldItem.numberOfNeeds == newItem.numberOfNeeds &&
-                        oldItem.numberOfNeeds == newItem.numberOfNeeds
+                oldItem == newItem
         }
     }
 

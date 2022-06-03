@@ -59,8 +59,6 @@ class MissionDetailFragment : Fragment() {
 
         val mission = arguments?.getParcelable<MissionDataItem>(EXTRA_MISSION) as MissionDataItem
         showMissionDetail(mission)
-
-        
     }
 
     private fun showMissionDetail(mission: MissionDataItem) {
