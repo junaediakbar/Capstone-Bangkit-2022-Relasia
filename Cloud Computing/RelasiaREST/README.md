@@ -431,6 +431,12 @@ Relasia REST-API: App to Database
         "page": "1",
         "data_on_page": "5",
         "length": "10",
+        "volunteer": "volunteer.id",
+        "helpseeker": "helpseeker.id",
+        "city": "City",
+        "province": "Province",
+        "status": "Status Volunteer"
+        "active": "Active/Inactive"
         "data": [
             {
                 "id": "Mission Helpseeker ID",
