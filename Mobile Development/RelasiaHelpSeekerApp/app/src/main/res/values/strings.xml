@@ -57,6 +57,9 @@
     <string name="auth">Bearer %1$s</string>
     <string name="upload_image_file">Image File</string>
     <string name="permission_denied">Access Denied</string>
+    <string name="validation_error">Password must have at least 6 characters</string>
+    <string name="mission_note">Note</string>
+    <string name="mission_req">Requirements</string>
     <string-array name="Genders">
         <item>Man</item>
         <item>Woman</item>

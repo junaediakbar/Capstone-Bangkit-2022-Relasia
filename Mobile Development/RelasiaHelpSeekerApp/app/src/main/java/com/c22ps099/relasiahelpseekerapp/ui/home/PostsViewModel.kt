@@ -34,7 +34,6 @@ class PostsViewModel(private val token: String): ViewModel(){
     fun getAllMissions() {
         _isLoading.value = true
 
-
         ApiConfig.getApiService().getAllMissions()
             .enqueue(object : Callback<MissionsResponse> {
                 override fun onResponse(

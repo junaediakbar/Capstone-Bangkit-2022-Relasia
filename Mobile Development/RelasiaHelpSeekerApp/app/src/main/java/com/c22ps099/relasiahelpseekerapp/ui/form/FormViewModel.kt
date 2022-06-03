@@ -35,26 +35,41 @@ class FormViewModel(private val token: String) : ViewModel() {
     private val _city = MutableLiveData<String>()
     val city: LiveData<String> = _city
 
-    private val _time =  MutableLiveData<String>()
+    private val _time = MutableLiveData<String>()
     val time: LiveData<String> = _time
 
     init {
         _time.value = timeStamp
     }
 
-    fun updateCity(city: String){
-        _city.value= city
+    fun updateCity(city: String) {
+        _city.value = city
     }
 
-    fun updateProvince(prov: String){
-        _province.value=prov
+    fun updateProvince(prov: String) {
+        _province.value = prov
     }
-    fun getKabs(prov: String): Array<String>{
+
+    fun getKabs(prov: String): Array<String> {
         return itemsKab(prov)
     }
 
-    fun postMision(mission: MissionItem){
-        ApiConfig.getApiService().addMission(mission.id,mission.title,mission.address,mission.city,mission.province,mission.numberOfNeeds,mission.startDate,mission.endDate,mission.featuredImage,mission.category,mission.requirement,mission.note,mission.volunteers)
+    fun postMision(mission: MissionItem) {
+        ApiConfig.getApiService().addMission(
+            mission.id,
+            mission.title,
+            mission.address,
+            mission.city,
+            mission.province,
+            mission.numberOfNeeds,
+            mission.startDate,
+            mission.endDate,
+            mission.featuredImage,
+            mission.category,
+            mission.requirement,
+            mission.note,
+            mission.volunteers
+        )
             .enqueue(object : Callback<GeneralResponse> {
                 override fun onResponse(
                     call: Call<GeneralResponse>,
@@ -70,7 +85,7 @@ class FormViewModel(private val token: String) : ViewModel() {
                             GeneralResponse::class.java
                         )
                         _error.value = Event(errorMessage.message)
-                        Log.e("err","${_error.value}")
+                        Log.e("err", "${_error.value}")
                     }
                 }
 

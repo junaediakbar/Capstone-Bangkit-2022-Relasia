@@ -16,7 +16,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.data.SessionPreferences
 import com.c22ps099.relasiahelpseekerapp.databinding.ActivityMainBinding
-import com.google.firebase.FirebaseApp
 
 
 internal val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "session")
@@ -35,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
-        FirebaseApp.initializeApp(this);
 
         supportActionBar?.hide()
 

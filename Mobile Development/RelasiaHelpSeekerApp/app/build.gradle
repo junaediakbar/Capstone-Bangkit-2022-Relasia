@@ -71,6 +71,11 @@ dependencies {
 
     implementation 'androidx.room:room-runtime:2.4.2'
     implementation 'androidx.room:room-ktx:2.5.0-alpha01'
+
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.5'
+    implementation 'com.google.android.gms:play-services-auth:20.2.0'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.1.2'
+
     kapt 'androidx.room:room-compiler:2.5.0-alpha01'
 
     implementation "androidx.paging:paging-runtime-ktx:3.1.1"

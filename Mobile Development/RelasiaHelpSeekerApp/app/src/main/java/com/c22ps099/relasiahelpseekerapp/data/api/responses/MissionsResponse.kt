@@ -12,7 +12,6 @@ data class MissionsResponse(
 	@field:SerializedName("length")
 	val length: Int? = null
 )
-
 @Parcelize
 data class MissionItem(
 
@@ -35,7 +34,7 @@ data class MissionItem(
 	val title: String? = null,
 
 	@field:SerializedName("volunteers")
-	val volunteers: Map<String,String>? = null,
+	val volunteers: HashMap<String,String>,
 
 	@field:SerializedName("featured_image")
 	val featuredImage: List<String?>? = null,
@@ -57,5 +56,12 @@ data class MissionItem(
 
 	@field:SerializedName("timestamp")
 	val timestamp: String? = null
-):Parcelable
+) :Parcelable
+
+data class Volunteers(
+	@field:SerializedName("idVolunteers")
+	val idVolunteers: String? = null,
+	@field:SerializedName("status")
+	val status: String? = null,
+)
 

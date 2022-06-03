@@ -35,12 +35,12 @@
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/username_input"
+            app:layout_constraintStart_toStartOf="@+id/email_input"
             app:layout_constraintTop_toBottomOf="@+id/img_login" />
 
 
         <com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
-            android:id="@+id/username_input"
+            android:id="@+id/email_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -67,9 +67,9 @@
             android:inputType="textPassword"
             android:minHeight="48dp"
             android:transitionName="password_input"
-            app:layout_constraintEnd_toEndOf="@+id/username_input"
-            app:layout_constraintStart_toStartOf="@+id/username_input"
-            app:layout_constraintTop_toBottomOf="@+id/username_input" />
+            app:layout_constraintEnd_toEndOf="@+id/email_input"
+            app:layout_constraintStart_toStartOf="@+id/email_input"
+            app:layout_constraintTop_toBottomOf="@+id/email_input" />
 
         <Button
             android:id="@+id/btn_login"
@@ -93,7 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/username_input"
+            app:layout_constraintBottom_toTopOf="@+id/email_input"
             app:layout_constraintEnd_toEndOf="@+id/password_input"
             app:layout_constraintHorizontal_bias="0.515"
             app:layout_constraintStart_toStartOf="@+id/password_input" />
@@ -127,7 +127,7 @@
             tools:ignore="ImageContrastCheck,ImageContrastCheck" />
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/ib_gmail"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginTop="24dp"
@@ -149,7 +149,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/or_line"
             app:layout_constraintStart_toStartOf="@+id/or_line"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton">
+            app:layout_constraintTop_toBottomOf="@+id/ib_gmail">
 
 
             <TextView

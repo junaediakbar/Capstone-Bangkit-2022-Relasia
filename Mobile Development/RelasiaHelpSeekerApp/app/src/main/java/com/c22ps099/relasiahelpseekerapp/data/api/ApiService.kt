@@ -11,6 +11,8 @@ interface ApiService {
     fun getAllMissions(
     ): Call<MissionsResponse>
 
+    @Headers("Content-Type: application/json")
+    @FormUrlEncoded
     @POST("mission")
     fun addMission(
         @Field("id") id: String?,
@@ -25,6 +27,6 @@ interface ApiService {
         @Field("category") category: String?,
         @Field("requirement") requirement: String?,
         @Field("note") note: String?,
-        @Field("volunteers") volunteers: Map<String, String>?
+        @Field("volunteers") volunteers: HashMap<String, String>?
     ): Call<GeneralResponse>
 }

@@ -7,19 +7,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.data.adapter.ListMissionsAdapter
+import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionItem
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentHomeBinding
+import com.c22ps099.relasiahelpseekerapp.ui.missionDetail.MissionDetailFragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class HomeFragment : Fragment() {
 
     private var binding: FragmentHomeBinding? = null
+    private lateinit var googleAuth: FirebaseAuth
 
     private var token: String? = ""
 
@@ -39,12 +47,18 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        googleAuth = Firebase.auth
+        val firebaseUser = googleAuth.currentUser
+
         binding?.apply {
             btnAskHelp.setOnClickListener {
                 val navigateAction = HomeFragmentDirections
                     .actionHomeFragmentToFormFragment()
                 navigateAction.token = "token"
                 findNavController().navigate(navigateAction)
+            }
+            btnLogout.setOnClickListener{
+                googleAuth.signOut()
             }
         }
 
@@ -72,8 +86,10 @@ class HomeFragment : Fragment() {
 
         viewModel.apply {
             missions.observe(viewLifecycleOwner) {
-                binding?.rvLatestPosts?.adapter = ListMissionsAdapter(it)
-                Log.v("ukuran", "${it.size}")
+                binding?.rvLatestPosts?.apply {
+                    adapter = ListMissionsAdapter(it)
+                    Log.v("ukuran", "${it.size}")
+                }
             }
 
             isLoading.observe(viewLifecycleOwner) {

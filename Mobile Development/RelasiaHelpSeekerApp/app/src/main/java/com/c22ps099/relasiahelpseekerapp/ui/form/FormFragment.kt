@@ -21,7 +21,6 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -31,6 +30,7 @@ import com.c22ps099.relasiahelpseekerapp.databinding.FragmentFormBinding
 import com.c22ps099.relasiahelpseekerapp.misc.*
 import com.google.firebase.FirebaseApp
 import com.google.firebase.storage.FirebaseStorage
+import com.google.gson.Gson
 import kotlinx.coroutines.*
 import java.util.*
 
@@ -327,31 +327,54 @@ class FormFragment : Fragment() {
 
         binding?.apply {
             btnSubmit.setOnClickListener {
-              scope.launch { uploadImages() }
-//                scope.launch { uploadForm() }
+//              scope.launch { uploadImages() }
+                scope.launch { uploadForm() }
             }
         }
     }
 
     private fun uploadForm() {
 
-        var volunteers = mutableMapOf("one" to "test", "two" to "test2", "three" to "ssas")
+        var volunteers = mapOf("one" to "test", "two" to "test2", "three" to "ssas")
         binding?.apply {
+//            val mission = MissionItem(
+//                etFormDateEnd.text.toString(),
+//                "Notes:bla bla",
+//                etFormLocation.text.toString(),
+//                viewModel.city.toString(),
+//                "requirements: bla",
+//                etFormActivity.text.toString(),
+//                volunteers,
+//                imagesLink,
+//                etFormAmount.text.toString(),
+//                viewModel.province.toString(),
+//                "helpseeker.id",
+//                category,
+//                etFormDateStart.text.toString(),
+//                timeStamp
+//            )
+            val featuredImgs:List<String> = listOf( "https://firebasestorage.googleapis.com/v0/b/relasia.appspot.com/o/images%2F2022-Jun-02-%5B09%3A42%3A34%5D(3)?alt=media",
+                "https://firebasestorage.googleapis.com/v0/b/relasia.appspot.com/o/images%2F2022-Jun-02-%5B09%3A42%3A34%5D(3)?alt=media")
+            val map = HashMap<String, String>()
+            map.put("key1","value1");
+            map.put("key2","value2");
+            map.put("key3","value3");
+            val gson = Gson()
             val mission = MissionItem(
-                etFormDateEnd.text.toString(),
+                "25/12/2022",
                 "Notes:bla bla",
-                etFormLocation.text.toString(),
-                viewModel.city.toString(),
+                "Jl. Soekarno Hatta",
+                "Palu",
                 "requirements: bla",
-                etFormActivity.text.toString(),
-                volunteers,
-                imagesLink,
-                etFormAmount.text.toString(),
-                viewModel.province.toString(),
+               "Tsunami Palu 2019",
+                map,
+                featuredImgs,
+                "10",
+                "Sulawesi Tengah",
                 "helpseeker.id",
-                category,
-                etFormDateStart.text.toString(),
-                timeStamp
+                "Mantap",
+                "20/12/2019",
+                "apalah"
             )
                 viewModel.postMision(mission)
                 viewModel.isSuccess.observe(viewLifecycleOwner) {
@@ -361,6 +384,7 @@ class FormFragment : Fragment() {
                         }
                     }
                 }
+
                 viewModel.error.observe(viewLifecycleOwner) {
 
                     it.getContentIfNotHandled()?.let { message ->

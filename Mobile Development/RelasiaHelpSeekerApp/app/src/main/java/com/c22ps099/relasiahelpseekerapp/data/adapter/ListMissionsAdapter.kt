@@ -2,6 +2,8 @@ package com.c22ps099.relasiahelpseekerapp.data.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -9,8 +11,9 @@ import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionItem
 
 import com.c22ps099.relasiahelpseekerapp.databinding.ItemPostBinding
+import com.c22ps099.relasiahelpseekerapp.ui.missionDetail.MissionDetailFragment
 
-class ListMissionsAdapter (var listMissionResponse: List<MissionItem>):
+class ListMissionsAdapter(private var listMissionResponse: List<MissionItem>) :
     RecyclerView.Adapter<ListMissionsAdapter.MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = ItemPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -19,10 +22,7 @@ class ListMissionsAdapter (var listMissionResponse: List<MissionItem>):
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(listMissionResponse[position])
-        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listMissionResponse[position]) }
-
     }
-
 
     override fun getItemCount() = listMissionResponse.size
 
@@ -37,16 +37,11 @@ class ListMissionsAdapter (var listMissionResponse: List<MissionItem>):
                         .error(R.drawable.ic_error)
                 )
                 .into(binding.ivMissionPhoto)
-
+            binding.ivMissionPhoto.setOnClickListener {
+                val bundle = bundleOf(MissionDetailFragment.EXTRA_MISSION to mission)
+                itemView.findNavController().navigate(R.id.detailMissionFragment, bundle)
+            }
         }
     }
-    interface OnItemClickCallback {
-        fun onItemClicked(mission: MissionItem)
-    }
 
-    private lateinit var onItemClickCallback: OnItemClickCallback
-
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
 }
