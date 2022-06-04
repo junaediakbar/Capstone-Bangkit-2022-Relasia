@@ -7,19 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.c22ps099.relasiahelpseekerapp.R
+import com.c22ps099.relasiahelpseekerapp.data.adapter.ListFoundationsAdapter
 import com.c22ps099.relasiahelpseekerapp.data.adapter.ListMissionsAdapter
-import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionItem
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentHomeBinding
-import com.c22ps099.relasiahelpseekerapp.ui.missionDetail.MissionDetailFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -31,8 +28,8 @@ class HomeFragment : Fragment() {
 
     private var token: String? = ""
 
-    private val viewModel by viewModels<PostsViewModel> {
-        PostsViewModel.Factory(getString(R.string.auth, token))
+    private val viewModel by viewModels<HomeViewModel> {
+        HomeViewModel.Factory(getString(R.string.auth, token))
     }
 
     override fun onCreateView(
@@ -82,6 +79,16 @@ class HomeFragment : Fragment() {
                     )
                 )
             }
+//            rvNearestInstantion.apply {
+//                setHasFixedSize(true)
+//                layoutManager = setLayoutManager
+//                addItemDecoration(
+//                    DividerItemDecoration(
+//                        requireContext(),
+//                        LinearLayoutManager.HORIZONTAL
+//                    )
+//                )
+//            }
         }
 
         viewModel.apply {
@@ -91,6 +98,12 @@ class HomeFragment : Fragment() {
                     Log.v("ukuran", "${it.size}")
                 }
             }
+//            foundations.observe(viewLifecycleOwner){
+//                binding?.rvNearestInstantion?.apply {
+//                    adapter = ListFoundationsAdapter(it)
+//                    Log.v("ukuran", "${it.size}")
+//                }
+//            }
 
             isLoading.observe(viewLifecycleOwner) {
                 showLoading(it)

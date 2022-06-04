@@ -19,7 +19,7 @@ data class MissionsResponse(
 	val page: Int? = null
 )
 
-data class VolunteersItem(
+data class VolunteersStatus(
 
 	@field:SerializedName("id")
 	val id: String? = null,

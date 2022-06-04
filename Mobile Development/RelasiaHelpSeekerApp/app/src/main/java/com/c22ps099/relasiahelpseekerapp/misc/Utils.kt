@@ -8,6 +8,7 @@ import android.os.Environment
 import android.view.View
 import android.view.Window
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import com.c22ps099.relasiahelpseekerapp.R
@@ -73,6 +74,7 @@ fun showSuccessDialog(context: Context){
     val dialog = Dialog(context)
     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
     dialog.setContentView(R.layout.dialog_form_success)
+    val btn = dialog.findViewById<Button>(R.id.button)
     dialog.show()
 }
 

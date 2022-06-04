@@ -19,27 +19,33 @@
             android:id="@+id/ib_accept"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
-            android:background="?background"
+            android:background="@android:color/transparent"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
             android:src="@drawable/ic_true"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toEndOf="@+id/tv_volunteer_place"
+            card_view:layout_constraintEnd_toStartOf="@+id/ib_reject"
             card_view:layout_constraintTop_toTopOf="@+id/ib_reject"
             card_view:layout_constraintVertical_bias="1.0"
-            card_view:tint="@color/light_green" />
+            card_view:tint="@color/light_green"
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/ib_reject"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:background="?background"
+            android:background="@android:color/transparent"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
             android:src="@drawable/ic_close"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="@+id/tv_volunteer_place"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_volunteer_place"
-            card_view:tint="@color/warm_red" />
+            card_view:tint="@color/warm_red"
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
         <ImageView
             android:id="@+id/iv_mission_photo"

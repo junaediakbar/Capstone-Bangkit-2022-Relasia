@@ -1,14 +1,21 @@
 package com.c22ps099.relasiahelpseekerapp.ui.missionDetail
 
 import android.annotation.SuppressLint
+import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.c22ps099.relasiahelpseekerapp.R
+import com.c22ps099.relasiahelpseekerapp.data.adapter.ListVolunteersAdapter
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionItem
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentMissionDetailBinding
 import com.c22ps099.relasiahelpseekerapp.ui.login.LoginFragment
@@ -18,12 +25,14 @@ import com.google.firebase.ktx.Firebase
 
 class MissionDetailFragment : Fragment() {
 
-    companion object {
-        const val EXTRA_MISSION = "extra_mission"
-    }
-
     private var binding: FragmentMissionDetailBinding? = null
     private lateinit var googleAuth: FirebaseAuth
+
+    private var token: String? = ""
+
+    private val viewModel by viewModels<MissionDetailViewModel> {
+        MissionDetailViewModel.Factory(getString(R.string.auth, token))
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,7 +70,10 @@ class MissionDetailFragment : Fragment() {
         val mission = arguments?.getParcelable<MissionItem>(EXTRA_MISSION) as MissionItem
         showMissionDetail(mission)
 
-
+        binding?.apply {
+            fabBack.setOnClickListener{
+            }
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -79,5 +91,37 @@ class MissionDetailFragment : Fragment() {
             tvMissionReq.text = mission.requirement
             tvMissionNote.text = mission.note
         }
+
+        binding?.apply {
+            val setLayoutManager = if (activity?.applicationContext
+                    ?.resources?.configuration?.orientation == Configuration.ORIENTATION_PORTRAIT
+            ) {
+                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+            } else {
+                GridLayoutManager(context, 2)
+            }
+            rvVolunteersStatus.apply {
+                setHasFixedSize(true)
+                layoutManager = setLayoutManager
+                addItemDecoration(
+                    DividerItemDecoration(
+                        requireContext(),
+                        LinearLayoutManager.HORIZONTAL
+                    )
+                )
+            }
+        }
+
+        viewModel.volunteers.observe(viewLifecycleOwner){
+                binding?.rvVolunteersStatus?.apply {
+                    adapter = ListVolunteersAdapter(it)
+                    Log.v("ukuran", "${it.size}")
+                }
+        }
+    }
+
+    companion object {
+        const val EXTRA_MISSION = "extra_mission"
     }
 }

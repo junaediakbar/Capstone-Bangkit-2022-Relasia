@@ -17,7 +17,6 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
@@ -56,6 +55,8 @@ class FormFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        super.onCreateView(inflater, container, savedInstanceState)
+
         binding = FragmentFormBinding.inflate(inflater, container, false)
         FirebaseApp.initializeApp(requireContext())
 
@@ -191,13 +192,9 @@ class FormFragment : Fragment() {
     private fun setDropDown() {
         binding?.apply {
             // access the spinner
+            val categories = resources.getStringArray(R.array.Categories)
+            spCategories.item = categories.toMutableList() as List<Any>?
             spCategories.apply {
-                val categories = resources.getStringArray(R.array.Categories)
-                val adp = ArrayAdapter(
-                    activity?.applicationContext!!,
-                    android.R.layout.simple_spinner_item, categories
-                )
-                adapter = adp
                 onItemSelectedListener = object :
                     AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(
@@ -214,11 +211,7 @@ class FormFragment : Fragment() {
             }
             spFormProvince.apply {
                 val provinces = itemsProv
-                val adp = ArrayAdapter(
-                    activity?.applicationContext!!,
-                    android.R.layout.simple_spinner_item, provinces
-                )
-                adapter = adp
+                item = provinces.toMutableList() as List<Any>?
                 onItemSelectedListener = object :
                     AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(
@@ -237,11 +230,7 @@ class FormFragment : Fragment() {
             viewModel.province.observe(viewLifecycleOwner) {
                 spFormCity.apply {
                     val cities = itemsKab(it)
-                    val adp = ArrayAdapter(
-                        activity?.applicationContext!!,
-                        android.R.layout.simple_spinner_item, cities
-                    )
-                    adapter = adp
+                    item = cities.toMutableList() as List<Any>?
                     onItemSelectedListener = object :
                         AdapterView.OnItemSelectedListener {
                         override fun onItemSelected(
@@ -270,7 +259,6 @@ class FormFragment : Fragment() {
                 val bottomSheet = NotesDialog()
                 bottomSheet.show(childFragmentManager, bottomSheet.tag)
             }
-
         }
     }
 
@@ -327,8 +315,8 @@ class FormFragment : Fragment() {
 
         binding?.apply {
             btnSubmit.setOnClickListener {
-//              scope.launch { uploadImages() }
-               uploadForm()
+              scope.launch { uploadImages() }
+//               uploadForm()
             }
         }
     }
@@ -403,6 +391,7 @@ class FormFragment : Fragment() {
                 }
             }
         }
+        showSuccessDialog(requireContext())
     }
 
     private fun uploadToFirebaseStorage(imgUri: Uri?, filename: String?) {

@@ -68,15 +68,16 @@
             tools:ignore="TextContrastCheck,TextContrastCheck" />
 
 
-        <Spinner
+        <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
             android:id="@+id/sp_form_city"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
+            android:paddingTop="4dp"
+            android:minHeight="48dp"
             android:drawableStart="@drawable/ic_baseline_location_city_24"
             android:drawablePadding="4dp"
-            android:hint="@string/city_hint"
-            android:minHeight="48dp"
+            app:smsp_hint="Select one City"
             android:transitionName="email_input"
             app:layout_constraintEnd_toEndOf="@+id/et_form_activity"
             app:layout_constraintHorizontal_bias="0.0"
@@ -84,15 +85,17 @@
             app:layout_constraintTop_toBottomOf="@+id/sp_form_province"
             tools:ignore="TextContrastCheck,TextContrastCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
-        <Spinner
+        <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
             android:id="@+id/sp_form_province"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
+            android:paddingTop="4dp"
             android:drawableStart="@drawable/ic_baseline_home_work_24"
             android:drawablePadding="4dp"
             android:hint="@string/province_hint"
             android:minHeight="48dp"
+            app:smsp_hint="Select one Province"
             android:transitionName="email_input"
             app:layout_constraintEnd_toEndOf="@+id/et_form_activity"
             app:layout_constraintHorizontal_bias="0.0"
@@ -148,12 +151,17 @@
             app:layout_constraintTop_toBottomOf="@+id/et_form_date_start"
             tools:ignore="TextContrastCheck,TextContrastCheck" />
 
-        <Spinner
+        <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
             android:id="@+id/sp_categories"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:paddingTop="4dp"
+            android:drawableStart="@drawable/ic_baseline_home_work_24"
+            android:drawablePadding="4dp"
+            android:hint="@string/province_hint"
             android:minHeight="48dp"
+            app:smsp_hint="Select one Category"
             app:layout_constraintEnd_toEndOf="@+id/et_form_date_end"
             app:layout_constraintStart_toStartOf="@+id/et_form_date_end"
             app:layout_constraintTop_toBottomOf="@+id/btn_upload_image"

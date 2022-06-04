@@ -1,10 +1,10 @@
 package com.c22ps099.relasiahelpseekerapp.data.api
 
-import com.c22ps099.relasiahelpseekerapp.data.api.responses.AddNewHelpSeekerResponse
-import com.c22ps099.relasiahelpseekerapp.data.api.responses.GeneralResponse
-import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionsResponse
+import com.c22ps099.relasiahelpseekerapp.data.api.responses.*
 import com.c22ps099.relasiahelpseekerapp.model.Helpseeker
 import com.c22ps099.relasiahelpseekerapp.model.Mission
+import com.squareup.okhttp.RequestBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -27,5 +27,23 @@ interface ApiService {
         @Body helpseeker:Helpseeker
     ): Call<AddNewHelpSeekerResponse>
 
+    @GET("mission/{id}")
+    fun getVoluntersByMission(
+        @Path("id") id: String,
+        @Query("data") volunteers: String,
+    ): Call<VolunteersByMissionResponse>
 
+    @PUT("mission/{mission.id}")
+    fun changeVolunteerStatus(
+        @Path("mission.id") missioId :String,
+        @Body jsonObject:JSONObject
+    ): Call<GeneralResponse>
+
+    @GET("foundation")
+    fun getFoundation(): Call<FoundationsResponse>
+
+    @DELETE("mission")
+    fun deleteMission(
+        @Body body: RequestBody
+    ): Call<FoundationsResponse>
 }

@@ -6,9 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.c22ps099.relasiahelpseekerapp.data.api.ApiConfig
-import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionItem
-import com.c22ps099.relasiahelpseekerapp.data.api.responses.GeneralResponse
-import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionsResponse
+import com.c22ps099.relasiahelpseekerapp.data.api.responses.*
 
 import com.c22ps099.relasiahelpseekerapp.misc.Event
 import com.google.gson.Gson
@@ -17,9 +15,12 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class PostsViewModel(private val token: String): ViewModel(){
+class HomeViewModel(private val token: String): ViewModel(){
     private val _missions = MutableLiveData<List<MissionItem>>()
     val missions: LiveData<List<MissionItem>> = _missions
+
+    private val _foundations = MutableLiveData<List<Foundation>>()
+    val foundations: LiveData<List<Foundation>> = _foundations
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -29,6 +30,7 @@ class PostsViewModel(private val token: String): ViewModel(){
 
     init {
         getAllMissions()
+        getAllFoundations()
     }
 
     fun getAllMissions() {
@@ -62,10 +64,41 @@ class PostsViewModel(private val token: String): ViewModel(){
             })
     }
 
+    fun getAllFoundations() {
+        _isLoading.value = true
+
+        ApiConfig.getApiService().getFoundation()
+            .enqueue(object : Callback<FoundationsResponse> {
+                override fun onResponse(
+                    call: Call<FoundationsResponse>,
+                    response: Response<FoundationsResponse>
+                ) {
+                    _isLoading.value = false
+
+                    if (response.isSuccessful) {
+                        _foundations.value = response.body()?.data as List<Foundation>?
+                        Log.v("ini adalah mission:", "${_foundations.value?.size}")
+                    } else {
+                        val errorMessage = Gson().fromJson(
+                            response.errorBody()?.charStream(),
+                            GeneralResponse::class.java
+                        )
+                        _error.value = Event(errorMessage.message)
+                        Log.e("err","${_error.value}")
+                    }
+                }
+
+                override fun onFailure(call: Call<FoundationsResponse>, t: Throwable) {
+                    _isLoading.value = false
+                    _error.value = Event(t.message.toString())
+                }
+            })
+    }
+
     @Suppress("UNCHECKED_CAST")
     class Factory(private val token: String) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return PostsViewModel(token) as T
+            return HomeViewModel(token) as T
         }
     }
 }
