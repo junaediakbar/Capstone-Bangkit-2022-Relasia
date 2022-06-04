@@ -18,7 +18,7 @@ Relasia REST-API: App to Database
   or
     `https://relasia-api.herokuapp.com/helpseeker/`
 
-  - **[GET]** *Get Helpseeker*
+  - **[GET]** *Get Specific Helpseeker*
     
     Additional Route: `<string:id>`
     
@@ -32,11 +32,12 @@ Relasia REST-API: App to Database
 
     ```
     {
-        "id": "kijang.satu",
-        "name": "Helpseeker Name",
         "city": "Helpseeker City",
-        "phone": "0821123456789",
-        "missions": []
+        "id": "helpseeker.id",
+        "missions": [_List of All Mission Data_],
+        "name": "Helpseeker Name",
+        "phone": "083876012340",
+        "picture": ""
     }
     ```
 
@@ -58,11 +59,12 @@ Relasia REST-API: App to Database
     {
         "message" : "Successfully Created",
         "data" : {
-            "id": "helpseeker.id",
-            "name": "Helpseeker Name",
             "city": "Helpseeker City",
-            "phone": "082123456789",
-            "missions": []
+            "id": "helpseeker.id",
+            "missions": [],
+            "name": "Helpseeker Name",
+            "phone": "083876012340",
+            "picture": ""
         }
     }
     ```
@@ -77,6 +79,7 @@ Relasia REST-API: App to Database
         "name": "Helpseeker Name", (optional)
         "city": "Helpseeker City", (optional)
         "phone": "082123456789" (optional)
+        "picture": "image.jpg" (optional)
     }
     ```
     
@@ -85,10 +88,12 @@ Relasia REST-API: App to Database
     {
         "message" : "Successfully Updated",
         "data" : {
-            "id": "helpseeker.id",
-            "name": "Helpseeker Name",
             "city": "Helpseeker City",
-            "phone": "0821123456789"
+            "id": "helpseeker.id",
+            "missions": [],
+            "name": "Helpseeker Name",
+            "phone": "083876012340",
+            "picture": ""
         }
     }
     ```
@@ -118,7 +123,7 @@ Relasia REST-API: App to Database
 
   `http://127.0.0.1:5000/volunteer/` or `https://relasia-api.herokuapp.com/volunteer/`
 
-  - **[GET]** *Get Volunteer*
+  - **[GET]** *Get Specific Volunteer*
   
     Additional Route: `<string:id>`
     
@@ -132,17 +137,18 @@ Relasia REST-API: App to Database
 
     ```
     {
-       "address": "Volunteer Address",
-       "birthyear": "2000",
-       "city": "Volunteer City",
-       "foundations": [],
-       "gender": "male",
-       "id": "volunteer.baru",
-       "missions": [],
-       "name": "Volunteer baru",
-       "phone": "0821123456789",
-       "verified": "false"
-    }
+    "address": "Volunteer Address",
+    "birthyear": "2000",
+    "city": "Volunteer City",
+    "foundations": [_All Foundation Data_],
+    "gender": "male",
+    "id": "volunteer.deh",
+    "missions": [_All Mission Data that Applied_],
+    "name": "Volunteer baru",
+    "phone": "0821123456789",
+    "picture": "image.jpg",
+    "verified": "false"
+}
     ```
 
   - **[POST]** *Add New Volunteer*
@@ -172,10 +178,11 @@ Relasia REST-API: App to Database
             "city": "Volunteer City",
             "foundations": [],
             "gender": "male",
-            "id": "volunteer.baru",
+            "id": "volunteer.deh",
             "missions": [],
             "name": "Volunteer baru",
             "phone": "0821123456789",
+            "picture": "",
             "verified": "false"
         }
     }
@@ -188,12 +195,13 @@ Relasia REST-API: App to Database
     ```
     {
         "id": "volunteer.id",
-        "address": "Volunteer Address",
-        "birthyear": "2000",
-        "city": "Volunteer City",
-        "gender": "male",
-        "name": "Volunteer Name 2",
-        "phone": "0821123456787"        
+        "address": "Volunteer Address", (optional)
+        "birthyear": "2000", (optional)
+        "city": "Volunteer City", (optional)
+        "gender": "male", (optional)
+        "name": "Volunteer Name", (optional)
+        "phone": "0821123456787", (optional)
+        "picture": "image.jpg" (optional)
     }
     ```
 
@@ -310,6 +318,16 @@ Relasia REST-API: App to Database
         ]
     }
     ```
+    
+  - **[GET]** *Get Foundation Data filtered by City** (for nearest foundations)
+    
+    Additional Parameter: `city`
+    
+    Request:
+
+    ```
+    (Null)
+    ```
 
   - **[POST]** *Add New Foundation*
   
@@ -335,7 +353,8 @@ Relasia REST-API: App to Database
             "name": "Foundation Name",
             "phone": "082199998888",
             "address": "Foundation Address",
-            "city": "Foundation City"
+            "city": "Foundation City",
+            "volunteers": []
         }
     }
     ```
@@ -365,6 +384,9 @@ Relasia REST-API: App to Database
             "phone": "082199998888",
             "address": "Foundation Address",
             "city": "Foundation City"
+            "volunteers": [
+                _List of volunteers id and status_
+            ]
         }
     }
     ```
@@ -420,22 +442,24 @@ Relasia REST-API: App to Database
 
   `http://127.0.0.1:5000/mission/` or `https://relasia-api.herokuapp.com/mission/`
 
-  - **[GET]** *Get All Mission*
+  - **[GET]** *Get All Mission or Filtered Mission*
+
     Default page: 1
-    Default data on page: 5
+    Default data on page (paginate): 5
+    
+    Query Request Parameter (all Optional):
+    - page: 3 (Default Page: 1)
+    - paginate: 5 (Default data on page: 5)
+    - volunteer: volunteer.id (for filter by specific volunteer mission)
+    - helpseeker: helpseker.id (for filter by helpseeker who requested)
+    - city: mission.city (for filter by mission city)
+    - province: mission.province (for filter by province)
+    - status: volunteer.status (for filter by volunteers applied status)
+    - active: mission.status (for filter by mission active or nonactive)
     
     Request:
     ```
-    {
-        "page": "1",
-        "data_on_page": "5",
-        "volunteer": "volunteer.id",
-        "helpseeker": "helpseeker.id",
-        "city": "mission city",
-        "province": "mission province",
-        "status": "pending" | "accepted" | "rejected",
-        "active": "active" | "inactive",
-    }
+    (Null)
     ```
     
     Response:
@@ -446,61 +470,7 @@ Relasia REST-API: App to Database
         "data_on_page": "5",
         "length": "10",
         "data": [
-            {
-                "id": "Mission Helpseeker ID",
-                "helpseeker": "helpseeker.id",
-                "title": "Mission Title",
-                "category": "Mission Category",
-                "requirement": "Mission Requirement",
-                "note": "Mission Note",
-                "address": "Mission Address",
-                "city": "Mission City",
-                "province": "Mission Province",
-                "start_date": "Mission Start_date",
-                "end_date": "Mission End_date",
-                "featured_image": [
-                    (List of string for image links)
-                ],
-                "number_of_needs": "Mission Needed",
-                "timestamp": "Mission timestamp",
-                "volunteers": [
-                    {
-                        "id": "volunteer.pertama",
-                        "status": "pending"
-                    },
-                    {
-                        "id": "volunteer.kedua",
-                        "status": "accepted"
-                    },
-                ]
-            },
-            {
-                "id": "Mission Helpseeker ID",
-                "title": "Mission Title",
-                "category": "Mission Category",
-                "requirement": "Mission Requirement",
-                "note": "Mission Note",
-                "address": "Mission Address",
-                "city": "Mission City",
-                "province": "Mission Province",
-                "start_date": "Mission Start_date",
-                "end_date": "Mission End_date",
-                "featured_image": [
-                    (List of string for image links)
-                ],
-                "number_of_needs": "Mission Needed",
-                "timestamp": "Mission timestamp",
-                "volunteers": [
-                    {
-                        "id": "volunteer.pertama",
-                        "status": "pending"
-                    },
-                    {
-                        "id": "volunteer.kedua",
-                        "status": "accepted"
-                    },
-                ]
-            },
+            _List of All Mission Data or Filtered Mission_
         ]
     }
     ```
@@ -536,14 +506,7 @@ Relasia REST-API: App to Database
         "number_of_needs": "Mission Needed",
         "timestamp": "Mission timestamp",
         "volunteers": [
-            {
-                "id": "volunteer.pertama",
-                "status": "pending"
-            },
-            {
-                "id": "volunteer.kedua",
-                "status": "accepted"
-            },
+            _List of Volunteers Detailed Data_
         ]
     }
     ```
@@ -554,8 +517,8 @@ Relasia REST-API: App to Database
 
     ```
     {
-        "id": "Mission Helpseeker ID",
-        "title": "Mission Title",
+        "helpseeker": "helpseeker.id",
+        "title": "Mission Title Deh",
         "category": "Mission Category",
         "requirement": "Mission Requirement",
         "note": "Mission Note",
@@ -565,7 +528,7 @@ Relasia REST-API: App to Database
         "start_date": "Mission Start_date",
         "end_date": "Mission End_date",
         "featured_image": [
-            (List of string for image links)
+            "gambar.jpg"
         ],
         "number_of_needs": "Mission Needed"
     }
@@ -577,21 +540,25 @@ Relasia REST-API: App to Database
     {
         "message": "Successfully Created",
         "data": {
-            "timestamp": "Mission timestamp",
-            "id": "Mission Helpseeker ID",
-            "title": "Mission Title",
-            "category": "Mission Category",
-            "requirement": "Mission Requirement",
-            "note": "Mission Note",
             "address": "Mission Address",
-            "city": "Mission City",
-            "province": "Mission Province",
-            "start_date": "Mission Start_date",
+            "category": "Mission Category",
+            "city": "Depok",
             "end_date": "Mission End_date",
             "featured_image": [
-                (List of string for image links)
+                "gambar.jpg"
             ],
-            "number_of_needs": "Mission Needed"
+            "helpseeker": "helpseeker.id",
+            "id": "mission.id",
+            "note": "Mission Note",
+            "number_of_needs": "Mission Needed",
+            "province": "Mission Province",
+            "requirement": "Mission Requirement",
+            "start_date": "Mission Start_date",
+            "timestamp": "Sat, 04 Jun 2022 12:09:38 GMT",
+            "title": "Mission Title Deh",
+            "volunteers": [
+                _List of Volunteers id and Status_
+            ]
         }
     }
     ```
@@ -602,8 +569,9 @@ Relasia REST-API: App to Database
 
     ```
     {
-        "id": "Mission Helpseeker ID",
-        "title": "Mission Title", (optional)
+        "id": "mission.id"
+        "helpseeker": "helpseeker.id", (optional)
+        "title": "Mission Title Deh", (optional)
         "category": "Mission Category", (optional)
         "requirement": "Mission Requirement", (optional)
         "note": "Mission Note", (optional)
@@ -613,7 +581,7 @@ Relasia REST-API: App to Database
         "start_date": "Mission Start_date", (optional)
         "end_date": "Mission End_date", (optional)
         "featured_image": [ (optional)
-            (List of string for image links)
+            "gambar.jpg"
         ],
         "number_of_needs": "Mission Needed" (optional)
     }
@@ -625,21 +593,25 @@ Relasia REST-API: App to Database
     {
         "message": "Successfully Updated",
         "data": {
-            "timestamp": "Mission timestamp",
-            "id": "Mission Helpseeker ID",
-            "title": "Mission Title",
-            "category": "Mission Category",
-            "requirement": "Mission Requirement",
-            "note": "Mission Note",
             "address": "Mission Address",
-            "city": "Mission City",
-            "province": "Mission Province",
-            "start_date": "Mission Start_date",
+            "category": "Mission Category",
+            "city": "Depok",
             "end_date": "Mission End_date",
             "featured_image": [
-                (List of string for image links)
+                "gambar.jpg"
             ],
-            "number_of_needs": "Mission Needed"
+            "helpseeker": "helpseeker.deh",
+            "id": "ffed635516693f45965c0afe91a98fff10e02e0b",
+            "note": "Mission Note",
+            "number_of_needs": "Mission Needed",
+            "province": "Mission Province",
+            "requirement": "Mission Requirement",
+            "start_date": "Mission Start_date",
+            "timestamp": "Sat, 04 Jun 2022 12:09:38 GMT",
+            "title": "Mission Title Deh",
+            "volunteers": [
+                _List of Volunteers id and Status_
+            ]
         }
     }
     ```
