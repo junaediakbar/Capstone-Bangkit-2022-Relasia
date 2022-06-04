@@ -454,8 +454,8 @@ Relasia REST-API: App to Database
     - helpseeker: helpseker.id (for filter by helpseeker who requested)
     - city: mission.city (for filter by mission city)
     - province: mission.province (for filter by province)
-    - status: volunteer.status (for filter by volunteers applied status)
-    - active: mission.status (for filter by mission active or nonactive)
+    - status: "accepted" or "pending" or "rejected" (for filter by volunteers applied status)
+    - active: "active" or "inactive" (for filter by mission active or inactive)
     
     Request:
     ```
