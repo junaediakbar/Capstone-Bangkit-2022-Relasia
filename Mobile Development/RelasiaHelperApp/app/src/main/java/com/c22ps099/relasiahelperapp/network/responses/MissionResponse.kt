@@ -9,18 +9,17 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class MissionResponse(
 
+	@field:SerializedName("data_on_page")
+	val dataOnPage: String,
+
 	@field:SerializedName("data")
 	val data: List<MissionDataItem>,
 
 	@field:SerializedName("length")
-	val length: Int
-) : Parcelable
+	val length: String,
 
-@Parcelize
-data class Volunteers(
-
-	@field:SerializedName("volunteer_id")
-	val volunteerId: String
+	@field:SerializedName("page")
+	val page: String
 ) : Parcelable
 
 @Entity(tableName = "mission")
@@ -45,6 +44,9 @@ data class MissionDataItem(
 	@field:SerializedName("title")
 	val title: String,
 
+//	@field:SerializedName("volunteers")
+//	val volunteers: List<VolunteersItem>,
+
 	@field:SerializedName("featured_image")
 	val featuredImage: List<String>,
 
@@ -65,5 +67,18 @@ data class MissionDataItem(
 	val startDate: String,
 
 	@field:SerializedName("timestamp")
-	val timestamp: String
+	val timestamp: String,
+
+	@field:SerializedName("helpseeker")
+	val helpseeker: String
+) : Parcelable
+
+@Parcelize
+data class VolunteersItem(
+
+	@field:SerializedName("id")
+	val id: String,
+
+	@field:SerializedName("status")
+	val status: String
 ) : Parcelable

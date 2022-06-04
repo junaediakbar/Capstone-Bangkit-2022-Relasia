@@ -104,9 +104,9 @@ class HomeFragment : Fragment() {
                 }
             )
 
-//            homeViewModel.missions.observe(viewLifecycleOwner) {
-//                adapter.submitData(lifecycle, it)
-//            }
+            homeViewModel.missions.observe(viewLifecycleOwner) {
+                adapter.submitData(lifecycle, it)
+            }
         }
     }
 }

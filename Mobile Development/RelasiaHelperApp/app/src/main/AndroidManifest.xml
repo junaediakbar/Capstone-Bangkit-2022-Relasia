@@ -22,9 +22,11 @@
         android:theme="@style/Theme.RelasiaHelperApp">
         <activity
             android:name=".ui.main.BaseActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".ui.main.MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

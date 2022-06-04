@@ -33,6 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/refresh" />
+        android:text="@string/refresh"
+        android:textAllCaps="false" />
 
 </LinearLayout>

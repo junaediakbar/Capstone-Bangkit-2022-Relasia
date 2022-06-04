@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.c22ps099.relasiahelperapp.R
 import com.c22ps099.relasiahelperapp.databinding.FragmentLoginBinding
 import com.c22ps099.relasiahelperapp.ui.home.HomeFragment
+import com.c22ps099.relasiahelperapp.ui.register.RegisterFragment
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -68,6 +69,19 @@ class LoginFragment : Fragment() {
         binding?.apply {
             ibGmail.setOnClickListener {
                 signInGoogle()
+            }
+            tvRegister.setOnClickListener {
+                val navigateAction = LoginFragmentDirections
+                    .actionLoginFragmentToRegisterFragment()
+                findNavController().navigate(navigateAction)
+
+                val mRegisterFragment = RegisterFragment()
+                val mFragmentManager = parentFragmentManager
+                mFragmentManager.beginTransaction().apply {
+                    replace(R.id.nav_host_fragment, mRegisterFragment, RegisterFragment::class.java.simpleName)
+                    setReorderingAllowed(true)
+                    commit()
+                }
             }
         }
 

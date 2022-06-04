@@ -45,7 +45,7 @@ class MissionRemoteMediator(
 
         try {
             val responseData = apiService
-                .getAllMissions(state.config.pageSize)
+                .getAllMissions(page, state.config.pageSize)
                 .data
 
             val endOfPaginationReached = responseData.isEmpty()

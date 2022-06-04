@@ -46,7 +46,7 @@
             android:layout_height="42dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/ic_outline_bookmark_border_24"
-            android:visibility="invisible"
+            android:visibility="visible"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />
@@ -56,6 +56,7 @@
             android:layout_width="42dp"
             android:layout_height="42dp"
             android:layout_marginEnd="16dp"
+            android:visibility="invisible"
             android:background="@drawable/ic_baseline_bookmark_24"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
