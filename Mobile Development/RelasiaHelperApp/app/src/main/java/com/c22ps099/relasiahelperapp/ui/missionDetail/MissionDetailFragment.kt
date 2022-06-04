@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -13,8 +14,8 @@ import com.c22ps099.relasiahelperapp.data.Mission
 import com.c22ps099.relasiahelperapp.databinding.FragmentMissionDetailBinding
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 import com.c22ps099.relasiahelperapp.ui.login.LoginFragment
-import com.c22ps099.relasiahelperapp.ui.login.LoginFragmentDirections
 import com.c22ps099.relasiahelperapp.utils.DateFormatter
+import com.c22ps099.relasiahelperapp.utils.showSuccessDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -79,6 +80,16 @@ class MissionDetailFragment : Fragment() {
             }
             btnApply.setOnClickListener {
                 applyVolunteerToMission(missionString)
+            }
+        }
+
+        missionDetailViewModel.apply {
+            isSuccess.observe(viewLifecycleOwner) {
+                it.getContentIfNotHandled()?.let { success ->
+                    if (success) {
+                        showSuccessDialog(requireContext(), view)
+                    }
+                }
             }
         }
     }

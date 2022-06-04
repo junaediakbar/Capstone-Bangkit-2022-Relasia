@@ -142,7 +142,7 @@
         <action
             android:id="@+id/action_missionDetailFragment_to_missionsFragment"
             app:destination="@id/missionsFragment"
-            app:popUpTo="@id/homeFragment"
+            app:popUpTo="@id/missionsFragment"
             app:popUpToInclusive="true" />
     </fragment>
 
