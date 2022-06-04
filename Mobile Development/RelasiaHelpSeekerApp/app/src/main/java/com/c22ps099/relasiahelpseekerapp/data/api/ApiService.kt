@@ -12,6 +12,7 @@ interface ApiService {
 
     @GET("mission")
     fun getAllMissions(
+        @Query("helpseeker") id:String,
     ): Call<MissionsResponse>
 
     @Headers("Content-Type: application/json")

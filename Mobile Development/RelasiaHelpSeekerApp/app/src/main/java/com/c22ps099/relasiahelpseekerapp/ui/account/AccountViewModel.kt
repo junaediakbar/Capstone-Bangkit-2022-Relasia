@@ -38,7 +38,7 @@ class AccountViewModel(private val token: String) : ViewModel() {
                 ) {
                     _isLoading.value = false
 
-                    val i = if (response.isSuccessful) {
+                   if (response.isSuccessful) {
                         Log.v("ini adalah mission:", "Successs")
                     } else {
                         val errorMessage = Gson().fromJson(

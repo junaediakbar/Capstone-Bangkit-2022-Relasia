@@ -194,7 +194,7 @@ class FormFragment : Fragment() {
             spCategories.apply {
                 val categories = resources.getStringArray(R.array.Categories)
                 val adp = ArrayAdapter(
-                    context,
+                    activity?.applicationContext!!,
                     android.R.layout.simple_spinner_item, categories
                 )
                 adapter = adp
@@ -202,7 +202,7 @@ class FormFragment : Fragment() {
                     AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(
                         parent: AdapterView<*>,
-                        view: View, position: Int, id: Long
+                        view: View?, position: Int, id: Long
                     ) {
                         category = categories[position]
                     }
@@ -215,7 +215,7 @@ class FormFragment : Fragment() {
             spFormProvince.apply {
                 val provinces = itemsProv
                 val adp = ArrayAdapter(
-                    context,
+                    activity?.applicationContext!!,
                     android.R.layout.simple_spinner_item, provinces
                 )
                 adapter = adp
@@ -223,7 +223,7 @@ class FormFragment : Fragment() {
                     AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(
                         parent: AdapterView<*>,
-                        view: View, position: Int, id: Long
+                        view: View?, position: Int, id: Long
                     ) {
                         viewModel.updateProvince(provinces[position])
                     }
@@ -238,7 +238,7 @@ class FormFragment : Fragment() {
                 spFormCity.apply {
                     val cities = itemsKab(it)
                     val adp = ArrayAdapter(
-                        context,
+                        activity?.applicationContext!!,
                         android.R.layout.simple_spinner_item, cities
                     )
                     adapter = adp
@@ -246,7 +246,7 @@ class FormFragment : Fragment() {
                         AdapterView.OnItemSelectedListener {
                         override fun onItemSelected(
                             parent: AdapterView<*>,
-                            view: View, position: Int, id: Long
+                            view: View?, position: Int, id: Long
                         ) {
                             viewModel.updateCity(cities[position])
                         }

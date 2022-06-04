@@ -35,7 +35,7 @@ class AccountFragment : Fragment() {
         val genders = resources.getStringArray(R.array.Genders)
         binding?.spProfileGender?.apply {
             val adp = ArrayAdapter(
-                context,
+                activity?.applicationContext!!,
                 android.R.layout.simple_spinner_item, genders
             )
             adapter = adp
@@ -43,7 +43,7 @@ class AccountFragment : Fragment() {
                 AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
                     parent: AdapterView<*>,
-                    view: View, position: Int, id: Long
+                    view: View?, position: Int, id: Long
                 ) {
                     Toast.makeText(
                         context,
@@ -63,6 +63,7 @@ class AccountFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //TODO: Implement Logic
+
         val helpseeker  = Helpseeker(
             "idjuned",
             "siaapa",
