@@ -25,9 +25,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.c22ps099.relasiahelpseekerapp.R
-import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionItem
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentFormBinding
 import com.c22ps099.relasiahelpseekerapp.misc.*
+import com.c22ps099.relasiahelpseekerapp.model.Mission
 import com.google.firebase.FirebaseApp
 import com.google.firebase.storage.FirebaseStorage
 import com.google.gson.Gson
@@ -328,7 +328,7 @@ class FormFragment : Fragment() {
         binding?.apply {
             btnSubmit.setOnClickListener {
 //              scope.launch { uploadImages() }
-                scope.launch { uploadForm() }
+               uploadForm()
             }
         }
     }
@@ -353,28 +353,22 @@ class FormFragment : Fragment() {
 //                etFormDateStart.text.toString(),
 //                timeStamp
 //            )
-            val featuredImgs:List<String> = listOf( "https://firebasestorage.googleapis.com/v0/b/relasia.appspot.com/o/images%2F2022-Jun-02-%5B09%3A42%3A34%5D(3)?alt=media",
-                "https://firebasestorage.googleapis.com/v0/b/relasia.appspot.com/o/images%2F2022-Jun-02-%5B09%3A42%3A34%5D(3)?alt=media")
-            val map = HashMap<String, String>()
-            map.put("key1","value1");
-            map.put("key2","value2");
-            map.put("key3","value3");
+            val featuredImgs : List<String?>?= listOf("test","test2")
+
             val gson = Gson()
-            val mission = MissionItem(
-                "25/12/2022",
-                "Notes:bla bla",
+            val mission = Mission(
+                "helpseeker.id",
+                "Tsunami Palu 2019",
                 "Jl. Soekarno Hatta",
                 "Palu",
                 "requirements: bla",
-               "Tsunami Palu 2019",
-                map,
+               "12-21-1212",
+                "12-21-1212",
                 featuredImgs,
-                "10",
-                "Sulawesi Tengah",
-                "helpseeker.id",
-                "Mantap",
-                "20/12/2019",
-                "apalah"
+                "helpseeker-id",
+                    "apa" ,
+                "apa",
+                "10"
             )
                 viewModel.postMision(mission)
                 viewModel.isSuccess.observe(viewLifecycleOwner) {

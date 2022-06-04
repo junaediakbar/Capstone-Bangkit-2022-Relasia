@@ -3,6 +3,7 @@ package com.c22ps099.relasiahelpseekerapp.data.api.responses
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
+import java.util.ArrayList
 
 data class MissionsResponse(
 
@@ -12,6 +13,7 @@ data class MissionsResponse(
 	@field:SerializedName("length")
 	val length: Int? = null
 )
+
 @Parcelize
 data class MissionItem(
 
@@ -33,11 +35,8 @@ data class MissionItem(
 	@field:SerializedName("title")
 	val title: String? = null,
 
-	@field:SerializedName("volunteers")
-	val volunteers: HashMap<String,String>,
-
 	@field:SerializedName("featured_image")
-	val featuredImage: List<String?>? = null,
+	val featuredImage: ArrayList<String>?=null ,
 
 	@field:SerializedName("number_of_needs")
 	val numberOfNeeds: String? = null,

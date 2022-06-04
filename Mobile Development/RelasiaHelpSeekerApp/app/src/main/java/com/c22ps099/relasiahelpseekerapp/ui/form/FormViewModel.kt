@@ -11,6 +11,7 @@ import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionItem
 import com.c22ps099.relasiahelpseekerapp.misc.Event
 import com.c22ps099.relasiahelpseekerapp.misc.itemsKab
 import com.c22ps099.relasiahelpseekerapp.misc.timeStamp
+import com.c22ps099.relasiahelpseekerapp.model.Mission
 import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
@@ -54,21 +55,9 @@ class FormViewModel(private val token: String) : ViewModel() {
         return itemsKab(prov)
     }
 
-    fun postMision(mission: MissionItem) {
+    fun postMision(mission: Mission) {
         ApiConfig.getApiService().addMission(
-            mission.id,
-            mission.title,
-            mission.address,
-            mission.city,
-            mission.province,
-            mission.numberOfNeeds,
-            mission.startDate,
-            mission.endDate,
-            mission.featuredImage,
-            mission.category,
-            mission.requirement,
-            mission.note,
-            mission.volunteers
+            mission
         )
             .enqueue(object : Callback<GeneralResponse> {
                 override fun onResponse(
@@ -85,13 +74,14 @@ class FormViewModel(private val token: String) : ViewModel() {
                             GeneralResponse::class.java
                         )
                         _error.value = Event(errorMessage.message)
-                        Log.e("err", "${_error.value}")
+                        Log.e("response err", "${_error.value}")
                     }
                 }
 
                 override fun onFailure(call: Call<GeneralResponse>, t: Throwable) {
                     _isLoading.value = false
                     _error.value = Event(t.message.toString())
+                    Log.e("request err", "$t")
                 }
             })
     }
