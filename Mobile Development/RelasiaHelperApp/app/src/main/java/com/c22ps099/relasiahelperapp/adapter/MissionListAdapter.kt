@@ -17,6 +17,7 @@ import com.c22ps099.relasiahelperapp.R
 import com.c22ps099.relasiahelperapp.databinding.ItemMissionBinding
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 import com.c22ps099.relasiahelperapp.ui.missionDetail.MissionDetailFragment
+import com.c22ps099.relasiahelperapp.utils.DateFormatter
 
 
 class MissionListAdapter :
@@ -50,10 +51,8 @@ class MissionListAdapter :
         fun bind(data: MissionDataItem) {
             binding.apply {
                 tvMissionTitle.text = data.title
-                tvMissionCity.text = data.city
-                tvMissionCity.text = tvMissionCity.text.toString() + ", " + data.province
-                tvMissionDate.text = data.startDate
-                tvMissionDate.text = tvMissionDate.text.toString() + " - " + data.endDate
+                tvMissionCity.text = data.city + ", " + data.province
+                tvMissionDate.text = DateFormatter.formatDate(data.startDate) + " - " + DateFormatter.formatDate(data.endDate)
                 tvApplicant.text = data.numberOfNeeds
             }
             val url = data.featuredImage[0]

@@ -14,6 +14,7 @@ import com.c22ps099.relasiahelperapp.databinding.FragmentMissionDetailBinding
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 import com.c22ps099.relasiahelperapp.ui.login.LoginFragment
 import com.c22ps099.relasiahelperapp.ui.login.LoginFragmentDirections
+import com.c22ps099.relasiahelperapp.utils.DateFormatter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -90,7 +91,7 @@ class MissionDetailFragment : Fragment() {
                     .into(it)
             }
             tvMissionTitle.text = mission.title
-            tvMissionDate.text = mission.startDate + " - " + mission.endDate
+            tvMissionDate.text = DateFormatter.formatDate(mission.startDate) + " - " + DateFormatter.formatDate(mission.endDate)
             tvMissionCity.text = mission.city + ", " + mission.province
             tvApplicant.text = mission.numberOfNeeds
             tvMissionReq.text = mission.requirement
