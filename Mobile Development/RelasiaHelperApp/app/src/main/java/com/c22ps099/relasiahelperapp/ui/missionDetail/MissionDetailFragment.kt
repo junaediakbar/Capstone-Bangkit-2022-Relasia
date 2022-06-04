@@ -11,6 +11,7 @@ import com.c22ps099.relasiahelperapp.R
 import com.c22ps099.relasiahelperapp.databinding.FragmentMissionDetailBinding
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 import com.c22ps099.relasiahelperapp.ui.login.LoginFragment
+import com.c22ps099.relasiahelperapp.ui.login.LoginFragmentDirections
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -61,7 +62,9 @@ class MissionDetailFragment : Fragment() {
         showMissionDetail(mission)
 
         binding?.fabBack?.setOnClickListener {
-            
+            val navigateAction = MissionDetailFragmentDirections
+                .actionMissionDetailFragmentToHomeFragment()
+            findNavController().navigate(navigateAction)
         }
     }
 
