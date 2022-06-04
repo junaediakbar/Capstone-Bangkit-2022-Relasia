@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.c22ps099.relasiahelperapp.R
+import com.c22ps099.relasiahelperapp.data.Mission
 import com.c22ps099.relasiahelperapp.databinding.FragmentMissionDetailBinding
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 import com.c22ps099.relasiahelperapp.ui.login.LoginFragment
@@ -24,6 +26,13 @@ class MissionDetailFragment : Fragment() {
 
     private var binding: FragmentMissionDetailBinding? = null
     private lateinit var googleAuth: FirebaseAuth
+
+    private val missionDetailViewModel by viewModels<MissionDetailViewModel> {
+        MissionDetailViewModel.Factory(
+            "volunteer.baru",
+            arguments?.getParcelable<MissionDataItem>(EXTRA_MISSION) as MissionDataItem
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,11 +69,16 @@ class MissionDetailFragment : Fragment() {
 
         val mission = arguments?.getParcelable<MissionDataItem>(EXTRA_MISSION) as MissionDataItem
         showMissionDetail(mission)
-
-        binding?.fabBack?.setOnClickListener {
-            val navigateAction = MissionDetailFragmentDirections
-                .actionMissionDetailFragmentToHomeFragment()
-            findNavController().navigate(navigateAction)
+        val missionString = Mission(mission.id)
+        binding?.apply {
+            fabBack.setOnClickListener {
+                val navigateAction = MissionDetailFragmentDirections
+                    .actionMissionDetailFragmentToHomeFragment()
+                findNavController().navigate(navigateAction)
+            }
+            btnApply.setOnClickListener {
+                applyVolunteerToMission(missionString)
+            }
         }
     }
 
@@ -82,5 +96,9 @@ class MissionDetailFragment : Fragment() {
             tvMissionReq.text = mission.requirement
             tvMissionNote.text = mission.note
         }
+    }
+
+    private fun applyVolunteerToMission(mission: Mission) {
+        missionDetailViewModel.applyMission("volunteer.baru", mission)
     }
 }

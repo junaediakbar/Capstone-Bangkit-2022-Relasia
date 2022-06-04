@@ -44,9 +44,6 @@ data class MissionDataItem(
 	@field:SerializedName("title")
 	val title: String,
 
-//	@field:SerializedName("volunteers")
-//	val volunteers: List<VolunteersItem>,
-
 	@field:SerializedName("featured_image")
 	val featuredImage: List<String>,
 
@@ -71,14 +68,4 @@ data class MissionDataItem(
 
 	@field:SerializedName("helpseeker")
 	val helpseeker: String
-) : Parcelable
-
-@Parcelize
-data class VolunteersItem(
-
-	@field:SerializedName("id")
-	val id: String,
-
-	@field:SerializedName("status")
-	val status: String
 ) : Parcelable

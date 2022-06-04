@@ -7,16 +7,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class VolunteerResponse(
 
-	@field:SerializedName("data")
-	val data: List<VolunteerDataItem>,
-
-	@field:SerializedName("length")
-	val length: Int
-) : Parcelable
-
-@Parcelize
-data class VolunteerDataItem(
-
 	@field:SerializedName("address")
 	val address: String,
 
@@ -29,8 +19,11 @@ data class VolunteerDataItem(
 	@field:SerializedName("city")
 	val city: String,
 
+	@field:SerializedName("phone")
+	val phone: String,
+
 	@field:SerializedName("missions")
-	val missions: List<String>,
+	val missions: List<MissionDataItem>,
 
 	@field:SerializedName("foundations")
 	val foundations: List<String>,
@@ -39,5 +32,8 @@ data class VolunteerDataItem(
 	val name: String,
 
 	@field:SerializedName("verified")
-	val verified: String
+	val verified: String,
+
+	@field:SerializedName("id")
+	val id: String
 ) : Parcelable

@@ -1,9 +1,11 @@
 package com.c22ps099.relasiahelperapp.network
 
+import com.c22ps099.relasiahelperapp.data.Mission
+import com.c22ps099.relasiahelperapp.network.responses.GeneralResponse
 import com.c22ps099.relasiahelperapp.network.responses.MissionResponse
-import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.Query
+import com.c22ps099.relasiahelperapp.network.responses.VolunteerResponse
+import retrofit2.Call
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -13,4 +15,11 @@ interface ApiService {
         @Query("page") page: Int = 1,
         @Query("paginate") paginate: Int = 5
     ): MissionResponse
+
+    @Headers("Content-Type: application/json")
+    @PUT("volunteer/{volunteerId}/mission")
+    fun applyToMission(
+        @Path("volunteerId") volunteerId: String,
+        @Body mission: Mission
+    ): Call<GeneralResponse>
 }
