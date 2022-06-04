@@ -7,8 +7,8 @@ import java.lang.reflect.Type
 import java.util.*
 
 
-public class ImageTypeConverters {
-    var gson = Gson()
+class ImageTypeConverters {
+    private var gson = Gson()
 
     @TypeConverter
     fun stringToSomeObjectList(data: String?): List<String?>? {

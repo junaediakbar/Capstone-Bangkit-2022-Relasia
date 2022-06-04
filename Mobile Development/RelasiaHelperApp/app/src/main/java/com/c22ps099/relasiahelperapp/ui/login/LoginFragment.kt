@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
@@ -32,15 +33,18 @@ import com.google.firebase.ktx.Firebase
 class LoginFragment : Fragment() {
 
     companion object {
-        private const val TAG = "LoginFragment"
+        const val TAG = "LoginFragment"
         private const val WEB_CLIENT_ID =
             "269202247329-u5ad2hpor327e69ku1fjbjklksffdm50.apps.googleusercontent.com"
     }
+
+    private var token: String? = ""
 
     private lateinit var loginViewModel: LoginViewModel
     private var binding: FragmentLoginBinding? = null
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var googleAuth: FirebaseAuth
+    private lateinit var emailAuth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -78,13 +82,46 @@ class LoginFragment : Fragment() {
                 val mRegisterFragment = RegisterFragment()
                 val mFragmentManager = parentFragmentManager
                 mFragmentManager.beginTransaction().apply {
-                    replace(R.id.nav_host_fragment, mRegisterFragment, RegisterFragment::class.java.simpleName)
+                    replace(
+                        R.id.nav_host_fragment,
+                        mRegisterFragment,
+                        RegisterFragment::class.java.simpleName
+                    )
+                    addToBackStack(null)
                     setReorderingAllowed(true)
                     commit()
                 }
             }
+            btnLogin.setOnClickListener {
+                signInEmail()
+            }
         }
 
+    }
+
+    private fun signInEmail() {
+        binding?.apply {
+            val email = etEmail.text.toString()
+            val password = etPassword.text.toString()
+            emailAuth = FirebaseAuth.getInstance()
+            emailAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(requireActivity()) { task ->
+                    if (task.isSuccessful) {
+                        Log.d(TAG, "createUserWithEmail:success")
+                        val user = emailAuth.currentUser
+                        updateUI(user)
+                        token = FirebaseAuth.getInstance().currentUser!!.getIdToken(true).toString()
+                        Log.e("token", "$token")
+                    } else {
+                        Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                        Toast.makeText(
+                            activity, "Authentication failed.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        updateUI(null)
+                    }
+                }
+        }
     }
 
     private fun signInGoogle() {
@@ -127,7 +164,8 @@ class LoginFragment : Fragment() {
         if (currentUser != null) {
             val navigateAction = LoginFragmentDirections
                 .actionLoginFragmentToHomeFragment()
-            navigateAction.token = "token"
+            navigateAction.token = currentUser.getIdToken(true).toString()
+            navigateAction.userId=currentUser.uid
             findNavController().navigate(navigateAction)
 
             val mHomeFragment = HomeFragment()

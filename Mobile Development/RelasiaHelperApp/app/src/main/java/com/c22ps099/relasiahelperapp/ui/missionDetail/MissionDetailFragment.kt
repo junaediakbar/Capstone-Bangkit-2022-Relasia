@@ -59,6 +59,10 @@ class MissionDetailFragment : Fragment() {
 
         val mission = arguments?.getParcelable<MissionDataItem>(EXTRA_MISSION) as MissionDataItem
         showMissionDetail(mission)
+
+        binding?.fabBack?.setOnClickListener {
+            
+        }
     }
 
     private fun showMissionDetail(mission: MissionDataItem) {
