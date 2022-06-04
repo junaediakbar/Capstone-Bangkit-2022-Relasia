@@ -479,6 +479,10 @@ Relasia REST-API: App to Database
     
     Additional Route: `<string:id>`
     
+    Additional Query Parameter (All optional):
+    - key: volunteers --> value: volunteer.id (To get detailed data about volunteers that applied in mission)
+    - key: any field in mission detail --> value: any (To get any data from detailed mission data field)
+    
     Request:
 
     ```
