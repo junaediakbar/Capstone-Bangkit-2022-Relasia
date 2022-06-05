@@ -72,10 +72,10 @@
             android:paddingHorizontal="9dp"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="Diterima"
+            android:text="Pending"
             android:textSize="11sp"
-            android:textColor="@color/green_light"
-            android:background="@drawable/status_border"
+            android:textColor="@color/yellow_light"
+            android:background="@drawable/status_border_pending"
             card_view:layout_constraintStart_toStartOf="@id/tv_mission_title"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_mission_city" />
 
