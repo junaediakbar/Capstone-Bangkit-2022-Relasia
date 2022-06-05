@@ -1,4 +1,3 @@
-from ftplib import all_errors
 from flask import Blueprint, request, jsonify
 from firebase_admin import firestore
 from datetime import datetime
@@ -18,7 +17,7 @@ def addMission():
     try:
         # Composite mission_id from hash(helpseeker_id$title)
         title = request.json['title']
-        helpseeker_id = request.json['id']
+        helpseeker_id = request.json['helpseeker']
         mission_id = hashlib.sha1(
             (helpseeker_id + "$" + title).encode("utf-8")).hexdigest()
 
@@ -31,7 +30,9 @@ def addMission():
             else:
                 # Add new mission to mission collection
                 mission_data = request.json
-                mission_data["timestamp"] = datetime.datetime.now()
+                mission_data["timestamp"] = datetime.now()
+                mission_data["id"] = mission_id
+                mission_data["volunteers"] = []
                 mission_Ref.document(mission_id).set(mission_data)
 
                 # Add new mission to helpseeker collection
@@ -40,7 +41,7 @@ def addMission():
                 helpseeker_Ref.document(helpseeker_id).update(helpseeker_data)
 
                 # HTTP response code: 201 Created
-                return jsonify(message="Successfully Created"), 201
+                return jsonify(message="Successfully Created", data=mission_data), 201
         else:
             return f"Something error or user doesn't exist"
     except Exception as e:
@@ -55,11 +56,11 @@ def editMission():
 
         if mission.exists:
             # Update a mission
-            mission_data = request.json["data"]
-            mission_Ref.document(mission_id).update(mission_data)
+            mission_Ref.document(mission_id).update(request.json)
+            data = mission_Ref.document(mission_id).get().to_dict()
 
             # HTTP Response Code: 200 OK
-            return jsonify(message="Successfully Updated"), 200
+            return jsonify(message="Successfully Updated", data=data), 200
         else:
             # HTTP response code: 400 Bad Request
             return jsonify(message="Bad Request"), 400
@@ -71,14 +72,18 @@ def editMission():
 def confirmVolunteers(mission_id):
     try:
         mission = mission_Ref.document(mission_id).get()
-        volunteer_id = request.json['volunteer']
+        volunteer_id = request.json['id']
         volunteer = volunteer_Ref.document(volunteer_id).get()
         status = request.json['status']
 
         if mission.exists and volunteer.exists:
             # Update Volunteers Status
             mission_data = mission.to_dict()
-            mission_data["volunteers"][volunteer_id] = status
+            for data in mission_data["volunteers"]:
+                if volunteer_id == data["id"]:
+                    data["status"] = status
+                    break
+
             mission_Ref.document(mission_id).update(mission_data)
 
             # HTTP Response Code: 200 OK
@@ -97,15 +102,16 @@ def deleteMission():
         mission_id = request.json["mission"]
         mission_data = mission_Ref.document(mission_id).get().to_dict()
         volunteers = mission_data["volunteers"]
-        for volunteer_id in volunteers.keys():
-            volunteer = volunteer_Ref.document(volunteer_id).get()
+        for volunteer_id in volunteers:
+            volunteer = volunteer_Ref.document(volunteer_id["id"]).get()
             if volunteer.exists:
                 volunteer_data = volunteer.to_dict()
                 volunteer_data["missions"].remove(mission_id)
-                volunteer_Ref.document(volunteer_id).update(volunteer_data)
+                volunteer_Ref.document(
+                    volunteer_id["id"]).update(volunteer_data)
 
         # Update mission on helpseeker collection
-        helpseeker_id = mission_data["id"]
+        helpseeker_id = mission_data["helpseeker"]
         helpseeker = helpseeker_Ref.document(helpseeker_id).get()
         if helpseeker.exists:
             helpseeker_data = helpseeker.to_dict()
@@ -123,111 +129,131 @@ def deleteMission():
 @missionRoutes.route('/', methods=['GET'])
 def getMission():
     try:
-        try:
-            mission_id = request.json["id"]
-        except:
-            mission_id = ""
+        page = request.args.get("page",          default=1,  type=int)
+        paginate = request.args.get("paginate",  default=5,  type=int)
+        volunteer_id = request.args.get("volunteer",     default="", type=str)
+        helpseeker_id = request.args.get("helpseeker",    default="", type=str)
+        city = request.args.get("city",          default="", type=str)
+        province = request.args.get("province",      default="", type=str)
+        status = request.args.get("status",        default="", type=str)
+        active = request.args.get("active",        default="", type=str)
 
-        if mission_id:
-            mission_data = mission_Ref.document(mission_id).get().to_dict()
+        missions = []
+        if volunteer_id:
+            volunteer_data = volunteer_Ref.document(
+                volunteer_id).get().to_dict()
+            mission_id = volunteer_data["missions"]
 
-            # Get Helpseeker who request the mission from helpseeker collection
-            helpseeker_id = mission_data["id"]
-            helpseeker = helpseeker_Ref.document(helpseeker_id).get().to_dict()
-            mission_data["id"] = helpseeker
+            for data in mission_id:
+                missions.append(mission_Ref.document(data).get().to_dict())
 
-            # Get all volunteers who join a mission from volunteer collection
-            volunteers = mission_data["volunteers"]
-            mission_data["volunteers"] = {}
-            for volunteer_id, status in volunteers.items():
-                volunteer = volunteer_Ref.document(volunteer_id).get()
-                if volunteer.exists:
-                    volunteer_data = volunteer.to_dict()
-                    volunteer_data['status'] = status
-                    mission_data["volunteers"][volunteer_id] = volunteer_data
+            if status:
+                temp = []
+                for mission in missions:
+                    for volunteer in mission["volunteers"]:
+                        if volunteer["id"] == volunteer_id and volunteer["status"] == status:
+                            temp.append(mission)
+                missions = temp
 
-            # HTTP Response Code: 200 OK
-            return mission_data, 200
+        elif helpseeker_id:
+            helpseeker_data = helpseeker_Ref.document(
+                helpseeker_id).get().to_dict()
+            mission_id = helpseeker_data["missions"]
+
+            for data in mission_id:
+                missions.append(mission_Ref.document(data).get().to_dict())
+
         else:
             # Get all missions from mission collection
-            all_mission = [doc.to_dict() for doc in mission_Ref.stream()]
-            # HTTP Response Code: 200 OK
-            return jsonify(all_mission), 200
+            missions = [doc.to_dict() for doc in mission_Ref.stream()]
+
+        if city:
+            missions = [
+                mission for mission in missions if mission["city"] == city]
+
+        if province:
+            missions = [
+                mission for mission in missions if mission["province"] == province]
+
+        if active:
+            temp = []
+            for mission in missions:
+                current = datetime.now().strftime("%Y/%m/%d")
+                compare = datetime.strptime(
+                    mission["end_date"], "%d/%m/%Y").strftime("%Y/%m/%d")
+                print(current, compare)
+                if active == "active" and current <= compare:
+                    temp.append(mission)
+                elif active == "inactive" and current > compare:
+                    temp.append(mission)
+            missions = temp
+
+        length = len(missions)
+        if page > 1:
+            page_temp = page - 1
+            missions = missions[((page_temp)*paginate):(page*paginate)]
+        else:
+            missions = missions[0:paginate]
+
+        response = {
+            "length": length,
+            "data": missions,
+            "page": page,
+            "data_on_page": paginate
+        }
+        # HTTP Response Code: 200 OK
+        return jsonify(response), 200
     except Exception as e:
         return f"An Error Occurred: {e}"
 
 
-@missionRoutes.route('/filtered', methods=['GET'])
-def getMissionHistoryFiltered():
+@ missionRoutes.route('/<string:id>', methods=["GET"])
+def getSpecificMission(id):
     try:
         try:
-            # Get volunteer id from json body
-            volunteer_id = request.json["id"]
+            mission_id = id
         except:
-            # Get all missions from mission collection
-            all_mission = [doc.to_dict() for doc in mission_Ref.stream()]
+            mission_id = ""
+
+        try:
+            specific_data = request.args.get('data')
+        except:
+            specific_data = ""
+
+        if mission_id:
+            mission_data = mission_Ref.document(mission_id).get().to_dict()
+            if specific_data:
+                if specific_data == "volunteers":
+                    volunteers = mission_data["volunteers"]
+                    detailed_data = []
+                    for data in volunteers:
+                        volunteer = volunteer_Ref.document(data["id"]).get()
+                        if volunteer.exists:
+                            volunteer_data = volunteer.to_dict()
+                            volunteer_data['status'] = data["status"]
+                            detailed_data.append(volunteer_data)
+                    return jsonify(lenght=len(detailed_data), volunteers=detailed_data), 200
+                else:
+                    return {specific_data: mission_data[specific_data]}, 200
+
+            # Get Helpseeker who request the mission from helpseeker collection
+            helpseeker_id = mission_data["helpseeker"]
+            helpseeker = helpseeker_Ref.document(helpseeker_id).get().to_dict()
+            mission_data["helpseeker"] = helpseeker
+
+            # Get all volunteers who join a mission from volunteer collection
+            volunteers = mission_data["volunteers"]
+            mission_data["volunteers"] = []
+            for data in volunteers:
+                volunteer_id = data["id"]
+                volunteer = volunteer_Ref.document(volunteer_id).get()
+                if volunteer.exists:
+                    volunteer_data = volunteer.to_dict()
+                    volunteer_data['status'] = data["status"]
+                    mission_data["volunteers"].append(volunteer_data)
+
             # HTTP Response Code: 200 OK
-            return jsonify(all_mission), 200
-
-        volunteer = volunteer_Ref.document(volunteer_id).get()
-        if volunteer.exists:
-            volunteer_data = volunteer.to_dict()
-            # Getting filter data from json body
-            try:
-                filter = request.json["filter"]
-            except:
-                filter = ""
-
-            if filter:
-                mission_id = []
-                missions = volunteer_data["missions"]
-                # Filtering by each parameters
-                for id in missions:
-                    mission_data = mission_Ref.document(
-                        id).get().to_dict()
-                    mission_data["mission_id"] = id
-                    # if "active" in filter:
-                    #     if filter["active"] == "true":
-                    if "city" in filter:
-                        if filter["city"] == mission_data["city"]:
-                            mission_id.append(id)
-                    if "province" in filter:
-                        if filter["province"] == mission_data["province"]:
-                            mission_id.append(id)
-                    if "status" in filter:
-                        if filter["status"] == mission_data["volunteers"][volunteer_id]:
-                            mission_id.append(id)
-                    if "active" in filter:
-                        current = datetime.now().strftime("%Y/%m/%d")
-                        compare = datetime.strptime(mission_data["end_date"], "%d/%m/%Y").strftime("%Y/%m/%d")
-                        if filter["active"] == "Active" and current <= compare:
-                            mission_id.append(id)
-                        elif filter["active"] == "Inactive" and current > compare:
-                            mission_id.append(id)
-
-                # Remove id duplicate from filtering result
-                mission_id = list(dict.fromkeys(mission_id))
-
-                # Get all mission data by Mission ID
-                data = []
-                for id in mission_id:
-                    data.append(mission_Ref.document(id).get().to_dict())
-
-                response = {
-                    "length" : len(data),
-                    "data" : data,
-                }
-
-                # HTTP response code: 200 OK
-                return jsonify(response), 200
-            else:
-                response = {
-                    "length" : len(all_mission),
-                    "data" : all_mission,
-                }
-
-                # HTTP response code: 200 OK
-                return jsonify(response), 200
+            return mission_data, 200
         else:
             # HTTP response code: 400 Bad Request
             return jsonify(message="Bad Request"), 400
