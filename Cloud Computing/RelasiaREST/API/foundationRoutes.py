@@ -7,32 +7,81 @@ volunteer_Ref = db.collection('volunteer')
 
 foundationRoutes = Blueprint('foundationRoutes', __name__)
 
-@foundationRoutes.route('/<string:foundation_id>', methods=["GET"])
-def getFoundation(foundation_id):
+
+@foundationRoutes.route('/<string:id>', methods=["GET"])
+def getFoundation(id):
     try:
-        foundation_data = foundation_Ref.document(foundation_id).get().to_dict()
-        
-        # Get all volunteer of foundation from volunteer collection
-        volunteers = foundation_data["volunteers"]
-        foundation_data["volunteers"] = []
+        try:
+            foundation_id = id
+        except:
+            foundation_id = ""
 
-        for volunteer in volunteers:
-            volunteer_data = volunteer_Ref.document(volunteer["id"]).get().to_dict()
+        if foundation_id:
+            foundation_data = foundation_Ref.document(
+                foundation_id).get().to_dict()
 
-            foundation_data["volunteers"].append({
-                "id": volunteer_data["id"],
-                "name": volunteer_data["name"],
-                "gender": volunteer_data["gender"],
-                "missions": volunteer_data["missions"],
-                "city": volunteer_data["city"],
-                "address": volunteer_data["address"],
-                "status": volunteer["status"]
-            })
+            # Get all volunteer of foundation from volunteer collection
+            volunteers = foundation_data["volunteers"]
+            foundation_data["volunteers"] = {}
 
-        # HTTP response code: 200 OK
-        return foundation_data, 200
+            for volunteer in volunteers:
+                print(volunteer["status"])
+                volunteer_data = volunteer_Ref.document(
+                    volunteer["id"]).get().to_dict()
+
+                foundation_data["volunteers"][volunteer["id"]] = {
+                    "status": volunteer_data["id"],
+                    "name": volunteer_data["name"],
+                    "gender": volunteer_data["gender"],
+                    "missions": volunteer_data["missions"],
+                    "city": volunteer_data["city"],
+                    "address": volunteer_data["address"]
+                }
+
+            data = foundation_Ref.document(foundation_id).get().to_dict()
+
+            # HTTP response code: 200 OK
+            return data, 200
+        else:
+            # HTTP response code: 400 Bad Request
+            return jsonify(message="Bad Request"), 400
+
     except Exception as e:
         return f"An Error Occurred: {e}"
+
+
+@foundationRoutes.route('/', methods=["GET"])
+def getFilteredFoundation():
+    try:
+        try:
+            filter = request.args.get('filter')
+        except:
+            filter = ""
+
+        if filter:
+            foundation_id = []
+            foundations = [doc.to_dict() for doc in foundation_Ref.stream()]
+            for data in foundations:
+                if filter == data["city"]:
+                    foundation_id.append(data["id"])
+
+            foundation_id = list(dict.fromkeys(foundation_id))
+            foundations = []
+            for id in foundation_id:
+                foundations.append(foundation_Ref.document(id).get().to_dict())
+
+        else:
+            foundations = [doc.to_dict() for doc in foundation_Ref.stream()]
+
+        response = {
+            "length": len(foundations),
+            "data": foundations,
+        }
+
+        return response, 200
+    except Exception as e:
+        return f"An Error Occurred: {e}"
+
 
 @foundationRoutes.route('/', methods=["POST"])
 def addFoundation():
@@ -53,6 +102,7 @@ def addFoundation():
     except Exception as e:
         return f"An Error Occurred: {e}"
 
+
 @foundationRoutes.route("/", methods=['PUT'])
 def editFoundation():
     try:
@@ -72,6 +122,7 @@ def editFoundation():
 
     except Exception as e:
         return f"An Error Occurred: {e}"
+
 
 @foundationRoutes.route('/<string:foundation_id>', methods=['PUT'])
 def validateMember(foundation_id):
@@ -106,6 +157,7 @@ def validateMember(foundation_id):
 
     except Exception as e:
         return f"An Error Occurred: {e}"
+
 
 @foundationRoutes.route('/', methods=['DELETE'])
 def deleteFoundation():

@@ -8,35 +8,12 @@ mission_Ref = db.collection('mission')
 
 volunteerRoutes = Blueprint('volunteerRoutes', __name__)
 
-@volunteerRoutes.route('/<string:volunteer_id>', methods=['GET'])
-def getVolunteer(volunteer_id):
-    try:
-        volunteer_data = volunteer_Ref.document(volunteer_id).get().to_dict()
-
-        # Get all missions of volunteer from mission collection
-        missions = volunteer_data["missions"]
-        volunteer_data["missions"] = []
-        for mission_id in missions:
-            mission_data = mission_Ref.document(mission_id).get().to_dict()
-            volunteer_data["missions"].append(mission_data)
-
-        # Get all foundations of volunteer from mission collection
-        foundations = volunteer_data["foundations"]
-        volunteer_data["foundations"] = []
-        for foundation_id in foundations:
-            foundation_data = foundation_Ref.document(
-                foundation_id).get().to_dict()
-            volunteer_data["foundations"].append(foundation_data)
-
-        # HTTP response code: 200 OK
-        return volunteer_data, 200
-    except Exception as e:
-        return f"An Error Occurred: {e}"
 
 @volunteerRoutes.route('/', methods=['POST'])
 def addVolunteer():
     try:
         data = request.json
+        data["picture"] = ""
         data["foundations"] = []
         data["missions"] = []
         data["verified"] = "false"
@@ -52,6 +29,7 @@ def addVolunteer():
             return jsonify(message="Successfully Created", data=data), 201
     except Exception as e:
         return f"An Error Occurred: {e}"
+
 
 @volunteerRoutes.route('/', methods=['PUT'])
 def editVolunteer():
@@ -72,6 +50,7 @@ def editVolunteer():
 
     except Exception as e:
         return f"An Error Occurred: {e}"
+
 
 @volunteerRoutes.route('/<string:volunteer_id>/foundation', methods=['PUT'])
 def registerFoundation(volunteer_id):
@@ -107,6 +86,7 @@ def registerFoundation(volunteer_id):
     except Exception as e:
         return f"An Error Occurred: {e}"
 
+
 @volunteerRoutes.route('/<string:volunteer_id>/mission', methods=['PUT'])
 def applyMission(volunteer_id):
     try:
@@ -139,6 +119,7 @@ def applyMission(volunteer_id):
             return jsonify(message="Bad Request"), 400
     except Exception as e:
         return f"An Error Occured: {e}"
+
 
 @volunteerRoutes.route('/', methods=['DELETE'])
 def deleteVolunteer():
@@ -176,5 +157,49 @@ def deleteVolunteer():
         else:
             # HTTP response code: 400 Bad Request
             return jsonify(message="Bad Request"), 400
+    except Exception as e:
+        return f"An Error Occurred: {e}"
+
+
+@volunteerRoutes.route('/<string:id>', methods=['GET'])
+def getVolunteer(id):
+    try:
+        try:
+            volunteer_id = id
+        except:
+            volunteer_id = ""
+
+        if volunteer_id:
+            volunteer_data = volunteer_Ref.document(
+                volunteer_id).get().to_dict()
+
+            # Get all missions of volunteer from mission collection
+            missions = volunteer_data["missions"]
+            volunteer_data["missions"] = []
+            for mission_id in missions:
+                mission_data = mission_Ref.document(mission_id).get().to_dict()
+                volunteer_data["missions"].append(mission_data)
+
+            # Get all foundations of volunteer from mission collection
+            foundations = volunteer_data["foundations"]
+            volunteer_data["foundations"] = []
+            for foundation_id in foundations:
+                foundation_data = foundation_Ref.document(
+                    foundation_id).get().to_dict()
+                volunteer_data["foundations"].append(foundation_data)
+
+            # HTTP response code: 200 OK
+            return volunteer_data, 200
+        else:
+            # all_volunteers = [doc.to_dict() for doc in volunteer_Ref.stream()]
+
+            # response = {
+            #     "length": len(all_volunteers),
+            #     "data": all_volunteers,
+            # }
+
+            # HTTP response code: 200 OK
+            return jsonify(message="Bad Request"), 409
+
     except Exception as e:
         return f"An Error Occurred: {e}"

@@ -14,10 +14,12 @@ def create_app():
     from .volunteerRoutes import volunteerRoutes
     from .foundationRoutes import foundationRoutes
     from .missionRoutes import missionRoutes
+    from .mlRoutes import mlRoutes
 
     app.register_blueprint(helpseekerRoutes, url_prefix='/helpseeker')
     app.register_blueprint(volunteerRoutes, url_prefix='/volunteer')
     app.register_blueprint(foundationRoutes, url_prefix='/foundation')
     app.register_blueprint(missionRoutes, url_prefix='/mission')
+    app.register_blueprint(mlRoutes, url_prefix='/ml')
 
     return app
