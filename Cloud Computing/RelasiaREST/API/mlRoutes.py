@@ -8,7 +8,6 @@ mission_Ref = db.collection('mission')
 
 mlRoutes = Blueprint('mlRoutes', __name__)
 
-
 @mlRoutes.route('/', methods=['GET'])
 def getDataForTraining():
     try:

@@ -1,17 +1,23 @@
-from flask import Blueprint, request, jsonify
-from firebase_admin import firestore
-from datetime import datetime
+# Initialize Firestore
+from firebase_admin import credentials, initialize_app, firestore
 
-# Initialization Database Reference
+cred = credentials.Certificate('credentials.json')
+default_app = initialize_app(cred)
+
 db = firestore.client()
 volunteer_Ref = db.collection('volunteer')
 helpseeker_Ref = db.collection('helpseeker')
 mission_Ref = db.collection('mission')
 
-missionRoutes = Blueprint('missionRoutes', __name__)
+# Initialize Flask
+from flask import Flask, request, jsonify
 
+app = Flask(__name__)
 
-@missionRoutes.route('/', methods=['POST'])
+# Routing
+from datetime import datetime
+
+@app.route('/', methods=['POST'])
 def addMission():
     try:
         # Composite mission_id from hash(helpseeker_id$title)
@@ -51,7 +57,7 @@ def addMission():
         return f"An Error Occurred: {e}"
 
 
-@missionRoutes.route('/', methods=['PUT'])
+@app.route('/', methods=['PUT'])
 def editMission():
     try:
         mission_id = request.json["id"]
@@ -71,7 +77,7 @@ def editMission():
         return f"An Error Occurred: {e}"
 
 
-@missionRoutes.route('/<string:mission_id>', methods=['PUT'])
+@app.route('/<string:mission_id>', methods=['PUT'])
 def confirmVolunteers(mission_id):
     try:
         mission = mission_Ref.document(mission_id).get()
@@ -98,7 +104,7 @@ def confirmVolunteers(mission_id):
         return f"An Error Occurred: {e}"
 
 
-@missionRoutes.route('/', methods=['DELETE'])
+@app.route('/', methods=['DELETE'])
 def deleteMission():
     try:
         # Update mission on volunteer collection
@@ -129,7 +135,7 @@ def deleteMission():
         return f"An Error Occurred: {e}"
 
 
-@missionRoutes.route('/', methods=['GET'])
+@app.route('/', methods=['GET'])
 def getMission():
     try:
         page = request.args.get("page", default=1, type=int)
@@ -210,7 +216,7 @@ def getMission():
         return f"An Error Occurred: {e}"
 
 
-@ missionRoutes.route('/<string:id>', methods=["GET"])
+@app.route('/<string:id>', methods=["GET"])
 def getSpecificMission(id):
     try:
         try:
@@ -262,3 +268,7 @@ def getSpecificMission(id):
             return jsonify(message="Bad Request"), 400
     except Exception as e:
         return f"An Error Occurred: {e}"
+
+if __name__ == '__main__':
+    app.run(threaded=True)
+    # app.run(host="0.0.0.0", debug=True)
