@@ -1,0 +1,9 @@
+# Ignore venv directory
+relasia/
+
+# Ignore logs
+logs
+*.log
+
+# Ignore credentials
+credentials.*
