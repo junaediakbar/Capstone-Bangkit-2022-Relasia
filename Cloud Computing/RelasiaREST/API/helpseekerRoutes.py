@@ -8,29 +8,13 @@ mission_Ref = db.collection('mission')
 
 helpseekerRoutes = Blueprint('helpseekerRoutes', __name__)
 
-@helpseekerRoutes.route('/<string:helpseeker_id>', methods=['GET'])
-def getHelpseeker(helpseeker_id):
-    try:
-        helpseeker_data = helpseeker_Ref.document(
-            helpseeker_id).get().to_dict()
-
-        # Get all missions of helpseeker from mission collection
-        missions = helpseeker_data["missions"]
-        helpseeker_data["missions"] = []
-        for mission_id in missions:
-            mission_data = mission_Ref.document(mission_id).get().to_dict()
-            helpseeker_data["missions"].append(mission_data)
-
-        # HTTP response code: 200 OK
-        return helpseeker_data, 200
-    except Exception as e:
-        return f"An Error Occurred: {e}"
 
 @helpseekerRoutes.route('/', methods=['POST'])
 def addHelpseeker():
     try:
         # Add new helpseeker to helpseeker collection
         data = request.json
+        data["picture"] = ""
         data["missions"] = []
 
         helpseeker = helpseeker_Ref.document(data["id"]).get()
@@ -43,6 +27,7 @@ def addHelpseeker():
             return jsonify(message="Successfully Created", data=data), 201
     except Exception as e:
         return f"An Error Occurred: {e}"
+
 
 @helpseekerRoutes.route('/', methods=['PUT'])
 def editDataHelpseeker():
@@ -61,6 +46,7 @@ def editDataHelpseeker():
             return jsonify(message="Bad Request"), 400
     except Exception as e:
         return f"An Error Occurred: {e}"
+
 
 @helpseekerRoutes.route('/', methods=['DELETE'])
 def deleteHelpseeker():
@@ -85,5 +71,43 @@ def deleteHelpseeker():
         helpseeker_Ref.document(helpseeker_id).delete()
         # HTTP response code: 200 OK
         return jsonify(message="Successfully Deleted"), 200
+    except Exception as e:
+        return f"An Error Occurred: {e}"
+
+
+@helpseekerRoutes.route('/<string:id>', methods=['GET'])
+def getHelpseeker(id):
+    try:
+        try:
+            helpseeker_id = id
+        except:
+            helpseeker_id = ""
+
+        if helpseeker_id:
+            helpseeker_data = helpseeker_Ref.document(
+                helpseeker_id).get().to_dict()
+
+            # Get all missions of helpseeker from mission collection
+            missions = helpseeker_data["missions"]
+            helpseeker_data["missions"] = []
+            for mission_id in missions:
+                mission_data = mission_Ref.document(mission_id).get().to_dict()
+                helpseeker_data["missions"].append(mission_data)
+
+            # HTTP response code: 200 OK
+            return helpseeker_data, 200
+        else:
+            # Get all helpseekers from helpseeker collection
+            # all_helpseekers = [doc.to_dict()
+            #                    for doc in helpseeker_Ref.stream()]
+
+            # response = {
+            #     "length": len(all_helpseekers),
+            #     "data": all_helpseekers,
+            # }
+
+            # HTTP response code: 409 Bad Request
+            return jsonify(message="Bad Request"), 409
+
     except Exception as e:
         return f"An Error Occurred: {e}"
