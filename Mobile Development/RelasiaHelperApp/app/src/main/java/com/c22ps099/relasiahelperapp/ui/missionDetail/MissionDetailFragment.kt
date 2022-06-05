@@ -1,5 +1,6 @@
 package com.c22ps099.relasiahelperapp.ui.missionDetail
 
+import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -32,7 +33,8 @@ class MissionDetailFragment : Fragment() {
     private val missionDetailViewModel by viewModels<MissionDetailViewModel> {
         MissionDetailViewModel.Factory(
             "volunteer.baru",
-            arguments?.getParcelable<MissionDataItem>(EXTRA_MISSION) as MissionDataItem
+            arguments?.getParcelable<MissionDataItem>(EXTRA_MISSION) as MissionDataItem,
+            activity?.applicationContext as Application
         )
     }
 
@@ -69,6 +71,22 @@ class MissionDetailFragment : Fragment() {
             }
         }
 
+        missionDetailViewModel.apply {
+            isSuccess.observe(viewLifecycleOwner) {
+                it.getContentIfNotHandled()?.let { success ->
+                    if (success) {
+                        showSuccessDialog(requireContext(), view)
+                    }
+                }
+            }
+            isBookMission.observe(viewLifecycleOwner) { book ->
+                binding?.apply {
+                    btnBookmark.visibility = swapBookButton(!book)
+                    btnUnbookmark.visibility = swapBookButton(book)
+                }
+            }
+        }
+
         val mission = arguments?.getParcelable<MissionDataItem>(EXTRA_MISSION) as MissionDataItem
         showMissionDetail(mission)
         val missionString = Mission(mission.id)
@@ -81,17 +99,29 @@ class MissionDetailFragment : Fragment() {
             btnApply.setOnClickListener {
                 applyVolunteerToMission(missionString)
             }
-        }
-
-        missionDetailViewModel.apply {
-            isSuccess.observe(viewLifecycleOwner) {
-                it.getContentIfNotHandled()?.let { success ->
-                    if (success) {
-                        showSuccessDialog(requireContext(), view)
-                    }
-                }
+            btnBookmark.setOnClickListener {
+                missionDetailViewModel.setBookMission(mission, true)
+                Toast.makeText(
+                    context,
+                    getString(R.string.add_bookmark),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            btnUnbookmark.setOnClickListener {
+                missionDetailViewModel.setBookMission(mission, false)
+                Toast.makeText(
+                    context,
+                    getString(R.string.delete_bookmark),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
+
+
+    }
+
+    private fun swapBookButton(isBook: Boolean): Int {
+        return if (isBook) View.VISIBLE else View.INVISIBLE
     }
 
     private fun showMissionDetail(mission: MissionDataItem) {

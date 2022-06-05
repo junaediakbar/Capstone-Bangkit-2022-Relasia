@@ -44,7 +44,6 @@ class ProfileFragment : Fragment() {
                     mLoginFragment,
                     LoginFragment::class.java.simpleName
                 )
-//                addToBackStack(null)
                 setReorderingAllowed(true)
                 commit()
             }

@@ -29,4 +29,6 @@
     <string name="error">Terdapat Kesalahan. Mohon coba lagi nanti</string>
     <string name="refresh">Refresh</string>
     <string name="title_mission_detail">Mission Detail</string>
+    <string name="add_bookmark">Bookmark successfully</string>
+    <string name="delete_bookmark">Unbookmark successfully</string>
 </resources>

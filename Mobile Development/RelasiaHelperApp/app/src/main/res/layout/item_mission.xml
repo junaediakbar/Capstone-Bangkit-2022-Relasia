@@ -105,25 +105,6 @@
             card_view:layout_constraintStart_toStartOf="@id/iv_mission_photo"
             card_view:layout_constraintTop_toBottomOf="@id/tv_applicant" />
 
-        <ImageButton
-            android:id="@+id/btn_bookmark"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:background="@drawable/ic_outline_bookmark_border_24"
-            card_view:layout_constraintBottom_toBottomOf="@id/btn_details"
-            card_view:layout_constraintEnd_toEndOf="@id/iv_mission_photo"
-            card_view:layout_constraintTop_toTopOf="@+id/btn_details" />
-
-        <ImageButton
-            android:id="@+id/btn_unbookmark"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:background="@drawable/ic_baseline_bookmark_24"
-            android:visibility="invisible"
-            card_view:layout_constraintBottom_toBottomOf="@id/btn_details"
-            card_view:layout_constraintEnd_toEndOf="@id/iv_mission_photo"
-            card_view:layout_constraintTop_toTopOf="@+id/btn_details" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

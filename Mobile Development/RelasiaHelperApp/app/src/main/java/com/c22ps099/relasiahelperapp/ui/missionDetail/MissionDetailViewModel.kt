@@ -2,25 +2,24 @@ package com.c22ps099.relasiahelperapp.ui.missionDetail
 
 import android.app.Application
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.c22ps099.relasiahelperapp.data.Mission
+import com.c22ps099.relasiahelperapp.data.MissionMarkRepository
 import com.c22ps099.relasiahelperapp.network.ApiConfig
 import com.c22ps099.relasiahelperapp.network.responses.GeneralResponse
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
-import com.c22ps099.relasiahelperapp.network.responses.VolunteerResponse
 import com.c22ps099.relasiahelperapp.utils.Event
-import com.c22ps099.relasiahelperapp.utils.showSuccessDialog
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MissionDetailViewModel(
     private val volunteerId: String,
-    private val missionId: String
+    private val missionId: String,
+    application: Application
 ) : ViewModel() {
 
     companion object {
@@ -35,6 +34,18 @@ class MissionDetailViewModel(
 
     private val _error = MutableLiveData<Event<String>>()
     val error: LiveData<Event<String>> = _error
+
+    private val missionMarkRepository = MissionMarkRepository.getInstance(application)
+
+    val isBookMission = missionMarkRepository.isBookmarkedMission(missionId)
+
+    fun setBookMission(mission: MissionDataItem, isBookMission: Boolean) {
+        if (isBookMission) {
+            missionMarkRepository.insertMissionMark(mission)
+        } else {
+            missionMarkRepository.deleteMissionMark(mission)
+        }
+    }
 
     fun applyMission(volunteerId: String, mission: Mission) {
         ApiConfig.getApiService().applyToMission(volunteerId, mission).enqueue(object :
@@ -63,11 +74,12 @@ class MissionDetailViewModel(
     @Suppress("UNCHECKED_CAST")
     class Factory(
         private val volunteerId: String,
-        private val mission: MissionDataItem
+        private val mission: MissionDataItem,
+        private val application: Application
     ) :
         ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return MissionDetailViewModel(volunteerId, mission.id) as T
+            return MissionDetailViewModel(volunteerId, mission.id, application) as T
         }
     }
 }

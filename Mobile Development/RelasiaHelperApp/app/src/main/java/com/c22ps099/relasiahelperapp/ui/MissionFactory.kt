@@ -18,9 +18,9 @@ class MissionFactory(private val pref: MissionRepository) : ViewModelProvider.Ne
             modelClass.isAssignableFrom(MissionsViewModel::class.java) -> {
                 MissionsViewModel(pref) as T
             }
-            modelClass.isAssignableFrom(BookmarksViewModel::class.java) -> {
-                BookmarksViewModel(pref) as T
-            }
+//            modelClass.isAssignableFrom(BookmarksViewModel::class.java) -> {
+//                BookmarksViewModel(pref) as T
+//            }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }

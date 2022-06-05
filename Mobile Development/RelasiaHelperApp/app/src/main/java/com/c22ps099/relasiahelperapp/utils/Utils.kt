@@ -7,7 +7,6 @@ import android.view.Window
 import android.widget.Button
 import androidx.navigation.findNavController
 import com.c22ps099.relasiahelperapp.R
-import com.c22ps099.relasiahelperapp.ui.home.HomeFragment
 import com.c22ps099.relasiahelperapp.ui.missionDetail.MissionDetailFragmentDirections
 
 fun showSuccessDialog(context: Context, view: View) {
