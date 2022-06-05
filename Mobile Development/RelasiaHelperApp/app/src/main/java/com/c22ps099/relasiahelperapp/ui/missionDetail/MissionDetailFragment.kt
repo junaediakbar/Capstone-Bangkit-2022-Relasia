@@ -1,10 +1,13 @@
 package com.c22ps099.relasiahelperapp.ui.missionDetail
 
 import android.app.Application
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -16,7 +19,6 @@ import com.c22ps099.relasiahelperapp.databinding.FragmentMissionDetailBinding
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 import com.c22ps099.relasiahelperapp.ui.login.LoginFragment
 import com.c22ps099.relasiahelperapp.utils.DateFormatter
-import com.c22ps099.relasiahelperapp.utils.showSuccessDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -75,7 +77,7 @@ class MissionDetailFragment : Fragment() {
             isSuccess.observe(viewLifecycleOwner) {
                 it.getContentIfNotHandled()?.let { success ->
                     if (success) {
-                        showSuccessDialog(requireContext(), view)
+                        showSuccessDialog()
                     }
                 }
             }
@@ -142,5 +144,20 @@ class MissionDetailFragment : Fragment() {
 
     private fun applyVolunteerToMission(mission: Mission) {
         missionDetailViewModel.applyMission("volunteer.baru", mission)
+    }
+
+    private fun showSuccessDialog() {
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.dialog_success)
+        dialog.show()
+        val btnHome = dialog.findViewById<Button>(R.id.btn_home)
+        btnHome.setOnClickListener {
+            dialog.dismiss()
+            val navigateAction = MissionDetailFragmentDirections
+                .actionMissionDetailFragmentToHomeFragment()
+            findNavController().navigate(navigateAction)
+            dialog.hide()
+        }
     }
 }
