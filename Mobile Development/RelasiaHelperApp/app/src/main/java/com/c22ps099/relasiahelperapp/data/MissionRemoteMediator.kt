@@ -11,7 +11,8 @@ import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 @OptIn(ExperimentalPagingApi::class)
 class MissionRemoteMediator(
     private val database: MissionDatabase,
-    private val apiService: ApiService
+    private val apiService: ApiService,
+    private val title: String
 ) : RemoteMediator<Int, MissionDataItem>() {
 
     companion object {
@@ -45,7 +46,7 @@ class MissionRemoteMediator(
 
         try {
             val responseData = apiService
-                .getAllMissions(page, state.config.pageSize)
+                .getAllMissions(title, page, state.config.pageSize)
                 .data
 
             val endOfPaginationReached = responseData.isEmpty()

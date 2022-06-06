@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -29,6 +30,8 @@ class HomeFragment : Fragment() {
     private lateinit var homeViewModel: HomeViewModel
     private var binding: FragmentHomeBinding? = null
     private lateinit var googleAuth: FirebaseAuth
+
+    private var title: String? = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -73,6 +76,20 @@ class HomeFragment : Fragment() {
 
         val adapter = MissionListAdapter()
         binding?.apply {
+            svHome.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+                android.widget.SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    if (query == "") homeViewModel.updateTitle("")
+                    else homeViewModel.updateTitle(query.toString())
+                    svHome.clearFocus()
+                    return true
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    return false
+                }
+
+            })
             btnNotification.setOnClickListener {
                 val navigateAction = HomeFragmentDirections
                     .actionHomeFragmentToProfileFragment()

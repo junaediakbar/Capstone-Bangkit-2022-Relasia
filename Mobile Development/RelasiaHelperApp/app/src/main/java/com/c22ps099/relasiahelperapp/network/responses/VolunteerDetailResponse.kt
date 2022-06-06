@@ -1,39 +1,21 @@
 package com.c22ps099.relasiahelperapp.network.responses
 
 import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
+data class AddNewVolunteerResponse(
+	val data: VolunteerDetailData? = null,
+	val message: String? = null
+)
+
 @Parcelize
-data class VolunteerDetailResponse(
-
-	@field:SerializedName("address")
-	val address: String,
-
-	@field:SerializedName("birthyear")
-	val birthyear: String,
-
-	@field:SerializedName("gender")
-	val gender: String,
-
-	@field:SerializedName("city")
-	val city: String,
-
-	@field:SerializedName("phone")
-	val phone: String,
-
-	@field:SerializedName("missions")
-	val missions: List<MissionsItem>,
-
-	@field:SerializedName("foundations")
-	val foundations: List<String>,
-
-	@field:SerializedName("name")
-	val name: String,
-
-	@field:SerializedName("verified")
-	val verified: String,
-
-	@field:SerializedName("id")
-	val id: String
+data class VolunteerDetailData(
+	val address: String? = null,
+	val birthyear: String? = null,
+	val gender: String? = null,
+	val city: String? = null,
+	val province: String? = null,
+	val phone: String? = null,
+	val name: String? = null,
+	val id: String? = null
 ) : Parcelable

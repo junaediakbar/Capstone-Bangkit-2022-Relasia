@@ -2,6 +2,7 @@ package com.c22ps099.relasiahelperapp.ui.missionDetail
 
 import android.app.Application
 import android.app.Dialog
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -151,7 +152,10 @@ class MissionDetailFragment : Fragment() {
                     .into(it)
             }
             tvMissionTitle.text = mission.title
-            tvMissionDate.text = DateFormatter.formatDate(mission.startDate) + " - " + DateFormatter.formatDate(mission.endDate)
+            tvMissionDate.text =
+                DateFormatter.formatDate(mission.startDate) + " - " + DateFormatter.formatDate(
+                    mission.endDate
+                )
             tvMissionCity.text = mission.city + ", " + mission.province
             tvApplicant.text = mission.volunteers.size.toString() + "/" + mission.numberOfNeeds
             tvMissionReq.text = mission.requirement
@@ -160,6 +164,11 @@ class MissionDetailFragment : Fragment() {
             tvMissionCategory.text = mission.category
             pbApplicant.max = mission.numberOfNeeds.toInt()
             pbApplicant.progress = mission.volunteers.size
+            if (mission.volunteers.size == mission.numberOfNeeds.toInt()) {
+                pbApplicant.progressTintList =
+                    ColorStateList.valueOf(resources.getColor(R.color.red_200))
+                btnApply.isEnabled = false
+            }
         }
     }
 

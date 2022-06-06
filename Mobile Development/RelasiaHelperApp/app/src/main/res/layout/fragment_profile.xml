@@ -11,198 +11,182 @@
         android:layout_height="wrap_content"
         android:paddingBottom="16dp">
 
-<!--        <ImageView-->
-<!--            android:id="@+id/img_profile"-->
-<!--            android:layout_width="96dp"-->
-<!--            android:layout_height="96dp"-->
-<!--            android:layout_marginTop="32dp"-->
-<!--            android:src="@drawable/ic_baseline_account_circle_24"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
+        <ImageView
+            android:id="@+id/img_profile"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/ic_baseline_account_circle_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-<!--        <com.c22ps099.relasiahelperapp.ui.custom.MyEditTextValidation-->
-<!--            android:id="@+id/et_profile_birthdate"-->
-<!--            android:inputType="none"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="32dp"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:layout_marginEnd="32dp"-->
-<!--            android:drawableStart="@drawable/ic_baseline_format_list_bulleted_24"-->
-<!--            android:drawablePadding="4dp"-->
-<!--            android:hint="@string/birthdate_hint"-->
-<!--            android:minHeight="48dp"-->
-<!--            android:transitionName="email_input"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/sp_profile_gender"-->
-<!--            tools:ignore="TextContrastCheck,TextContrastCheck" />-->
+        <TextView
+            android:id="@+id/tv_profile_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/useremail_hint"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_profile" />
 
-<!--        <com.c22ps099.relasiahelperapp.ui.custom.MyEditTextValidation-->
-<!--            android:id="@+id/et_profile_address"-->
-<!--            android:inputType="none"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="32dp"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:layout_marginEnd="32dp"-->
-<!--            android:drawableStart="@drawable/ic_baseline_format_list_bulleted_24"-->
-<!--            android:drawablePadding="4dp"-->
-<!--            android:hint="@string/address_hint"-->
-<!--            android:minHeight="48dp"-->
-<!--            android:transitionName="email_input"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/et_profile_birthdate"-->
-<!--            tools:ignore="TextContrastCheck,TextContrastCheck" />-->
+        <com.c22ps099.relasiahelperapp.ui.custom.MyEditTextValidation
+            android:id="@+id/et_profile_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:hint="@string/name_hint"
+            android:minHeight="48dp"
+            android:textSize="16sp"
+            android:transitionName="email_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_profile_email"
+            tools:ignore="TextContrastCheck,TextContrastCheck" />
 
-<!--        <com.c22ps099.relasiahelperapp.ui.custom.MyEditTextValidation-->
-<!--            android:id="@+id/et_profile_city"-->
-<!--            android:inputType="none"-->
-<!--            android:layout_width="0dp"-->
+        <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+            android:id="@+id/sp_profile_gender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="@+id/et_profile_name"
+            app:layout_constraintStart_toStartOf="@+id/et_profile_name"
+            app:layout_constraintTop_toBottomOf="@+id/et_profile_name"
+            app:smsp_errorText="Please choose one"
+            app:smsp_hint="Gender"
+            app:smsp_hintSize="16sp"
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="32dp"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:layout_marginEnd="32dp"-->
-<!--            android:drawableStart="@drawable/ic_baseline_format_list_bulleted_24"-->
-<!--            android:drawablePadding="4dp"-->
-<!--            android:hint="@string/city_hint"-->
-<!--            android:minHeight="48dp"-->
-<!--            android:transitionName="email_input"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/et_profile_address"-->
-<!--            tools:ignore="TextContrastCheck,TextContrastCheck" />-->
+        <com.c22ps099.relasiahelperapp.ui.custom.MyEditTextValidation
+            android:id="@+id/et_profile_birthdate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/birthdate_hint"
+            android:minHeight="48dp"
+            android:textSize="16sp"
+            android:transitionName="email_input"
+            app:layout_constraintEnd_toEndOf="@+id/et_profile_name"
+            app:layout_constraintStart_toStartOf="@+id/et_profile_name"
+            app:layout_constraintTop_toBottomOf="@+id/sp_profile_gender"
+            tools:ignore="TextContrastCheck,TextContrastCheck" />
 
-<!--        <com.c22ps099.relasiahelperapp.ui.custom.MyEditTextValidation-->
-<!--            android:id="@+id/et_profile_province"-->
-<!--            android:inputType="none"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="32dp"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:layout_marginEnd="32dp"-->
-<!--            android:drawableStart="@drawable/ic_baseline_format_list_bulleted_24"-->
-<!--            android:drawablePadding="4dp"-->
-<!--            android:hint="@string/province_hint"-->
-<!--            android:minHeight="48dp"-->
-<!--            android:transitionName="email_input"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.0"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/et_profile_city"-->
-<!--            tools:ignore="TextContrastCheck,TextContrastCheck" />-->
+        <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+            android:id="@+id/sp_form_province"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/province_hint"
+            android:minHeight="48dp"
+            android:transitionName="email_input"
+            app:layout_constraintEnd_toEndOf="@+id/et_profile_name"
+            app:layout_constraintStart_toStartOf="@+id/et_profile_name"
+            app:layout_constraintTop_toBottomOf="@+id/et_profile_birthdate"
+            app:smsp_hint="Province"
+            app:smsp_hintSize="16sp"
+            tools:ignore="TextContrastCheck,TextContrastCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
-<!--        <com.c22ps099.relasiahelperapp.ui.custom.MyEditTextValidation-->
-<!--            android:id="@+id/et_profile_phone"-->
-<!--            android:inputType="none"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="32dp"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:layout_marginEnd="32dp"-->
-<!--            android:drawableStart="@drawable/ic_baseline_format_list_bulleted_24"-->
-<!--            android:drawablePadding="4dp"-->
-<!--            android:hint="@string/phone_hint"-->
-<!--            android:minHeight="48dp"-->
-<!--            android:transitionName="email_input"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.0"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/et_profile_province"-->
-<!--            tools:ignore="TextContrastCheck,TextContrastCheck" />-->
+        <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+            android:id="@+id/sp_form_city"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="48dp"
+            android:transitionName="email_input"
+            app:layout_constraintEnd_toEndOf="@+id/et_profile_name"
+            app:layout_constraintStart_toStartOf="@+id/et_profile_name"
+            app:layout_constraintTop_toBottomOf="@+id/sp_form_province"
+            app:smsp_hint="City"
+            app:smsp_hintSize="16sp"
+            tools:ignore="TextContrastCheck,TextContrastCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
-<!--        <Spinner-->
-<!--            android:id="@+id/sp_profile_gender"-->
-<!--            android:inputType="none"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:minHeight="48dp"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/et_profile_name"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/et_profile_name"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/et_profile_name"-->
-<!--            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />-->
+        <com.c22ps099.relasiahelperapp.ui.custom.MyEditTextValidation
+            android:id="@+id/et_profile_address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/address_hint"
+            android:minHeight="48dp"
+            android:textSize="16sp"
+            android:transitionName="email_input"
+            app:layout_constraintEnd_toEndOf="@id/et_profile_name"
+            app:layout_constraintStart_toStartOf="@id/et_profile_name"
+            app:layout_constraintTop_toBottomOf="@+id/sp_form_city"
+            tools:ignore="TextContrastCheck,TextContrastCheck" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/tv_profile_email"-->
-<!--            android:inputType="none"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="8dp"-->
-<!--            android:text="@string/useremail_hint"-->
-<!--            android:textStyle="bold"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/img_profile"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/img_profile"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/img_profile" />-->
+        <com.c22ps099.relasiahelperapp.ui.custom.MyEditTextValidation
+            android:id="@+id/et_profile_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/phone_hint"
+            android:inputType="none"
+            android:minHeight="48dp"
+            android:textSize="16sp"
+            android:transitionName="email_input"
+            app:layout_constraintEnd_toEndOf="@id/et_profile_name"
+            app:layout_constraintStart_toStartOf="@id/et_profile_name"
+            app:layout_constraintTop_toBottomOf="@+id/et_profile_address"
+            tools:ignore="TextContrastCheck,TextContrastCheck" />
 
-<!--        <com.c22ps099.relasiahelperapp.ui.custom.MyEditTextValidation-->
-<!--            android:id="@+id/et_profile_name"-->
-<!--            android:inputType="none"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="32dp"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:layout_marginEnd="32dp"-->
-<!--            android:drawableStart="@drawable/ic_baseline_format_list_bulleted_24"-->
-<!--            android:drawablePadding="4dp"-->
-<!--            android:hint="@string/name_hint"-->
-<!--            android:minHeight="48dp"-->
-<!--            android:transitionName="email_input"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/tv_profile_email"-->
-<!--            tools:ignore="TextContrastCheck,TextContrastCheck" />-->
+        <Button
+            android:id="@+id/btn_foundation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/button_transparent"
+            android:text="@string/fill_data_foundation"
+            android:textAllCaps="false"
+            android:textColor="@color/blue_500"
+            android:textSize="16sp"
+            android:transitionName="action_btn"
+            app:layout_constraintEnd_toEndOf="@+id/et_profile_phone"
+            app:layout_constraintStart_toStartOf="@+id/et_profile_phone"
+            app:layout_constraintTop_toBottomOf="@+id/et_profile_phone"
+            tools:ignore="TextContrastCheck,TextContrastCheck" />
 
-<!--        <Button-->
-<!--            android:id="@+id/btn_form_volunteer"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:background="@drawable/rounded_shape"-->
-<!--            android:backgroundTint="@color/white"-->
-<!--            android:text="@string/fill_volunteer_datas"-->
-<!--            android:textAllCaps="false"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="16sp"-->
-<!--            android:transitionName="action_btn"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/et_profile_phone"-->
-<!--            app:layout_constraintHorizontal_bias="0.0"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/et_profile_phone"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/et_profile_phone"-->
-<!--            tools:ignore="TextContrastCheck,TextContrastCheck" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/btn_detail_skill2"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:layout_marginBottom="24dp"-->
-<!--            android:background="@drawable/rounded_shape"-->
-<!--            android:text="@string/detail_skill"-->
-<!--            android:textAllCaps="false"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="16sp"-->
-<!--            android:transitionName="action_btn"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/et_profile_phone"-->
-<!--            app:layout_constraintHorizontal_bias="0.0"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/et_profile_phone"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/btn_form_volunteer"-->
-<!--            app:layout_constraintVertical_bias="0.0"-->
-<!--            tools:ignore="TextContrastCheck,TextContrastCheck" />-->
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"
+            android:paddingVertical="12dp"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:transitionName="action_btn"
+            app:layout_constraintEnd_toEndOf="@+id/et_profile_phone"
+            app:layout_constraintStart_toStartOf="@+id/et_profile_phone"
+            app:layout_constraintTop_toBottomOf="@+id/btn_foundation"
+            tools:ignore="TextContrastCheck,TextContrastCheck" />
 
         <Button
             android:id="@+id/btn_logout"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Log Out"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="@color/red_200"
+            android:paddingVertical="12dp"
+            android:text="@string/logout"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:transitionName="action_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/et_profile_phone"
+            app:layout_constraintStart_toStartOf="@+id/et_profile_phone"
+            app:layout_constraintTop_toBottomOf="@+id/btn_save"
+            tools:ignore="TextContrastCheck,TextContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

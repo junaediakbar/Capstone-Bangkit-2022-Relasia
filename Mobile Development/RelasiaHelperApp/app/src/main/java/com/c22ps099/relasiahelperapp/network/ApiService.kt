@@ -1,6 +1,8 @@
 package com.c22ps099.relasiahelperapp.network
 
 import com.c22ps099.relasiahelperapp.data.Mission
+import com.c22ps099.relasiahelperapp.data.Volunteer
+import com.c22ps099.relasiahelperapp.network.responses.AddNewVolunteerResponse
 import com.c22ps099.relasiahelperapp.network.responses.GeneralResponse
 import com.c22ps099.relasiahelperapp.network.responses.MissionDetailResponse
 import com.c22ps099.relasiahelperapp.network.responses.MissionResponse
@@ -12,6 +14,7 @@ interface ApiService {
     @Headers("Content-Type: application/json")
     @GET("mission")
     suspend fun getAllMissions(
+        @Query("title") title: String,
         @Query("page") page: Int = 1,
         @Query("paginate") paginate: Int = 5
     ): MissionResponse
@@ -27,5 +30,11 @@ interface ApiService {
     @GET("mission/{missionId}")
     fun getMissionDetail(
         @Path("missionId") missionId: String
-    ) : Call<MissionDetailResponse>
+    ): Call<MissionDetailResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("volunteer")
+    fun addVolunteer(
+        @Body volunteer: Volunteer
+    ): Call<AddNewVolunteerResponse>
 }

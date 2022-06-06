@@ -31,4 +31,35 @@
     <string name="title_mission_detail">Mission Detail</string>
     <string name="add_bookmark">Bookmark successfully</string>
     <string name="delete_bookmark">Unbookmark successfully</string>
+    <string name="useremail_hint">username@mail.com</string>
+    <string name="name_hint">Name</string>
+    <string name="birthdate_hint">Birthdate</string>
+    <string name="address_hint">Address</string>
+    <string name="city_hint">City</string>
+    <string name="province_hint">Province</string>
+    <string name="phone_hint">No HP</string>
+    <string name="save">Save</string>
+    <string name="fill_data_foundation">Fill Foundation Data</string>
+    <string name="logout">Logout</string>
+    <string name="auth">Bearer %1$s</string>
+    <string name="permission_denied">Permission Denied</string>
+
+    <string-array name="Genders">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="Categories">
+        <item>Natural Disaster</item>
+        <item>Leadership and Organization</item>
+        <item>Social Development</item>
+        <item>Environment</item>
+        <item>Education</item>
+        <item>Human Rights</item>
+        <item>Science and Technology</item>
+        <item>Youth Development</item>
+        <item>Gender Equality</item>
+        <item>Legal Support</item>
+        <item>Difability/Disability</item>
+    </string-array>
 </resources>

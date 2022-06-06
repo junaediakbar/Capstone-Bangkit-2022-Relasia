@@ -6,5 +6,12 @@ import com.c22ps099.relasiahelperapp.data.MissionRepository
 
 class HomeViewModel(pref: MissionRepository) : ViewModel() {
 
-    val missions = pref.getMissionsPages().cachedIn(viewModelScope)
+    private val _title = MutableLiveData<String>()
+    var title: LiveData<String> = _title
+
+    fun updateTitle(title: String) {
+        _title.value = title
+    }
+
+    val missions = pref.getMissionsPages(title.toString()).cachedIn(viewModelScope)
 }

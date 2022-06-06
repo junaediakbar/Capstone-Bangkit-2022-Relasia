@@ -4,28 +4,23 @@ import androidx.lifecycle.LiveData
 import androidx.paging.*
 import com.c22ps099.relasiahelperapp.network.ApiService
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
 
 class MissionRepository(
     private val missionDatabase: MissionDatabase,
     private val apiService: ApiService
 ) {
-    fun getMissionsPages(): LiveData<PagingData<MissionDataItem>> {
+    fun getMissionsPages(title: String?): LiveData<PagingData<MissionDataItem>> {
         @OptIn(ExperimentalPagingApi::class)
         return Pager(
             config = PagingConfig(
-                pageSize = 5
+                pageSize = 5,
+                enablePlaceholders = false,
+                maxSize = 20
             ),
-            remoteMediator = MissionRemoteMediator(missionDatabase, apiService),
+            remoteMediator = MissionRemoteMediator(missionDatabase, apiService, title.toString()),
             pagingSourceFactory = {
-                missionDatabase.missionDao().getAllMission()
+                missionDatabase.missionDao().getAllMission(title.toString())
             }
         ).liveData
     }
-
-//    suspend fun addNewStory(
-//        multipart: MultipartBody.Part,
-//        params: HashMap<String, RequestBody>,
-//    ) = !apiService.addStory(multipart, params, auth).error
 }
