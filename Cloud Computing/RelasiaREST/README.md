@@ -476,6 +476,7 @@ Relasia REST-API: App to Database
     - province: mission.province (for filter by province)
     - status: "accepted" or "pending" or "rejected" (for filter by volunteers applied status)
     - active: "active" or "inactive" (for filter by mission active or inactive)
+    - title: "mission name" (for filter by title or search query)
 
     Request:
 
