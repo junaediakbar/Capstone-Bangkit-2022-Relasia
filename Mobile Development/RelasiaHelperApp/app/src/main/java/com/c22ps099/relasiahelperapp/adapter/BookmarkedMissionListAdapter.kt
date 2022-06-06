@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.c22ps099.relasiahelperapp.R
 import com.c22ps099.relasiahelperapp.databinding.ItemMissionSmallBinding
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 import com.c22ps099.relasiahelperapp.utils.DateFormatter
@@ -27,10 +28,8 @@ class BookmarkedMissionListAdapter(private val listMissionMark: ArrayList<Missio
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val (
             endDate,
-            note,
             address,
             city,
-            requirement,
             title,
             featuredImage,
             numberOfNeeds,
@@ -43,6 +42,7 @@ class BookmarkedMissionListAdapter(private val listMissionMark: ArrayList<Missio
         holder.binding.apply {
             Glide.with(itemView.context)
                 .load(featuredImage[0])
+                .placeholder(R.drawable.no_image_placeholder)
                 .into(ivMissionPhoto)
             tvMissionTitle.text = title
             tvMissionCity.text = "$city, $province"

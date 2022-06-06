@@ -20,8 +20,8 @@ data class FoundationDataItem(
 	@field:SerializedName("address")
 	val address: String,
 
-	@field:SerializedName("call_center")
-	val callCenter: String,
+	@field:SerializedName("phone")
+	val phone: String,
 
 	@field:SerializedName("city")
 	val city: String,
@@ -30,10 +30,17 @@ data class FoundationDataItem(
 	val name: String,
 
 	@field:SerializedName("volunteers")
-	val volunteers: VolunteersGroup
+	val volunteers: VolunteersGroup,
+
+	@field:SerializedName("id")
+	val id: String
 ) : Parcelable
 
 @Parcelize
 data class VolunteersGroup(
-	val any: String? = null
+	@field:SerializedName("id")
+	val id: String,
+
+	@field:SerializedName("status")
+	val status: String,
 ) : Parcelable

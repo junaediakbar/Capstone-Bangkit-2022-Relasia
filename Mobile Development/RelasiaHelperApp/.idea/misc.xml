@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.201" />
         <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/drawable/bottom_nav_shadow.xml" value="0.288" />
         <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/drawable/button_border.xml" value="0.288" />
         <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/drawable/button_transparent.xml" value="0.201" />
@@ -11,7 +12,11 @@
         <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.198" />
         <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/drawable/ic_baseline_people_alt_24.xml" value="0.288" />
         <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.288" />
+        <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.201" />
+        <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.201" />
+        <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/drawable/ic_outline_bookmark_border_24.xml" value="0.201" />
         <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/drawable/ic_undraw_login_re_4vu2.xml" value="0.1" />
+        <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/drawable/ic_undraw_mobile_payments_re_7udl.xml" value="0.201" />
         <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/drawable/line_bottom_img.xml" value="0.201" />
         <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/drawable/round_button.xml" value="0.288" />
         <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/drawable/rounded_dialog.xml" value="0.1" />
@@ -28,7 +33,7 @@
         <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/layout/fragment_detail_mission.xml" value="0.33" />
         <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/layout/fragment_login.xml" value="0.5" />
-        <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/layout/fragment_mission_detail.xml" value="0.25" />
+        <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/layout/fragment_mission_detail.xml" value="0.33" />
         <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/layout/fragment_mission_status.xml" value="0.33" />
         <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/layout/fragment_missions.xml" value="0.33" />
         <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
@@ -39,6 +44,8 @@
         <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/layout/item_mission_status.xml" value="0.33" />
         <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.19010416666666666" />
         <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/menu/option_menu.xml" value="0.5" />
+        <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.201" />
+        <entry key="..\:/Kampus Merdeka/Bangkit2022/Capstone/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelperApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.201" />
       </map>
     </option>
   </component>

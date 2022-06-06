@@ -17,6 +17,7 @@ import com.c22ps099.relasiahelperapp.R
 import com.c22ps099.relasiahelperapp.data.Mission
 import com.c22ps099.relasiahelperapp.databinding.FragmentMissionDetailBinding
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
+import com.c22ps099.relasiahelperapp.network.responses.MissionDetailResponse
 import com.c22ps099.relasiahelperapp.ui.login.LoginFragment
 import com.c22ps099.relasiahelperapp.utils.DateFormatter
 import com.google.firebase.auth.FirebaseAuth
@@ -55,6 +56,9 @@ class MissionDetailFragment : Fragment() {
         googleAuth = Firebase.auth
         val firebaseUser = googleAuth.currentUser
 
+        val mission = arguments?.getParcelable<MissionDataItem>(EXTRA_MISSION) as MissionDataItem
+        val missionString = Mission(mission.id)
+
         if (firebaseUser == null) {
             val navigateAction = MissionDetailFragmentDirections
                 .actionMissionDetailFragmentToLoginFragment()
@@ -74,6 +78,10 @@ class MissionDetailFragment : Fragment() {
         }
 
         missionDetailViewModel.apply {
+            showDetailMission(mission.id)
+            detailMission.observe(viewLifecycleOwner) { mission ->
+                setMissionDetailData(mission)
+            }
             isSuccess.observe(viewLifecycleOwner) {
                 it.getContentIfNotHandled()?.let { success ->
                     if (success) {
@@ -87,11 +95,25 @@ class MissionDetailFragment : Fragment() {
                     btnUnbookmark.visibility = swapBookButton(book)
                 }
             }
+            isLoading.observe(viewLifecycleOwner) {
+                binding?.btnApply?.isEnabled = !it
+                binding?.btnBookmark?.isEnabled = !it
+                binding?.btnUnbookmark?.isEnabled = !it
+                showLoading(it)
+            }
+            error.observe(viewLifecycleOwner) {
+                it.getContentIfNotHandled()?.let { error ->
+                    if (error.isNotEmpty()) {
+                        Toast.makeText(
+                            context,
+                            error,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
         }
 
-        val mission = arguments?.getParcelable<MissionDataItem>(EXTRA_MISSION) as MissionDataItem
-        showMissionDetail(mission)
-        val missionString = Mission(mission.id)
         binding?.apply {
             fabBack.setOnClickListener {
                 val navigateAction = MissionDetailFragmentDirections
@@ -118,32 +140,36 @@ class MissionDetailFragment : Fragment() {
                 ).show()
             }
         }
+    }
 
-
+    private fun setMissionDetailData(mission: MissionDetailResponse) {
+        binding?.apply {
+            ivDetailMission.let {
+                Glide.with(requireActivity())
+                    .load(mission.featuredImage[0])
+                    .placeholder(R.drawable.no_image_placeholder)
+                    .into(it)
+            }
+            tvMissionTitle.text = mission.title
+            tvMissionDate.text = DateFormatter.formatDate(mission.startDate) + " - " + DateFormatter.formatDate(mission.endDate)
+            tvMissionCity.text = mission.city + ", " + mission.province
+            tvApplicant.text = mission.volunteers.size.toString() + "/" + mission.numberOfNeeds
+            tvMissionReq.text = mission.requirement
+            tvMissionNote.text = mission.note
+            tvMissionCp.text = mission.helpseeker.phone + " (" + mission.helpseeker.name + ")"
+        }
     }
 
     private fun swapBookButton(isBook: Boolean): Int {
         return if (isBook) View.VISIBLE else View.INVISIBLE
     }
 
-    private fun showMissionDetail(mission: MissionDataItem) {
-        binding?.apply {
-            ivDetailMission.let {
-                Glide.with(requireActivity())
-                    .load(mission.featuredImage[0])
-                    .into(it)
-            }
-            tvMissionTitle.text = mission.title
-            tvMissionDate.text = DateFormatter.formatDate(mission.startDate) + " - " + DateFormatter.formatDate(mission.endDate)
-            tvMissionCity.text = mission.city + ", " + mission.province
-            tvApplicant.text = mission.numberOfNeeds
-            tvMissionReq.text = mission.requirement
-            tvMissionNote.text = mission.note
-        }
-    }
-
     private fun applyVolunteerToMission(mission: Mission) {
         missionDetailViewModel.applyMission("volunteer.baru", mission)
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding?.progressBar?.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     private fun showSuccessDialog() {

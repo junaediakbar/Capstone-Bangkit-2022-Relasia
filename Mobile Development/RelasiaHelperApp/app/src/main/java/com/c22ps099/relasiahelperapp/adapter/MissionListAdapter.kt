@@ -58,6 +58,7 @@ class MissionListAdapter :
             val url = data.featuredImage[0]
             Glide.with(binding.ivMissionPhoto.context)
                 .load(url)
+                .placeholder(R.drawable.no_image_placeholder)
                 .listener(object : RequestListener<Drawable> {
                     override fun onLoadFailed(
                         e: GlideException?,

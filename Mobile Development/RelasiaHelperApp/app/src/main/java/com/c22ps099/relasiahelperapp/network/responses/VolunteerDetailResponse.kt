@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class VolunteerResponse(
+data class VolunteerDetailResponse(
 
 	@field:SerializedName("address")
 	val address: String,
@@ -23,7 +23,7 @@ data class VolunteerResponse(
 	val phone: String,
 
 	@field:SerializedName("missions")
-	val missions: List<MissionDataItem>,
+	val missions: List<MissionsItem>,
 
 	@field:SerializedName("foundations")
 	val foundations: List<String>,

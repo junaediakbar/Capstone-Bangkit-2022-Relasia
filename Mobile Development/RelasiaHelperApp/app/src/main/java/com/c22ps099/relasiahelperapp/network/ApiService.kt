@@ -2,8 +2,8 @@ package com.c22ps099.relasiahelperapp.network
 
 import com.c22ps099.relasiahelperapp.data.Mission
 import com.c22ps099.relasiahelperapp.network.responses.GeneralResponse
+import com.c22ps099.relasiahelperapp.network.responses.MissionDetailResponse
 import com.c22ps099.relasiahelperapp.network.responses.MissionResponse
-import com.c22ps099.relasiahelperapp.network.responses.VolunteerResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -22,4 +22,10 @@ interface ApiService {
         @Path("volunteerId") volunteerId: String,
         @Body mission: Mission
     ): Call<GeneralResponse>
+
+    @Headers("Content-Type: application/json")
+    @GET("mission/{missionId}")
+    fun getMissionDetail(
+        @Path("missionId") missionId: String
+    ) : Call<MissionDetailResponse>
 }

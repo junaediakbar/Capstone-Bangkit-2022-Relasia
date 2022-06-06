@@ -11,6 +11,7 @@ import com.c22ps099.relasiahelperapp.data.MissionMarkRepository
 import com.c22ps099.relasiahelperapp.network.ApiConfig
 import com.c22ps099.relasiahelperapp.network.responses.GeneralResponse
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
+import com.c22ps099.relasiahelperapp.network.responses.MissionDetailResponse
 import com.c22ps099.relasiahelperapp.utils.Event
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,6 +26,9 @@ class MissionDetailViewModel(
     companion object {
         private const val TAG = "MissionDetailViewModel"
     }
+
+    private val _detailMission = MutableLiveData<MissionDetailResponse>()
+    val detailMission: LiveData<MissionDetailResponse> = _detailMission
 
     private val _isSuccess = MutableLiveData<Event<Boolean>>()
     val isSuccess: LiveData<Event<Boolean>> = _isSuccess
@@ -47,7 +51,33 @@ class MissionDetailViewModel(
         }
     }
 
+    fun showDetailMission(missionId: String) {
+        _isLoading.value = true
+        ApiConfig.getApiService().getMissionDetail(missionId)
+            .enqueue(object : Callback<MissionDetailResponse> {
+                override fun onResponse(
+                    call: Call<MissionDetailResponse>,
+                    response: Response<MissionDetailResponse>
+                ) {
+                    _isLoading.value = false
+                    if (response.isSuccessful) {
+                        _detailMission.value = response.body()
+                    } else {
+                        _error.value = Event("ERROR: DETAIL MISSION")
+                        Log.e(TAG, "onFailure: ${response.message()}")
+                    }
+                }
+
+                override fun onFailure(call: Call<MissionDetailResponse>, t: Throwable) {
+                    _isLoading.value = false
+                    _error.value = Event("ERROR: DETAIL MISSION")
+                    Log.e(TAG, "onFailure: ${t.message.toString()}")
+                }
+            })
+    }
+
     fun applyMission(volunteerId: String, mission: Mission) {
+        _isLoading.value = true
         ApiConfig.getApiService().applyToMission(volunteerId, mission).enqueue(object :
             Callback<GeneralResponse> {
             override fun onResponse(
@@ -59,6 +89,7 @@ class MissionDetailViewModel(
                 if (response.isSuccessful) {
                     _isSuccess.value = Event(true)
                 } else {
+                    _error.value = Event("Failed: Volunteer Exists")
                     Log.e("response err", "${_error.value}")
                 }
             }

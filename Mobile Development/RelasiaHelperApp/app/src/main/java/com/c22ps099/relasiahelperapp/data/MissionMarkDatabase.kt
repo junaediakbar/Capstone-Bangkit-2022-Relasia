@@ -8,7 +8,7 @@ import androidx.room.TypeConverters
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 import com.c22ps099.relasiahelperapp.utils.ImageTypeConverters
 
-@Database(entities = [MissionDataItem::class], version = 2, exportSchema = false)
+@Database(entities = [MissionDataItem::class], version = 1, exportSchema = false)
 @TypeConverters(ImageTypeConverters::class)
 abstract class MissionMarkDatabase : RoomDatabase() {
 

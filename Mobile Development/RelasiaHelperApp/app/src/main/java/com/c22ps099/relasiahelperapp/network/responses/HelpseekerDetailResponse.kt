@@ -1,33 +1,46 @@
 package com.c22ps099.relasiahelperapp.network.responses
 
 import android.os.Parcelable
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class MissionResponse(
+data class HelpseekerDetailResponse(
 
-	@field:SerializedName("data_on_page")
-	val dataOnPage: Int,
+	@field:SerializedName("city")
+	val city: String,
 
-	@field:SerializedName("data")
-	val data: List<MissionDataItem>,
+	@field:SerializedName("phone")
+	val phone: String,
 
-	@field:SerializedName("length")
-	val length: Int,
+	@field:SerializedName("missions")
+	val missions: List<MissionsItem>,
 
-	@field:SerializedName("page")
-	val page: Int
+	@field:SerializedName("name")
+	val name: String,
+
+	@field:SerializedName("id")
+	val id: String
 ) : Parcelable
 
-@Entity(tableName = "mission")
 @Parcelize
-data class MissionDataItem(
+data class VolunteersItemStatus(
+
+	@field:SerializedName("id")
+	val id: String,
+
+	@field:SerializedName("status")
+	val status: String
+) : Parcelable
+
+@Parcelize
+data class MissionsItem(
 
 	@field:SerializedName("end_date")
 	val endDate: String,
+
+	@field:SerializedName("note")
+	val note: String,
 
 	@field:SerializedName("address")
 	val address: String,
@@ -35,8 +48,17 @@ data class MissionDataItem(
 	@field:SerializedName("city")
 	val city: String,
 
+	@field:SerializedName("requirement")
+	val requirement: String,
+
+	@field:SerializedName("helpseeker")
+	val helpseeker: String,
+
 	@field:SerializedName("title")
 	val title: String,
+
+	@field:SerializedName("volunteers")
+	val volunteers: List<VolunteersItemStatus>,
 
 	@field:SerializedName("featured_image")
 	val featuredImage: List<String>,
@@ -47,7 +69,6 @@ data class MissionDataItem(
 	@field:SerializedName("province")
 	val province: String,
 
-	@PrimaryKey
 	@field:SerializedName("id")
 	val id: String,
 
@@ -58,5 +79,5 @@ data class MissionDataItem(
 	val startDate: String,
 
 	@field:SerializedName("timestamp")
-	val timestamp: String,
+	val timestamp: String
 ) : Parcelable

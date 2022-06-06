@@ -9,10 +9,10 @@
 
     <ImageView
         android:id="@+id/iv_logo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginTop="240dp"
-        android:src="@drawable/relasia_logo_modified"
+        android:src="@drawable/logo"
         app:layout_constraintBottom_toTopOf="@+id/tv_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,6 @@
         android:id="@+id/tv_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:fontFamily="@font/lemonmilk_bold"
         android:text="RELASIA"
         android:textColor="@color/white"

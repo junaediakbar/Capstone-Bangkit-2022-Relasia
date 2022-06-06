@@ -11,7 +11,7 @@ import com.c22ps099.relasiahelperapp.utils.ImageTypeConverters
 
 @Database(
     entities = [MissionDataItem::class, RemoteKeys::class],
-    version = 2,
+    version = 1,
     exportSchema = false
 )
 @TypeConverters(ImageTypeConverters::class)
