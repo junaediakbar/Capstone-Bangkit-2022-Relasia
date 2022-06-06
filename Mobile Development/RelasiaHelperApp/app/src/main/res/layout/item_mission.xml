@@ -41,6 +41,21 @@
             card_view:layout_constraintTop_toBottomOf="@+id/iv_mission_photo" />
 
         <TextView
+            android:id="@+id/tv_mission_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="4dp"
+            android:paddingHorizontal="8dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Category"
+            android:textSize="14sp"
+            android:textColor="@color/blue_500"
+            android:background="@drawable/category_border"
+            card_view:layout_constraintStart_toStartOf="@id/tv_mission_title"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_mission_title" />
+
+        <TextView
             android:id="@+id/tv_mission_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -50,7 +65,7 @@
             android:textSize="14sp"
             card_view:layout_constraintEnd_toEndOf="@id/iv_mission_photo"
             card_view:layout_constraintStart_toStartOf="@id/iv_mission_photo"
-            card_view:layout_constraintTop_toBottomOf="@+id/tv_mission_title" />
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_mission_category" />
 
         <TextView
             android:id="@+id/tv_mission_city"
@@ -58,25 +73,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="Lumajang, Jawa Timur"
+            android:text="Kota, Provinsi"
             android:textSize="14sp"
             card_view:layout_constraintEnd_toEndOf="@id/iv_mission_photo"
             card_view:layout_constraintStart_toStartOf="@id/iv_mission_photo"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_mission_date" />
-
-        <ProgressBar
-            android:id="@+id/pb_applicant"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
-            android:max="100"
-            android:progress="80"
-            android:progressTint="#209720"
-            card_view:layout_constraintEnd_toStartOf="@id/tv_applicant"
-            card_view:layout_constraintStart_toStartOf="@id/iv_mission_photo"
-            card_view:layout_constraintTop_toTopOf="@+id/tv_applicant" />
 
         <TextView
             android:id="@+id/tv_applicant"
@@ -87,23 +88,26 @@
             android:drawablePadding="8dp"
             android:fontFamily="@font/roboto_regular"
             android:gravity="center"
-            android:text="4/5"
+            android:text="5"
             android:textSize="14sp"
             card_view:layout_constraintEnd_toEndOf="@id/iv_mission_photo"
-            card_view:layout_constraintTop_toBottomOf="@+id/tv_mission_city" />
+            card_view:layout_constraintBottom_toBottomOf="@id/btn_details"
+            card_view:layout_constraintTop_toTopOf="@+id/btn_details" />
 
         <Button
             android:id="@+id/btn_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:paddingHorizontal="48dp"
+            android:paddingVertical="4dp"
             android:layout_marginBottom="18dp"
             android:fontFamily="@font/roboto_bold"
             android:text="Details"
             android:textAllCaps="false"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintStart_toStartOf="@id/iv_mission_photo"
-            card_view:layout_constraintTop_toBottomOf="@id/tv_applicant" />
+            card_view:layout_constraintTop_toBottomOf="@id/tv_mission_city" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

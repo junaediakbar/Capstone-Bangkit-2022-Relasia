@@ -75,6 +75,21 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lineImg" />
 
+            <TextView
+                android:id="@+id/tv_mission_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="4dp"
+                android:paddingHorizontal="8dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Category"
+                android:textSize="14sp"
+                android:textColor="@color/blue_500"
+                android:background="@drawable/category_border"
+                app:layout_constraintStart_toStartOf="@id/tv_mission_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_mission_title" />
+
             <ImageButton
                 android:id="@+id/btn_bookmark"
                 android:layout_width="42dp"
@@ -104,7 +119,7 @@
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/tv_mission_title"
                 app:layout_constraintStart_toStartOf="@id/tv_mission_title"
-                app:layout_constraintTop_toBottomOf="@+id/tv_mission_title" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_mission_category" />
 
             <TextView
                 android:id="@+id/tv_mission_city"
@@ -125,8 +140,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="16dp"
-                android:max="100"
-                android:progress="80"
+                android:max="5"
+                android:progress="4"
                 android:progressTint="#209720"
                 app:layout_constraintEnd_toStartOf="@id/tv_applicant"
                 app:layout_constraintStart_toStartOf="@id/tv_mission_title"

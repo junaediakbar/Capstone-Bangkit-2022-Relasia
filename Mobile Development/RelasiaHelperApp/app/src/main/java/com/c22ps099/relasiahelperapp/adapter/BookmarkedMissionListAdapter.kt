@@ -48,6 +48,7 @@ class BookmarkedMissionListAdapter(private val listMissionMark: ArrayList<Missio
             tvMissionCity.text = "$city, $province"
             tvMissionDate.text = DateFormatter.formatDate(startDate) + " - " + DateFormatter.formatDate(endDate)
             tvApplicant.text = numberOfNeeds
+            tvMissionCategory.text = category
         }
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listMissionMark[holder.bindingAdapterPosition]) }
     }

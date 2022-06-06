@@ -54,6 +54,7 @@ class MissionListAdapter :
                 tvMissionCity.text = data.city + ", " + data.province
                 tvMissionDate.text = DateFormatter.formatDate(data.startDate) + " - " + DateFormatter.formatDate(data.endDate)
                 tvApplicant.text = data.numberOfNeeds
+                tvMissionCategory.text = data.category
             }
             val url = data.featuredImage[0]
             Glide.with(binding.ivMissionPhoto.context)

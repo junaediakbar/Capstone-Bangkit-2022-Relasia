@@ -71,7 +71,7 @@
             android:paddingVertical="3dp"
             android:paddingHorizontal="9dp"
             android:layout_marginTop="4dp"
-            android:fontFamily="@font/roboto_bold"
+            android:fontFamily="@font/roboto_regular"
             android:text="Pending"
             android:textSize="11sp"
             android:textColor="@color/yellow_light"

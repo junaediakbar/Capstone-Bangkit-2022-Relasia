@@ -157,6 +157,9 @@ class MissionDetailFragment : Fragment() {
             tvMissionReq.text = mission.requirement
             tvMissionNote.text = mission.note
             tvMissionCp.text = mission.helpseeker.phone + " (" + mission.helpseeker.name + ")"
+            tvMissionCategory.text = mission.category
+            pbApplicant.max = mission.numberOfNeeds.toInt()
+            pbApplicant.progress = mission.volunteers.size
         }
     }
 
