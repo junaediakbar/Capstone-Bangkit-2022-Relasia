@@ -173,7 +173,8 @@ Relasia REST-API: App to Database
         "phone" : "0821123456789",
         "address": "Volunteer Address",
         "city": "Volunteer City",
-        "province": "Volunteer Province"
+        "province": "Volunteer Province",
+        "picture": "Volunteer Picture" (Optional)
     }
     ```
 
