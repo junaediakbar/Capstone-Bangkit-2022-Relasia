@@ -68,13 +68,15 @@
                 app:layout_constraintTop_toBottomOf="@id/progress_bar"
                 tools:visibility="visible" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_retry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:elevation="99dp"
                 android:text="Retry"
                 android:visibility="gone"
+                app:cornerRadius="8dp"
+                android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_view_error"
@@ -96,7 +98,7 @@
                 android:id="@+id/tv_greetings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="32dp"
+                android:paddingHorizontal="32dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/inter_regular"
                 android:text="Hello, Nama Volunteer"
@@ -110,7 +112,7 @@
                 android:id="@+id/tv_greetings_sub"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="32dp"
+                android:paddingHorizontal="32dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/inter_bold"
                 android:text="Your move make someone life better"
@@ -124,7 +126,6 @@
                 android:id="@+id/rv_missions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

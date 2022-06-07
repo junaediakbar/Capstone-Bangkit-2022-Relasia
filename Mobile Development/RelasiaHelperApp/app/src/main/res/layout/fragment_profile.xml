@@ -27,8 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/useremail_hint"
-            android:textStyle="bold"
             android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_profile" />
@@ -152,7 +152,7 @@
             app:layout_constraintTop_toBottomOf="@+id/et_profile_phone"
             tools:ignore="TextContrastCheck,TextContrastCheck" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_save"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -164,12 +164,13 @@
             android:textColor="@color/white"
             android:textSize="16sp"
             android:transitionName="action_btn"
+            app:cornerRadius="12dp"
             app:layout_constraintEnd_toEndOf="@+id/et_profile_phone"
             app:layout_constraintStart_toStartOf="@+id/et_profile_phone"
             app:layout_constraintTop_toBottomOf="@+id/btn_foundation"
             tools:ignore="TextContrastCheck,TextContrastCheck" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_logout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -182,6 +183,7 @@
             android:textColor="@color/white"
             android:textSize="16sp"
             android:transitionName="action_btn"
+            app:cornerRadius="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/et_profile_phone"
             app:layout_constraintStart_toStartOf="@+id/et_profile_phone"

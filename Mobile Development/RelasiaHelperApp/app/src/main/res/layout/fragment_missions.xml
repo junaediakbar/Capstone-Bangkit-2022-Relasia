@@ -10,13 +10,13 @@
         android:id="@+id/tv_missions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/inter_bold"
+        android:paddingHorizontal="32dp"
         android:paddingVertical="8dp"
         android:text="Missions"
-        android:textSize="32sp"
         android:textColor="@color/black_2"
+        android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,8 +25,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_missions"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_missions">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -57,14 +57,17 @@
                 app:layout_constraintTop_toBottomOf="@id/progress_bar"
                 tools:visibility="visible" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_retry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:elevation="99dp"
+                android:paddingHorizontal="32dp"
+                android:paddingVertical="12dp"
                 android:text="Retry"
                 android:textAllCaps="false"
                 android:visibility="gone"
+                app:cornerRadius="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_view_error"
@@ -86,7 +89,6 @@
                 android:id="@+id/rv_missions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
