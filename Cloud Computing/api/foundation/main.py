@@ -72,6 +72,7 @@ def getFoundation(id):
                     "gender": volunteer_data["gender"],
                     "missions": volunteer_data["missions"],
                     "city": volunteer_data["city"],
+                    "province": volunteer_data["province"],
                     "address": volunteer_data["address"]
                 }
 
@@ -103,6 +104,7 @@ def addFoundation():
 
         # HTTP response code: 200 OK
         return jsonify(message="Successfully Created", data=data), 200
+    
     except Exception as e:
         return f"An Error Occurred: {e}"
 

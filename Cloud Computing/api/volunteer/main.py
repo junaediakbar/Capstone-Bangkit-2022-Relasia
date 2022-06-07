@@ -15,22 +15,51 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 # Routing
+@app.route('/<string:volunteer_id>', methods=['GET'])
+def getVolunteer(volunteer_id):
+    try:
+        volunteer_data = volunteer_Ref.document(
+            volunteer_id).get().to_dict()
+
+        # Get all missions of volunteer from mission collection
+        missions = volunteer_data["missions"]
+        volunteer_data["missions"] = []
+        for mission_id in missions:
+            mission_data = mission_Ref.document(mission_id).get().to_dict()
+            volunteer_data["missions"].append(mission_data)
+
+        # Get all foundations of volunteer from mission collection
+        foundations = volunteer_data["foundations"]
+        volunteer_data["foundations"] = []
+        for foundation_id in foundations:
+            foundation_data = foundation_Ref.document(
+                foundation_id).get().to_dict()
+            volunteer_data["foundations"].append(foundation_data)
+
+        # HTTP response code: 200 OK
+        return volunteer_data, 200
+
+    except Exception as e:
+        return f"An Error Occurred: {e}"
+
 @app.route('/', methods=['POST'])
 def addVolunteer():
     try:
         data = request.json
-        data["picture"] = ""
         data["foundations"] = []
         data["missions"] = []
         data["verified"] = "false"
 
         volunteer = volunteer_Ref.document(data["id"]).get()
+        
         if volunteer.exists:
             # HTTP response code: 409 Conflict
             return jsonify(message="Volunteer Exists"), 409
+        
         else:
             # Add new volunteer to volunteer collection
             volunteer_Ref.document(data["id"]).set(data)
+            
             # HTTP Response Code: 201 Created
             return jsonify(message="Successfully Created", data=data), 201
     except Exception as e:
@@ -167,41 +196,7 @@ def deleteVolunteer():
         return f"An Error Occurred: {e}"
 
 
-@app.route('/<string:id>', methods=['GET'])
-def getVolunteer(id):
-    try:
-        try:
-            volunteer_id = id
-        except:
-            volunteer_id = ""
 
-        if volunteer_id:
-            volunteer_data = volunteer_Ref.document(
-                volunteer_id).get().to_dict()
-
-            # Get all missions of volunteer from mission collection
-            missions = volunteer_data["missions"]
-            volunteer_data["missions"] = []
-            for mission_id in missions:
-                mission_data = mission_Ref.document(mission_id).get().to_dict()
-                volunteer_data["missions"].append(mission_data)
-
-            # Get all foundations of volunteer from mission collection
-            foundations = volunteer_data["foundations"]
-            volunteer_data["foundations"] = []
-            for foundation_id in foundations:
-                foundation_data = foundation_Ref.document(
-                    foundation_id).get().to_dict()
-                volunteer_data["foundations"].append(foundation_data)
-
-            # HTTP response code: 200 OK
-            return volunteer_data, 200
-        else:
-            # HTTP response code: 200 OK
-            return jsonify(message="Bad Request"), 409
-
-    except Exception as e:
-        return f"An Error Occurred: {e}"
 
 if __name__ == '__main__':
     app.run(threaded=True)
