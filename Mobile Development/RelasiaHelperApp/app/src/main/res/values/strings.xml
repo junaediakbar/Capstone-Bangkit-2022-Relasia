@@ -1,31 +1,18 @@
 <resources>
     <string name="app_name">RelasiaHelperApp</string>
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome!"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_home">Home</string>
     <string name="title_bookmarks">Bookmarks</string>
     <string name="title_missions">Missions</string>
     <string name="title_profile">Profile</string>
-    <string name="search">Search</string>
-    <string name="notifications">Notifications</string>
     <string name="mission_photo">Mission\'s Photo</string>
     <string name="mission_title">Mission\'s Title</string>
     <string name="mission_date">Tanggal Mulai - Tanggal Selesai</string>
     <string name="mission_req">Persyaratan</string>
     <string name="mission_note">Catatan</string>
     <string name="mission_cp">Kontak</string>
-    <string name="tab_text_1">Active</string>
-    <string name="tab_text_2">Inactive</string>
-    <string name="loading_data">Loading...</string>
+    <string name="loading_data">Loading…</string>
     <string name="error">Terdapat Kesalahan. Mohon coba lagi nanti</string>
     <string name="refresh">Refresh</string>
     <string name="title_mission_detail">Mission Detail</string>
@@ -35,7 +22,6 @@
     <string name="name_hint">Name</string>
     <string name="birthdate_hint">Birthdate</string>
     <string name="address_hint">Address</string>
-    <string name="city_hint">City</string>
     <string name="province_hint">Province</string>
     <string name="phone_hint">No HP</string>
     <string name="save">Save</string>
@@ -49,17 +35,4 @@
         <item>Female</item>
     </string-array>
 
-    <string-array name="Categories">
-        <item>Natural Disaster</item>
-        <item>Leadership and Organization</item>
-        <item>Social Development</item>
-        <item>Environment</item>
-        <item>Education</item>
-        <item>Human Rights</item>
-        <item>Science and Technology</item>
-        <item>Youth Development</item>
-        <item>Gender Equality</item>
-        <item>Legal Support</item>
-        <item>Difability/Disability</item>
-    </string-array>
 </resources>

@@ -29,7 +29,6 @@ import com.c22ps099.relasiahelperapp.utils.showSnackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -260,7 +259,10 @@ class ProfileFragment : Fragment() {
             profileViewModel.isSuccess.observe(viewLifecycleOwner) {
                 it.getContentIfNotHandled()?.let { success ->
                     if (success) {
-
+                        Toast.makeText(
+                            activity, "Apply successfully.",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }

@@ -56,7 +56,12 @@ class MissionListAdapter :
                 tvApplicant.text = data.numberOfNeeds
                 tvMissionCategory.text = data.category
             }
-            val url = data.featuredImage[0]
+            val url = if(data.featuredImage?.size != 0) {
+                data.featuredImage?.get(0)
+            } else {
+                listOf("")
+                data.featuredImage = listOf("")
+            }
             Glide.with(binding.ivMissionPhoto.context)
                 .load(url)
                 .placeholder(R.drawable.no_image_placeholder)

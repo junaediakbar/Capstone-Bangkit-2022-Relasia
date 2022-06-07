@@ -6,15 +6,23 @@ import androidx.paging.cachedIn
 import com.c22ps099.relasiahelperapp.data.MissionRepository
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 
-class HomeViewModel(pref: MissionRepository) : ViewModel() {
+class HomeViewModel(pref: MissionRepository, state: SavedStateHandle) : ViewModel() {
 
-    private val _title = MutableLiveData<String>()
-    var title: LiveData<String> = _title
-
-    fun updateTitle(title: String) {
-        _title.value = title
-    }
+    private val currentQuery = state.getLiveData(CURRENT_QUERY, DEFAULT_QUERY)
 
     val missions: LiveData<PagingData<MissionDataItem>> =
         pref.getMissionsPages().cachedIn(viewModelScope)
+
+    val results = currentQuery.switchMap { queryString ->
+        pref.getSearchResults(queryString).cachedIn(viewModelScope)
+    }
+
+    fun searchMission(query: String) {
+        currentQuery.value = query
+    }
+
+    companion object {
+        private const val CURRENT_QUERY = "current_query"
+        private const val DEFAULT_QUERY = "mission"
+    }
 }

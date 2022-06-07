@@ -26,22 +26,32 @@ class BookmarkedMissionListAdapter(private val listMissionMark: ArrayList<Missio
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (
+        var (
             endDate,
             address,
             city,
             title,
             featuredImage,
+            helpseeker,
             numberOfNeeds,
+            note,
+            requirement,
             province,
             id,
             category,
             startDate,
-            timestamp
+            timestamp,
+            volunteers
         ) = listMissionMark[position]
         holder.binding.apply {
+            val url = if(featuredImage?.size != 0) {
+                featuredImage?.get(0)
+            } else {
+                listOf("")
+                featuredImage = listOf("")
+            }
             Glide.with(itemView.context)
-                .load(featuredImage[0])
+                .load(url)
                 .placeholder(R.drawable.no_image_placeholder)
                 .into(ivMissionPhoto)
             tvMissionTitle.text = title

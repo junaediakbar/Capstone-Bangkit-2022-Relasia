@@ -33,10 +33,11 @@ class MissionDetailFragment : Fragment() {
 
     private var binding: FragmentMissionDetailBinding? = null
     private lateinit var googleAuth: FirebaseAuth
+    private lateinit var emailAuth: FirebaseAuth
+    private lateinit var uid: String
 
     private val missionDetailViewModel by viewModels<MissionDetailViewModel> {
         MissionDetailViewModel.Factory(
-            "volunteer.baru",
             arguments?.getParcelable<MissionDataItem>(EXTRA_MISSION) as MissionDataItem,
             activity?.applicationContext as Application
         )
@@ -56,6 +57,9 @@ class MissionDetailFragment : Fragment() {
 
         googleAuth = Firebase.auth
         val firebaseUser = googleAuth.currentUser
+
+        emailAuth = FirebaseAuth.getInstance()
+        if (emailAuth.currentUser != null) uid = emailAuth.currentUser?.uid.toString()
 
         val mission = arguments?.getParcelable<MissionDataItem>(EXTRA_MISSION) as MissionDataItem
         val missionString = Mission(mission.id)
@@ -146,8 +150,14 @@ class MissionDetailFragment : Fragment() {
     private fun setMissionDetailData(mission: MissionDetailResponse) {
         binding?.apply {
             ivDetailMission.let {
+                val url = if(mission.featuredImage?.size != 0) {
+                    mission.featuredImage?.get(0)
+                } else {
+                    listOf("")
+                    mission.featuredImage = listOf("")
+                }
                 Glide.with(requireActivity())
-                    .load(mission.featuredImage[0])
+                    .load(url)
                     .placeholder(R.drawable.no_image_placeholder)
                     .into(it)
             }
@@ -177,7 +187,7 @@ class MissionDetailFragment : Fragment() {
     }
 
     private fun applyVolunteerToMission(mission: Mission) {
-        missionDetailViewModel.applyMission("volunteer.baru", mission)
+        missionDetailViewModel.applyMission(uid, mission)
     }
 
     private fun showLoading(isLoading: Boolean) {

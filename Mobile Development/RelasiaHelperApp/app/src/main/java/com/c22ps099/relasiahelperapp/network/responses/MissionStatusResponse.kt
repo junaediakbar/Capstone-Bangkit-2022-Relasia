@@ -1,11 +1,24 @@
 package com.c22ps099.relasiahelperapp.network.responses
 
 import android.os.Parcelable
+import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class HelpseekerDetailResponse(
+data class MissionStatusResponse(
+
+	@field:SerializedName("address")
+	val address: String,
+
+	@field:SerializedName("birthyear")
+	val birthyear: String,
+
+	@field:SerializedName("gender")
+	val gender: String,
+
+	@field:SerializedName("province")
+	val province: String,
 
 	@field:SerializedName("city")
 	val city: String,
@@ -14,17 +27,26 @@ data class HelpseekerDetailResponse(
 	val phone: String,
 
 	@field:SerializedName("missions")
-	val missions: List<MissionsItemForHelpSeeker>,
+	val missions: List<MissionsItem>,
+
+	@field:SerializedName("foundations")
+	val foundations: List<String>,
 
 	@field:SerializedName("name")
 	val name: String,
 
+	@field:SerializedName("verified")
+	val verified: String,
+
 	@field:SerializedName("id")
-	val id: String
+	val id: String,
+
+	@field:SerializedName("picture")
+	val picture: String
 ) : Parcelable
 
 @Parcelize
-data class VolunteersItemStatusForHelpseeker(
+data class VolunteersItemStatus(
 
 	@field:SerializedName("id")
 	val id: String,
@@ -33,8 +55,9 @@ data class VolunteersItemStatusForHelpseeker(
 	val status: String
 ) : Parcelable
 
+@Entity(tableName = "mission_status")
 @Parcelize
-data class MissionsItemForHelpSeeker(
+data class MissionsItem(
 
 	@field:SerializedName("end_date")
 	val endDate: String,
@@ -58,10 +81,10 @@ data class MissionsItemForHelpSeeker(
 	val title: String,
 
 	@field:SerializedName("volunteers")
-	val volunteers: List<VolunteersItemStatusForHelpseeker>,
+	val volunteers: List<VolunteersItemStatus>,
 
 	@field:SerializedName("featured_image")
-	val featuredImage: List<String>,
+	val featuredImage: List<String>? = null,
 
 	@field:SerializedName("number_of_needs")
 	val numberOfNeeds: String,

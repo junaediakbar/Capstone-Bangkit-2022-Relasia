@@ -1,6 +1,5 @@
 package com.c22ps099.relasiahelperapp.ui.home
 
-import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -30,6 +29,7 @@ class HomeFragment : Fragment() {
     private lateinit var homeViewModel: HomeViewModel
     private var binding: FragmentHomeBinding? = null
     private lateinit var googleAuth: FirebaseAuth
+    private lateinit var emailAuth: FirebaseAuth
 
     private var title: String? = ""
 
@@ -75,20 +75,22 @@ class HomeFragment : Fragment() {
 
         val adapter = MissionListAdapter()
         binding?.apply {
-//            svHome.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
-//                android.widget.SearchView.OnQueryTextListener {
-//                override fun onQueryTextSubmit(query: String?): Boolean {
-////                    if (query == "") homeViewModel.updateTitle("")
-////                    else homeViewModel.updateTitle(query.toString())
-////                    svHome.clearFocus()
-//                    return true
-//                }
-//
-//                override fun onQueryTextChange(newText: String?): Boolean {
-//                    return false
-//                }
-//
-//            })
+            svHome.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+                android.widget.SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    if (query != null) {
+                        binding?.rvMissions?.scrollToPosition(0)
+                        homeViewModel.searchMission(query)
+                        svHome.clearFocus()
+                    }
+                    return true
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    return false
+                }
+
+            })
             btnNotification.setOnClickListener {
                 val navigateAction = HomeFragmentDirections
                     .actionHomeFragmentToProfileFragment()
@@ -110,10 +112,7 @@ class HomeFragment : Fragment() {
             rvMissions.setHasFixedSize(true)
             rvMissions.itemAnimator = null
             rvMissions.layoutManager = LinearLayoutManager(requireContext())
-            rvMissions.adapter = adapter.withLoadStateHeaderAndFooter(
-                header = LoadingStateAdapter {
-                    adapter.retry()
-                },
+            rvMissions.adapter = adapter.withLoadStateFooter(
                 footer = LoadingStateAdapter {
                     adapter.retry()
                 }

@@ -9,7 +9,6 @@ import com.c22ps099.relasiahelperapp.data.Volunteer
 import com.c22ps099.relasiahelperapp.network.ApiConfig
 import com.c22ps099.relasiahelperapp.network.responses.AddNewVolunteerResponse
 import com.c22ps099.relasiahelperapp.utils.Event
-import com.c22ps099.relasiahelperapp.utils.itemsKab
 import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback

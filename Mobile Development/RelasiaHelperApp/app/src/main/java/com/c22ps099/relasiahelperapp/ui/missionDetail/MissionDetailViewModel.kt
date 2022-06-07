@@ -18,8 +18,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MissionDetailViewModel(
-    private val volunteerId: String,
-    private val missionId: String,
+    missionId: String,
     application: Application
 ) : ViewModel() {
 
@@ -104,13 +103,12 @@ class MissionDetailViewModel(
 
     @Suppress("UNCHECKED_CAST")
     class Factory(
-        private val volunteerId: String,
         private val mission: MissionDataItem,
         private val application: Application
     ) :
         ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return MissionDetailViewModel(volunteerId, mission.id, application) as T
+            return MissionDetailViewModel(mission.id, application) as T
         }
     }
 }

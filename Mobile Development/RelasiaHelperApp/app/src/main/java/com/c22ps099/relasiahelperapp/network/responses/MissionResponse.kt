@@ -3,6 +3,8 @@ package com.c22ps099.relasiahelperapp.network.responses
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.c22ps099.relasiahelperapp.utils.VolunteerTypeConverters
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
@@ -23,6 +25,7 @@ data class MissionResponse(
 ) : Parcelable
 
 @Entity(tableName = "mission")
+@TypeConverters(VolunteerTypeConverters::class)
 @Parcelize
 data class MissionDataItem(
 
@@ -39,10 +42,19 @@ data class MissionDataItem(
 	val title: String,
 
 	@field:SerializedName("featured_image")
-	val featuredImage: List<String>,
+	var featuredImage: List<String>? = null,
+
+	@field:SerializedName("helpseeker")
+	val helpseeker: String,
 
 	@field:SerializedName("number_of_needs")
 	val numberOfNeeds: String,
+
+	@field:SerializedName("note")
+	val note: String,
+
+	@field:SerializedName("requirement")
+	val requirement: String,
 
 	@field:SerializedName("province")
 	val province: String,
@@ -59,4 +71,8 @@ data class MissionDataItem(
 
 	@field:SerializedName("timestamp")
 	val timestamp: String,
+
+
+	@field:SerializedName("volunteers")
+	val volunteers: List<VolunteersItemStatus> = listOf(),
 ) : Parcelable

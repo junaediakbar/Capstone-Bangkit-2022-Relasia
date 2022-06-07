@@ -32,7 +32,7 @@ data class MissionDetailResponse(
 	val volunteers: List<VolunteersItem>,
 
 	@field:SerializedName("featured_image")
-	val featuredImage: List<String>,
+	var featuredImage: List<String>? = null,
 
 	@field:SerializedName("number_of_needs")
 	val numberOfNeeds: String,
