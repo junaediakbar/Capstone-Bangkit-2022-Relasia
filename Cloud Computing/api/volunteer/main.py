@@ -65,7 +65,6 @@ def addVolunteer():
     except Exception as e:
         return f"An Error Occurred: {e}"
 
-
 @app.route('/', methods=['PUT'])
 def editVolunteer():
     try:
@@ -85,7 +84,6 @@ def editVolunteer():
 
     except Exception as e:
         return f"An Error Occurred: {e}"
-
 
 @app.route('/<string:volunteer_id>/foundation', methods=['PUT'])
 def registerFoundation(volunteer_id):
@@ -121,7 +119,6 @@ def registerFoundation(volunteer_id):
     except Exception as e:
         return f"An Error Occurred: {e}"
 
-
 @app.route('/<string:volunteer_id>/mission', methods=['PUT'])
 def applyMission(volunteer_id):
     try:
@@ -154,7 +151,6 @@ def applyMission(volunteer_id):
             return jsonify(message="Bad Request"), 400
     except Exception as e:
         return f"An Error Occured: {e}"
-
 
 @app.route('/', methods=['DELETE'])
 def deleteVolunteer():
@@ -195,9 +191,8 @@ def deleteVolunteer():
     except Exception as e:
         return f"An Error Occurred: {e}"
 
-
-
-
 if __name__ == '__main__':
-    app.run(threaded=True)
-    # app.run(host="0.0.0.0", debug=True)
+    import os
+    
+    # app.run(threaded=True)
+    app.run(host="0.0.0.0", threaded=True, port=int(os.environ.get("PORT", 8080)))

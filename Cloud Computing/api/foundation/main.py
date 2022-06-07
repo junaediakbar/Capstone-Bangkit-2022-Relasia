@@ -197,5 +197,7 @@ def deleteFoundation():
         return f"An Error Occurred: {e}"
 
 if __name__ == '__main__':
-    app.run(threaded=True)
-    # app.run(host="0.0.0.0", debug=True)
+    import os
+    
+    # app.run(threaded=True)
+    app.run(host="0.0.0.0", threaded=True, port=int(os.environ.get("PORT", 8080)))
