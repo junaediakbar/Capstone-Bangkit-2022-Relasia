@@ -66,10 +66,7 @@ val timeStamp: String = SimpleDateFormat(
 ).format(System.currentTimeMillis())
 
 fun toTitleCase(string: String?): String? {
-
-    if (string == null) {
-        return null
-    }
+    if (string == null) return null
     var whiteSpace = true
     val builder = StringBuilder(string)
     val builderLength = builder.length
@@ -77,17 +74,12 @@ fun toTitleCase(string: String?): String? {
     for (i in 0 until builderLength) {
         val c = builder[i]
         if (whiteSpace) {
-
             if (!Character.isWhitespace(c)) {
-
                 builder.setCharAt(i, Character.toTitleCase(c))
                 whiteSpace = false
             }
-        } else if (Character.isWhitespace(c)) {
-            whiteSpace = true
-        } else {
-            builder.setCharAt(i, Character.toLowerCase(c))
-        }
+        } else if (Character.isWhitespace(c)) whiteSpace = true
+        else builder.setCharAt(i, Character.toLowerCase(c))
     }
     return builder.toString()
 }

@@ -1,10 +1,13 @@
 package com.c22ps099.relasiahelperapp.ui.home
 
+import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.Button
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
@@ -28,10 +31,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
     private var binding: FragmentHomeBinding? = null
-    private lateinit var googleAuth: FirebaseAuth
-    private lateinit var emailAuth: FirebaseAuth
-
-    private var title: String? = ""
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,6 +45,15 @@ class HomeFragment : Fragment() {
                 )
             )
         )[HomeViewModel::class.java]
+
+        auth = FirebaseAuth.getInstance()
+
+        if (auth.currentUser != null) homeViewModel.checkVolunteer(auth.currentUser?.uid.toString())
+        homeViewModel.isSuccess.observe(viewLifecycleOwner) { success ->
+            if (!success) {
+                showProfileDialog()
+            }
+        }
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding?.root
     }
@@ -52,8 +61,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        googleAuth = Firebase.auth
-        val firebaseUser = googleAuth.currentUser
+        auth = Firebase.auth
+        val firebaseUser = auth.currentUser
 
         if (firebaseUser == null) {
             val navigateAction = HomeFragmentDirections
@@ -80,7 +89,7 @@ class HomeFragment : Fragment() {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     if (query != null) {
                         binding?.rvMissions?.scrollToPosition(0)
-                        homeViewModel.searchMission(query)
+//                        homeViewModel.searchMission(query)
                         svHome.clearFocus()
                     }
                     return true
@@ -140,6 +149,36 @@ class HomeFragment : Fragment() {
                     }
                 }
             }
+        }
+    }
+
+    private fun showProfileDialog() {
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.dialog_fill_profile)
+        dialog.show()
+        dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
+        val btnProfile = dialog.findViewById<Button>(R.id.btn_profile)
+        btnProfile.setOnClickListener {
+            dialog.dismiss()
+            val navigateAction = HomeFragmentDirections
+                .actionHomeFragmentToProfileFragment()
+            findNavController().navigate(navigateAction)
+
+            val mProfileFragment = ProfileFragment()
+            val mFragmentManager = parentFragmentManager
+            mFragmentManager.beginTransaction().apply {
+                replace(
+                    R.id.nav_host_fragment,
+                    mProfileFragment,
+                    ProfileFragment::class.java.simpleName
+                )
+                addToBackStack(null)
+                setReorderingAllowed(true)
+                commit()
+            }
+            dialog.hide()
         }
     }
 }

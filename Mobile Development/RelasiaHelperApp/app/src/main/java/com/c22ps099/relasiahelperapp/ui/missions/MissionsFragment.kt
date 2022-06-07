@@ -1,6 +1,5 @@
 package com.c22ps099.relasiahelperapp.ui.missions
 
-import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +7,6 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,15 +25,13 @@ import com.google.firebase.ktx.Firebase
 class MissionsFragment : Fragment() {
 
     private var binding: FragmentMissionsBinding? = null
-    private lateinit var googleAuth: FirebaseAuth
-    private lateinit var emailAuth: FirebaseAuth
+    private lateinit var auth: FirebaseAuth
     private lateinit var uid: String
 
     private val missionsViewModel by viewModels<MissionsViewModel> {
         MissionsViewModel.Factory(
             MissionRepository(ApiConfig.getApiService()),
-            uid,
-            activity?.applicationContext as Application
+            uid
         )
     }
 
@@ -53,11 +49,11 @@ class MissionsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        googleAuth = Firebase.auth
-        val firebaseUser = googleAuth.currentUser
+        auth = Firebase.auth
+        val firebaseUser = auth.currentUser
 
-        emailAuth = FirebaseAuth.getInstance()
-        if (emailAuth.currentUser != null) uid = emailAuth.currentUser?.uid.toString()
+        auth = FirebaseAuth.getInstance()
+        if (auth.currentUser != null) uid = auth.currentUser?.uid.toString()
 
         if (firebaseUser == null) {
             val navigateAction = MissionsFragmentDirections

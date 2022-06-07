@@ -19,6 +19,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "BASE_URL", '"https://relasia-api.herokuapp.com/"')
+        buildConfigField("String", "ML_URL", '"https://recommendation-jv3fe634eq-et.a.run.app/"')
+        buildConfigField("String", "WEB_CLIENT_ID", '"269202247329-u5ad2hpor327e69ku1fjbjklksffdm50.apps.googleusercontent.com"')
     }
 
     buildTypes {

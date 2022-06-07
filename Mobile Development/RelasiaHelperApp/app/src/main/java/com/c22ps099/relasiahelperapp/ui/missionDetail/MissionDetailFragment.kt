@@ -32,8 +32,7 @@ class MissionDetailFragment : Fragment() {
     }
 
     private var binding: FragmentMissionDetailBinding? = null
-    private lateinit var googleAuth: FirebaseAuth
-    private lateinit var emailAuth: FirebaseAuth
+    private lateinit var auth: FirebaseAuth
     private lateinit var uid: String
 
     private val missionDetailViewModel by viewModels<MissionDetailViewModel> {
@@ -55,11 +54,11 @@ class MissionDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        googleAuth = Firebase.auth
-        val firebaseUser = googleAuth.currentUser
+        auth = Firebase.auth
+        val firebaseUser = auth.currentUser
 
-        emailAuth = FirebaseAuth.getInstance()
-        if (emailAuth.currentUser != null) uid = emailAuth.currentUser?.uid.toString()
+        auth = FirebaseAuth.getInstance()
+        if (auth.currentUser != null) uid = auth.currentUser?.uid.toString()
 
         val mission = arguments?.getParcelable<MissionDataItem>(EXTRA_MISSION) as MissionDataItem
         val missionString = Mission(mission.id)

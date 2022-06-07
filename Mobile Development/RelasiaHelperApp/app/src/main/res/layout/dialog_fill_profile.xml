@@ -14,57 +14,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/img_success" />
-
-    <TextView
-        android:id="@+id/tv_dialog_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="23 Jun 2022"
-        android:textColor="@color/blue_munshell"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <TextView
-        android:id="@+id/tv_success_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="ID Mission: 112122112"
-        app:layout_constraintEnd_toEndOf="@+id/tv_dialog_time"
-        app:layout_constraintStart_toStartOf="@+id/tv_dialog_time"
-        app:layout_constraintTop_toBottomOf="@+id/tv_dialog_time" />
+        app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/tv_dialog_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Pengajuan Berhasil"
+        android:text="Welcome To Relasia"
         android:textAlignment="center"
         android:textColor="@color/blue_munshell"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/tv_success_id"
-        app:layout_constraintStart_toStartOf="@+id/tv_success_id"
-        app:layout_constraintTop_toBottomOf="@+id/tv_success_id" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/tv_dialog_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Persetujuan akan diproses paling lambat 24 jam"
+        android:text="Please fill your profile before looking for missions to help someone"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/tv_dialog_title"
         app:layout_constraintStart_toStartOf="@+id/tv_dialog_title"
         app:layout_constraintTop_toBottomOf="@+id/tv_dialog_title" />
 
     <Button
-        android:id="@+id/btn_home"
+        android:id="@+id/btn_profile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -72,7 +50,7 @@
         android:fontFamily="@font/roboto_regular"
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
-        android:text="Kembali ke Home"
+        android:text="Fill Profile"
         android:textAllCaps="false"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"

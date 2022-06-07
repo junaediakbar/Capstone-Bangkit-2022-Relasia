@@ -1,13 +1,12 @@
 package com.c22ps099.relasiahelperapp.ui.missions
 
-import android.app.Application
 import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.c22ps099.relasiahelperapp.data.MissionRepository
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 
-class MissionsViewModel(pref: MissionRepository, volunteerId: String, application: Application) :
+class MissionsViewModel(pref: MissionRepository, volunteerId: String) :
     ViewModel() {
 
     val missionsStatus: LiveData<PagingData<MissionDataItem>> =
@@ -16,12 +15,11 @@ class MissionsViewModel(pref: MissionRepository, volunteerId: String, applicatio
     @Suppress("UNCHECKED_CAST")
     class Factory(
         private val pref: MissionRepository,
-        private val volunteerId: String,
-        private val application: Application
+        private val volunteerId: String
     ) :
         ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return MissionsViewModel(pref, volunteerId, application) as T
+            return MissionsViewModel(pref, volunteerId) as T
         }
     }
 }

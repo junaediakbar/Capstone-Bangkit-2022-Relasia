@@ -50,8 +50,7 @@ class ProfileFragment : Fragment() {
     }
 
     private var binding: FragmentProfileBinding? = null
-    private lateinit var googleAuth: FirebaseAuth
-    private lateinit var emailAuth: FirebaseAuth
+    private lateinit var auth: FirebaseAuth
 
     private var token: String? = ""
 
@@ -88,10 +87,10 @@ class ProfileFragment : Fragment() {
             launcherPermissionRequest.launch(REQUIRED_PERMISSIONS)
         }
 
-        googleAuth = Firebase.auth
-        val firebaseUser = googleAuth.currentUser
+        auth = Firebase.auth
+        val firebaseUser = auth.currentUser
 
-        emailAuth = FirebaseAuth.getInstance()
+        auth = FirebaseAuth.getInstance()
 
         if (firebaseUser == null) {
             val navigateAction = ProfileFragmentDirections
@@ -113,7 +112,7 @@ class ProfileFragment : Fragment() {
         val genders = resources.getStringArray(R.array.Genders)
 
         binding?.apply {
-            tvProfileEmail.text = emailAuth.currentUser?.email
+            tvProfileEmail.text = auth.currentUser?.email
             spProfileGender.item = genders.toMutableList().toList()
             spProfileGender.apply {
                 onItemSelectedListener = object :
@@ -196,7 +195,7 @@ class ProfileFragment : Fragment() {
                 addNewVolunteer()
             }
             btnLogout.setOnClickListener {
-                googleAuth.signOut()
+                auth.signOut()
 
                 val navigateAction = ProfileFragmentDirections
                     .actionProfileFragmentToLoginFragment()
@@ -215,8 +214,6 @@ class ProfileFragment : Fragment() {
                 }
             }
         }
-
-
     }
 
     private val launcherPermissionRequest = registerForActivityResult(
@@ -238,8 +235,8 @@ class ProfileFragment : Fragment() {
     }
 
     private fun addNewVolunteer() {
-        if (emailAuth.currentUser != null) {
-            val id = emailAuth.currentUser?.uid
+        if (auth.currentUser != null) {
+            val id = auth.currentUser?.uid
             Log.e("id", "===>>>$id")
 
             dataName = binding?.etProfileName?.text.toString()

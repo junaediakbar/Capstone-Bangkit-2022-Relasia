@@ -29,6 +29,8 @@
     <string name="logout">Logout</string>
     <string name="auth">Bearer %1$s</string>
     <string name="permission_denied">Permission Denied</string>
+    <string name="message_validation_email">Your email format is not valid</string>
+    <string name="message_validation_password">Your password must be at least 6 characters in length</string>
 
     <string-array name="Genders">
         <item>Male</item>

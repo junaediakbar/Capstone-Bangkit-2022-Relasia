@@ -80,7 +80,7 @@
             android:text="Category"
             android:textAlignment="center"
             android:textColor="@color/blue_500"
-            android:textSize="11sp"
+            android:textSize="10sp"
             card_view:layout_constraintStart_toStartOf="@id/tv_mission_title"
             card_view:layout_constraintTop_toBottomOf="@+id/tv_mission_city" />
 
@@ -90,11 +90,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:drawablePadding="2dp"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
             android:drawableTint="@color/grey"
             android:fontFamily="@font/roboto_regular"
             android:gravity="center"
             android:text="5"
-            android:textSize="11sp"
+            android:textSize="14sp"
             card_view:drawableEndCompat="@drawable/ic_baseline_people_alt_24"
             card_view:layout_constraintBottom_toBottomOf="@id/iv_mission_photo"
             card_view:layout_constraintEnd_toEndOf="@id/tv_mission_title"

@@ -49,4 +49,10 @@ interface ApiService {
     fun addVolunteer(
         @Body volunteer: Volunteer
     ): Call<AddNewVolunteerResponse>
+
+    @Headers("Content-Type: application/json")
+    @GET("volunteer/{volunteerId}")
+    fun getVolunteer(
+        @Path("volunteerId") volunteerId: String
+    ): Call<VolunteerDetailData>
 }

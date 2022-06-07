@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +12,11 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.c22ps099.relasiahelperapp.BuildConfig
 import com.c22ps099.relasiahelperapp.R
 import com.c22ps099.relasiahelperapp.databinding.FragmentLoginBinding
+import com.c22ps099.relasiahelperapp.ui.custom.MyEditTextValidation
 import com.c22ps099.relasiahelperapp.ui.home.HomeFragment
 import com.c22ps099.relasiahelperapp.ui.register.RegisterFragment
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -34,13 +36,9 @@ class LoginFragment : Fragment() {
 
     companion object {
         const val TAG = "LoginFragment"
-        private const val WEB_CLIENT_ID =
-            "269202247329-u5ad2hpor327e69ku1fjbjklksffdm50.apps.googleusercontent.com"
+        private const val WEB_CLIENT_ID = BuildConfig.WEB_CLIENT_ID
     }
 
-    private var token: String? = ""
-
-    private lateinit var loginViewModel: LoginViewModel
     private var binding: FragmentLoginBinding? = null
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var googleAuth: FirebaseAuth
@@ -51,14 +49,13 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        loginViewModel =
-            ViewModelProvider(this)[LoginViewModel::class.java]
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        showLoading(false)
 
         val gso = GoogleSignInOptions
             .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -71,6 +68,20 @@ class LoginFragment : Fragment() {
         googleAuth = Firebase.auth
 
         binding?.apply {
+            etEmail.setValidationCallback(object : MyEditTextValidation.InputValidation {
+                override val errorMessage: String
+                    get() = getString(R.string.message_validation_email)
+
+                override fun validate(input: String): Boolean =
+                    input.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(input).matches()
+            })
+            etPassword.setValidationCallback(object : MyEditTextValidation.InputValidation {
+                override val errorMessage: String
+                    get() = getString(R.string.message_validation_password)
+
+                override fun validate(input: String): Boolean =
+                    input.isNotEmpty() && input.length >= 6
+            })
             ibGmail.setOnClickListener {
                 signInGoogle()
             }
@@ -100,6 +111,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun signInEmail() {
+        showLoading(true)
         binding?.apply {
             val email = etEmail.text.toString()
             val password = etPassword.text.toString()
@@ -110,8 +122,7 @@ class LoginFragment : Fragment() {
                         Log.d(TAG, "createUserWithEmail:success")
                         val user = emailAuth.currentUser
                         updateUI(user)
-                        token = FirebaseAuth.getInstance().currentUser!!.getIdToken(true).toString()
-                        Log.e("token", "$token")
+                        showLoading(false)
                     } else {
                         Log.w(TAG, "createUserWithEmail:failure", task.exception)
                         Toast.makeText(
@@ -119,6 +130,7 @@ class LoginFragment : Fragment() {
                             Toast.LENGTH_SHORT
                         ).show()
                         updateUI(null)
+                        showLoading(false)
                     }
                 }
         }
@@ -146,6 +158,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun firebaseAuthWithGoogle(idToken: String) {
+        showLoading(true)
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         googleAuth.signInWithCredential(credential)
             .addOnCompleteListener(requireActivity()) { task ->
@@ -153,9 +166,11 @@ class LoginFragment : Fragment() {
                     Log.d(TAG, "signInWithCredential:success")
                     val user = googleAuth.currentUser
                     updateUI(user)
+                    showLoading(false)
                 } else {
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
                     updateUI(null)
+                    showLoading(false)
                 }
             }
     }
@@ -164,8 +179,6 @@ class LoginFragment : Fragment() {
         if (currentUser != null) {
             val navigateAction = LoginFragmentDirections
                 .actionLoginFragmentToHomeFragment()
-            navigateAction.token = currentUser.getIdToken(true).toString()
-            navigateAction.userId=currentUser.uid
             findNavController().navigate(navigateAction)
 
             val mHomeFragment = HomeFragment()
@@ -176,6 +189,10 @@ class LoginFragment : Fragment() {
                 commit()
             }
         }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding?.progressBar?.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     override fun onResume() {
