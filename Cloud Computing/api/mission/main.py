@@ -1,4 +1,5 @@
 # Initialize Firestore
+from email.policy import default
 from firebase_admin import credentials, initialize_app, firestore
 
 cred = credentials.Certificate('credentials.json')
@@ -136,7 +137,7 @@ def deleteMission():
 
 
 @app.route('/', methods=['GET'])
-def getMission():
+def getAllMission():
     try:
         page = request.args.get("page", default=1, type=int)
         paginate = request.args.get("paginate", default=5, type=int)
@@ -146,11 +147,11 @@ def getMission():
         province = request.args.get("province", default="", type=str)
         status = request.args.get("status", default="", type=str)
         active = request.args.get("active", default="", type=str)
+        title = request.args.get("title", default="", type=str)
 
         missions = []
         if volunteer_id:
-            volunteer_data = volunteer_Ref.document(
-                volunteer_id).get().to_dict()
+            volunteer_data = volunteer_Ref.document(volunteer_id).get().to_dict()
             mission_id = volunteer_data["missions"]
 
             for data in mission_id:
@@ -175,6 +176,9 @@ def getMission():
         else:
             # Get all missions from mission collection
             missions = [doc.to_dict() for doc in mission_Ref.stream()]
+
+        if title:
+            missions = [mission for mission in missions if mission["title"].lower().find(title.lower()) != -1]
 
         if city:
             missions = [
@@ -216,56 +220,44 @@ def getMission():
         return f"An Error Occurred: {e}"
 
 
-@app.route('/<string:id>', methods=["GET"])
-def getSpecificMission(id):
+@app.route('/<string:mission_id>', methods=["GET"])
+def getSpecificMission(mission_id):
     try:
-        try:
-            mission_id = id
-        except:
-            mission_id = ""
+        specific_data = request.args.get('data', default="", type=str)
 
-        try:
-            specific_data = request.args.get('data')
-        except:
-            specific_data = ""
+        mission_data = mission_Ref.document(mission_id).get().to_dict()
+        if specific_data:
+            if specific_data == "volunteers":
+                volunteers = mission_data["volunteers"]
+                detailed_data = []
+                for data in volunteers:
+                    volunteer = volunteer_Ref.document(data["id"]).get()
+                    if volunteer.exists:
+                        volunteer_data = volunteer.to_dict()
+                        volunteer_data['status'] = data["status"]
+                        detailed_data.append(volunteer_data)
+                return jsonify(length=len(detailed_data), volunteers=detailed_data), 200
+            else:
+                return {specific_data: mission_data[specific_data]}, 200
 
-        if mission_id:
-            mission_data = mission_Ref.document(mission_id).get().to_dict()
-            if specific_data:
-                if specific_data == "volunteers":
-                    volunteers = mission_data["volunteers"]
-                    detailed_data = []
-                    for data in volunteers:
-                        volunteer = volunteer_Ref.document(data["id"]).get()
-                        if volunteer.exists:
-                            volunteer_data = volunteer.to_dict()
-                            volunteer_data['status'] = data["status"]
-                            detailed_data.append(volunteer_data)
-                    return jsonify(lenght=len(detailed_data), volunteers=detailed_data), 200
-                else:
-                    return {specific_data: mission_data[specific_data]}, 200
+        # Get Helpseeker who request the mission from helpseeker collection
+        helpseeker_id = mission_data["helpseeker"]
+        helpseeker = helpseeker_Ref.document(helpseeker_id).get().to_dict()
+        mission_data["helpseeker"] = helpseeker
 
-            # Get Helpseeker who request the mission from helpseeker collection
-            helpseeker_id = mission_data["helpseeker"]
-            helpseeker = helpseeker_Ref.document(helpseeker_id).get().to_dict()
-            mission_data["helpseeker"] = helpseeker
+        # Get all volunteers who join a mission from volunteer collection
+        volunteers = mission_data["volunteers"]
+        mission_data["volunteers"] = []
+        for data in volunteers:
+            volunteer_id = data["id"]
+            volunteer = volunteer_Ref.document(volunteer_id).get()
+            if volunteer.exists:
+                volunteer_data = volunteer.to_dict()
+                volunteer_data['status'] = data["status"]
+                mission_data["volunteers"].append(volunteer_data)
 
-            # Get all volunteers who join a mission from volunteer collection
-            volunteers = mission_data["volunteers"]
-            mission_data["volunteers"] = []
-            for data in volunteers:
-                volunteer_id = data["id"]
-                volunteer = volunteer_Ref.document(volunteer_id).get()
-                if volunteer.exists:
-                    volunteer_data = volunteer.to_dict()
-                    volunteer_data['status'] = data["status"]
-                    mission_data["volunteers"].append(volunteer_data)
-
-            # HTTP Response Code: 200 OK
-            return mission_data, 200
-        else:
-            # HTTP response code: 400 Bad Request
-            return jsonify(message="Bad Request"), 400
+        # HTTP Response Code: 200 OK
+        return mission_data, 200
     except Exception as e:
         return f"An Error Occurred: {e}"
 
