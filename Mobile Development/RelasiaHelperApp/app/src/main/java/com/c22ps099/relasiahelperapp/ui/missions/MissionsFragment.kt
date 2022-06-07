@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.c22ps099.relasiahelperapp.R
-import com.c22ps099.relasiahelperapp.data.MissionDatabase
 import com.c22ps099.relasiahelperapp.data.MissionRepository
 import com.c22ps099.relasiahelperapp.databinding.FragmentMissionsBinding
 import com.c22ps099.relasiahelperapp.network.ApiConfig
@@ -38,7 +37,6 @@ class MissionsFragment : Fragment() {
             ViewModelProvider(
                 this, MissionFactory(
                     MissionRepository(
-                        MissionDatabase.getDatabase(requireContext()),
                         ApiConfig.getApiService()
                     )
                 )

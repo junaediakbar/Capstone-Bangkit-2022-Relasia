@@ -14,7 +14,6 @@ interface ApiService {
     @Headers("Content-Type: application/json")
     @GET("mission")
     suspend fun getAllMissions(
-        @Query("title") title: String,
         @Query("page") page: Int = 1,
         @Query("paginate") paginate: Int = 5
     ): MissionResponse

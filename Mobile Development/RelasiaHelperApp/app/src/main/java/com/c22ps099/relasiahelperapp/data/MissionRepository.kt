@@ -6,10 +6,9 @@ import com.c22ps099.relasiahelperapp.network.ApiService
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 
 class MissionRepository(
-    private val missionDatabase: MissionDatabase,
     private val apiService: ApiService
 ) {
-    fun getMissionsPages(title: String?): LiveData<PagingData<MissionDataItem>> {
+    fun getMissionsPages(): LiveData<PagingData<MissionDataItem>> {
         @OptIn(ExperimentalPagingApi::class)
         return Pager(
             config = PagingConfig(
@@ -17,9 +16,8 @@ class MissionRepository(
                 enablePlaceholders = false,
                 maxSize = 20
             ),
-            remoteMediator = MissionRemoteMediator(missionDatabase, apiService, title.toString()),
             pagingSourceFactory = {
-                missionDatabase.missionDao().getAllMission(title.toString())
+                MissionPagingSource(apiService)
             }
         ).liveData
     }

@@ -1,8 +1,10 @@
 package com.c22ps099.relasiahelperapp.ui.home
 
 import androidx.lifecycle.*
+import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.c22ps099.relasiahelperapp.data.MissionRepository
+import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 
 class HomeViewModel(pref: MissionRepository) : ViewModel() {
 
@@ -13,5 +15,6 @@ class HomeViewModel(pref: MissionRepository) : ViewModel() {
         _title.value = title
     }
 
-    val missions = pref.getMissionsPages(title.toString()).cachedIn(viewModelScope)
+    val missions: LiveData<PagingData<MissionDataItem>> =
+        pref.getMissionsPages().cachedIn(viewModelScope)
 }
