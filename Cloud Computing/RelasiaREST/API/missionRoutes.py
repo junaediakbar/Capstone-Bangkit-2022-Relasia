@@ -30,7 +30,8 @@ def addMission():
             else:
                 # Add new mission to mission collection
                 mission_data = request.json
-                mission_data["timestamp"] = datetime.now()
+                mission_data["timestamp"] = datetime.now().strftime(
+                    "%Y/%m/%d/%H:%M:%S")
                 mission_data["id"] = mission_id
                 mission_data["volunteers"] = []
                 mission_Ref.document(mission_id).set(mission_data)
@@ -82,6 +83,8 @@ def confirmVolunteers(mission_id):
             for data in mission_data["volunteers"]:
                 if volunteer_id == data["id"]:
                     data["status"] = status
+                    data["timestamp"] = datetime.now().strftime(
+                        "%Y/%m/%d/%H:%M:%S")
                     break
 
             mission_Ref.document(mission_id).update(mission_data)
@@ -156,6 +159,21 @@ def getMission():
                             temp.append(mission)
                 missions = temp
 
+            def orderVolunteerByTimestamp(mission):
+                for volunteer in mission["volunteers"]:
+                    if volunteer["id"] == volunteer_id:
+                        return volunteer["timestamp"]
+
+            missions = sorted(missions, key=orderVolunteerByTimestamp)
+
+            def orderVolunteerByTimestamp(mission):
+                for volunteer in mission["volunteers"]:
+                    if volunteer["id"] == volunteer_id:
+                        return volunteer["timestamp"]
+
+            missions = sorted(
+                missions, key=lambda mission: mission["volunteers"][0]["timestamp"], reverse=True)
+
         elif helpseeker_id:
             helpseeker_data = helpseeker_Ref.document(
                 helpseeker_id).get().to_dict()
@@ -164,9 +182,13 @@ def getMission():
             for data in mission_id:
                 missions.append(mission_Ref.document(data).get().to_dict())
 
+            missions = sorted(
+                missions, key=lambda x: x["timestamp"], reverse=True)
         else:
             # Get all missions from mission collection
             missions = [doc.to_dict() for doc in mission_Ref.stream()]
+            missions = sorted(
+                missions, key=lambda x: x["timestamp"], reverse=True)
 
         if city:
             missions = [
