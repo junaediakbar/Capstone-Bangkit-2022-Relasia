@@ -13,7 +13,10 @@ volunteerRoutes = Blueprint('volunteerRoutes', __name__)
 def addVolunteer():
     try:
         data = request.json
-        data["picture"] = ""
+        try:
+            data["picture"] = request.json["picture"]
+        except:
+            data["picture"] = ""
         data["foundations"] = []
         data["missions"] = []
         data["verified"] = "false"

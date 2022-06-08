@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from firebase_admin import firestore
 from datetime import datetime
+import hashlib
 
 # Initialization Database Reference
 db = firestore.client()
@@ -17,10 +18,6 @@ def addMission():
         # Composite mission_id from hash(helpseeker_id$title)
         title = request.json['title']
         helpseeker_id = request.json['helpseeker']
-        
-        # Hashing Mission ID
-        import hashlib
-
         mission_id = hashlib.sha1(
             (helpseeker_id + "$" + title).encode("utf-8")).hexdigest()
 
@@ -132,14 +129,15 @@ def deleteMission():
 @missionRoutes.route('/', methods=['GET'])
 def getMission():
     try:
-        page = request.args.get("page", default=1, type=int)
-        paginate = request.args.get("paginate", default=5, type=int)
-        volunteer_id = request.args.get("volunteer", default="", type=str)
-        helpseeker_id = request.args.get("helpseeker", default="", type=str)
-        city = request.args.get("city", default="", type=str)
-        province = request.args.get("province", default="", type=str)
-        status = request.args.get("status", default="", type=str)
-        active = request.args.get("active", default="", type=str)
+        page = request.args.get("page",          default=1,  type=int)
+        paginate = request.args.get("paginate",  default=5,  type=int)
+        volunteer_id = request.args.get("volunteer",     default="", type=str)
+        helpseeker_id = request.args.get("helpseeker",    default="", type=str)
+        city = request.args.get("city",          default="", type=str)
+        province = request.args.get("province",      default="", type=str)
+        status = request.args.get("status",        default="", type=str)
+        active = request.args.get("active",        default="", type=str)
+        title = request.args.get("title",        default="", type=str)
 
         missions = []
         if volunteer_id:
@@ -190,6 +188,11 @@ def getMission():
                 elif active == "inactive" and current > compare:
                     temp.append(mission)
             missions = temp
+
+        if title:
+            missions = [
+                mission for mission in missions if
+                mission["title"].lower().find(title.lower()) != -1]
 
         length = len(missions)
         if page > 1:

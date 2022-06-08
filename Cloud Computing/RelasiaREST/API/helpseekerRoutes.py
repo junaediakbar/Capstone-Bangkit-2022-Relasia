@@ -14,7 +14,10 @@ def addHelpseeker():
     try:
         # Add new helpseeker to helpseeker collection
         data = request.json
-        data["picture"] = ""
+        try:
+            data["picture"] = request.json["picture"]
+        except:
+            data["picture"] = ""
         data["missions"] = []
 
         helpseeker = helpseeker_Ref.document(data["id"]).get()

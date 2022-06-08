@@ -8,6 +8,7 @@ mission_Ref = db.collection('mission')
 
 mlRoutes = Blueprint('mlRoutes', __name__)
 
+
 @mlRoutes.route('/', methods=['GET'])
 def getDataForTraining():
     try:
@@ -30,18 +31,24 @@ def getDataForTraining():
         volunteers = [doc.to_dict() for doc in volunteer_Ref.stream()]
         count = 0
         for volunteer in volunteers:
+            mission_category = []
             for mission in volunteer["missions"]:
                 mission_id = mission_Ref.document(mission).get()
                 if mission_id.exists:
                     mission_data = mission_id.to_dict()
-                    for list in category:
-                        exp_count = 0
-                        if mission_data["category"] == list:
-                            exp_count += 1
-                        data["volunteer_id"][count] = volunteer["id"]
-                        data["category"][count] = list
-                        data["experience"][count] = exp_count
-                        count += 1
+                mission_category.append(mission_data["category"])
+
+            for i in range(8):
+                data["volunteer_id"][count] = volunteer["id"]
+                data["category"][count] = category[i]
+                exp_count = 0
+                for mission in mission_category:
+                    if category[i] == mission:
+                        exp_count += 1
+                    else:
+                        exp_count += 0
+                data["experience"][count] = exp_count
+                count += 1
 
         return jsonify(data), 200
     except Exception as e:

@@ -35,6 +35,7 @@ def getFoundation(id):
                     "gender": volunteer_data["gender"],
                     "missions": volunteer_data["missions"],
                     "city": volunteer_data["city"],
+                    "province": volunteer_data["province"],
                     "address": volunteer_data["address"]
                 }
 
@@ -64,6 +65,8 @@ def getFilteredFoundation():
             for data in foundations:
                 if filter == data["city"]:
                     foundation_id.append(data["id"])
+                if filter == data["province"]:
+                    foundation_id.append(data["id"])
 
             foundation_id = list(dict.fromkeys(foundation_id))
             foundations = []
@@ -87,6 +90,10 @@ def getFilteredFoundation():
 def addFoundation():
     try:
         data = request.json
+        try:
+            data["picture"] = request.json["picture"]
+        except:
+            data["picture"] = ""
         data["volunteers"] = []
 
         foundation = foundation_Ref.document(data["id"]).get()
