@@ -62,7 +62,7 @@ class AppliedMissionListAdapter(
                     .placeholder(R.drawable.no_image_placeholder)
                     .into(ivMissionPhoto)
                 tvMissionTitle.text = data.title
-//                tvMissionCity.text = "$data.city, $data.province"
+                tvMissionCity.text = "${data.city}, ${data.province}"
                 tvMissionDate.text =
                     DateFormatter.formatDate(data.startDate) + " - " + DateFormatter.formatDate(
                         data.endDate

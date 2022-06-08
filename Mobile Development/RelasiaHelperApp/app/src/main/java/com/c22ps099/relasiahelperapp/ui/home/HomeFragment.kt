@@ -1,6 +1,8 @@
 package com.c22ps099.relasiahelperapp.ui.home
 
 import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -156,6 +158,7 @@ class HomeFragment : Fragment() {
         val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.dialog_fill_profile)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
         dialog.setCancelable(false)
         dialog.setCanceledOnTouchOutside(false)

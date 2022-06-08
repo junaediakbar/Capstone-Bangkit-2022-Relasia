@@ -3,6 +3,8 @@ package com.c22ps099.relasiahelperapp.ui.missionDetail
 import android.app.Application
 import android.app.Dialog
 import android.content.res.ColorStateList
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -197,7 +199,10 @@ class MissionDetailFragment : Fragment() {
         val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.dialog_success)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
+        dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
         val btnHome = dialog.findViewById<Button>(R.id.btn_home)
         btnHome.setOnClickListener {
             dialog.dismiss()
