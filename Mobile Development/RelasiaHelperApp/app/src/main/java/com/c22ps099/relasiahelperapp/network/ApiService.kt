@@ -9,8 +9,9 @@ import retrofit2.http.*
 interface ApiService {
 
     @Headers("Content-Type: application/json")
-    @GET("mission")
+    @GET("recommend/{volunteerId}")
     suspend fun getAllMissions(
+        @Path("volunteerId") volunteerId: String,
         @Query("page") page: Int = 1,
         @Query("paginate") paginate: Int = 5
     ): MissionResponse
@@ -25,11 +26,11 @@ interface ApiService {
 
     @Headers("Content-Type: application/json")
     @GET("mission")
-    suspend fun searchMission(
+    fun searchMission(
         @Query("title") title: String,
         @Query("page") page: Int = 1,
-        @Query("paginate") paginate: Int = 5
-    ): MissionResponse
+        @Query("paginate") paginate: Int = 15
+    ): Call<MissionResponse>
 
     @Headers("Content-Type: application/json")
     @PUT("volunteer/{volunteerId}/mission")

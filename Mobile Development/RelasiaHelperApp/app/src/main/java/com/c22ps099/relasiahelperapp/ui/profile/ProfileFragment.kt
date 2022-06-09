@@ -4,11 +4,11 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -17,12 +17,15 @@ import android.widget.AdapterView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.c22ps099.relasiahelperapp.R
 import com.c22ps099.relasiahelperapp.data.Volunteer
 import com.c22ps099.relasiahelperapp.databinding.FragmentProfileBinding
 import com.c22ps099.relasiahelperapp.ui.login.LoginFragment
+import com.c22ps099.relasiahelperapp.ui.main.BaseActivity
+import com.c22ps099.relasiahelperapp.ui.main.MainActivity
 import com.c22ps099.relasiahelperapp.utils.itemsKab
 import com.c22ps099.relasiahelperapp.utils.itemsProv
 import com.c22ps099.relasiahelperapp.utils.showSnackbar
@@ -33,6 +36,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import java.util.*
+
 
 class ProfileFragment : Fragment() {
 
@@ -58,13 +62,13 @@ class ProfileFragment : Fragment() {
 
     private val scope = CoroutineScope(Job() + Dispatchers.Main)
 
-    private var dataName : String? = null
-    private var dataGender : String? = null
-    private var dataBirthyear : String? = null
-    private var dataProvince : String? = null
-    private var dataCity : String? = null
-    private var dataAddress : String? = null
-    private var dataNohp : String? = null
+    private var dataName: String? = null
+    private var dataGender: String? = null
+    private var dataBirthyear: String? = null
+    private var dataProvince: String? = null
+    private var dataCity: String? = null
+    private var dataAddress: String? = null
+    private var dataNohp: String? = null
 
     private val profileViewModel by viewModels<ProfileViewModel> {
         ProfileViewModel.Factory(getString(R.string.auth, token))
@@ -197,21 +201,9 @@ class ProfileFragment : Fragment() {
             btnLogout.setOnClickListener {
                 auth.signOut()
 
-                val navigateAction = ProfileFragmentDirections
-                    .actionProfileFragmentToLoginFragment()
-                findNavController().navigate(navigateAction)
-
-                val mLoginFragment = LoginFragment()
-                val mFragmentManager = parentFragmentManager
-                mFragmentManager.beginTransaction().apply {
-                    replace(
-                        R.id.nav_host_fragment,
-                        mLoginFragment,
-                        LoginFragment::class.java.simpleName
-                    )
-                    setReorderingAllowed(true)
-                    commit()
-                }
+                val intent = Intent(activity, BaseActivity::class.java)
+                startActivity(intent)
+                activity?.overridePendingTransition(0, 0)
             }
         }
     }

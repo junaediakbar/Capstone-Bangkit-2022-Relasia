@@ -7,17 +7,16 @@ import androidx.paging.cachedIn
 import com.c22ps099.relasiahelperapp.data.MissionRepository
 import com.c22ps099.relasiahelperapp.network.ApiConfig
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
-import com.c22ps099.relasiahelperapp.network.responses.MissionDetailResponse
+import com.c22ps099.relasiahelperapp.network.responses.MissionResponse
 import com.c22ps099.relasiahelperapp.network.responses.VolunteerDetailData
-import com.c22ps099.relasiahelperapp.ui.missionDetail.MissionDetailViewModel
-import com.c22ps099.relasiahelperapp.utils.Event
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeViewModel(pref: MissionRepository) : ViewModel() {
+class HomeViewModel(pref: MissionRepository, volunteerId: String) : ViewModel() {
 
-//    private val currentQuery = state.getLiveData(CURRENT_QUERY, DEFAULT_QUERY)
+    private val _listMission = MutableLiveData<List<MissionDataItem?>?>()
+    val listMission: LiveData<List<MissionDataItem?>?> = _listMission
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -26,15 +25,33 @@ class HomeViewModel(pref: MissionRepository) : ViewModel() {
     val isSuccess: LiveData<Boolean> = _isSuccess
 
     val missions: LiveData<PagingData<MissionDataItem>> =
-        pref.getMissionsPages().cachedIn(viewModelScope)
+        pref.getMissionsPages(volunteerId).cachedIn(viewModelScope)
 
-//    val results = currentQuery.switchMap { queryString ->
-//        pref.getSearchResults(queryString).cachedIn(viewModelScope)
-//    }
+    fun searchMission(query: String) {
+        _isLoading.value = true
+        ApiConfig.getApiService().searchMission(query)
+            .enqueue(object : Callback<MissionResponse> {
+                override fun onResponse(
+                    call: Call<MissionResponse>,
+                    response: Response<MissionResponse>
+                ) {
+                    _isLoading.value = false
+                    if (response.isSuccessful) {
+                        _isSuccess.value = true
+                        _listMission.value = response.body()?.data
+                    } else {
+                        _isSuccess.value = false
+                        Log.e(TAG, "onFailure: ${response.message()}")
+                    }
+                }
 
-//    fun searchMission(query: String) {
-//        currentQuery.value = query
-//    }
+                override fun onFailure(call: Call<MissionResponse>, t: Throwable) {
+                    _isLoading.value = false
+                    _isSuccess.value = false
+                    Log.e(TAG, "onFailure: ${t.message.toString()}")
+                }
+            })
+    }
 
     fun checkVolunteer(volunteerId: String) {
         _isLoading.value = true
@@ -61,9 +78,18 @@ class HomeViewModel(pref: MissionRepository) : ViewModel() {
             })
     }
 
+    @Suppress("UNCHECKED_CAST")
+    class Factory(
+        private val pref: MissionRepository,
+        private val volunteerId: String
+    ) :
+        ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return HomeViewModel(pref, volunteerId) as T
+        }
+    }
+
     companion object {
-        private const val CURRENT_QUERY = "current_query"
-        private const val DEFAULT_QUERY = "mission"
         private const val TAG = "HomeViewModel"
     }
 }

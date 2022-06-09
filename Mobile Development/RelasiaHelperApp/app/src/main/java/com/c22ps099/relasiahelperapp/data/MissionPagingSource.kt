@@ -5,7 +5,7 @@ import androidx.paging.PagingState
 import com.c22ps099.relasiahelperapp.network.ApiService
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 
-class MissionPagingSource(private val apiService: ApiService) : PagingSource<Int, MissionDataItem>() {
+class MissionPagingSource(private val apiService: ApiService, private val volunteerId: String) : PagingSource<Int, MissionDataItem>() {
 
     private companion object {
         const val INITIAL_PAGE_INDEX = 1
@@ -14,7 +14,7 @@ class MissionPagingSource(private val apiService: ApiService) : PagingSource<Int
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MissionDataItem> {
         return try {
             val page = params.key ?: INITIAL_PAGE_INDEX
-            val responseData = apiService.getAllMissions(page, params.loadSize)
+            val responseData = apiService.getAllMissions(volunteerId, page, params.loadSize)
 
             LoadResult.Page(
                 data = responseData.data,

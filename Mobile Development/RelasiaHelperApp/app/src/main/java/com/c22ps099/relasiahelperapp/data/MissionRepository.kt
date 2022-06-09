@@ -8,7 +8,7 @@ import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 class MissionRepository(
     private val apiService: ApiService
 ) {
-    fun getMissionsPages(): LiveData<PagingData<MissionDataItem>> {
+    fun getMissionsPages(volunteerId: String): LiveData<PagingData<MissionDataItem>> {
         @OptIn(ExperimentalPagingApi::class)
         return Pager(
             config = PagingConfig(
@@ -17,7 +17,7 @@ class MissionRepository(
                 initialLoadSize = 5
             ),
             pagingSourceFactory = {
-                MissionPagingSource(apiService)
+                MissionPagingSource(apiService, volunteerId)
             }
         ).liveData
     }
@@ -35,16 +35,4 @@ class MissionRepository(
             }
         ).liveData
     }
-
-    fun getSearchResults(query: String) =
-        Pager(
-            config = PagingConfig(
-                pageSize = 20,
-                maxSize = 100,
-                enablePlaceholders = false
-            ),
-            pagingSourceFactory = {
-                MissionSearchPagingSource(apiService, query)
-            }
-        ).liveData
 }

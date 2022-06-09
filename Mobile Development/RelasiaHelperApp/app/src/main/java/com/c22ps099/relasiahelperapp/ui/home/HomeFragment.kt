@@ -11,19 +11,22 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.Button
 import androidx.appcompat.widget.SearchView
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.c22ps099.relasiahelperapp.R
 import com.c22ps099.relasiahelperapp.adapter.LoadingStateAdapter
 import com.c22ps099.relasiahelperapp.adapter.MissionListAdapter
+import com.c22ps099.relasiahelperapp.adapter.MissionSearchAdapter
 import com.c22ps099.relasiahelperapp.data.MissionRepository
 import com.c22ps099.relasiahelperapp.databinding.FragmentHomeBinding
 import com.c22ps099.relasiahelperapp.network.ApiConfig
-import com.c22ps099.relasiahelperapp.ui.MissionFactory
+import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 import com.c22ps099.relasiahelperapp.ui.login.LoginFragment
+import com.c22ps099.relasiahelperapp.ui.missionDetail.MissionDetailFragment
 import com.c22ps099.relasiahelperapp.ui.profile.ProfileFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -31,31 +34,23 @@ import com.google.firebase.ktx.Firebase
 
 class HomeFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
     private var binding: FragmentHomeBinding? = null
     private lateinit var auth: FirebaseAuth
+    private var isSearch: Boolean = false
+    private var uid: String = ""
+
+    private val homeViewModel by viewModels<HomeViewModel> {
+        HomeViewModel.Factory(
+            MissionRepository(ApiConfig.getApiService()),
+            uid
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel = ViewModelProvider(
-            this, MissionFactory(
-                MissionRepository(
-                    ApiConfig.getApiService()
-                )
-            )
-        )[HomeViewModel::class.java]
-
-        auth = FirebaseAuth.getInstance()
-
-        if (auth.currentUser != null) homeViewModel.checkVolunteer(auth.currentUser?.uid.toString())
-        homeViewModel.isSuccess.observe(viewLifecycleOwner) { success ->
-            if (!success) {
-                showProfileDialog()
-            }
-        }
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding?.root
     }
@@ -65,6 +60,13 @@ class HomeFragment : Fragment() {
 
         auth = Firebase.auth
         val firebaseUser = auth.currentUser
+
+        auth = FirebaseAuth.getInstance()
+
+        if (auth.currentUser != null) {
+            uid = auth.currentUser?.uid.toString()
+            homeViewModel.checkVolunteer(auth.currentUser?.uid.toString())
+        }
 
         if (firebaseUser == null) {
             val navigateAction = HomeFragmentDirections
@@ -84,20 +86,41 @@ class HomeFragment : Fragment() {
             }
         }
 
-        val adapter = MissionListAdapter()
+        homeViewModel.apply {
+            isSuccess.observe(viewLifecycleOwner) { success ->
+                if (!success) {
+                    showProfileDialog()
+                } else if (!isSearch && success) {
+                    showMissionList()
+                }
+            }
+            listMission.observe(viewLifecycleOwner) { missions ->
+                showMissionSearch(missions)
+            }
+            isLoading.observe(viewLifecycleOwner) {
+                showLoading(it)
+            }
+        }
+
         binding?.apply {
             svHome.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
                 android.widget.SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     if (query != null) {
+                        isSearch = true
                         binding?.rvMissions?.scrollToPosition(0)
-//                        homeViewModel.searchMission(query)
+                        homeViewModel.searchMission(query)
                         svHome.clearFocus()
                     }
                     return true
                 }
 
                 override fun onQueryTextChange(newText: String?): Boolean {
+                    if (newText == "" || newText == null) {
+                        isSearch = false
+                        binding?.rvMissions?.scrollToPosition(0)
+                        showMissionList()
+                    }
                     return false
                 }
 
@@ -120,6 +143,53 @@ class HomeFragment : Fragment() {
                     commit()
                 }
             }
+        }
+    }
+
+    private fun showMissionSearch(missions: List<MissionDataItem?>?) {
+        showLoading(true)
+        val listMission = ArrayList<MissionDataItem>()
+        if (missions != null) {
+            for (mission in missions) {
+                val missionData = MissionDataItem(
+                    endDate = mission?.endDate.toString(),
+                    city = mission?.city.toString(),
+                    title = mission?.title.toString(),
+                    featuredImage = mission?.featuredImage,
+                    numberOfNeeds = mission?.numberOfNeeds.toString(),
+                    province = mission?.province.toString(),
+                    category = mission?.category.toString(),
+                    startDate = mission?.startDate.toString(),
+                    address = mission?.title.toString(),
+                    id = mission?.id.toString(),
+                    helpseeker = mission?.helpseeker.toString(),
+                    note = mission?.note.toString(),
+                    requirement = mission?.requirement.toString(),
+                    timestamp = mission?.timestamp.toString()
+                )
+                listMission.add(missionData)
+            }
+        }
+        val adapter = MissionSearchAdapter(listMission)
+        binding?.apply {
+            rvMissions.setHasFixedSize(true)
+            rvMissions.itemAnimator = null
+            rvMissions.layoutManager = LinearLayoutManager(requireContext())
+            rvMissions.adapter = adapter
+
+            adapter.setOnItemClickCallback(object : MissionSearchAdapter.OnItemClickCallback {
+                override fun onItemClicked(data: MissionDataItem) {
+                    val bundle = bundleOf(MissionDetailFragment.EXTRA_MISSION to data)
+                    findNavController().navigate(R.id.missionDetailFragment, bundle)
+                }
+            })
+        }
+        showLoading(false)
+    }
+
+    private fun showMissionList() {
+        val adapter = MissionListAdapter()
+        binding?.apply {
             rvMissions.setHasFixedSize(true)
             rvMissions.itemAnimator = null
             rvMissions.layoutManager = LinearLayoutManager(requireContext())
@@ -183,5 +253,9 @@ class HomeFragment : Fragment() {
             }
             dialog.hide()
         }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding?.progressBar?.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 }
