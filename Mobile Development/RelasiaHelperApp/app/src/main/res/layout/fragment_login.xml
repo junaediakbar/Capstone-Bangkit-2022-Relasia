@@ -25,8 +25,9 @@
 
         <ImageView
             android:id="@+id/iv_login"
-            android:layout_width="320dp"
+            android:layout_width="0dp"
             android:layout_height="160dp"
+            android:layout_marginHorizontal="32dp"
             android:layout_marginTop="80dp"
             android:src="@drawable/ic_undraw_login_re_4vu2"
             app:layout_constraintEnd_toEndOf="parent"

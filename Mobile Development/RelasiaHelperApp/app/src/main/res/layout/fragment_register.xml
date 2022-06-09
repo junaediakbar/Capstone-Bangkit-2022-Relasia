@@ -25,9 +25,10 @@
 
         <ImageView
             android:id="@+id/iv_register"
-            android:layout_width="320dp"
+            android:layout_width="0dp"
             android:layout_height="160dp"
             android:layout_marginTop="80dp"
+            android:layout_marginHorizontal="32dp"
             android:src="@drawable/ic_undraw_mobile_payments_re_7udl"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

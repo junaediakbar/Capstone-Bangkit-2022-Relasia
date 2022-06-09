@@ -59,9 +59,15 @@ fun createCustomTempFile(context: Context): File {
 }
 
 private const val FILENAME_FORMAT = "yyyy-MMM-dd-[hh:mm:ss]"
+private const val DIALOG_FORMAT = "dd MMM yyyy\nhh:mm:ss"
 
 val timeStamp: String = SimpleDateFormat(
     FILENAME_FORMAT,
+    Locale.US
+).format(System.currentTimeMillis())
+
+val timeStampDialog: String = SimpleDateFormat(
+    DIALOG_FORMAT,
     Locale.US
 ).format(System.currentTimeMillis())
 

@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -21,8 +22,12 @@ import com.c22ps099.relasiahelperapp.data.Mission
 import com.c22ps099.relasiahelperapp.databinding.FragmentMissionDetailBinding
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 import com.c22ps099.relasiahelperapp.network.responses.MissionDetailResponse
+import com.c22ps099.relasiahelperapp.ui.home.HomeFragment
+import com.c22ps099.relasiahelperapp.ui.home.HomeFragmentDirections
 import com.c22ps099.relasiahelperapp.ui.login.LoginFragment
 import com.c22ps099.relasiahelperapp.utils.DateFormatter
+import com.c22ps099.relasiahelperapp.utils.timeStamp
+import com.c22ps099.relasiahelperapp.utils.timeStampDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -36,6 +41,7 @@ class MissionDetailFragment : Fragment() {
     private var binding: FragmentMissionDetailBinding? = null
     private lateinit var auth: FirebaseAuth
     private lateinit var uid: String
+    private lateinit var idMission: String
 
     private val missionDetailViewModel by viewModels<MissionDetailViewModel> {
         MissionDetailViewModel.Factory(
@@ -64,6 +70,7 @@ class MissionDetailFragment : Fragment() {
 
         val mission = arguments?.getParcelable<MissionDataItem>(EXTRA_MISSION) as MissionDataItem
         val missionString = Mission(mission.id)
+        idMission = mission.id
 
         if (firebaseUser == null) {
             val navigateAction = MissionDetailFragmentDirections
@@ -122,9 +129,7 @@ class MissionDetailFragment : Fragment() {
 
         binding?.apply {
             fabBack.setOnClickListener {
-                val navigateAction = MissionDetailFragmentDirections
-                    .actionMissionDetailFragmentToHomeFragment()
-                findNavController().navigate(navigateAction)
+                activity?.onBackPressed()
             }
             btnApply.setOnClickListener {
                 applyVolunteerToMission(missionString)
@@ -203,11 +208,26 @@ class MissionDetailFragment : Fragment() {
         dialog.show()
         dialog.setCancelable(false)
         dialog.setCanceledOnTouchOutside(false)
-        val btnHome = dialog.findViewById<Button>(R.id.btn_home)
-        btnHome.setOnClickListener {
+        val btnStatus = dialog.findViewById<Button>(R.id.btn_status)
+        val tvTime = dialog.findViewById<TextView>(R.id.tv_dialog_time)
+        val tvId = dialog.findViewById<TextView>(R.id.tv_success_id)
+        tvTime.text = timeStampDialog
+        tvId.text = "ID Mission :\n${idMission}"
+        btnStatus.setOnClickListener {
             dialog.dismiss()
+            val mHomeFragment = HomeFragment()
+            val mFragmentManager = parentFragmentManager
+            mFragmentManager.beginTransaction().apply {
+                replace(
+                    R.id.nav_host_fragment,
+                    mHomeFragment,
+                    HomeFragment::class.java.simpleName
+                )
+                setReorderingAllowed(true)
+                commit()
+            }
             val navigateAction = MissionDetailFragmentDirections
-                .actionMissionDetailFragmentToHomeFragment()
+                .actionMissionDetailFragmentToMissionsFragment()
             findNavController().navigate(navigateAction)
             dialog.hide()
         }

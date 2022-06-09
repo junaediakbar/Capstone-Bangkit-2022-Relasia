@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="32dp"
+    android:layout_marginHorizontal="16dp"
     android:background="@drawable/rounded_dialog">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="96dp"
         android:layout_height="96dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -18,32 +18,37 @@
 
     <TextView
         android:id="@+id/tv_dialog_time"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:paddingHorizontal="16dp"
         android:text="23 Jun 2022"
+        android:textAlignment="center"
         android:textColor="@color/blue_munshell"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/tv_success_id"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="ID Mission: 112122112"
+        android:paddingHorizontal="16dp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/tv_dialog_time"
         app:layout_constraintStart_toStartOf="@+id/tv_dialog_time"
         app:layout_constraintTop_toBottomOf="@+id/tv_dialog_time" />
 
     <TextView
         android:id="@+id/tv_dialog_title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Your application is successful"
+        android:paddingHorizontal="16dp"
         android:textAlignment="center"
         android:textColor="@color/blue_munshell"
         android:textSize="24sp"
@@ -54,25 +59,25 @@
 
     <TextView
         android:id="@+id/tv_dialog_desc"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Approval will be processed no later than 24 hours"
+        android:paddingHorizontal="16dp"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/tv_dialog_title"
         app:layout_constraintStart_toStartOf="@+id/tv_dialog_title"
         app:layout_constraintTop_toBottomOf="@+id/tv_dialog_title" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_home"
+        android:id="@+id/btn_status"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/roboto_regular"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
-        android:text="Back to Home"
+        android:paddingVertical="12dp"
+        android:text="Check Status"
         android:textAllCaps="false"
         app:cornerRadius="12dp"
         android:textSize="16sp"
