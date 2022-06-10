@@ -90,14 +90,6 @@ Our project aims to solve the effectiveness problem by building an application t
   - https://cloud.google.com/run/docs/quickstarts/build-and-deploy#containerizing
 - ### 5. Cloud build & deploy
 
-  ```
-  gcloud builds submit --tag gcr.io/just-program-311914/cancerprediction
-  ```
-
-  ```
-  gcloud run deploy --image gcr.io/just-program-311914/cancerprediction --platform managed
-  ```
-
 - ### 6. Configuring Databases using CLoud Firestore
 
 - ### 7. Connect all service to 1 domain using API Gateway
