@@ -4,18 +4,18 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.c22ps099.relasiahelperapp.ui.missions.MissionStatusFragment
 
-class FilterPagerAdapter(activity: AppCompatActivity, val username: String) :
+class FilterPagerAdapter(activity: AppCompatActivity) :
     FragmentStateAdapter(activity) {
     override fun getItemCount(): Int {
-        return 2
+        return 3
     }
 
     override fun createFragment(position: Int): Fragment {
-        val fragment = FollowFragment()
+        val fragment = MissionStatusFragment()
         fragment.arguments = Bundle().apply {
-            putString(FollowFragment.ARG_USERNAME, username)
-            putInt(FollowFragment.ARG_SECTION_NUMBER, position)
+            putInt(MissionStatusFragment.ARG_SECTION_NUMBER, position)
         }
         return fragment
     }

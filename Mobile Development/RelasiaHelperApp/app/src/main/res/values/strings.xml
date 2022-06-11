@@ -31,6 +31,9 @@
     <string name="permission_denied">Permission Denied</string>
     <string name="message_validation_email">Your email format is not valid</string>
     <string name="message_validation_password">Your password must be at least 6 characters in length</string>
+    <string name="tab_text_1">Pending</string>
+    <string name="tab_text_2">Rejected</string>
+    <string name="tab_text_3">Accepted</string>
 
     <string-array name="Genders">
         <item>Male</item>

@@ -27,32 +27,6 @@ class MissionsViewModel(pref: MissionRepository, private val volunteerId: String
     val missionsStatus: LiveData<PagingData<MissionDataItem>> =
         pref.getMissionsStatusPages(volunteerId).cachedIn(viewModelScope)
 
-    fun filterMission(query: String) {
-        _isLoading.value = true
-        ApiConfig.getApiService().filterMissionsStatus(volunteerId, query)
-            .enqueue(object : Callback<MissionResponse> {
-                override fun onResponse(
-                    call: Call<MissionResponse>,
-                    response: Response<MissionResponse>
-                ) {
-                    _isLoading.value = false
-                    if (response.isSuccessful) {
-                        _isSuccess.value = true
-                        _listMission.value = response.body()?.data
-                    } else {
-                        _isSuccess.value = false
-                        Log.e(TAG, "onFailure: ${response.message()}")
-                    }
-                }
-
-                override fun onFailure(call: Call<MissionResponse>, t: Throwable) {
-                    _isLoading.value = false
-                    _isSuccess.value = false
-                    Log.e(TAG, "onFailure: ${t.message.toString()}")
-                }
-            })
-    }
-
     @Suppress("UNCHECKED_CAST")
     class Factory(
         private val pref: MissionRepository,
