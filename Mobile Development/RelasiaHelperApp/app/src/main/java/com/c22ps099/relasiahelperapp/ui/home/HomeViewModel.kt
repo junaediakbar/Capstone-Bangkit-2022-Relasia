@@ -24,6 +24,9 @@ class HomeViewModel(pref: MissionRepository, volunteerId: String) : ViewModel() 
     private val _isSuccess = MutableLiveData<Boolean>()
     val isSuccess: LiveData<Boolean> = _isSuccess
 
+    private val _volunteerName = MutableLiveData<String?>()
+    val volunteerName: LiveData<String?> = _volunteerName
+
     val missions: LiveData<PagingData<MissionDataItem>> =
         pref.getMissionsPages(volunteerId).cachedIn(viewModelScope)
 
@@ -64,6 +67,7 @@ class HomeViewModel(pref: MissionRepository, volunteerId: String) : ViewModel() 
                     _isLoading.value = false
                     if (response.isSuccessful) {
                         _isSuccess.value = true
+                        _volunteerName.value = response.body()?.name
                     } else {
                         _isSuccess.value = false
                         Log.e(TAG, "onFailure: ${response.message()}")

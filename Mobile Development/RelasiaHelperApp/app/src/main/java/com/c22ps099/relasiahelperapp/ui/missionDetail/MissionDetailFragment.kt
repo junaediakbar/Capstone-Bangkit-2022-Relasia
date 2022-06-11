@@ -2,9 +2,12 @@ package com.c22ps099.relasiahelperapp.ui.missionDetail
 
 import android.app.Application
 import android.app.Dialog
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +16,7 @@ import android.view.Window
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -23,14 +27,14 @@ import com.c22ps099.relasiahelperapp.databinding.FragmentMissionDetailBinding
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 import com.c22ps099.relasiahelperapp.network.responses.MissionDetailResponse
 import com.c22ps099.relasiahelperapp.ui.home.HomeFragment
-import com.c22ps099.relasiahelperapp.ui.home.HomeFragmentDirections
 import com.c22ps099.relasiahelperapp.ui.login.LoginFragment
 import com.c22ps099.relasiahelperapp.utils.DateFormatter
-import com.c22ps099.relasiahelperapp.utils.timeStamp
 import com.c22ps099.relasiahelperapp.utils.timeStampDialog
+import com.c22ps099.relasiahelperapp.utils.toTitleCase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+
 
 class MissionDetailFragment : Fragment() {
 
@@ -41,6 +45,7 @@ class MissionDetailFragment : Fragment() {
     private var binding: FragmentMissionDetailBinding? = null
     private lateinit var auth: FirebaseAuth
     private lateinit var uid: String
+    private lateinit var helpseekerWa: String
     private lateinit var idMission: String
 
     private val missionDetailViewModel by viewModels<MissionDetailViewModel> {
@@ -132,7 +137,11 @@ class MissionDetailFragment : Fragment() {
                 activity?.onBackPressed()
             }
             btnApply.setOnClickListener {
-                applyVolunteerToMission(missionString)
+                if (btnApply.text == "Apply") {
+                    applyVolunteerToMission(missionString)
+                } else if (btnApply.text == "Send WhatsApp To Helpseeker") run {
+                    waHelpseeker()
+                }
             }
             btnBookmark.setOnClickListener {
                 missionDetailViewModel.setBookMission(mission, true)
@@ -156,7 +165,7 @@ class MissionDetailFragment : Fragment() {
     private fun setMissionDetailData(mission: MissionDetailResponse) {
         binding?.apply {
             ivDetailMission.let {
-                val url = if(mission.featuredImage?.size != 0) {
+                val url = if (mission.featuredImage?.size != 0) {
                     mission.featuredImage?.get(0)
                 } else {
                     listOf("")
@@ -173,14 +182,39 @@ class MissionDetailFragment : Fragment() {
                     mission.endDate
                 )
             tvMissionCity.text = mission.city + ", " + mission.province
-            tvApplicant.text = mission.volunteers.size.toString() + "/" + mission.numberOfNeeds
+            var countAppliedVolunteer = 0
+            var statusCurrentVolunteer = ""
+            for (volunteer in mission.volunteers) {
+                if (volunteer.status == "accepted") {
+                    countAppliedVolunteer += 1
+                }
+                if (volunteer.id == uid) {
+                    statusCurrentVolunteer = volunteer.status
+                }
+            }
+            btnApply.isEnabled = when (statusCurrentVolunteer) {
+                "pending" -> false
+                "rejected" -> false
+                else -> true
+            }
+            btnApply.text = when (statusCurrentVolunteer) {
+                "pending" -> toTitleCase(statusCurrentVolunteer)
+                "rejected" -> toTitleCase(statusCurrentVolunteer)
+                else -> "Apply"
+            }
+            if (statusCurrentVolunteer == "accepted") run {
+                btnApply.text = "Send WhatsApp To Helpseeker"
+                helpseekerWa = mission.helpseeker.phone
+                btnApply.setBackgroundColor(Color.rgb(0, 191, 166))
+            }
+            tvApplicant.text = countAppliedVolunteer.toString() + "/" + mission.numberOfNeeds
             tvMissionReq.text = mission.requirement
             tvMissionNote.text = mission.note
             tvMissionCp.text = mission.helpseeker.phone + " (" + mission.helpseeker.name + ")"
             tvMissionCategory.text = mission.category
             pbApplicant.max = mission.numberOfNeeds.toInt()
-            pbApplicant.progress = mission.volunteers.size
-            if (mission.volunteers.size == mission.numberOfNeeds.toInt()) {
+            pbApplicant.progress = countAppliedVolunteer
+            if (countAppliedVolunteer == mission.numberOfNeeds.toInt()) {
                 pbApplicant.progressTintList =
                     ColorStateList.valueOf(resources.getColor(R.color.red_200))
                 btnApply.isEnabled = false
@@ -194,6 +228,17 @@ class MissionDetailFragment : Fragment() {
 
     private fun applyVolunteerToMission(mission: Mission) {
         missionDetailViewModel.applyMission(uid, mission)
+    }
+
+    private fun waHelpseeker() {
+        try {
+            context?.packageManager?.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA)
+            helpseekerWa.drop(1)
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://wa.me/62${helpseekerWa}?text=Hello%20I'm%20volunteer%20from%20Relasia"))
+            startActivity(intent)
+        } catch (e: PackageManager.NameNotFoundException) {
+            Toast.makeText(context, "WhatsApp not Installed", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun showLoading(isLoading: Boolean) {

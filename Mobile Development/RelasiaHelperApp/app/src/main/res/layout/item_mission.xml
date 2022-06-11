@@ -105,7 +105,7 @@
             android:layout_marginBottom="18dp"
             android:fontFamily="@font/roboto_bold"
             android:paddingHorizontal="48dp"
-            android:paddingVertical="4dp"
+            android:paddingVertical="12dp"
             android:text="Details"
             android:textAllCaps="false"
             card_view:cornerRadius="12dp"

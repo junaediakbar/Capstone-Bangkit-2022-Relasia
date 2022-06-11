@@ -100,6 +100,9 @@ class HomeFragment : Fragment() {
             isLoading.observe(viewLifecycleOwner) {
                 showLoading(it)
             }
+            volunteerName.observe(viewLifecycleOwner) {
+                setGreetingsName(it)
+            }
         }
 
         binding?.apply {
@@ -144,6 +147,10 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun setGreetingsName(volunteerName: String?) {
+        binding?.tvGreetings?.text = "Hello, $volunteerName"
     }
 
     private fun showMissionSearch(missions: List<MissionDataItem?>?) {
