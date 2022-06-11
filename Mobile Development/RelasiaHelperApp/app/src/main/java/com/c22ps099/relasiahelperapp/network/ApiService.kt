@@ -26,10 +26,37 @@ interface ApiService {
 
     @Headers("Content-Type: application/json")
     @GET("mission")
+    fun filterMissionsAccepted(
+        @Query("volunteer") volunteer: String,
+        @Query("status") status: String = "accepted",
+        @Query("page") page: Int = 1,
+        @Query("paginate") paginate: Int = 100
+    ): Call<MissionResponse>
+
+    @Headers("Content-Type: application/json")
+    @GET("mission")
+    fun filterMissionsRejected(
+        @Query("volunteer") volunteer: String,
+        @Query("status") status: String = "rejected",
+        @Query("page") page: Int = 1,
+        @Query("paginate") paginate: Int = 100
+    ): Call<MissionResponse>
+
+    @Headers("Content-Type: application/json")
+    @GET("mission")
+    fun filterMissionsPending(
+        @Query("volunteer") volunteer: String,
+        @Query("status") status: String = "pending",
+        @Query("page") page: Int = 1,
+        @Query("paginate") paginate: Int = 100
+    ): Call<MissionResponse>
+
+    @Headers("Content-Type: application/json")
+    @GET("mission")
     fun searchMission(
         @Query("title") title: String,
         @Query("page") page: Int = 1,
-        @Query("paginate") paginate: Int = 15
+        @Query("paginate") paginate: Int = 100
     ): Call<MissionResponse>
 
     @Headers("Content-Type: application/json")

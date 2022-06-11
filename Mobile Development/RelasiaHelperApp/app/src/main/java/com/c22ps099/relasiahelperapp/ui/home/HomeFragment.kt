@@ -88,7 +88,7 @@ class HomeFragment : Fragment() {
 
         homeViewModel.apply {
             isSuccess.observe(viewLifecycleOwner) { success ->
-                if (!success) {
+                if (!isSearch && !success) {
                     showProfileDialog()
                 } else if (!isSearch && success) {
                     showMissionList()
