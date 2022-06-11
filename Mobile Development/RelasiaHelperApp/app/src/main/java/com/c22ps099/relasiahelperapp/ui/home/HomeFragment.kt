@@ -210,6 +210,10 @@ class HomeFragment : Fragment() {
                 adapter.submitData(lifecycle, it)
             }
 
+            buttonRetry.setOnClickListener {
+                adapter.retry()
+            }
+
             adapter.addLoadStateListener { loadState ->
                 binding.apply {
                     progressBar.isVisible = loadState.source.refresh is LoadState.Loading
