@@ -95,7 +95,8 @@ class HomeFragment : Fragment() {
                 }
             }
             listMission.observe(viewLifecycleOwner) { missions ->
-                showMissionSearch(missions)
+                if (isSearch)
+                    showMissionSearch(missions)
             }
             isLoading.observe(viewLifecycleOwner) {
                 showLoading(it)
@@ -112,6 +113,7 @@ class HomeFragment : Fragment() {
                     if (query != null) {
                         isSearch = true
                         binding?.rvMissions?.scrollToPosition(0)
+                        binding?.rvMissions?.adapter = null
                         homeViewModel.searchMission(query)
                         svHome.clearFocus()
                     }
@@ -122,6 +124,7 @@ class HomeFragment : Fragment() {
                     if (newText == "" || newText == null) {
                         isSearch = false
                         binding?.rvMissions?.scrollToPosition(0)
+                        binding?.rvMissions?.adapter = null
                         showMissionList()
                     }
                     return false

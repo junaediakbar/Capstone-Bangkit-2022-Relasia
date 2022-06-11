@@ -25,7 +25,6 @@ import com.c22ps099.relasiahelperapp.data.Volunteer
 import com.c22ps099.relasiahelperapp.databinding.FragmentProfileBinding
 import com.c22ps099.relasiahelperapp.ui.login.LoginFragment
 import com.c22ps099.relasiahelperapp.ui.main.BaseActivity
-import com.c22ps099.relasiahelperapp.ui.main.MainActivity
 import com.c22ps099.relasiahelperapp.utils.itemsKab
 import com.c22ps099.relasiahelperapp.utils.itemsProv
 import com.c22ps099.relasiahelperapp.utils.showSnackbar
@@ -201,6 +200,8 @@ class ProfileFragment : Fragment() {
             btnLogout.setOnClickListener {
                 auth.signOut()
 
+                activity?.finish()
+                activity?.overridePendingTransition(0, 0)
                 val intent = Intent(activity, BaseActivity::class.java)
                 startActivity(intent)
                 activity?.overridePendingTransition(0, 0)

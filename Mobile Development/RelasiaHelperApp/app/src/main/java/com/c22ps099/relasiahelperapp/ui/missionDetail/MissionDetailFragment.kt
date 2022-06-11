@@ -16,7 +16,6 @@ import android.view.Window
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -28,6 +27,7 @@ import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 import com.c22ps099.relasiahelperapp.network.responses.MissionDetailResponse
 import com.c22ps099.relasiahelperapp.ui.home.HomeFragment
 import com.c22ps099.relasiahelperapp.ui.login.LoginFragment
+import com.c22ps099.relasiahelperapp.ui.main.BaseActivity
 import com.c22ps099.relasiahelperapp.utils.DateFormatter
 import com.c22ps099.relasiahelperapp.utils.timeStampDialog
 import com.c22ps099.relasiahelperapp.utils.toTitleCase
@@ -253,27 +253,18 @@ class MissionDetailFragment : Fragment() {
         dialog.show()
         dialog.setCancelable(false)
         dialog.setCanceledOnTouchOutside(false)
-        val btnStatus = dialog.findViewById<Button>(R.id.btn_status)
+        val btnHome = dialog.findViewById<Button>(R.id.btn_home)
         val tvTime = dialog.findViewById<TextView>(R.id.tv_dialog_time)
         val tvId = dialog.findViewById<TextView>(R.id.tv_success_id)
         tvTime.text = timeStampDialog
         tvId.text = "ID Mission :\n${idMission}"
-        btnStatus.setOnClickListener {
+        btnHome.setOnClickListener {
             dialog.dismiss()
-            val mHomeFragment = HomeFragment()
-            val mFragmentManager = parentFragmentManager
-            mFragmentManager.beginTransaction().apply {
-                replace(
-                    R.id.nav_host_fragment,
-                    mHomeFragment,
-                    HomeFragment::class.java.simpleName
-                )
-                setReorderingAllowed(true)
-                commit()
-            }
-            val navigateAction = MissionDetailFragmentDirections
-                .actionMissionDetailFragmentToMissionsFragment()
-            findNavController().navigate(navigateAction)
+            activity?.finish()
+            activity?.overridePendingTransition(0, 0)
+            val intent = Intent(activity, BaseActivity::class.java)
+            startActivity(intent)
+            activity?.overridePendingTransition(0, 0)
             dialog.hide()
         }
     }

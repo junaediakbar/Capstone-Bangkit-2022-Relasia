@@ -70,14 +70,14 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_dialog_title" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_status"
+        android:id="@+id/btn_home"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/roboto_regular"
         android:paddingVertical="12dp"
-        android:text="Check Status"
+        android:text="Back To Home"
         android:textAllCaps="false"
         app:cornerRadius="12dp"
         android:textSize="16sp"
