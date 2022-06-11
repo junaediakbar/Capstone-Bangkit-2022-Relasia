@@ -51,6 +51,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "269202247329-8fb4hjet09d989pbqp2it885l125ber1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.c22ps099.relasiahelpseekerapp",
+            "certificate_hash": "0546a3f41fba9db91e59f360e5651deaf9689abb"
+          }
+        },
+        {
           "client_id": "269202247329-u5ad2hpor327e69ku1fjbjklksffdm50.apps.googleusercontent.com",
           "client_type": 3
         }

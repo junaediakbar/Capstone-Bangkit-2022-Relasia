@@ -8,10 +8,13 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.data.SessionPreferences
@@ -33,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
+
         setContentView(binding?.root)
 
         supportActionBar?.hide()
@@ -54,6 +58,9 @@ class MainActivity : AppCompatActivity() {
 
                 binding?.bottomNavigation?.visibility  = View.GONE
             }
+        }
+        binding?.bottomNavigation?.setOnItemSelectedListener {item ->
+            onNavDestinationSelected(item, Navigation.findNavController(this, R.id.container))
         }
     }
 

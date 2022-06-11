@@ -3,6 +3,7 @@ package com.c22ps099.relasiahelpseekerapp.ui.register
 import android.os.Bundle
 import android.transition.TransitionInflater
 import android.util.Log
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,15 +16,14 @@ import com.c22ps099.relasiahelpseekerapp.databinding.FragmentRegisterBinding
 import com.c22ps099.relasiahelpseekerapp.ui.home.HomeFragment
 import com.c22ps099.relasiahelpseekerapp.ui.login.LoginFragment
 import com.c22ps099.relasiahelpseekerapp.ui.login.LoginFragmentDirections
+import com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
 
 class RegisterFragment : Fragment() {
 
-    private lateinit var  auth: FirebaseAuth
-
-    private var token : String? =""
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +31,7 @@ class RegisterFragment : Fragment() {
         sharedElementEnterTransition = TransitionInflater.from(context)
             .inflateTransition(android.R.transition.move)
 
-        auth= FirebaseAuth.getInstance()
+        auth = FirebaseAuth.getInstance()
     }
 
     private var binding: FragmentRegisterBinding? = null
@@ -46,50 +46,85 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        showLoading(false)
         binding?.apply {
+            etEmail.setValidationCallback(object : EditTextWithValidation.InputValidation {
+                override val errorMessage: String
+                    get() = getString(R.string.message_validation_email)
+
+                override fun validate(input: String): Boolean =
+                    input.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(input).matches()
+            })
+            etPassword.setValidationCallback(object : EditTextWithValidation.InputValidation {
+                override val errorMessage: String
+                    get() = getString(R.string.message_validation_password)
+
+                override fun validate(input: String): Boolean =
+                    input.isNotEmpty() && input.length >= 6
+            })
             tvLoginNow.setOnClickListener {
-                findNavController().navigateUp()
+                val navigateAction = RegisterFragmentDirections
+                    .actionRegisterFragmentToLoginFragment()
+                findNavController().navigate(navigateAction)
+
+                val mLoginFragment = LoginFragment()
+                val mFragmentManager = parentFragmentManager
+                mFragmentManager.beginTransaction().apply {
+                    replace(
+                        R.id.container,
+                        mLoginFragment,
+                        RegisterFragment::class.java.simpleName
+                    )
+                    setReorderingAllowed(true)
+                    commit()
+                }
             }
-            btnRegister.setOnClickListener{
-                register()
+            btnRegister.setOnClickListener {
+                signUp()
             }
         }
     }
 
-    private fun register() {
+    private fun signUp() {
+        showLoading(true)
         binding?.apply {
-            val email = emailInput.text.toString()
-            val pass = passwordInput.text.toString()
-            val confirmPassword = passwordInput2.text.toString()
+            val email =etEmail.text.toString()
+            val pass = etPassword.text.toString()
+            val confirmPassword = etConfirmPassword.text.toString()
 
-            // check pass
             if (email.isBlank() || pass.isBlank() || confirmPassword.isBlank()) {
                 Toast.makeText(activity, "Email and Password can't be blank", Toast.LENGTH_SHORT).show()
+                showLoading(false)
                 return
             }
 
             if (pass != confirmPassword) {
-                Toast.makeText(activity, "Password and Confirm Password do not match", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(
+                    activity,
+                    "Password and Confirm Password do not match",
+                    Toast.LENGTH_SHORT
+                ).show()
+                showLoading(false)
                 return
             }
 
-            auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(requireActivity()) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(LoginFragment.TAG, "createUserWithEmail:success")
-                    val user = auth.currentUser
-                    updateUI(user)
-                    token = FirebaseAuth.getInstance().currentUser!!.getIdToken(true).toString()
-                    Log.e("token","$token")
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w(LoginFragment.TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(activity, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
-                    updateUI(null)
+            auth.createUserWithEmailAndPassword(email, pass)
+                .addOnCompleteListener(requireActivity()) { task ->
+                    if (task.isSuccessful) {
+                        Log.d(LoginFragment.TAG, "createUserWithEmail:success")
+                        val user = auth.currentUser
+                        updateUI(user)
+                        showLoading(false)
+                    } else {
+                        Log.w(LoginFragment.TAG, "createUserWithEmail:failure", task.exception)
+                        Toast.makeText(
+                            activity, "Authentication failed.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        updateUI(null)
+                        showLoading(false)
+                    }
                 }
-            }
         }
 
     }
@@ -98,24 +133,25 @@ class RegisterFragment : Fragment() {
         if (currentUser != null) {
             val navigateAction = RegisterFragmentDirections
                 .actionRegisterFragmentToHomeFragment()
-            navigateAction.token = currentUser.getIdToken(true).toString()
-            navigateAction.userId=currentUser.uid
             findNavController().navigate(navigateAction)
 
             val mHomeFragment = HomeFragment()
             val mFragmentManager = parentFragmentManager
             mFragmentManager.beginTransaction().apply {
                 replace(R.id.container, mHomeFragment, HomeFragment::class.java.simpleName)
-//                addToBackStack(null)
                 setReorderingAllowed(true)
                 commit()
             }
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+    private fun showLoading(isLoading: Boolean) {
+        binding?.progressBar?.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
+    override fun onResume() {
+        super.onResume()
+        val currentUser = auth.currentUser
+        updateUI(currentUser)
+    }
 }

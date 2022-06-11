@@ -15,12 +15,15 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class HomeViewModel(private val token: String): ViewModel(){
+class HomeViewModel(private val token: String) : ViewModel() {
     private val _missions = MutableLiveData<List<MissionItem>>()
     val missions: LiveData<List<MissionItem>> = _missions
 
     private val _foundations = MutableLiveData<List<Foundation>>()
     val foundations: LiveData<List<Foundation>> = _foundations
+
+    private val _isRegistered = MutableLiveData<Boolean>()
+    val isRegistered: LiveData<Boolean> = _isRegistered
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -28,15 +31,35 @@ class HomeViewModel(private val token: String): ViewModel(){
     private val _error = MutableLiveData<Event<String>>()
     val error: LiveData<Event<String>> = _error
 
-    init {
-        getAllMissions()
-        getAllFoundations()
+
+    fun checkHelpseeker(helpseekerId: String) {
+        _isLoading.value = true
+        ApiConfig.getApiService().getSpecificHelpseeker(helpseekerId)
+            .enqueue(object : Callback<HelpseekerDataResponse> {
+                override fun onResponse(
+                    call: Call<HelpseekerDataResponse>,
+                    response: Response<HelpseekerDataResponse>
+                ) {
+                    _isLoading.value = false
+                    if (response.isSuccessful) {
+                        _isRegistered.value = true
+                    } else {
+                        _isRegistered.value = false
+                        Log.e(TAG, "You are not authenticated, please fill the form first!")
+                    }
+                }
+
+                override fun onFailure(call: Call<HelpseekerDataResponse>, t: Throwable) {
+                    _isLoading.value = false
+                    _isRegistered.value = false
+                    Log.e("err", "$t")
+                }
+            })
     }
 
-    fun getAllMissions() {
+    fun getAllMissions(helpseekerId: String) {
         _isLoading.value = true
-
-        ApiConfig.getApiService().getAllMissions("helpseeker.id2")
+        ApiConfig.getApiService().getAllMissions(helpseekerId)
             .enqueue(object : Callback<MissionsResponse> {
                 override fun onResponse(
                     call: Call<MissionsResponse>,
@@ -48,12 +71,7 @@ class HomeViewModel(private val token: String): ViewModel(){
                         _missions.value = response.body()?.data as List<MissionItem>?
                         Log.v("ini adalah mission:", "${_missions.value?.size}")
                     } else {
-                        val errorMessage = Gson().fromJson(
-                            response.errorBody()?.charStream(),
-                            GeneralResponse::class.java
-                        )
-                        _error.value = Event(errorMessage.message)
-                        Log.e("err","${_error.value}")
+                        Log.e("err", "${_error.value}")
                     }
                 }
 
@@ -79,12 +97,7 @@ class HomeViewModel(private val token: String): ViewModel(){
                         _foundations.value = response.body()?.data as List<Foundation>?
                         Log.v("ini adalah mission:", "${_foundations.value?.size}")
                     } else {
-                        val errorMessage = Gson().fromJson(
-                            response.errorBody()?.charStream(),
-                            GeneralResponse::class.java
-                        )
-                        _error.value = Event(errorMessage.message)
-                        Log.e("err","${_error.value}")
+                        Log.e("err", "${_error.value}")
                     }
                 }
 
@@ -100,5 +113,9 @@ class HomeViewModel(private val token: String): ViewModel(){
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return HomeViewModel(token) as T
         }
+    }
+
+    companion object {
+        private const val TAG = "HomeViewModel"
     }
 }

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="32dp"
+    android:background="@drawable/rounded_dialog">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/tv_dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Welcome To Relasia"
+        android:textAlignment="center"
+        android:textColor="@color/blue_munshell"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/tv_dialog_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Please fill your profile before getting help from the volunteers"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/tv_dialog_title"
+        app:layout_constraintStart_toStartOf="@+id/tv_dialog_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dialog_title" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_profile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/roboto_regular"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:text="Fill Profile"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:cornerRadius="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tv_dialog_desc"
+        app:layout_constraintStart_toStartOf="@+id/tv_dialog_desc"
+        app:layout_constraintTop_toBottomOf="@id/tv_dialog_desc" />
+</androidx.constraintlayout.widget.ConstraintLayout>

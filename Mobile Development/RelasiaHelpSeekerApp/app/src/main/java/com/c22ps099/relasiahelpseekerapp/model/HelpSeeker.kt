@@ -6,8 +6,15 @@ import kotlinx.parcelize.Parcelize
 
 data class Helpseeker(
 
+
+	@field:SerializedName("picture")
+	val picture: String? = null,
+
 	@field:SerializedName("city")
 	val city: String? = null,
+
+	@field:SerializedName("province")
+	val province: String? = null,
 
 	@field:SerializedName("phone")
 	val phone: String? = null,

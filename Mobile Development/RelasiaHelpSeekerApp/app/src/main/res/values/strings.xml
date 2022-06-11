@@ -61,6 +61,10 @@
     <string name="mission_note">Note</string>
     <string name="mission_req">Requirements</string>
     <string name="mission_volunteers">Volunteers</string>
+    <string name="success_add_favorite">Added to bookmark successfully</string>
+    <string name="removed_from_favorite">remove from bookmark successfully</string>
+    <string name="message_validation_email">Please input valid email!</string>
+    <string name="message_validation_password">Password Minimum 6 Character</string>
     <string-array name="Genders">
         <item>Man</item>
         <item>Woman</item>
@@ -79,5 +83,7 @@
         <item>Legal Support</item>
         <item>Difability/Disability</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

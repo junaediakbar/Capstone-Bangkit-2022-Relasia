@@ -2,8 +2,7 @@ package com.c22ps099.relasiahelpseekerapp.data.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
-import androidx.navigation.findNavController
+
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -11,10 +10,15 @@ import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionItem
 
 import com.c22ps099.relasiahelpseekerapp.databinding.ItemPostBinding
-import com.c22ps099.relasiahelpseekerapp.ui.missionDetail.MissionDetailFragment
-
 class ListMissionsAdapter(private var listMissionResponse: List<MissionItem>) :
     RecyclerView.Adapter<ListMissionsAdapter.MyViewHolder>() {
+
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = ItemPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(itemView)
@@ -22,6 +26,7 @@ class ListMissionsAdapter(private var listMissionResponse: List<MissionItem>) :
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(listMissionResponse[position])
+        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listMissionResponse[holder.bindingAdapterPosition]) }
     }
 
     override fun getItemCount() = listMissionResponse.size
@@ -29,19 +34,24 @@ class ListMissionsAdapter(private var listMissionResponse: List<MissionItem>) :
     class MyViewHolder(private var binding: ItemPostBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(mission: MissionItem) {
+             val photoUrl = if(mission.featuredImage?.size!=0){
+                 mission.featuredImage?.get(0)
+             }else{
+                 listOf("")
+                 mission.featuredImage=  listOf("")
+             }
             binding.tvVolunteerName.text = mission.title
-            Glide.with(binding.root)
-                .load(mission.featuredImage?.get(0))
+            Glide.with(itemView.context)
+                .load(photoUrl)
                 .apply(
                     RequestOptions.placeholderOf(R.drawable.ic_loading)
                         .error(R.drawable.ic_error)
-                )
+                ).placeholder(R.drawable.ic_error)
                 .into(binding.ivMissionPhoto)
-            binding.ivMissionPhoto.setOnClickListener {
-                val bundle = bundleOf(MissionDetailFragment.EXTRA_MISSION to mission)
-                itemView.findNavController().navigate(R.id.detailMissionFragment, bundle)
-            }
         }
+    }
+    interface OnItemClickCallback {
+        fun onItemClicked(data: MissionItem)
     }
 
 }

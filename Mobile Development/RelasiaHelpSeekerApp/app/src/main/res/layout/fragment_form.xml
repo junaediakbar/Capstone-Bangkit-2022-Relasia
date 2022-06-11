@@ -73,16 +73,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:paddingTop="4dp"
-            android:minHeight="48dp"
             android:drawableStart="@drawable/ic_baseline_location_city_24"
             android:drawablePadding="4dp"
-            app:smsp_hint="Select one City"
+            android:minHeight="48dp"
+            android:paddingTop="4dp"
             android:transitionName="email_input"
             app:layout_constraintEnd_toEndOf="@+id/et_form_activity"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/et_form_activity"
             app:layout_constraintTop_toBottomOf="@+id/sp_form_province"
+            app:smsp_hint="Select one City"
             tools:ignore="TextContrastCheck,TextContrastCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
         <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
@@ -90,17 +90,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:paddingTop="4dp"
             android:drawableStart="@drawable/ic_baseline_home_work_24"
             android:drawablePadding="4dp"
             android:hint="@string/province_hint"
             android:minHeight="48dp"
-            app:smsp_hint="Select one Province"
+            android:paddingTop="4dp"
             android:transitionName="email_input"
             app:layout_constraintEnd_toEndOf="@+id/et_form_activity"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/et_form_activity"
             app:layout_constraintTop_toBottomOf="@+id/et_form_location"
+            app:smsp_hint="Select one Province"
             tools:ignore="TextContrastCheck,TextContrastCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
         <com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
@@ -156,15 +156,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:paddingTop="4dp"
             android:drawableStart="@drawable/ic_baseline_home_work_24"
             android:drawablePadding="4dp"
             android:hint="@string/province_hint"
             android:minHeight="48dp"
-            app:smsp_hint="Select one Category"
+            android:paddingTop="4dp"
             app:layout_constraintEnd_toEndOf="@+id/et_form_date_end"
             app:layout_constraintStart_toStartOf="@+id/et_form_date_end"
             app:layout_constraintTop_toBottomOf="@+id/btn_upload_image"
+            app:smsp_hint="Select one Category"
             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
         <Button
@@ -180,55 +180,10 @@
             android:textSize="16sp"
             android:transitionName="action_btn"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/sp_categories"
-            app:layout_constraintStart_toStartOf="@+id/sp_categories"
-            app:layout_constraintTop_toBottomOf="@+id/btn_persyaratan"
-            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintEnd_toEndOf="@+id/et_notes"
+            app:layout_constraintStart_toStartOf="@+id/et_notes"
+            app:layout_constraintTop_toBottomOf="@+id/et_notes"
             tools:ignore="TextContrastCheck,TextContrastCheck" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_persyaratan"
-            android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/super_round_button"
-            android:drawableEnd="@drawable/ic_baseline_format_list_bulleted_24"
-            android:drawablePadding="8dp"
-            android:drawableTint="@color/blue_munshell"
-            android:gravity="center"
-            android:maxHeight="16dp"
-            android:paddingStart="18dp"
-            android:paddingEnd="18dp"
-            android:text="@string/requirements"
-            android:textAllCaps="false"
-            android:textColor="@color/blue_munshell"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/sp_categories"
-            app:layout_constraintTop_toBottomOf="@+id/sp_categories"
-            tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TextContrastCheck,TextContrastCheck"
-            tools:targetApi="m" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_notes"
-            android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/super_round_button"
-            android:drawableEnd="@drawable/ic_baseline_edit_24"
-            android:drawablePadding="8dp"
-            android:drawableTint="@color/blue_munshell"
-            android:gravity="center"
-            android:maxHeight="16dp"
-            android:paddingStart="18dp"
-            android:paddingEnd="18dp"
-            android:text="@string/notes"
-            android:textAllCaps="false"
-            android:textColor="@color/blue_munshell"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/sp_categories"
-            app:layout_constraintTop_toBottomOf="@+id/sp_categories"
-            tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TextContrastCheck,TextContrastCheck"
-            tools:targetApi="m" />
 
         <Button
             android:id="@+id/btn_upload_image"
@@ -256,6 +211,70 @@
             app:layout_constraintEnd_toEndOf="@+id/et_form_date_end"
             app:layout_constraintStart_toEndOf="@+id/btn_upload_image"
             app:layout_constraintTop_toTopOf="@+id/btn_upload_image" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title_notes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/notes"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/et_requirement"
+            app:layout_constraintStart_toStartOf="@+id/et_requirement"
+            app:layout_constraintTop_toBottomOf="@id/et_requirement" />
+
+        <EditText
+            android:id="@+id/et_notes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_edittext"
+            android:gravity="top|left"
+            android:hint="@string/notes_hint"
+            android:inputType="textMultiLine"
+            android:lines="8"
+            android:maxLines="10"
+            android:minLines="6"
+            android:padding="8dp"
+            android:scrollbars="vertical"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_title_notes"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_title_notes"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_notes"
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title_requirements"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/requirements"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/sp_categories"
+            app:layout_constraintStart_toStartOf="@+id/sp_categories"
+            app:layout_constraintTop_toBottomOf="@+id/sp_categories" />
+
+        <EditText
+            android:id="@+id/et_requirement"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_edittext"
+            android:gravity="top|left"
+            android:hint="@string/requirements_hint"
+            android:inputType="textMultiLine"
+            android:lines="8"
+            android:maxLines="10"
+            android:minLines="6"
+            android:padding="8dp"
+            android:scrollbars="vertical"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_title_requirements"
+            app:layout_constraintStart_toStartOf="@+id/tv_title_requirements"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_requirements"
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,6 +1,8 @@
 package com.c22ps099.relasiahelpseekerapp.data.api.responses
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
@@ -13,6 +15,8 @@ data class VolunteersByMissionResponse(
 	val volunteers: List<VolunteersItem?>? = null
 )
 
+
+@Entity(tableName = "volunteers")
 @Parcelize
 data class VolunteersItem(
 
@@ -40,11 +44,15 @@ data class VolunteersItem(
 	@field:SerializedName("name")
 	val name: String? = null,
 
+	@field:SerializedName("province")
+	val province: String? = null,
+
 	@field:SerializedName("verified")
 	val verified: String? = null,
 
+	@PrimaryKey
 	@field:SerializedName("id")
-	val id: String? = null,
+	val id: String,
 
 	@field:SerializedName("status")
 	val status: String? = null

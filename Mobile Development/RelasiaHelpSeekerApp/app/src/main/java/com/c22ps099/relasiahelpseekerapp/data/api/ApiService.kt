@@ -1,10 +1,10 @@
 package com.c22ps099.relasiahelpseekerapp.data.api
 
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.*
+import com.c22ps099.relasiahelpseekerapp.model.UserIdStatus
 import com.c22ps099.relasiahelpseekerapp.model.Helpseeker
 import com.c22ps099.relasiahelpseekerapp.model.Mission
-import com.squareup.okhttp.RequestBody
-import org.json.JSONObject
+import com.c22ps099.relasiahelpseekerapp.model.MissionId
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -27,23 +27,40 @@ interface ApiService {
         @Body helpseeker:Helpseeker
     ): Call<AddNewHelpSeekerResponse>
 
+    @Headers("Content-Type: application/json")
+    @PUT("helpseeker")
+    fun updateHelpseeker(
+        @Body helpseeker:Helpseeker
+    ): Call<AddNewHelpSeekerResponse>
+
     @GET("mission/{id}")
     fun getVoluntersByMission(
         @Path("id") id: String,
         @Query("data") volunteers: String,
     ): Call<VolunteersByMissionResponse>
 
-    @PUT("mission/{mission.id}")
+    @Headers("Content-Type: application/json")
+    @PUT("mission/{missionId}")
     fun changeVolunteerStatus(
-        @Path("mission.id") missioId :String,
-        @Body jsonObject:JSONObject
+        @Path("missionId") missionId :String,
+        @Body userIdStatus: UserIdStatus
     ): Call<GeneralResponse>
 
     @GET("foundation")
     fun getFoundation(): Call<FoundationsResponse>
 
-    @DELETE("mission")
-    fun deleteMission(
-        @Body body: RequestBody
-    ): Call<FoundationsResponse>
+    //https://stackoverflow.com/a/41629528
+    @Headers("Content-Type: application/json")
+    @HTTP(method = "DELETE", path = "/mission",hasBody = true)
+    fun deleteMyMission(
+        @Body missionId: MissionId
+    ): Call<GeneralResponse>
+
+    @Headers("Content-Type: application/json")
+    @GET("helpseeker/{helpseekerId}")
+    fun getSpecificHelpseeker(
+        @Path("helpseekerId") missionId :String,
+    ): Call<HelpseekerDataResponse>
+
+
 }

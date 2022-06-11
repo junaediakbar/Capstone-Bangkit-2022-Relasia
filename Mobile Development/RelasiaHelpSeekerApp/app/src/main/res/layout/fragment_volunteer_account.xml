@@ -13,187 +13,141 @@
         tools:context=".ui.account.VolunteerAccountFragment">
 
         <ImageView
-            android:id="@+id/img_profile"
+            android:id="@+id/img_acc_profile"
             android:layout_width="96dp"
             android:layout_height="96dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="48dp"
             android:src="@drawable/ic_baseline_account_circle_24"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
-            android:id="@+id/et_profile_birthdate"
-            android:inputType="none"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:drawableStart="@drawable/ic_baseline_format_list_bulleted_24"
-            android:drawablePadding="4dp"
-            android:hint="@string/birthdate_hint"
-            android:minHeight="48dp"
-            android:transitionName="email_input"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sp_profile_gender"
-            tools:ignore="TextContrastCheck,TextContrastCheck" />
-
-        <com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
-            android:id="@+id/et_profile_address"
-            android:inputType="none"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:drawableStart="@drawable/ic_baseline_format_list_bulleted_24"
-            android:drawablePadding="4dp"
-            android:hint="@string/address_hint"
-            android:minHeight="48dp"
-            android:transitionName="email_input"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_profile_birthdate"
-            tools:ignore="TextContrastCheck,TextContrastCheck" />
-
-        <com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
-            android:id="@+id/et_profile_city"
-            android:inputType="none"
-            android:layout_width="0dp"
-
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:drawableStart="@drawable/ic_baseline_format_list_bulleted_24"
-            android:drawablePadding="4dp"
-            android:hint="@string/city_hint"
-            android:minHeight="48dp"
-            android:transitionName="email_input"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_profile_address"
-            tools:ignore="TextContrastCheck,TextContrastCheck" />
-
-        <com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
-            android:id="@+id/et_profile_province"
-            android:inputType="none"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:drawableStart="@drawable/ic_baseline_format_list_bulleted_24"
-            android:drawablePadding="4dp"
-            android:hint="@string/province_hint"
-            android:minHeight="48dp"
-            android:transitionName="email_input"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_profile_city"
-            tools:ignore="TextContrastCheck,TextContrastCheck" />
-
-        <com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
-            android:id="@+id/et_profile_phone"
-            android:inputType="none"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:drawableStart="@drawable/ic_baseline_format_list_bulleted_24"
-            android:drawablePadding="4dp"
-            android:hint="@string/phone_hint"
-            android:minHeight="48dp"
-            android:transitionName="email_input"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_profile_province"
-            tools:ignore="TextContrastCheck,TextContrastCheck" />
-
-        <Spinner
-            android:id="@+id/sp_profile_gender"
-            android:inputType="none"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="@+id/et_profile_name"
-            app:layout_constraintStart_toStartOf="@+id/et_profile_name"
-            app:layout_constraintTop_toBottomOf="@+id/et_profile_name"
-            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
-
         <TextView
-            android:id="@+id/tv_profile_email"
-            android:inputType="none"
+            android:id="@+id/tv_acc_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/useremail_hint"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/img_profile"
-            app:layout_constraintStart_toStartOf="@+id/img_profile"
-            app:layout_constraintTop_toBottomOf="@+id/img_profile" />
-
-        <com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
-            android:id="@+id/et_profile_name"
+            android:drawableEnd="@drawable/ic_man"
             android:inputType="none"
-            android:layout_width="0dp"
+            android:text="@string/name_hint"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:drawableTint="@color/black"
+            app:layout_constraintStart_toStartOf="@+id/img_acc_profile"
+            app:layout_constraintTop_toBottomOf="@+id/img_acc_profile" />
+
+        <TextView
+            android:id="@+id/tv_profile_foundation"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
+            android:inputType="none"
+            android:text="Foundation"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/img_acc_profile"
+            app:layout_constraintTop_toBottomOf="@+id/tv_acc_mission" />
+
+        <ImageButton
+            android:id="@+id/btn_acc_unbookmark"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
             android:layout_marginEnd="32dp"
-            android:drawableStart="@drawable/ic_baseline_format_list_bulleted_24"
-            android:drawablePadding="4dp"
-            android:hint="@string/name_hint"
-            android:minHeight="48dp"
-            android:transitionName="email_input"
+            android:background="@drawable/ic_favorited"
+            android:backgroundTint="@color/warm_red"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/tv_acc_name"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_profile_email"
-            tools:ignore="TextContrastCheck,TextContrastCheck" />
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
-        <Button
-            android:id="@+id/btn_form_volunteer"
+        <ImageButton
+            android:id="@+id/btn_acc_bookmark"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:background="@drawable/ic_unfavorited"
+            android:backgroundTint="@color/warm_red"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/tv_acc_name"
+            app:layout_constraintEnd_toEndOf="@+id/btn_acc_unbookmark"
+            tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/tv_acc_birthyear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/ic_calendar"
+            android:drawablePadding="4dp"
+            android:text="21 Years Old"
+            android:textColor="@color/grey"
+            app:drawableTint="@color/grey"
+            app:layout_constraintStart_toStartOf="@+id/tv_acc_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_acc_name" />
+
+        <TextView
+            android:id="@+id/tv_acc_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/ic_baseline_place_24"
+            android:drawablePadding="4dp"
+            android:text="Lumajang, East Java"
+            android:textColor="@color/grey"
+            app:drawableTint="@color/grey"
+            app:layout_constraintStart_toStartOf="@+id/tv_acc_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_acc_birthyear" />
+
+        <TextView
+            android:id="@+id/tv_acc_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/ic_home"
+            android:drawablePadding="4dp"
+            android:text="Jl. Keputih Tegal Timur No 10"
+            android:textColor="@color/grey"
+            app:drawableTint="@color/grey"
+            app:layout_constraintStart_toStartOf="@+id/tv_acc_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_acc_location" />
+
+        <TextView
+            android:id="@+id/tv_acc_mission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/ic_list"
+            android:drawablePadding="4dp"
+            android:text="10 Applied Mission"
+            android:textColor="@color/grey"
+            app:drawableTint="@color/grey"
+            app:layout_constraintStart_toStartOf="@+id/tv_acc_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_acc_address" />
+
+        <TextView
+            android:id="@+id/tv_acc_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:drawableStart="@drawable/ic_phone"
+            android:drawablePadding="4dp"
+            android:text="0821121212"
+            android:textColor="@color/light_green"
+            android:textSize="14sp"
+            app:drawableTint="@color/light_green"
+            app:layout_constraintStart_toEndOf="@+id/tv_acc_birthyear"
+            app:layout_constraintTop_toTopOf="@+id/tv_acc_birthyear" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/rounded_shape"
-            android:backgroundTint="@color/white"
-            android:text="@string/fill_volunteer_datas"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:transitionName="action_btn"
-            app:layout_constraintEnd_toEndOf="@+id/et_profile_phone"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/et_profile_phone"
-            app:layout_constraintTop_toBottomOf="@+id/et_profile_phone"
-            tools:ignore="TextContrastCheck,TextContrastCheck" />
-
-        <Button
-            android:id="@+id/btn_detail_skill2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/rounded_shape"
-            android:text="@string/detail_skill"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:transitionName="action_btn"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/et_profile_phone"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/et_profile_phone"
-            app:layout_constraintTop_toBottomOf="@+id/btn_form_volunteer"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="TextContrastCheck,TextContrastCheck" />
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_profile_foundation"
+            app:layout_constraintTop_toBottomOf="@+id/tv_profile_foundation" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

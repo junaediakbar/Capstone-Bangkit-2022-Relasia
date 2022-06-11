@@ -19,57 +19,48 @@ data class MissionsResponse(
 	val page: Int? = null
 )
 
-data class VolunteersStatus(
-
-	@field:SerializedName("id")
-	val id: String? = null,
-
-	@field:SerializedName("status")
-	val status: String? = null
-)
-
 @Parcelize
 data class MissionItem(
 
 	@field:SerializedName("end_date")
-	val endDate: String? = null,
+	val endDate: String? = "",
 
 	@field:SerializedName("note")
-	val note: String? = null,
+	val note: String? ="",
 
 	@field:SerializedName("address")
-	val address: String? = null,
+	val address: String? = "",
 
 	@field:SerializedName("city")
-	val city: String? = null,
+	val city: String? = "",
 
 	@field:SerializedName("requirement")
-	val requirement: String? = null,
+	val requirement: String? = "",
 
 	@field:SerializedName("helpseeker")
-	val helpseeker: String? = null,
+	val helpseeker: String? = "",
 
 	@field:SerializedName("title")
-	val title: String? = null,
+	val title: String? = "",
 
 	@field:SerializedName("featured_image")
-	val featuredImage: List<String?>? = null,
+	var featuredImage: List<String?>? = null,
 
 	@field:SerializedName("number_of_needs")
-	val numberOfNeeds: String? = null,
+	val numberOfNeeds: String? = "1",
 
 	@field:SerializedName("province")
-	val province: String? = null,
+	val province: String? = "",
 
 	@field:SerializedName("id")
-	val id: String? = null,
+	val id: String? = "",
 
 	@field:SerializedName("category")
-	val category: String? = null,
+	val category: String? = "",
 
 	@field:SerializedName("start_date")
-	val startDate: String? = null,
+	val startDate: String? = "",
 
 	@field:SerializedName("timestamp")
-	val timestamp: String? = null
+	val timestamp: String? = ""
 ): Parcelable

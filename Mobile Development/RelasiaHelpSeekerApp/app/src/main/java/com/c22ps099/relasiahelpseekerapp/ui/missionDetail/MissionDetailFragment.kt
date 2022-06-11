@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.data.adapter.ListVolunteersAdapter
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionItem
@@ -33,6 +34,7 @@ class MissionDetailFragment : Fragment() {
     private val viewModel by viewModels<MissionDetailViewModel> {
         MissionDetailViewModel.Factory(getString(R.string.auth, token))
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -69,9 +71,16 @@ class MissionDetailFragment : Fragment() {
 
         val mission = arguments?.getParcelable<MissionItem>(EXTRA_MISSION) as MissionItem
         showMissionDetail(mission)
+        viewModel.getVolunteersbyMissions(mission.id)
 
         binding?.apply {
-            fabBack.setOnClickListener{
+            fabBack.setOnClickListener {
+                val navigateAction = MissionDetailFragmentDirections
+                    .actionDetailMissionFragmentToHomeFragment()
+                findNavController().navigate(navigateAction)
+            }
+            btnDelete.setOnClickListener {
+                viewModel.deleteMission(mission.id)
             }
         }
     }
@@ -80,14 +89,23 @@ class MissionDetailFragment : Fragment() {
     private fun showMissionDetail(mission: MissionItem) {
         binding?.apply {
             ivDetailMission.let {
-                Glide.with(requireActivity())
-                    .load(mission.featuredImage?.get(0))
+                val photoUrl = if(mission.featuredImage?.size!=0){
+                    mission.featuredImage?.get(0)
+                }else{
+                    listOf("")
+                    mission.featuredImage=  listOf("")
+                }
+                Glide.with(it.context)
+                    .load(photoUrl)
+                    .apply(
+                        RequestOptions.placeholderOf(R.drawable.ic_loading)
+                            .error(R.drawable.ic_error)
+                    ).placeholder(R.drawable.ic_error)
                     .into(it)
             }
             tvMissionTitle.text = mission.title
             tvMissionDate.text = mission.startDate + " - " + mission.endDate
             tvMissionCity.text = mission.city + ", " + mission.province
-            tvApplicant.text = mission.numberOfNeeds
             tvMissionReq.text = mission.requirement
             tvMissionNote.text = mission.note
         }
@@ -96,7 +114,7 @@ class MissionDetailFragment : Fragment() {
             val setLayoutManager = if (activity?.applicationContext
                     ?.resources?.configuration?.orientation == Configuration.ORIENTATION_PORTRAIT
             ) {
-                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
             } else {
                 GridLayoutManager(context, 2)
@@ -107,7 +125,7 @@ class MissionDetailFragment : Fragment() {
                 addItemDecoration(
                     DividerItemDecoration(
                         requireContext(),
-                        LinearLayoutManager.HORIZONTAL
+                        LinearLayoutManager.VERTICAL
                     )
                 )
             }
@@ -115,10 +133,25 @@ class MissionDetailFragment : Fragment() {
 
         viewModel.volunteers.observe(viewLifecycleOwner){
                 binding?.rvVolunteersStatus?.apply {
-                    adapter = ListVolunteersAdapter(it)
+                    adapter = ListVolunteersAdapter(mission.id!!,viewModel,it)
                     Log.v("ukuran", "${it.size}")
                 }
+                binding?.apply {
+                    val acceptedList  = it.filter{it.status=="accept"}
+                    tvApplicant.text = "${acceptedList.size}/${mission.numberOfNeeds}"
+                    val progress = acceptedList.size*100/mission.numberOfNeeds?.toInt() as Int
+                    pbApplicant.max=100
+                    pbApplicant.progress= progress
+
+                }
         }
+        viewModel.isLoading.observe(viewLifecycleOwner) {
+            showLoading(it)
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding?.progressBar?.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     companion object {

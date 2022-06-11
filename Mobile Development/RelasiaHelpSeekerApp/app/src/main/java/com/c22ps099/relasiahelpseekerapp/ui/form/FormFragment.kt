@@ -3,7 +3,6 @@ package com.c22ps099.relasiahelpseekerapp.ui.form
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity.RESULT_OK
-import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_GET_CONTENT
@@ -22,57 +21,67 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentFormBinding
 import com.c22ps099.relasiahelpseekerapp.misc.*
 import com.c22ps099.relasiahelpseekerapp.model.Mission
-import com.google.firebase.FirebaseApp
+import com.c22ps099.relasiahelpseekerapp.view.setDate
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.gson.Gson
 import kotlinx.coroutines.*
 import java.util.*
 
 
 class FormFragment : Fragment() {
-
     private val viewModel by viewModels<FormViewModel> {
         FormViewModel.Factory(getString(R.string.auth, token))
     }
 
     private var token: String? = ""
-
     private var timeNow: String? = ""
-
     private var category: String? = ""
-
+    private var citySelected: String? = ""
+    private var provinceSelected: String? = ""
     private var imagesUri = mutableListOf<Uri>()
     private var imagesLink = mutableListOf<String?>()
 
+    private var requirements : String? =""
+    private var notes : String? =""
+
     private val scope = CoroutineScope(Job() + Dispatchers.Main)
     private var binding: FragmentFormBinding? = null
+    private lateinit var googleAuth: FirebaseAuth
+
+    private var uploadError: Boolean = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-
         binding = FragmentFormBinding.inflate(inflater, container, false)
-        FirebaseApp.initializeApp(requireContext())
-
         return binding?.root
     }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        findNavController().currentBackStackEntry?.savedStateHandle?.apply {
+            getLiveData<String>("loc").observe(viewLifecycleOwner) { address ->
+                binding?.etFormLocation?.setText(address)
+            }
+        }
+
         if (!allPermissionGranted()) {
             launcherPermissionRequest.launch(REQUIRED_PERMISSIONS)
         }
-
         setStringInput()
         setDateInput()
-        setChipButton()
         setDropDown()
         setUploadButton()
         setSubmitButton()
@@ -86,7 +95,6 @@ class FormFragment : Fragment() {
             binding?.root?.let {
                 showSnackbar(it, getString(R.string.permission_denied))
             }
-
             findNavController().navigateUp()
         }
     }
@@ -98,62 +106,12 @@ class FormFragment : Fragment() {
         ) == PackageManager.PERMISSION_GRANTED
     }
 
-    @SuppressLint("ClickableViewAccessibility", "SetTextI18n")
     private fun setDateInput() {
         binding?.apply {
-            etFormDateEnd.showSoftInputOnFocus = false
-            etFormDateEnd.setOnTouchListener { v, event ->
-                val cal = Calendar.getInstance()
-                val year = cal.get(Calendar.YEAR)
-                val month = cal.get(Calendar.MONTH)
-                val day = cal.get(Calendar.DAY_OF_MONTH)
-
-                when (event?.action) {
-                    MotionEvent.ACTION_DOWN -> {
-                        val datePickerDialog = DatePickerDialog(
-                            requireContext(),
-                            { _, myear, mmonth, mdayOfMonth ->
-                                etFormDateEnd.setText("$mdayOfMonth/$mmonth/$myear")
-                            }, year, month, day
-                        )
-                        datePickerDialog.show()
-                    }
-                }
-
-                v?.onTouchEvent(event) ?: true
-            }
-
-            etFormDateStart.showSoftInputOnFocus = false
-            etFormDateStart.setOnTouchListener { v, event ->
-                val cal = Calendar.getInstance()
-                val year = cal.get(Calendar.YEAR)
-                val month = cal.get(Calendar.MONTH)
-                val day = cal.get(Calendar.DAY_OF_MONTH)
-
-                when (event?.action) {
-                    MotionEvent.ACTION_DOWN -> {
-                        val datePickerDialog = DatePickerDialog(
-                            requireContext(),
-                            { _, myear, mmonth, mdayOfMonth ->
-                                val dd = if (mdayOfMonth > 10) {
-                                    mdayOfMonth
-                                } else "0$mdayOfMonth"
-                                val mm = if (mmonth > 10) {
-                                    mdayOfMonth
-                                } else "0$mmonth"
-
-                                etFormDateStart.setText("$dd/$mm/$myear")
-                            }, year, month, day
-                        )
-                        datePickerDialog.show()
-                    }
-                }
-
-                v?.onTouchEvent(event) ?: true
-            }
+            setDate(etFormDateEnd, requireContext())
+            setDate(etFormDateStart, requireContext())
         }
     }
-
 
     @SuppressLint("ClickableViewAccessibility")
     private fun setStringInput() {
@@ -174,18 +132,11 @@ class FormFragment : Fragment() {
                 etFormLocation.setOnTouchListener { v, event ->
                     when (event?.action) {
                         MotionEvent.ACTION_DOWN -> {
-
                         }
                     }
                     v?.onTouchEvent(event) ?: true
                 }
             }
-
-
-        }
-        val location = FormFragmentArgs.fromBundle(arguments as Bundle).location
-        binding?.apply {
-            etFormLocation.setText(location)
         }
     }
 
@@ -205,7 +156,7 @@ class FormFragment : Fragment() {
                     }
 
                     override fun onNothingSelected(parent: AdapterView<*>) {
-                        // write code to perform some action
+                        errorText = "On Nothing Selected"
                     }
                 }
             }
@@ -218,11 +169,12 @@ class FormFragment : Fragment() {
                         parent: AdapterView<*>,
                         view: View?, position: Int, id: Long
                     ) {
+                        provinceSelected = provinces[position]
                         viewModel.updateProvince(provinces[position])
                     }
 
                     override fun onNothingSelected(parent: AdapterView<*>) {
-                        // write code to perform some action
+                        errorText = "On Nothing Selected"
                     }
                 }
             }
@@ -238,26 +190,14 @@ class FormFragment : Fragment() {
                             view: View?, position: Int, id: Long
                         ) {
                             viewModel.updateCity(cities[position])
+                            citySelected = cities[position]
                         }
 
                         override fun onNothingSelected(parent: AdapterView<*>) {
-                            // write code to perform some action
+                            errorText = "On Nothing Selected"
                         }
                     }
                 }
-            }
-        }
-    }
-
-    private fun setChipButton() {
-        binding?.apply {
-            btnPersyaratan.setOnClickListener {
-                val bottomSheet = RequirementsDialog()
-                bottomSheet.show(childFragmentManager, bottomSheet.tag)
-            }
-            btnNotes.setOnClickListener {
-                val bottomSheet = NotesDialog()
-                bottomSheet.show(childFragmentManager, bottomSheet.tag)
             }
         }
     }
@@ -315,106 +255,103 @@ class FormFragment : Fragment() {
 
         binding?.apply {
             btnSubmit.setOnClickListener {
-              scope.launch { uploadImages() }
-//               uploadForm()
+                lifecycleScope.launch {
+                    uploadToFirebaseStorage(imagesUri as List<Uri>?)
+                }
             }
+
         }
     }
 
     private fun uploadForm() {
 
-        var volunteers = mapOf("one" to "test", "two" to "test2", "three" to "ssas")
+        googleAuth = Firebase.auth
+        val firebaseUser = googleAuth.currentUser
+
         binding?.apply {
-//            val mission = MissionItem(
-//                etFormDateEnd.text.toString(),
-//                "Notes:bla bla",
-//                etFormLocation.text.toString(),
-//                viewModel.city.toString(),
-//                "requirements: bla",
-//                etFormActivity.text.toString(),
-//                volunteers,
-//                imagesLink,
-//                etFormAmount.text.toString(),
-//                viewModel.province.toString(),
-//                "helpseeker.id",
-//                category,
-//                etFormDateStart.text.toString(),
-//                timeStamp
-//            )
-            val featuredImgs : List<String?>?= listOf("test","test2")
-
-            val gson = Gson()
             val mission = Mission(
-                "helpseeker.id",
-                "Tsunami Palu 2019",
-                "Jl. Soekarno Hatta",
-                "Palu",
-                "requirements: bla",
-               "12-21-1212",
-                "12-21-1212",
-                featuredImgs,
-                "helpseeker-id",
-                    "apa" ,
-                "apa",
-                "10"
+                firebaseUser?.uid,
+                etFormActivity.text.toString(),
+                etFormLocation.text.toString(),
+                citySelected,
+                provinceSelected,
+                etFormDateStart.text.toString(),
+                etFormDateEnd.text.toString(),
+                imagesLink as List<String?>,
+                category,
+                etRequirement.text.toString(),
+                etNotes.text.toString(),
+                etFormAmount.text.toString()
             )
-                viewModel.postMision(mission)
-                viewModel.isSuccess.observe(viewLifecycleOwner) {
-                    it.getContentIfNotHandled()?.let { success ->
-                        if (success) {
-                            showSuccessDialog(requireContext())
-                        }
+            viewModel.postMision(mission)
+            viewModel.isSuccess.observe(viewLifecycleOwner) {
+                it.getContentIfNotHandled()?.let { success ->
+                    if (success) {
+                        showSuccessDialog(requireContext())
+                        imagesUri.clear()
+                    } else {
+                        Toast.makeText(activity, "Error when upload form", Toast.LENGTH_SHORT)
+                            .show()
+                        imagesUri.clear()
                     }
                 }
+            }
 
-                viewModel.error.observe(viewLifecycleOwner) {
-
-                    it.getContentIfNotHandled()?.let { message ->
-                        showMessage(message)
-                    }
-
+            viewModel.error.observe(viewLifecycleOwner) {
+                it.getContentIfNotHandled()?.let { message ->
+                    showMessage(message)
                 }
-
-
+            }
         }
 
     }
+
     private fun showMessage(message: String) {
-        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, "viewmodel : " + message, Toast.LENGTH_SHORT).show()
     }
 
-    private fun uploadImages() {
-        for (i in 0 until imagesUri.size) {
-            if (i < 3) {
-                scope.launch {
-                    uploadToFirebaseStorage(imagesUri[i], timeNow + "(${i + 1})")
-                }
-            }
-        }
-        showSuccessDialog(requireContext())
-    }
+//    private suspend fun uploadImages(){
+//        for (i in 0 until imagesUri.size) {
+//            if (i < 3) {
+//                scope.launch {
+//                    async {
+//                        uploadToFirebaseStorage(imagesUri[i], timeNow + "(${i + 1})")
+//                    }
+//                }
+//            }
+//        }
+//    }
 
-    private fun uploadToFirebaseStorage(imgUri: Uri?, filename: String?) {
+    private fun uploadToFirebaseStorage(listUri: List<Uri>?) {
         var link: String
-        val ref = FirebaseStorage.getInstance().getReference("images/${filename}")
-        val uploadTask = ref.putFile(imgUri!!)
-
-        uploadTask.continueWithTask { task ->
-            if (!task.isSuccessful) {
-                task.exception?.let {
-                    throw it
+        val fileName = UUID.randomUUID().toString()
+        var countImages = 0
+        for(i in 0 until listUri?.size!!){
+            val ref = FirebaseStorage.getInstance().getReference("images/${fileName}(${i+1})")
+            val uploadTask = ref.putFile(listUri[i]!!)
+            uploadTask.continueWithTask { task ->
+                if (!task.isSuccessful) {
+                    task.exception?.let {
+                        throw it
+                    }
                 }
-            }
-            ref.downloadUrl
-        }.addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                link = task.result.toString()
-                imagesLink.add(link)
-                Log.v("Link", "===>$link")
-                Toast.makeText(activity, link, Toast.LENGTH_SHORT).show()
+                ref.downloadUrl
+            }.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    link = task.result.toString()
+                    imagesLink.add(link)
 
-            } else {
-                Toast.makeText(activity, "Error when upload files", Toast.LENGTH_SHORT).show()
+                    Log.v("Link", "===>$link")
+                    Toast.makeText(activity, link, Toast.LENGTH_SHORT).show()
+                    countImages++
+                    if(countImages == listUri.size){
+                        uploadForm()
+                    }
+                    uploadError = false
+                } else {
+                    Toast.makeText(activity, "Error when upload files", Toast.LENGTH_SHORT).show()
+                    uploadError = true
+                }
             }
         }
     }
