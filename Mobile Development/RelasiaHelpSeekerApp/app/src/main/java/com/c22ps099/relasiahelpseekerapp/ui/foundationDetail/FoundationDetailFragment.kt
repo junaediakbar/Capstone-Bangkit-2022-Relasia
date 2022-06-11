@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.Foundation
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentFormSkillBinding
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentFoundationDetailBinding
+import com.c22ps099.relasiahelpseekerapp.ui.missionDetail.MissionDetailFragmentDirections
 
 class FoundationDetailFragment : Fragment() {
     private var binding: FragmentFoundationDetailBinding? = null
@@ -37,6 +39,11 @@ class FoundationDetailFragment : Fragment() {
                             .error(R.drawable.ic_error)
                     ).placeholder(R.drawable.ic_error)
                     .into(it)
+            }
+            fabBack.setOnClickListener {
+                val navigateAction = FoundationDetailFragmentDirections
+                    .actionFoundationDetailFragmentToHomeFragment()
+                findNavController().navigate(navigateAction)
             }
             tvFoundationName.text = foundation.name
             tvFoundationLocation.text = "${foundation.city},${foundation.province}"

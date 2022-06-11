@@ -34,6 +34,8 @@ class RegisterFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
     }
 
+
+
     private var binding: FragmentRegisterBinding? = null
 
     override fun onCreateView(

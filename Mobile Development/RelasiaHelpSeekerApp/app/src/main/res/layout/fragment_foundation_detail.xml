@@ -30,6 +30,7 @@
             android:id="@+id/iv_detail_mission"
             android:layout_width="match_parent"
             android:layout_height="360dp"
+            android:foregroundGravity="center"
             android:scaleType="fitCenter"
             android:src="@drawable/foto_erupsi"
             app:layout_constraintEnd_toEndOf="parent"
@@ -68,7 +69,7 @@
             android:id="@+id/tv_foundation_phone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:drawableStart="@drawable/ic_phone"
             android:drawablePadding="8dp"
             android:fontFamily="@font/roboto_bold"
@@ -77,6 +78,21 @@
             app:layout_constraintEnd_toEndOf="@id/tv_foundation_name"
             app:layout_constraintStart_toStartOf="@id/tv_foundation_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_foundation_location" />
+
+        <TextView
+            android:id="@+id/tv_foundation_phone2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/ic_baseline_home_work_24"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Jl. Fatmawati No 10"
+            android:textSize="14sp"
+            app:drawableTint="@color/grey"
+            app:layout_constraintEnd_toEndOf="@id/tv_foundation_name"
+            app:layout_constraintStart_toStartOf="@id/tv_foundation_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_foundation_phone" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

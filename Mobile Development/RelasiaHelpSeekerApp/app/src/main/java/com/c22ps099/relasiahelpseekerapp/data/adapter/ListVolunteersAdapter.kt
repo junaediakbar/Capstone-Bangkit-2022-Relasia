@@ -85,7 +85,7 @@ class ListVolunteersAdapter(
 
             binding.apply {
                 tvMissionStatus.text = volunteer.status
-                if (volunteer.status == "reject") {
+                if (volunteer.status == "rejected") {
                     tvMissionStatus.setBackgroundResource(R.drawable.status_border_red);
                     tvMissionStatus.setTextColor(
                         ContextCompat.getColor(
@@ -97,12 +97,13 @@ class ListVolunteersAdapter(
             }
 
             if (viewModel != null) {
+
                 binding.apply {
                     ibAccept.setOnClickListener {
-                        viewModel?.editStatusVolunteer(missionId, volunteer.id, "accept")
+                        viewModel?.editStatusVolunteer(missionId, volunteer.id, "accepted")
                     }
                     ibReject.setOnClickListener {
-                        viewModel?.editStatusVolunteer(missionId, volunteer.id, "reject")
+                        viewModel?.editStatusVolunteer(missionId, volunteer.id, "rejected")
                     }
                 }
             }else{

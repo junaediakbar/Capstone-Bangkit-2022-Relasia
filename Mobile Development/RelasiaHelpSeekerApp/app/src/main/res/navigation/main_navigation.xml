@@ -177,6 +177,9 @@
             app:destination="@id/homeFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_detailMissionFragment_to_missionEditFragment"
+            app:destination="@id/missionEditFragment" />
     </fragment>
     <fragment
         android:id="@+id/volunteerAccountFragment"
@@ -190,5 +193,14 @@
         android:id="@+id/foundationDetailFragment"
         android:name="com.c22ps099.relasiahelpseekerapp.ui.foundationDetail.FoundationDetailFragment"
         android:label="fragment_foundation_detail"
-        tools:layout="@layout/fragment_foundation_detail" />
+        tools:layout="@layout/fragment_foundation_detail" >
+        <action
+            android:id="@+id/action_foundationDetailFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/missionEditFragment"
+        android:name="com.c22ps099.relasiahelpseekerapp.ui.missionEdit.MissionEditFragment"
+        android:label="fragment_mission_edit"
+        tools:layout="@layout/fragment_mission_edit" />
 </navigation>

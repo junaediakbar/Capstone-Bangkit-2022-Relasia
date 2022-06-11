@@ -10,6 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.Foundation
 import com.c22ps099.relasiahelpseekerapp.databinding.ItemPostBinding
+import com.c22ps099.relasiahelpseekerapp.misc.visibility
 import com.c22ps099.relasiahelpseekerapp.ui.missionDetail.MissionDetailFragment
 
 class ListFoundationsAdapter(private var listFoundations: List<Foundation>) :
@@ -37,7 +38,11 @@ class ListFoundationsAdapter(private var listFoundations: List<Foundation>) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(foundation: Foundation) {
 
-            binding.tvVolunteerName.text = foundation.name
+            binding.apply{
+                tvVolunteerName.text = foundation.name
+                tvVolunteerAge.text = foundation.address
+                tvMissionStatus.visibility = visibility(false)
+            }
             Glide.with(binding.root)
                 .load(foundation.picture)
                 .apply(

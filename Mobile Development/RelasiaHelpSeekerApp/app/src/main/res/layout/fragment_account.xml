@@ -34,6 +34,7 @@
             android:drawableStart="@drawable/ic_phone"
             android:drawablePadding="4dp"
             android:hint="@string/phone_hint"
+            android:inputType="number"
             android:minHeight="48dp"
             android:transitionName="email_input"
             app:layout_constraintEnd_toEndOf="parent"

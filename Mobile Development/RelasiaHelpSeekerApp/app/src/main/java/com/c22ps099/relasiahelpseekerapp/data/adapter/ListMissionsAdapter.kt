@@ -10,6 +10,8 @@ import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionItem
 
 import com.c22ps099.relasiahelpseekerapp.databinding.ItemPostBinding
+import com.c22ps099.relasiahelpseekerapp.misc.DateFormatter
+
 class ListMissionsAdapter(private var listMissionResponse: List<MissionItem>) :
     RecyclerView.Adapter<ListMissionsAdapter.MyViewHolder>() {
 
@@ -40,7 +42,10 @@ class ListMissionsAdapter(private var listMissionResponse: List<MissionItem>) :
                  listOf("")
                  mission.featuredImage=  listOf("")
              }
-            binding.tvVolunteerName.text = mission.title
+            binding.apply {
+                tvVolunteerName.text = mission.title
+                tvVolunteerAge.text = DateFormatter.formatDate(mission.startDate) + " - " + DateFormatter.formatDate(mission.endDate)
+            }
             Glide.with(itemView.context)
                 .load(photoUrl)
                 .apply(

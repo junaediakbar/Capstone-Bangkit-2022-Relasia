@@ -42,6 +42,21 @@ class FormLocationFragment : Fragment() {
         val sydney = LatLng(-34.0, 151.0)
         mMap=googleMap
     }
+    private val setMyLoc = OnMapReadyCallback { googleMap ->
+        setMapStyle(googleMap)
+        mMap.clear()
+        mMap=googleMap
+        mMap.setMinZoomPreference(6.0f)
+        mMap.setMaxZoomPreference(20f)
+        mMap.addMarker(
+            MarkerOptions()
+                .position(address?.latLng as LatLng)
+                .title("This is my location")
+                .snippet("first annotation")
+        )
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(address?.latLng as LatLng))
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(16f), 2000, null)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,15 +78,15 @@ class FormLocationFragment : Fragment() {
             childFragmentManager.findFragmentById(R.id.et_autosearch_location) as AutocompleteSupportFragment?
 
         autocompleteFragment?.setCountries("ID")
-        autocompleteFragment?.setPlaceFields(listOf(Place.Field.ID, Place.Field.NAME))
+        autocompleteFragment?.setPlaceFields(listOf(Place.Field.ID, Place.Field.NAME,Place.Field.LAT_LNG))
 
         autocompleteFragment?.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(place: Place) {
                 address = place
+                Log.i(ContentValues.TAG, "Latlng: " + place.latLng)
                 // TODO: Get info about the selected place.
                 binding?.tvLocAddressFromMap?.text = address?.name.toString()
-                mMap.addMarker(MarkerOptions().position(address?.latLng!!).title("Your Picked"))
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(address?.latLng!!))
+                mapFragment?.getMapAsync(setMyLoc)
                 Log.i(ContentValues.TAG, "Place: " + place.name + ", " + place.id)
                 Toast.makeText(activity, "Place: " + place.name + ", " + place.id,Toast.LENGTH_SHORT).show()
             }

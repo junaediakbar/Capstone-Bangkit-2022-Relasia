@@ -55,6 +55,6 @@ data class VolunteersItem(
 	val id: String,
 
 	@field:SerializedName("status")
-	val status: String? = null
+	var status: String? = null
 )
 	:Parcelable

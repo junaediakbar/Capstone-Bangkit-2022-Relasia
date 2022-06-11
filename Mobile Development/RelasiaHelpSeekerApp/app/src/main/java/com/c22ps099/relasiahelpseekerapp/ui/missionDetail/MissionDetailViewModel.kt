@@ -26,6 +26,9 @@ class MissionDetailViewModel(private val token: String) : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
+    private val _isUpdating = MutableLiveData<Boolean>()
+    val isUpdating: LiveData<Boolean> = _isUpdating
+
     private val _error = MutableLiveData<Event<String>>()
     val error: LiveData<Event<String>> = _error
 
@@ -74,16 +77,11 @@ class MissionDetailViewModel(private val token: String) : ViewModel() {
                         response: Response<VolunteersByMissionResponse>
                     ) {
                         _isLoading.value = false
-
+                        _isUpdating.value= true
                         if (response.isSuccessful) {
                             _volunteers.value = response.body()?.volunteers as List<VolunteersItem>?
                             Log.v("ini adalah mission:", "${_volunteers.value?.size}")
                         } else {
-                            val errorMessage = Gson().fromJson(
-                                response.errorBody()?.charStream(),
-                                VolunteersByMissionResponse::class.java
-                            )
-                            _error.value = Event(errorMessage.toString())
                             Log.e("err", "${_error.value}")
                         }
                     }
@@ -96,14 +94,15 @@ class MissionDetailViewModel(private val token: String) : ViewModel() {
                 }
                 )
         }
+        _isUpdating.value = false
     }
 
-    fun editStatusVolunteer(misisonId: String, id: String, status: String) {
+    fun editStatusVolunteer(missionId: String, id: String, status: String) {
         _isLoading.value = true
         val changeMission = UserIdStatus(
             id, status
         )
-        ApiConfig.getApiService().changeVolunteerStatus(misisonId, changeMission)
+        ApiConfig.getApiService().changeVolunteerStatus(missionId, changeMission)
             .enqueue(object : Callback<GeneralResponse> {
                 override fun onResponse(
                     call: Call<GeneralResponse>,
@@ -112,15 +111,9 @@ class MissionDetailViewModel(private val token: String) : ViewModel() {
                     _isLoading.value = false
 
                     if (response.isSuccessful) {
-                        _volunteers.value
-//                        _message.value = response.body()?.message
+                        getVolunteersbyMissions(missionId)
                         Log.v("ini adalah mission:", "${_volunteers.value?.size}")
                     } else {
-                        val errorMessage = Gson().fromJson(
-                            response.errorBody()?.charStream(),
-                            GeneralResponse::class.java
-                        )
-                        _error.value = Event(errorMessage.toString())
                         Log.e("err", "${_error.value}")
                     }
                 }

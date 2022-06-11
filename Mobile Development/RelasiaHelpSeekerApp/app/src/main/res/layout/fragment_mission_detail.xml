@@ -23,15 +23,16 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
-        <ImageView
-            android:id="@+id/iv_detail_mission"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_images"
             android:layout_width="match_parent"
             android:layout_height="360dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/foto_erupsi"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            tools:listitem="@layout/item_image_slide"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -41,13 +42,13 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="8dp"
             android:fontFamily="@font/roboto_bold"
             android:text="@string/mission_title"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ib_edit"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_detail_mission" />
+            app:layout_constraintTop_toBottomOf="@+id/rv_images" />
 
         <TextView
             android:id="@+id/tv_mission_date"
@@ -57,7 +58,7 @@
             android:fontFamily="@font/roboto_regular"
             android:text="@string/mission_date"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@id/tv_mission_title"
+            app:layout_constraintEnd_toEndOf="@+id/ib_edit"
             app:layout_constraintStart_toStartOf="@id/tv_mission_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_mission_title" />
 
@@ -65,11 +66,12 @@
             android:id="@+id/tv_mission_city"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="24dp"
             android:fontFamily="@font/roboto_bold"
             android:text="Lumajang, Jawa Timur"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@id/tv_mission_title"
+            app:layout_constraintEnd_toEndOf="@+id/ib_edit"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@id/tv_mission_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_mission_date" />
 
@@ -108,7 +110,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="@string/mission_req"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/tv_mission_title"
+            app:layout_constraintEnd_toEndOf="@+id/ib_edit"
             app:layout_constraintStart_toStartOf="@id/tv_mission_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_applicant" />
 
@@ -216,6 +218,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/ib_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_baseline_edit_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_mission_title"
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

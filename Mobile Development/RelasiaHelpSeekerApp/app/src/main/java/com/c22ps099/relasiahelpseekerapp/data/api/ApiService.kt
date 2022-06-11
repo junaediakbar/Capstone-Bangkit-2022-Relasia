@@ -1,10 +1,7 @@
 package com.c22ps099.relasiahelpseekerapp.data.api
 
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.*
-import com.c22ps099.relasiahelpseekerapp.model.UserIdStatus
-import com.c22ps099.relasiahelpseekerapp.model.Helpseeker
-import com.c22ps099.relasiahelpseekerapp.model.Mission
-import com.c22ps099.relasiahelpseekerapp.model.MissionId
+import com.c22ps099.relasiahelpseekerapp.model.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -19,6 +16,12 @@ interface ApiService {
     @POST("mission")
     fun addMission(
         @Body mission: Mission
+    ): Call<GeneralResponse>
+
+    @Headers("Content-Type: application/json")
+    @PUT("mission")
+    fun editMission(
+        @Body editableMission: EditableMission
     ): Call<GeneralResponse>
 
     @Headers("Content-Type: application/json")

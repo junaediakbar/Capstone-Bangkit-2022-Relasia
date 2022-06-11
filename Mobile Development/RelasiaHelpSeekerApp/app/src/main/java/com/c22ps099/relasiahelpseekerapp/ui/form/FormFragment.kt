@@ -1,6 +1,7 @@
 package com.c22ps099.relasiahelpseekerapp.ui.form
 
 import android.Manifest
+import android.R.attr
 import android.annotation.SuppressLint
 import android.app.Activity.RESULT_OK
 import android.content.Context
@@ -11,10 +12,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.MotionEvent
-import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -34,12 +31,23 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.*
 import java.util.*
+import android.R.attr.data
+import android.app.Dialog
+import android.util.Patterns
+import android.view.*
+import android.widget.Button
+import android.widget.TextView
+import com.c22ps099.relasiahelpseekerapp.ui.main.MainActivity
+import com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
+import java.text.SimpleDateFormat
 
 
 class FormFragment : Fragment() {
     private val viewModel by viewModels<FormViewModel> {
         FormViewModel.Factory(getString(R.string.auth, token))
     }
+
+    private lateinit var auth: FirebaseAuth
 
     private var token: String? = ""
     private var timeNow: String? = ""
@@ -49,8 +57,8 @@ class FormFragment : Fragment() {
     private var imagesUri = mutableListOf<Uri>()
     private var imagesLink = mutableListOf<String?>()
 
-    private var requirements : String? =""
-    private var notes : String? =""
+    private var requirements: String? = ""
+    private var notes: String? = ""
 
     private val scope = CoroutineScope(Job() + Dispatchers.Main)
     private var binding: FragmentFormBinding? = null
@@ -85,7 +93,6 @@ class FormFragment : Fragment() {
         setDropDown()
         setUploadButton()
         setSubmitButton()
-
     }
 
     private val launcherPermissionRequest = registerForActivityResult(
@@ -113,10 +120,22 @@ class FormFragment : Fragment() {
         }
     }
 
+    private val checkInputCallBack = object : EditTextWithValidation.InputValidation {
+        override val errorMessage: String
+            get() = getString(R.string.input_cant_blank)
+
+        override fun validate(input: String): Boolean = input.isNotEmpty()
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     private fun setStringInput() {
         binding?.apply {
             etFormLocation.showSoftInputOnFocus = false
+            etFormDateStart.setValidationCallback(checkInputCallBack)
+            etFormActivity.setValidationCallback(checkInputCallBack)
+            etFormDateEnd.setValidationCallback(checkInputCallBack)
+            etFormAmount.setValidationCallback(checkInputCallBack)
+
             etFormLocation.setOnTouchListener { v, event ->
                 when (event?.action) {
                     MotionEvent.ACTION_DOWN -> {
@@ -226,6 +245,7 @@ class FormFragment : Fragment() {
     ) { result ->
         if (result.resultCode == RESULT_OK) {
             if (result.data?.clipData != null) {
+                imagesUri.clear()
                 val count = result.data!!.clipData!!.itemCount
 
                 for (i in 0 until count) {
@@ -233,7 +253,7 @@ class FormFragment : Fragment() {
 
                     imagesUri.add(imageUri)
                     binding?.apply {
-                        btnUploadImage.visibility = visibility(false)
+//                        btnUploadImage.visibility = visibility(false)
                         tvUploadImages.apply {
                             text = if (count > 3) {
                                 "3 file/s attached"
@@ -242,6 +262,15 @@ class FormFragment : Fragment() {
                             }
 
                         }
+                    }
+                }
+            } else if (result.data?.data != null) {
+                var imageUri: Uri = result.data?.data as Uri
+                imagesUri.add(imageUri)
+                binding?.apply {
+//                        btnUploadImage.visibility = visibility(false)
+                    tvUploadImages.apply {
+                        text = "1 file attached"
                     }
                 }
             }
@@ -255,22 +284,35 @@ class FormFragment : Fragment() {
 
         binding?.apply {
             btnSubmit.setOnClickListener {
-                lifecycleScope.launch {
-                    uploadToFirebaseStorage(imagesUri as List<Uri>?)
-                }
+                trySubmit()
             }
+        }
+    }
 
+    private fun trySubmit(){
+        binding?.apply {
+            val isNameValid = etFormActivity.validateInput()
+            val isLocationValid = etFormLocation.validateInput()
+            val isAmountValid = etFormAmount.validateInput()
+            val isStartDateValid = etFormDateStart.validateInput()
+            val isStartDateEnd = etFormDateEnd.validateInput()
+
+            if (!isNameValid || !isLocationValid ||!isAmountValid || !isStartDateValid || !isStartDateEnd||provinceSelected==""||citySelected==""||category=="") {
+                Toast.makeText(activity,"$citySelected,$provinceSelected,$category",Toast.LENGTH_LONG).show()
+                showSnackbar(root, getString(R.string.general_invalid_input))
+                return
+            }
+        }
+        lifecycleScope.launch {
+            uploadToFirebaseStorage(imagesUri as List<Uri>?)
         }
     }
 
     private fun uploadForm() {
-
-        googleAuth = Firebase.auth
-        val firebaseUser = googleAuth.currentUser
-
+        auth = FirebaseAuth.getInstance()
         binding?.apply {
             val mission = Mission(
-                firebaseUser?.uid,
+                auth.currentUser?.uid,
                 etFormActivity.text.toString(),
                 etFormLocation.text.toString(),
                 citySelected,
@@ -287,7 +329,7 @@ class FormFragment : Fragment() {
             viewModel.isSuccess.observe(viewLifecycleOwner) {
                 it.getContentIfNotHandled()?.let { success ->
                     if (success) {
-                        showSuccessDialog(requireContext())
+                        showSuccessDialog()
                         imagesUri.clear()
                     } else {
                         Toast.makeText(activity, "Error when upload form", Toast.LENGTH_SHORT)
@@ -326,8 +368,8 @@ class FormFragment : Fragment() {
         var link: String
         val fileName = UUID.randomUUID().toString()
         var countImages = 0
-        for(i in 0 until listUri?.size!!){
-            val ref = FirebaseStorage.getInstance().getReference("images/${fileName}(${i+1})")
+        for (i in 0 until listUri?.size!!) {
+            val ref = FirebaseStorage.getInstance().getReference("images/${fileName}(${i + 1})")
             val uploadTask = ref.putFile(listUri[i]!!)
             uploadTask.continueWithTask { task ->
                 if (!task.isSuccessful) {
@@ -344,7 +386,7 @@ class FormFragment : Fragment() {
                     Log.v("Link", "===>$link")
                     Toast.makeText(activity, link, Toast.LENGTH_SHORT).show()
                     countImages++
-                    if(countImages == listUri.size){
+                    if (countImages == listUri.size) {
                         uploadForm()
                     }
                     uploadError = false
@@ -354,6 +396,33 @@ class FormFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun showSuccessDialog() {
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.dialog_form_success)
+        dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
+        val tvId = dialog.findViewById<TextView>(R.id.tv_success_id)
+        val tvTime = dialog.findViewById<TextView>(R.id.tv_dialog_time)
+        val tvDesc = dialog.findViewById<TextView>(R.id.tv_dialog_desc)
+        val btnToHome = dialog.findViewById<Button>(R.id.btn_to_home)
+        btnToHome.setOnClickListener {
+            dialog.dismiss()
+            val intent = Intent(activity, MainActivity::class.java)
+            startActivity(intent)
+            activity?.overridePendingTransition(0, 0)
+            dialog.hide()
+        }
+
+        val sdf = SimpleDateFormat("dd MMM yyyy")
+        val currentDate = sdf.format(Date())
+        tvTime.text = "$currentDate"
+        tvDesc.text = "Welcome to Relasia, Let's get help!"
+        tvId.text = "${auth.currentUser?.uid}"
+        dialog.show()
+
     }
 
     override fun onDestroy() {

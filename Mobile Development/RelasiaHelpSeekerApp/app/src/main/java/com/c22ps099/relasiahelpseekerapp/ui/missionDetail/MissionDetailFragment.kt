@@ -1,25 +1,29 @@
 package com.c22ps099.relasiahelpseekerapp.ui.missionDetail
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
+import androidx.recyclerview.widget.LinearSnapHelper
 import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.data.adapter.ListVolunteersAdapter
+import com.c22ps099.relasiahelpseekerapp.data.adapter.SlideImageAdapter
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionItem
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentMissionDetailBinding
+import com.c22ps099.relasiahelpseekerapp.misc.DateFormatter
 import com.c22ps099.relasiahelpseekerapp.ui.login.LoginFragment
+import com.c22ps099.relasiahelpseekerapp.ui.missionEdit.MissionEditFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -72,7 +76,6 @@ class MissionDetailFragment : Fragment() {
         val mission = arguments?.getParcelable<MissionItem>(EXTRA_MISSION) as MissionItem
         showMissionDetail(mission)
         viewModel.getVolunteersbyMissions(mission.id)
-
         binding?.apply {
             fabBack.setOnClickListener {
                 val navigateAction = MissionDetailFragmentDirections
@@ -88,26 +91,31 @@ class MissionDetailFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun showMissionDetail(mission: MissionItem) {
         binding?.apply {
-            ivDetailMission.let {
-                val photoUrl = if(mission.featuredImage?.size!=0){
+
+            val photoUrl = if(mission.featuredImage?.size!=0){
                     mission.featuredImage?.get(0)
-                }else{
+            }else{
                     listOf("")
                     mission.featuredImage=  listOf("")
-                }
-                Glide.with(it.context)
-                    .load(photoUrl)
-                    .apply(
-                        RequestOptions.placeholderOf(R.drawable.ic_loading)
-                            .error(R.drawable.ic_error)
-                    ).placeholder(R.drawable.ic_error)
-                    .into(it)
             }
+            rvImages.apply {
+                setHasFixedSize(true)
+                layoutManager=LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                adapter=SlideImageAdapter(mission.featuredImage as List<String>)
+            }
+
+            var snapHelper = LinearSnapHelper()
+            snapHelper.attachToRecyclerView(rvImages)
+
             tvMissionTitle.text = mission.title
-            tvMissionDate.text = mission.startDate + " - " + mission.endDate
+            tvMissionDate.text = DateFormatter.formatDate(mission.startDate) + " - " + DateFormatter.formatDate(mission.endDate)
             tvMissionCity.text = mission.city + ", " + mission.province
             tvMissionReq.text = mission.requirement
             tvMissionNote.text = mission.note
+            ibEdit.setOnClickListener{
+                val bundle = bundleOf(MissionEditFragment.EXTRA_MISSION to mission)
+                view?.findNavController()?.navigate(R.id.missionEditFragment, bundle)
+            }
         }
 
         binding?.apply {
@@ -122,12 +130,6 @@ class MissionDetailFragment : Fragment() {
             rvVolunteersStatus.apply {
                 setHasFixedSize(true)
                 layoutManager = setLayoutManager
-                addItemDecoration(
-                    DividerItemDecoration(
-                        requireContext(),
-                        LinearLayoutManager.VERTICAL
-                    )
-                )
             }
         }
 
@@ -137,17 +139,20 @@ class MissionDetailFragment : Fragment() {
                     Log.v("ukuran", "${it.size}")
                 }
                 binding?.apply {
-                    val acceptedList  = it.filter{it.status=="accept"}
-                    tvApplicant.text = "${acceptedList.size}/${mission.numberOfNeeds}"
-                    val progress = acceptedList.size*100/mission.numberOfNeeds?.toInt() as Int
-                    pbApplicant.max=100
-                    pbApplicant.progress= progress
+                    val acceptedList  = it.filter{it.status=="accepted"}
+                    pbApplicant.max = mission.numberOfNeeds?.toInt()!!
+                    pbApplicant.progress = acceptedList.size
+                    if (acceptedList.size == mission.numberOfNeeds.toInt()) {
+                        pbApplicant.progressTintList =
+                            ColorStateList.valueOf(resources.getColor(R.color.warm_red))
+                    }
 
                 }
         }
         viewModel.isLoading.observe(viewLifecycleOwner) {
             showLoading(it)
         }
+
     }
 
     private fun showLoading(isLoading: Boolean) {

@@ -16,6 +16,7 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.AdapterView
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
@@ -27,12 +28,16 @@ import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.HelpseekerDataResponse
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentAccountBinding
 import com.c22ps099.relasiahelpseekerapp.misc.*
+
 import com.c22ps099.relasiahelpseekerapp.model.Helpseeker
 import com.c22ps099.relasiahelpseekerapp.ui.home.HomeViewModel
+import com.c22ps099.relasiahelpseekerapp.ui.main.MainActivity
+import com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.File
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -60,10 +65,6 @@ class AccountFragment : Fragment() {
         )
     }
 
-    val viewModelUser by viewModels<HomeViewModel> {
-        HomeViewModel.Factory(getString(R.string.auth, token))
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -72,6 +73,13 @@ class AccountFragment : Fragment() {
         binding = FragmentAccountBinding.inflate(inflater, container, false)
 
         return binding?.root
+    }
+
+    private val checkInputCallBack = object : EditTextWithValidation.InputValidation {
+        override val errorMessage: String
+            get() = getString(R.string.input_cant_blank)
+
+        override fun validate(input: String): Boolean = input.isNotEmpty()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -90,7 +98,7 @@ class AccountFragment : Fragment() {
             isSuccess.observe(viewLifecycleOwner) {
                 it.getContentIfNotHandled()?.let { success ->
                     if (success) {
-                        showSuccessDialog(requireContext())
+                        showSuccessDialog()
                     } else {
                         Toast.makeText(activity, "Error when upload form", Toast.LENGTH_SHORT)
                             .show()
@@ -108,6 +116,8 @@ class AccountFragment : Fragment() {
         }
 
         binding?.apply {
+            etProfileName.setValidationCallback(checkInputCallBack)
+            etProfilePhone.setValidationCallback(checkInputCallBack)
             btnSave.setOnClickListener {
                 if (getFile != null) {
                     uploadToFirebaseStorage(getFile)
@@ -159,7 +169,6 @@ class AccountFragment : Fragment() {
     private fun startGallery() {
         val intent = Intent()
         intent.action = Intent.ACTION_GET_CONTENT
-        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
         intent.type = "image/*"
         val chooser = Intent.createChooser(intent, "Choose a Picture")
         launcherIntentGallery.launch(chooser)
@@ -262,9 +271,15 @@ class AccountFragment : Fragment() {
     }
 
     private fun trySubmit() {
-        Log.e("id", "===>>>$id")
-        val email = auth.currentUser?.email
-        val phone = binding?.etProfilePhone?.text.toString()
+        binding?.apply {
+            val isNameValid = etProfileName.validateInput()
+            val isPhoneValid = etProfilePhone.validateInput()
+
+            if (!isNameValid || !isPhoneValid || citySelected == "" || provinceSelected == "") {
+                showSnackbar(root, getString(R.string.input_cant_blank))
+                return
+            }
+        }
         var helpseeker = Helpseeker(
             avatarLink,
             "${citySelected}",
@@ -275,8 +290,9 @@ class AccountFragment : Fragment() {
         )
 
         if (isRegisteredUser) {
-            if(avatarLinkOld!=avatarLink){
-                val storageReference: StorageReference = FirebaseStorage.getInstance().getReferenceFromUrl(avatarLinkOld) //urifinal is a String variable with the url
+            if (avatarLinkOld != avatarLink) {
+                val storageReference: StorageReference = FirebaseStorage.getInstance()
+                    .getReferenceFromUrl(avatarLinkOld) //urifinal is a String variable with the url
                 storageReference.delete().addOnSuccessListener {
                     Log.d("storage", "Delete done")
                 }.addOnFailureListener {
@@ -302,18 +318,28 @@ class AccountFragment : Fragment() {
     private fun showSuccessDialog() {
         val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setContentView(R.layout.dialog_fill_profile)
-        dialog.show()
+        dialog.setContentView(R.layout.dialog_form_success)
         dialog.setCancelable(false)
         dialog.setCanceledOnTouchOutside(false)
-        val btnProfile = dialog.findViewById<Button>(R.id.btn_profile)
-        btnProfile.setOnClickListener {
+        val tvId = dialog.findViewById<TextView>(R.id.tv_success_id)
+        val tvTime = dialog.findViewById<TextView>(R.id.tv_dialog_time)
+        val tvDesc = dialog.findViewById<TextView>(R.id.tv_dialog_desc)
+        val btnToHome = dialog.findViewById<Button>(R.id.btn_to_home)
+        btnToHome.setOnClickListener {
             dialog.dismiss()
-            val navigateAction = AccountFragmentDirections
-                .actionAccountFragmentToHomeFragment()
-            findNavController().navigate(navigateAction)
+            val intent = Intent(activity, MainActivity::class.java)
+            startActivity(intent)
+            activity?.overridePendingTransition(0, 0)
             dialog.hide()
         }
+
+        val sdf = SimpleDateFormat("dd MMM yyyy")
+        val currentDate = sdf.format(Date())
+        tvTime.text = "$currentDate"
+        tvDesc.text = "Welcome to Relasia, Let's get help!"
+        tvId.text = "${auth.currentUser?.uid}"
+        dialog.show()
+
     }
 
     companion object {

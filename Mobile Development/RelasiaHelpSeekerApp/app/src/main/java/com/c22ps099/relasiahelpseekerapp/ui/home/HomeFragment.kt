@@ -21,23 +21,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.data.adapter.ListFoundationsAdapter
 import com.c22ps099.relasiahelpseekerapp.data.adapter.ListMissionsAdapter
-import com.c22ps099.relasiahelpseekerapp.data.adapter.ListVolunteersAdapter
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.Foundation
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionItem
-import com.c22ps099.relasiahelpseekerapp.data.api.responses.VolunteersItem
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentHomeBinding
 import com.c22ps099.relasiahelpseekerapp.misc.visibility
 import com.c22ps099.relasiahelpseekerapp.ui.account.AccountFragment
-import com.c22ps099.relasiahelpseekerapp.ui.account.VolunteerAccountFragment
 import com.c22ps099.relasiahelpseekerapp.ui.foundationDetail.FoundationDetailFragment
 import com.c22ps099.relasiahelpseekerapp.ui.login.LoginFragment
 import com.c22ps099.relasiahelpseekerapp.ui.missionDetail.MissionDetailFragment
-import com.c22ps099.relasiahelpseekerapp.ui.missionDetail.MissionDetailViewModel
-import com.c22ps099.relasiahelpseekerapp.ui.register.RegisterFragment
-import com.c22ps099.relasiahelpseekerapp.ui.register.RegisterFragmentDirections
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 class HomeFragment : Fragment() {
 
@@ -131,22 +123,10 @@ class HomeFragment : Fragment() {
             rvLatestPosts.apply {
                 setHasFixedSize(true)
                 layoutManager = setLayoutManager
-                addItemDecoration(
-                    DividerItemDecoration(
-                        requireContext(),
-                        LinearLayoutManager.HORIZONTAL
-                    )
-                )
             }
             rvNearestInstantion.apply {
                 setHasFixedSize(true)
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                addItemDecoration(
-                    DividerItemDecoration(
-                        requireContext(),
-                        LinearLayoutManager.HORIZONTAL
-                    )
-                )
             }
         }
 

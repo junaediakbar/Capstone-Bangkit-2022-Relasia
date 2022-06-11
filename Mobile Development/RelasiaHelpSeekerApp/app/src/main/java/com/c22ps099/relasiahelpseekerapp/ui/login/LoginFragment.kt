@@ -17,6 +17,7 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentLoginBinding
+import com.c22ps099.relasiahelpseekerapp.misc.showSnackbar
 import com.c22ps099.relasiahelpseekerapp.ui.home.HomeFragment
 import com.c22ps099.relasiahelpseekerapp.ui.register.RegisterFragment
 import com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
@@ -112,6 +113,14 @@ class LoginFragment : Fragment() {
     private fun signInEmail() {
         showLoading(true)
         binding?.apply {
+
+            val isEmailValid = etEmail.validateInput()
+            val isPasswordValid = etPassword.validateInput()
+
+            if (!isEmailValid || !isPasswordValid) {
+                showSnackbar(root, getString(R.string.validation_error))
+                return
+            }
             val email = etEmail.text.toString()
             val password = etPassword.text.toString()
             emailAuth = FirebaseAuth.getInstance()

@@ -54,9 +54,12 @@ open class EditTextWithValidation : AppCompatEditText {
         val input = text.toString()
         val isValid = inputValidation?.validate(input) ?: true
 
-        error = if (isValid) {
+        error = if (isValid && input!=null) {
             null
-        } else {
+        }else if(isValid && input==null){
+            inputValidation?.errorMessage ?: "This field can't be blank"
+        }
+        else {
             inputValidation?.errorMessage ?: ""
         }
 
