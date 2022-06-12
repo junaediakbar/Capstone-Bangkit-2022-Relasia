@@ -1,20 +1,20 @@
 {
   "project_info": {
-    "project_number": "843306914477",
-    "project_id": "relasia",
-    "storage_bucket": "relasia.appspot.com"
+    "project_number": "269202247329",
+    "project_id": "relasia-351302",
+    "storage_bucket": "relasia-351302.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:843306914477:android:325cf4963b43f3d9fcec24",
+        "mobilesdk_app_id": "1:269202247329:android:1838d3e1313e06f64eaae0",
         "android_client_info": {
           "package_name": "com.c22ps099.relasiahelperapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "843306914477-aceb80jmel4ud2t7h4cv6v9s8vs7ta0h.apps.googleusercontent.com",
+          "client_id": "269202247329-nqiabtbffo2bv5pvnb4pt050qvgdop8j.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.c22ps099.relasiahelperapp",
@@ -22,20 +22,49 @@
           }
         },
         {
-          "client_id": "843306914477-0t4jf8sh7t51707a7j8ae3b5h2foffbn.apps.googleusercontent.com",
+          "client_id": "269202247329-u5ad2hpor327e69ku1fjbjklksffdm50.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCp_Dj2lAx1MB0P-DX1ztU0qGtcHNO9Lpc"
+          "current_key": "AIzaSyA1sU7Hi0h-OA7-c1IF1KQNraentT1QuqQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "843306914477-0t4jf8sh7t51707a7j8ae3b5h2foffbn.apps.googleusercontent.com",
+              "client_id": "269202247329-u5ad2hpor327e69ku1fjbjklksffdm50.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269202247329:android:5388b5c51dd32f824eaae0",
+        "android_client_info": {
+          "package_name": "com.c22ps099.relasiahelpseekerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "269202247329-u5ad2hpor327e69ku1fjbjklksffdm50.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1sU7Hi0h-OA7-c1IF1KQNraentT1QuqQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "269202247329-u5ad2hpor327e69ku1fjbjklksffdm50.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

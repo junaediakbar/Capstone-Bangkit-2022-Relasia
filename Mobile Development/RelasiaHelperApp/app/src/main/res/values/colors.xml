@@ -3,10 +3,13 @@
     <color name="blue_200">#88CCF1</color>
     <color name="blue_500">#3587A4</color>
     <color name="blue_700">#084F68</color>
+    <color name="blue_900">#11A4F4</color>
     <color name="red_200">#C91052</color>
-    <color name="red_700">#910638</color>
     <color name="black">#FF000000</color>
+    <color name="black_2">#4F5A65</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#C4C4C4</color>
     <color name="green_light">#00BFA6</color>
+    <color name="yellow_light">#C79E37</color>
+    <color name="blue_munshell">#3587A4</color>
 </resources>

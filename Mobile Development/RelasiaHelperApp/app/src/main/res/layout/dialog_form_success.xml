@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_marginHorizontal="32dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_dialog"
+    >
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/image_view"
+        app:srcCompat="@drawable/img_success" />
+
+    <TextView
+        android:id="@+id/tv_dialog_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/example_date"
+        android:textAlignment="center"
+        android:textColor="@color/blue_munshell"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/tv_success_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:text="@string/example_desc"
+        app:layout_constraintEnd_toEndOf="@+id/tv_dialog_time"
+        app:layout_constraintStart_toStartOf="@+id/tv_dialog_time"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dialog_time" />
+
+    <TextView
+        android:id="@+id/tv_dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/data_submitted_successfully"
+        android:textAlignment="center"
+        android:textColor="@color/blue_munshell"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tv_success_id"
+        app:layout_constraintStart_toStartOf="@+id/tv_success_id"
+        app:layout_constraintTop_toBottomOf="@+id/tv_success_id" />
+
+    <TextView
+        android:id="@+id/tv_dialog_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/your_data_will_be_verified_at_least_24_hours"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/tv_dialog_title"
+        app:layout_constraintStart_toStartOf="@+id/tv_dialog_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dialog_title" />
+
+    <Button
+        android:id="@+id/btn_to_home"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/roboto_regular"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:text="@string/back_to_home"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tv_dialog_desc"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_dialog_desc"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dialog_desc"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>

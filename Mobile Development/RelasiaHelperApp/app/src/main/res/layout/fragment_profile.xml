@@ -1,26 +1,225 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.profile.ProfileFragment">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="16dp">
 
-        <Button
-            android:id="@+id/btn_logout"
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Log Out"
-            app:layout_constraintStart_toStartOf="parent"
+            android:translationZ="99dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/img_profile"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="32dp"
+            android:contentDescription="@string/image_view"
+            android:src="@drawable/ic_baseline_account_circle_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/ib_add_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            android:padding="4dp"
+            android:contentDescription="@string/image_button"
+            android:background="@drawable/round_button_edit"
+            app:layout_constraintBottom_toBottomOf="@+id/img_profile"
+            app:layout_constraintEnd_toEndOf="@+id/img_profile"
+            app:srcCompat="@drawable/ic_baseline_edit_24"
+            app:tint="@color/white"
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/tv_profile_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/useremail_hint"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_profile" />
+
+        <com.c22ps099.relasiahelperapp.ui.custom.MyEditTextValidation
+            android:id="@+id/et_profile_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:hint="@string/name_hint"
+            android:minHeight="48dp"
+            android:textSize="16sp"
+            android:transitionName="email_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_profile_email"
+            tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+        <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+            android:id="@+id/sp_profile_gender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="@+id/et_profile_name"
+            app:layout_constraintStart_toStartOf="@+id/et_profile_name"
+            app:layout_constraintTop_toBottomOf="@+id/et_profile_name"
+            app:smsp_hint="Gender"
+            app:smsp_hintSize="16sp"
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+        <com.c22ps099.relasiahelperapp.ui.custom.MyEditTextValidation
+            android:id="@+id/et_profile_birthdate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/birthdate_hint"
+            android:minHeight="48dp"
+            android:textSize="16sp"
+            android:transitionName="email_input"
+            app:layout_constraintEnd_toEndOf="@+id/et_profile_name"
+            app:layout_constraintStart_toStartOf="@+id/et_profile_name"
+            app:layout_constraintTop_toBottomOf="@+id/sp_profile_gender"
+            tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+        <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+            android:id="@+id/sp_form_province"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/province_hint"
+            android:minHeight="48dp"
+            android:transitionName="email_input"
+            app:layout_constraintEnd_toEndOf="@+id/et_profile_name"
+            app:layout_constraintStart_toStartOf="@+id/et_profile_name"
+            app:layout_constraintTop_toBottomOf="@+id/et_profile_birthdate"
+            app:smsp_hint="Province"
+            app:smsp_hintSize="16sp"
+            tools:ignore="TextContrastCheck,TextContrastCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+        <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+            android:id="@+id/sp_form_city"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minHeight="48dp"
+            android:transitionName="email_input"
+            app:layout_constraintEnd_toEndOf="@+id/et_profile_name"
+            app:layout_constraintStart_toStartOf="@+id/et_profile_name"
+            app:layout_constraintTop_toBottomOf="@+id/sp_form_province"
+            app:smsp_hint="City"
+            app:smsp_hintSize="16sp"
+            tools:ignore="TextContrastCheck,TextContrastCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+        <com.c22ps099.relasiahelperapp.ui.custom.MyEditTextValidation
+            android:id="@+id/et_profile_address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/address_hint"
+            android:minHeight="48dp"
+            android:textSize="16sp"
+            android:transitionName="email_input"
+            app:layout_constraintEnd_toEndOf="@id/et_profile_name"
+            app:layout_constraintStart_toStartOf="@id/et_profile_name"
+            app:layout_constraintTop_toBottomOf="@+id/sp_form_city"
+            tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+        <com.c22ps099.relasiahelperapp.ui.custom.MyEditTextValidation
+            android:id="@+id/et_profile_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/phone_hint"
+            android:inputType="none"
+            android:minHeight="48dp"
+            android:textSize="16sp"
+            android:transitionName="email_input"
+            app:layout_constraintEnd_toEndOf="@id/et_profile_name"
+            app:layout_constraintStart_toStartOf="@id/et_profile_name"
+            app:layout_constraintTop_toBottomOf="@+id/et_profile_address"
+            tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_foundation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/button_transparent"
+            android:paddingVertical="12dp"
+            android:text="@string/fill_data_foundation"
+            android:textAllCaps="false"
+            android:textColor="@color/blue_500"
+            android:textSize="16sp"
+            android:transitionName="action_btn"
+            app:layout_constraintEnd_toEndOf="@+id/et_profile_phone"
+            app:layout_constraintStart_toStartOf="@+id/et_profile_phone"
+            app:layout_constraintTop_toBottomOf="@+id/et_profile_phone"
+            tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"
+            android:paddingVertical="16dp"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:transitionName="action_btn"
+            app:cornerRadius="12dp"
+            app:layout_constraintEnd_toEndOf="@+id/et_profile_phone"
+            app:layout_constraintStart_toStartOf="@+id/et_profile_phone"
+            app:layout_constraintTop_toBottomOf="@+id/btn_foundation"
+            tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_logout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="@color/red_200"
+            android:paddingVertical="16dp"
+            android:text="@string/logout"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:transitionName="action_btn"
+            app:cornerRadius="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/et_profile_phone"
+            app:layout_constraintStart_toStartOf="@+id/et_profile_phone"
+            app:layout_constraintTop_toBottomOf="@+id/btn_save"
+            tools:ignore="TextContrastCheck,TextContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+</androidx.core.widget.NestedScrollView>
