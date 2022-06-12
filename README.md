@@ -95,18 +95,11 @@ Our project aims to solve the effectiveness problem by building an application t
 
 ## Machine Learning Development Documentation
 
-### There is the link for Machine Learning Documentation:
-
-https://github.com/junaediakbar/Capstone-Bangkit-2022-Relasia/tree/machine-learning/Machine%20Learning
+<a href="https://github.com/junaediakbar/Capstone-Bangkit-2022-Relasia/tree/machine-learning/Machine%20Learning">Link for Machine Learning Documentation
 
 ## Mobile Development Documentation
-
-- ### Feature
-- #### Dependencies :
-
-  - [kotlinx-coroutines](https://developer.android.com/kotlin/coroutines)
-  - [Retrofit 2](https://square.github.io/retrofit/)
-  - [Google Play services Maps](https://developers.google.com/maps/documentation/android-sdk/get-api-key)
+  
+<a href="https://github.com/junaediakbar/Capstone-Bangkit-2022-Relasia/tree/master/Mobile%20Development">Link for Mobile Development Documentation
 
 ## Cloud Computing Documentation
 
