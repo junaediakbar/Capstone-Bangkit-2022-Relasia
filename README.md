@@ -20,7 +20,7 @@
     ·
     <a href="https://drive.google.com/file/d/1zhuleb28CFmpMcE-Sz9kToYMzGL7OnGu/view?usp=sharing">Help Seekers APK Link</a>
     ·
-    <a href="">View Demo</a>
+    <a href="">Video Presentation</a>
     ·
     <a href="">Presentation Slide</a>
     ·
