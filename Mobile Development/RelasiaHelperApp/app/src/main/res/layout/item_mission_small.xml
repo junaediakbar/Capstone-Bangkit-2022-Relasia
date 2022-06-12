@@ -65,7 +65,7 @@
             android:ellipsize="end"
             android:fontFamily="@font/roboto_bold"
             android:maxLines="1"
-            android:text="Kota, Provinsi"
+            android:text="@string/city_province"
             android:textSize="11sp"
             card_view:layout_constraintEnd_toEndOf="@id/tv_mission_title"
             card_view:layout_constraintStart_toStartOf="@id/tv_mission_title"
@@ -80,12 +80,13 @@
             android:fontFamily="@font/roboto_regular"
             android:paddingHorizontal="4dp"
             android:paddingVertical="2dp"
-            android:text="Category"
+            android:text="@string/category"
             android:textAlignment="center"
             android:textColor="@color/blue_500"
             android:textSize="10sp"
             card_view:layout_constraintStart_toStartOf="@id/tv_mission_title"
-            card_view:layout_constraintTop_toBottomOf="@+id/tv_mission_city" />
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_mission_city"
+            tools:ignore="SmallSp" />
 
         <TextView
             android:id="@+id/tv_applicant"
@@ -93,17 +94,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:drawablePadding="2dp"
-            android:drawableTint="@color/grey"
             android:fontFamily="@font/roboto_regular"
             android:gravity="center"
             android:scaleX="0.7"
             android:scaleY="0.7"
-            android:text="5"
+            android:text="@string/_5"
             android:textSize="14sp"
             card_view:drawableEndCompat="@drawable/ic_baseline_people_alt_24"
             card_view:layout_constraintBottom_toBottomOf="@id/iv_mission_photo"
             card_view:layout_constraintEnd_toEndOf="@id/tv_mission_title"
-            card_view:layout_constraintTop_toBottomOf="@+id/tv_mission_city" />
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_mission_city"
+            card_view:drawableTint="@color/grey" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

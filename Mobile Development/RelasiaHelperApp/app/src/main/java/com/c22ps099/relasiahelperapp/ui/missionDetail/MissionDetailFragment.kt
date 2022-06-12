@@ -1,5 +1,6 @@
 package com.c22ps099.relasiahelperapp.ui.missionDetail
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.app.Dialog
 import android.content.Intent
@@ -25,7 +26,6 @@ import com.c22ps099.relasiahelperapp.data.Mission
 import com.c22ps099.relasiahelperapp.databinding.FragmentMissionDetailBinding
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
 import com.c22ps099.relasiahelperapp.network.responses.MissionDetailResponse
-import com.c22ps099.relasiahelperapp.ui.home.HomeFragment
 import com.c22ps099.relasiahelperapp.ui.login.LoginFragment
 import com.c22ps099.relasiahelperapp.ui.main.BaseActivity
 import com.c22ps099.relasiahelperapp.utils.DateFormatter
@@ -162,6 +162,7 @@ class MissionDetailFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setMissionDetailData(mission: MissionDetailResponse) {
         binding?.apply {
             ivDetailMission.let {
@@ -245,6 +246,7 @@ class MissionDetailFragment : Fragment() {
         binding?.progressBar?.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
+    @SuppressLint("SetTextI18n")
     private fun showSuccessDialog() {
         val dialog = Dialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)

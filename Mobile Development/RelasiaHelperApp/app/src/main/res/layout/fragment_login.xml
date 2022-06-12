@@ -29,6 +29,7 @@
             android:layout_height="160dp"
             android:layout_marginHorizontal="32dp"
             android:layout_marginTop="80dp"
+            android:contentDescription="@string/image_view"
             android:src="@drawable/ic_undraw_login_re_4vu2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="Login"
+            android:text="@string/login"
             android:textColor="@color/black_2"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/iv_login"
@@ -54,7 +55,7 @@
             android:drawableStart="@drawable/ic_baseline_email_24"
             android:drawablePadding="8dp"
             android:fontFamily="@font/roboto_regular"
-            android:hint="Email"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="@id/iv_login"
             app:layout_constraintStart_toStartOf="@id/iv_login"
@@ -68,7 +69,7 @@
             android:drawableStart="@drawable/ic_baseline_lock_24"
             android:drawablePadding="8dp"
             android:fontFamily="@font/roboto_regular"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="@id/iv_login"
             app:layout_constraintStart_toStartOf="@id/iv_login"
@@ -81,10 +82,11 @@
             android:layout_marginTop="16dp"
             android:clickable="true"
             android:fontFamily="@font/roboto_regular"
-            android:text="Forgot Password?"
+            android:text="@string/forgot_password"
             android:textColor="@color/blue_500"
             app:layout_constraintEnd_toEndOf="@id/iv_login"
-            app:layout_constraintTop_toBottomOf="@id/et_password" />
+            app:layout_constraintTop_toBottomOf="@id/et_password"
+            android:focusable="true" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_login"
@@ -93,7 +95,7 @@
             android:layout_marginTop="24dp"
             android:fontFamily="@font/roboto_bold"
             android:paddingVertical="16dp"
-            android:text="Login"
+            android:text="@string/login"
             android:textAllCaps="false"
             app:cornerRadius="12dp"
             app:layout_constraintEnd_toEndOf="@id/iv_login"
@@ -107,7 +109,7 @@
             android:layout_marginHorizontal="18dp"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/roboto_regular"
-            android:text="or"
+            android:text="@string/or"
             app:layout_constraintEnd_toStartOf="@id/v_line2"
             app:layout_constraintStart_toEndOf="@id/v_line1"
             app:layout_constraintTop_toBottomOf="@id/btn_login" />
@@ -139,6 +141,7 @@
             android:layout_marginTop="24dp"
             android:background="@drawable/round_button"
             android:padding="12dp"
+            android:contentDescription="@string/gmail_login"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_google"
             app:layout_constraintEnd_toEndOf="@id/iv_login"
@@ -162,7 +165,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="Don’t have an account?" />
+                android:text="@string/don_t_have_an_account" />
 
             <TextView
                 android:id="@+id/tv_register"
@@ -170,9 +173,10 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:fontFamily="@font/roboto_regular"
-                android:text="Register Now"
+                android:text="@string/register_now"
                 android:textColor="@color/blue_500"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:focusable="true" />
 
         </LinearLayout>
 

@@ -3,6 +3,7 @@ package com.c22ps099.relasiahelperapp.ui.login
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
@@ -75,6 +76,7 @@ class LoginFragment : Fragment() {
                 override fun validate(input: String): Boolean =
                     input.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(input).matches()
             })
+            etEmail.inputType = InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
             etPassword.setValidationCallback(object : MyEditTextValidation.InputValidation {
                 override val errorMessage: String
                     get() = getString(R.string.message_validation_password)

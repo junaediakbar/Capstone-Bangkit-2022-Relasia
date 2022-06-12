@@ -1,5 +1,6 @@
 package com.c22ps099.relasiahelperapp.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +26,7 @@ class MissionSearchAdapter(private val listMission: ArrayList<MissionDataItem>) 
         return ListViewHolder(binding)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         var (
             endDate,

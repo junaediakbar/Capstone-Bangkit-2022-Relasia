@@ -17,5 +17,6 @@ data class VolunteerDetailData(
 	val province: String? = null,
 	val phone: String? = null,
 	val name: String? = null,
-	val id: String? = null
+	val id: String? = null,
+	val picture: String? = null
 ) : Parcelable

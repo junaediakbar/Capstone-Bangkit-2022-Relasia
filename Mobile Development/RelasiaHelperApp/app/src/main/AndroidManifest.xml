@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.c22ps099.relasiahelperapp">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -27,11 +28,13 @@
         <activity
             android:name=".ui.main.BaseActivity"
             android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.main.MainActivity"
             android:screenOrientation="portrait"
-            android:exported="true">
+            android:exported="true"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -21,18 +21,4 @@ class MissionRepository(
             }
         ).liveData
     }
-
-    fun getMissionsStatusPages(volunteerId: String): LiveData<PagingData<MissionDataItem>> {
-        @OptIn(ExperimentalPagingApi::class)
-        return Pager(
-            config = PagingConfig(
-                pageSize = 5,
-                enablePlaceholders = false,
-                initialLoadSize = 5
-            ),
-            pagingSourceFactory = {
-                MissionStatusPagingSource(apiService, volunteerId)
-            }
-        ).liveData
-    }
 }

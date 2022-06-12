@@ -8,14 +8,10 @@ import android.view.ViewGroup
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.viewpager.widget.ViewPager.SimpleOnPageChangeListener
 import com.c22ps099.relasiahelperapp.R
 import com.c22ps099.relasiahelperapp.adapter.FilterPagerAdapter
-import com.c22ps099.relasiahelperapp.data.MissionRepository
 import com.c22ps099.relasiahelperapp.databinding.FragmentMissionsBinding
-import com.c22ps099.relasiahelperapp.network.ApiConfig
 import com.c22ps099.relasiahelperapp.ui.login.LoginFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
@@ -28,13 +24,6 @@ class MissionsFragment : Fragment() {
     private var binding: FragmentMissionsBinding? = null
     private lateinit var auth: FirebaseAuth
     private lateinit var uid: String
-
-    private val missionsViewModel by viewModels<MissionsViewModel> {
-        MissionsViewModel.Factory(
-            MissionRepository(ApiConfig.getApiService()),
-            uid
-        )
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -84,20 +73,6 @@ class MissionsFragment : Fragment() {
                 tab.text = resources.getString(TAB_TITLES[position])
             }.attach()
         }
-
-        missionsViewModel.apply {
-            isLoading.observe(viewLifecycleOwner) {
-                showLoading(it)
-            }
-        }
-
-        binding?.apply {
-
-        }
-    }
-
-    private fun showLoading(isLoading: Boolean) {
-        binding?.progressBar?.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     companion object {

@@ -83,4 +83,10 @@ interface ApiService {
     fun getVolunteer(
         @Path("volunteerId") volunteerId: String
     ): Call<VolunteerDetailData>
+
+    @Headers("Content-Type: application/json")
+    @PUT("volunteer")
+    fun updateVolunteer(
+        @Body volunteer: Volunteer
+    ): Call<AddNewVolunteerResponse>
 }

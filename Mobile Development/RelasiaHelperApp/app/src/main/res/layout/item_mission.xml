@@ -51,7 +51,7 @@
             android:fontFamily="@font/roboto_regular"
             android:paddingHorizontal="8dp"
             android:paddingVertical="4dp"
-            android:text="Category"
+            android:text="@string/category"
             android:textAlignment="center"
             android:textColor="@color/blue_500"
             android:textSize="14sp"
@@ -62,13 +62,16 @@
             android:id="@+id/tv_mission_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/roboto_regular"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
             android:text="@string/mission_date"
             android:textSize="14sp"
             card_view:layout_constraintEnd_toEndOf="@id/iv_mission_photo"
             card_view:layout_constraintStart_toStartOf="@id/iv_mission_photo"
-            card_view:layout_constraintTop_toBottomOf="@+id/tv_mission_category" />
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_mission_category"
+            card_view:drawableStartCompat="@drawable/ic_baseline_date_range_24" />
 
         <TextView
             android:id="@+id/tv_mission_city"
@@ -76,26 +79,29 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="Kota, Provinsi"
+            android:text="@string/city_province"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
             android:textSize="14sp"
             card_view:layout_constraintEnd_toEndOf="@id/iv_mission_photo"
             card_view:layout_constraintStart_toStartOf="@id/iv_mission_photo"
-            card_view:layout_constraintTop_toBottomOf="@+id/tv_mission_date" />
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_mission_date"
+            card_view:drawableStartCompat="@drawable/ic_baseline_location_on_24" />
 
         <TextView
             android:id="@+id/tv_applicant"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:drawableEnd="@drawable/ic_baseline_people_alt_24"
             android:drawablePadding="8dp"
             android:fontFamily="@font/roboto_regular"
             android:gravity="center"
-            android:text="5"
+            android:text="@string/_5"
             android:textSize="14sp"
             card_view:layout_constraintBottom_toBottomOf="@id/btn_details"
             card_view:layout_constraintEnd_toEndOf="@id/iv_mission_photo"
-            card_view:layout_constraintTop_toTopOf="@+id/btn_details" />
+            card_view:layout_constraintTop_toTopOf="@+id/btn_details"
+            card_view:drawableEndCompat="@drawable/ic_baseline_people_alt_24" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_details"
@@ -106,7 +112,7 @@
             android:fontFamily="@font/roboto_bold"
             android:paddingHorizontal="48dp"
             android:paddingVertical="12dp"
-            android:text="Details"
+            android:text="@string/details"
             android:textAllCaps="false"
             card_view:cornerRadius="12dp"
             card_view:layout_constraintBottom_toBottomOf="parent"

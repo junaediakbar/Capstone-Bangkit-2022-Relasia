@@ -1,5 +1,6 @@
 package com.c22ps099.relasiahelperapp.adapter
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -27,6 +28,7 @@ class MissionFilterAdapter(private val listMission: ArrayList<MissionDataItem>, 
         return ListViewHolder(binding)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         var (
             endDate,

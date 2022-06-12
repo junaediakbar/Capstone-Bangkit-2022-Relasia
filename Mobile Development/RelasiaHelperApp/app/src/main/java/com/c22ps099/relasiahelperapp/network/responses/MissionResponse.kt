@@ -72,7 +72,16 @@ data class MissionDataItem(
 	@field:SerializedName("timestamp")
 	val timestamp: String,
 
-
 	@field:SerializedName("volunteers")
 	val volunteers: List<VolunteersItemStatus> = listOf(),
+) : Parcelable
+
+@Parcelize
+data class VolunteersItemStatus(
+
+	@field:SerializedName("id")
+	val id: String,
+
+	@field:SerializedName("status")
+	val status: String
 ) : Parcelable

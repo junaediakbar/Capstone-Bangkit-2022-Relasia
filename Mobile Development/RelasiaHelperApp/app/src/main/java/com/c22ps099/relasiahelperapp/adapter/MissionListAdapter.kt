@@ -1,5 +1,6 @@
 package com.c22ps099.relasiahelperapp.adapter
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -48,6 +49,7 @@ class MissionListAdapter :
 
     class MissionHolder(private val binding: ItemMissionBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun bind(data: MissionDataItem) {
             binding.apply {
                 tvMissionTitle.text = data.title

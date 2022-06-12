@@ -29,6 +29,7 @@
             android:layout_height="160dp"
             android:layout_marginTop="80dp"
             android:layout_marginHorizontal="32dp"
+            android:contentDescription="@string/image_view"
             android:src="@drawable/ic_undraw_mobile_payments_re_7udl"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="Register"
+            android:text="@string/register"
             android:textColor="@color/black_2"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/iv_register"
@@ -54,7 +55,7 @@
             android:drawableStart="@drawable/ic_baseline_email_24"
             android:drawablePadding="8dp"
             android:fontFamily="@font/roboto_regular"
-            android:hint="Email"
+            android:hint="@string/email"
             app:layout_constraintEnd_toEndOf="@id/iv_register"
             app:layout_constraintStart_toStartOf="@id/iv_register"
             app:layout_constraintTop_toBottomOf="@+id/tv_register" />
@@ -67,7 +68,7 @@
             android:drawableStart="@drawable/ic_baseline_lock_24"
             android:drawablePadding="8dp"
             android:fontFamily="@font/roboto_regular"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="@id/iv_register"
             app:layout_constraintStart_toStartOf="@id/iv_register"
@@ -81,7 +82,7 @@
             android:drawableStart="@drawable/ic_baseline_lock_24"
             android:drawablePadding="8dp"
             android:fontFamily="@font/roboto_regular"
-            android:hint="Confirm Password"
+            android:hint="@string/confirm_password"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="@id/iv_register"
             app:layout_constraintStart_toStartOf="@id/iv_register"
@@ -94,7 +95,7 @@
             android:layout_marginTop="24dp"
             android:fontFamily="@font/roboto_bold"
             android:paddingVertical="16dp"
-            android:text="Register"
+            android:text="@string/register"
             android:textAllCaps="false"
             app:cornerRadius="12dp"
             app:layout_constraintEnd_toEndOf="@id/iv_register"
@@ -118,7 +119,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="Don you have an account?" />
+                android:text="@string/do_you_have_an_account" />
 
             <TextView
                 android:id="@+id/tv_login"
@@ -126,9 +127,10 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:fontFamily="@font/roboto_regular"
-                android:text="Login Now"
+                android:text="@string/login_now"
                 android:textColor="@color/blue_500"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:focusable="true" />
 
         </LinearLayout>
 

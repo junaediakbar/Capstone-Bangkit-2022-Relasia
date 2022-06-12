@@ -1,5 +1,6 @@
 package com.c22ps099.relasiahelperapp.ui.home
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -152,6 +153,7 @@ class HomeFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setGreetingsName(volunteerName: String?) {
         binding?.tvGreetings?.text = "Hello, $volunteerName"
     }

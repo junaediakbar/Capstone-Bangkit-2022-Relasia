@@ -1,6 +1,7 @@
 package com.c22ps099.relasiahelperapp.ui.register
 
 import android.os.Bundle
+import android.text.InputType
 import android.transition.TransitionInflater
 import android.util.Log
 import android.util.Patterns
@@ -52,6 +53,7 @@ class RegisterFragment : Fragment() {
                 override fun validate(input: String): Boolean =
                     input.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(input).matches()
             })
+            etEmail.inputType = InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
             etPassword.setValidationCallback(object : MyEditTextValidation.InputValidation {
                 override val errorMessage: String
                     get() = getString(R.string.message_validation_password)

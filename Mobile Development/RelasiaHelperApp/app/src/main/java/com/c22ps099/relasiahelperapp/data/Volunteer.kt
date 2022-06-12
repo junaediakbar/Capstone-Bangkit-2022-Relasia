@@ -3,6 +3,10 @@ package com.c22ps099.relasiahelperapp.data
 import com.google.gson.annotations.SerializedName
 
 data class Volunteer(
+
+    @field:SerializedName("picture")
+    val picture: String? = null,
+
     @field:SerializedName("address")
     val address: String? = null,
 

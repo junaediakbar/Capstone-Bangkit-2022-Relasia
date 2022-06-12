@@ -19,7 +19,7 @@ class MissionStatusViewModel : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    private fun callBack(option: String) = object : Callback<MissionResponse> {
+    private fun callBack() = object : Callback<MissionResponse> {
         override fun onResponse(
             call: Call<MissionResponse>,
             response: Response<MissionResponse>
@@ -41,19 +41,19 @@ class MissionStatusViewModel : ViewModel() {
     fun filterMissionAccepted(volunteerId: String) {
         _isLoading.value = true
         val client = ApiConfig.getApiService().filterMissionsAccepted(volunteerId)
-        client.enqueue(callBack("accepted"))
+        client.enqueue(callBack())
     }
 
     fun filterMissionRejected(volunteerId: String) {
         _isLoading.value = true
         val client = ApiConfig.getApiService().filterMissionsRejected(volunteerId)
-        client.enqueue(callBack("rejected"))
+        client.enqueue(callBack())
     }
 
     fun filterMissionPending(volunteerId: String) {
         _isLoading.value = true
         val client = ApiConfig.getApiService().filterMissionsPending(volunteerId)
-        client.enqueue(callBack("pending"))
+        client.enqueue(callBack())
     }
 
     companion object {
