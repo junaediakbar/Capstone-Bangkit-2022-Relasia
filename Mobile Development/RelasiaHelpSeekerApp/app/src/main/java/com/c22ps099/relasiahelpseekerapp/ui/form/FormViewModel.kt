@@ -69,6 +69,7 @@ class FormViewModel(private val token: String) : ViewModel() {
     }
 
     fun postMision(mission: Mission) {
+        _isLoading.value=false
         ApiConfig.getApiService().addMission(
             mission
         )
@@ -80,13 +81,9 @@ class FormViewModel(private val token: String) : ViewModel() {
                     _isLoading.value = false
 
                     if (response.isSuccessful) {
+                        _isLoading.value=true
                         _isSuccess.value = Event(true)
                     } else {
-                        val errorMessage = Gson().fromJson(
-                            response.errorBody()?.charStream(),
-                            GeneralResponse::class.java
-                        )
-                        _error.value = Event(errorMessage.message)
                         Log.e("response err", "${_error.value}")
                     }
                 }

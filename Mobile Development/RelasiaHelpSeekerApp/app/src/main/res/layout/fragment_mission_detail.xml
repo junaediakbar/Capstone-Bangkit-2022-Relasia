@@ -17,11 +17,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@android:color/white"
+            android:backgroundTint="@color/white"
             android:src="@drawable/ic_arrow_back"
+            app:borderWidth="0dp"
+            app:elevation="4dp"
+            app:fabSize="mini"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+            app:tint="@color/blue_munshell" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_images"
@@ -35,20 +38,51 @@
             tools:listitem="@layout/item_image_slide"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <View
+            android:id="@+id/lineImg"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@drawable/line_bottom_img"
+            android:translationZ="90dp"
+            app:layout_constraintTop_toBottomOf="@+id/rv_images" />
+
         <TextView
             android:id="@+id/tv_mission_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginStart="32dp"
+            android:layout_marginHorizontal="32dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
             android:fontFamily="@font/roboto_bold"
             android:text="@string/mission_title"
+            android:textColor="@color/black"
             android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/ib_edit"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_images" />
+            app:layout_constraintTop_toBottomOf="@+id/lineImg" />
+
+        <TextView
+            android:id="@+id/tv_mission_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="4dp"
+            android:paddingHorizontal="8dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Category"
+            android:textSize="14sp"
+            android:textColor="@color/blue_munshell"
+            android:background="@drawable/category_border"
+            app:layout_constraintStart_toStartOf="@id/tv_mission_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_mission_title" />
+
+        <ImageButton
+            android:id="@+id/ib_edit"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/ic_baseline_edit_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_mission_title" />
+
 
         <TextView
             android:id="@+id/tv_mission_date"
@@ -58,20 +92,19 @@
             android:fontFamily="@font/roboto_regular"
             android:text="@string/mission_date"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@+id/ib_edit"
+            app:layout_constraintEnd_toEndOf="@id/tv_mission_title"
             app:layout_constraintStart_toStartOf="@id/tv_mission_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_mission_title" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_mission_category" />
 
         <TextView
             android:id="@+id/tv_mission_city"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="4dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="Lumajang, Jawa Timur"
+            android:text="Kota, Provinsi"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@+id/ib_edit"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintEnd_toEndOf="@id/tv_mission_title"
             app:layout_constraintStart_toStartOf="@id/tv_mission_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_mission_date" />
 
@@ -82,8 +115,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
-            android:max="100"
-            android:progress="80"
+            android:max="5"
+            android:progress="4"
             android:progressTint="#209720"
             app:layout_constraintEnd_toStartOf="@id/tv_applicant"
             app:layout_constraintStart_toStartOf="@id/tv_mission_title"
@@ -99,7 +132,7 @@
             android:fontFamily="@font/roboto_regular"
             android:gravity="center"
             android:text="4/5"
-            app:layout_constraintEnd_toEndOf="@+id/tv_mission_city"
+            app:layout_constraintEnd_toEndOf="@+id/ib_edit"
             app:layout_constraintTop_toBottomOf="@+id/tv_mission_city" />
 
         <TextView
@@ -109,8 +142,9 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/roboto_bold"
             android:text="@string/mission_req"
+            android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/ib_edit"
+            app:layout_constraintEnd_toEndOf="@id/tv_applicant"
             app:layout_constraintStart_toStartOf="@id/tv_mission_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_applicant" />
 
@@ -133,8 +167,9 @@
             android:layout_marginTop="24dp"
             android:fontFamily="@font/roboto_bold"
             android:text="@string/mission_note"
+            android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/tv_mission_req_title"
+            app:layout_constraintEnd_toEndOf="@id/tv_applicant"
             app:layout_constraintStart_toStartOf="@id/tv_mission_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_mission_req" />
 
@@ -146,8 +181,8 @@
             android:fontFamily="@font/roboto_regular"
             android:text="Isi catatan"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@+id/tv_mission_note_title"
-            app:layout_constraintStart_toStartOf="@+id/tv_mission_note_title"
+            app:layout_constraintEnd_toEndOf="@id/tv_mission_req_title"
+            app:layout_constraintStart_toStartOf="@id/tv_mission_req_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_mission_note_title" />
 
         <TextView
@@ -157,10 +192,13 @@
             android:layout_marginTop="24dp"
             android:fontFamily="@font/roboto_bold"
             android:text="@string/mission_cp"
+            android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/tv_mission_note_title"
-            app:layout_constraintStart_toStartOf="@+id/tv_mission_note_title"
+            app:layout_constraintEnd_toEndOf="@id/tv_applicant"
+            app:layout_constraintStart_toStartOf="@id/tv_mission_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_mission_note" />
+
+
 
         <TextView
             android:id="@+id/tv_mission_cp_title2"
@@ -190,10 +228,14 @@
             android:id="@+id/btn_delete"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@color/warm_red"
-            android:fontFamily="@font/roboto_bold"
-            android:padding="12dp"
-            android:text="delete"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_shape_red"
+            android:text="Delete Mission"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:transitionName="action_btn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/tv_mission_cp_title"
             app:layout_constraintStart_toStartOf="@id/tv_mission_cp_title"
@@ -218,17 +260,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/ib_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_baseline_edit_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_mission_title"
-            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

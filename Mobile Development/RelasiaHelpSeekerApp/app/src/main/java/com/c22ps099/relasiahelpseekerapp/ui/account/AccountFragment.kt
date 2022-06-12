@@ -87,6 +87,13 @@ class AccountFragment : Fragment() {
         //TODO: Implement Logic
         auth = FirebaseAuth.getInstance()
 
+        if (auth.currentUser == null) {
+            Toast.makeText(activity,"You are not Authenticated!",Toast.LENGTH_SHORT).show()
+            val intent = Intent(activity, MainActivity::class.java)
+            startActivity(intent)
+            activity?.overridePendingTransition(0, 0)
+        }
+
         viewModel.apply {
             getHelpseeker(auth.currentUser?.uid!!)
             helpseeker.observe(viewLifecycleOwner) {
@@ -99,9 +106,6 @@ class AccountFragment : Fragment() {
                 it.getContentIfNotHandled()?.let { success ->
                     if (success) {
                         showSuccessDialog()
-                    } else {
-                        Toast.makeText(activity, "Error when upload form", Toast.LENGTH_SHORT)
-                            .show()
                     }
                 }
             }
@@ -341,6 +345,7 @@ class AccountFragment : Fragment() {
         dialog.show()
 
     }
+
 
     companion object {
         private val REQUIRED_PERMISSIONS = if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {

@@ -1,6 +1,7 @@
 package com.c22ps099.relasiahelpseekerapp.ui.missionDetail
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.content.res.Configuration
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -22,11 +24,15 @@ import com.c22ps099.relasiahelpseekerapp.data.adapter.SlideImageAdapter
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionItem
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentMissionDetailBinding
 import com.c22ps099.relasiahelpseekerapp.misc.DateFormatter
+import com.c22ps099.relasiahelpseekerapp.ui.account.AccountViewModel
 import com.c22ps099.relasiahelpseekerapp.ui.login.LoginFragment
+import com.c22ps099.relasiahelpseekerapp.ui.main.MainActivity
 import com.c22ps099.relasiahelpseekerapp.ui.missionEdit.MissionEditFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 class MissionDetailFragment : Fragment() {
 
@@ -34,11 +40,20 @@ class MissionDetailFragment : Fragment() {
     private lateinit var googleAuth: FirebaseAuth
 
     private var token: String? = ""
+    private var phone: String? = ""
+    private var name: String? = ""
+
 
     private val viewModel by viewModels<MissionDetailViewModel> {
         MissionDetailViewModel.Factory(getString(R.string.auth, token))
     }
 
+    private val accountViewModel by viewModels<AccountViewModel> {
+        AccountViewModel.Factory(
+            getString(R.string.auth, token),
+            FirebaseAuth.getInstance().currentUser?.uid!!
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -83,6 +98,16 @@ class MissionDetailFragment : Fragment() {
                 findNavController().navigate(navigateAction)
             }
             btnDelete.setOnClickListener {
+                val listImages = mission.featuredImage as List<String?>
+                for(i in 0 until listImages.size-1){
+                    val storageReference: StorageReference = FirebaseStorage.getInstance()
+                        .getReferenceFromUrl(listImages[i]!!)
+                    storageReference.delete().addOnSuccessListener {
+                        Log.d("storage", "Delete done")
+                    }.addOnFailureListener {
+                        Log.d("storage", "error while deleting")
+                    }
+                }
                 viewModel.deleteMission(mission.id)
             }
         }
@@ -132,6 +157,11 @@ class MissionDetailFragment : Fragment() {
                 layoutManager = setLayoutManager
             }
         }
+        accountViewModel.getHelpseeker(googleAuth.currentUser?.uid!!)
+        accountViewModel.helpseeker.observe(viewLifecycleOwner){
+            phone = it?.phone
+            name = it?.name
+        }
 
         viewModel.volunteers.observe(viewLifecycleOwner){
                 binding?.rvVolunteersStatus?.apply {
@@ -139,7 +169,20 @@ class MissionDetailFragment : Fragment() {
                     Log.v("ukuran", "${it.size}")
                 }
                 binding?.apply {
+                    tvMissionTitle.text = mission.title
+                    tvMissionDate.text =
+                        DateFormatter.formatDate(mission.startDate) + " - " + DateFormatter.formatDate(
+                            mission.endDate
+                        )
+                    tvMissionCity.text = mission.city + ", " + mission.province
+
+                    tvMissionReq.text = mission.requirement
+                    tvMissionNote.text = mission.note
+                    tvMissionCp.text = phone + " (" + name + ")"
+                    tvMissionCategory.text = mission.category
+
                     val acceptedList  = it.filter{it.status=="accepted"}
+                    tvApplicant.text = acceptedList.size.toString() + "/" + mission.numberOfNeeds
                     pbApplicant.max = mission.numberOfNeeds?.toInt()!!
                     pbApplicant.progress = acceptedList.size
                     if (acceptedList.size == mission.numberOfNeeds.toInt()) {
@@ -149,9 +192,23 @@ class MissionDetailFragment : Fragment() {
 
                 }
         }
-        viewModel.isLoading.observe(viewLifecycleOwner) {
-            showLoading(it)
+        viewModel.apply {
+            isSuccess.observe(viewLifecycleOwner) {
+                it.getContentIfNotHandled()?.let { success ->
+                    if (success) {
+                        Toast.makeText(activity, "Mission Deleted Successfully", Toast.LENGTH_SHORT)
+                            .show()
+                        val intent = Intent(activity, MainActivity::class.java)
+                        startActivity(intent)
+                        activity?.overridePendingTransition(0, 0)
+                    }
+                }
+            }
+            isLoading.observe(viewLifecycleOwner) {
+                showLoading(it)
+            }
         }
+
 
     }
 

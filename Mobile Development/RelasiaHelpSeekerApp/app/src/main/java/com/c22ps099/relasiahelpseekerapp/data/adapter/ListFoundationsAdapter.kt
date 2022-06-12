@@ -42,6 +42,7 @@ class ListFoundationsAdapter(private var listFoundations: List<Foundation>) :
                 tvVolunteerName.text = foundation.name
                 tvVolunteerAge.text = foundation.address
                 tvMissionStatus.visibility = visibility(false)
+                tvVolunteerPlace.text = "${foundation.city},${foundation.province}"
             }
             Glide.with(binding.root)
                 .load(foundation.picture)

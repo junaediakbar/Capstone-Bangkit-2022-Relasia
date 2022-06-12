@@ -26,6 +26,9 @@ class MissionDetailViewModel(private val token: String) : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
+    private val _isSuccess = MutableLiveData<Event<Boolean>>()
+    val isSuccess: LiveData<Event<Boolean>> = _isSuccess
+
     private val _isUpdating = MutableLiveData<Boolean>()
     val isUpdating: LiveData<Boolean> = _isUpdating
 
@@ -36,6 +39,7 @@ class MissionDetailViewModel(private val token: String) : ViewModel() {
     val message: LiveData<Event<String>> = _message
 
     fun deleteMission(missionId: String?) {
+        _isLoading.value=true
         val mission = MissionId(missionId)
         ApiConfig.getApiService().deleteMyMission(mission)
             .enqueue(object : Callback<GeneralResponse> {
@@ -44,9 +48,10 @@ class MissionDetailViewModel(private val token: String) : ViewModel() {
                     response: Response<GeneralResponse>
                 ) {
                     _isLoading.value = false
-
+                    _isSuccess.value = Event(false)
                     if (response.isSuccessful) {
 //                        _message.value = response.body()?.message
+                        _isSuccess.value = Event(true)
                         Log.v("ini adalah mission:", "${_volunteers.value?.size}")
                     } else {
                         val errorMessage = Gson().fromJson(

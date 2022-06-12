@@ -1,5 +1,7 @@
 package com.c22ps099.relasiahelpseekerapp.ui.foundationDetail
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -46,8 +48,19 @@ class FoundationDetailFragment : Fragment() {
                 findNavController().navigate(navigateAction)
             }
             tvFoundationName.text = foundation.name
-            tvFoundationLocation.text = "${foundation.city},${foundation.province}"
+            tvFoundationLocation.text = "${foundation.city}, ${foundation.province}"
             tvFoundationPhone.text = foundation.phone
+            val phone = "62"+foundation.phone?.substring(1)
+            btnCallWa.setOnClickListener {
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse(
+                            "https://api.whatsapp.com/send?phone=${phone}"
+                        )
+                    )
+                )
+            }
         }
     }
 

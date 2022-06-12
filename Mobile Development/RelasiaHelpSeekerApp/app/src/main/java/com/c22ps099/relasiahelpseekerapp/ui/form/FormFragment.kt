@@ -1,9 +1,9 @@
 package com.c22ps099.relasiahelpseekerapp.ui.form
 
 import android.Manifest
-import android.R.attr
 import android.annotation.SuppressLint
 import android.app.Activity.RESULT_OK
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_GET_CONTENT
@@ -12,7 +12,10 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import android.widget.AdapterView
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
@@ -24,22 +27,15 @@ import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentFormBinding
 import com.c22ps099.relasiahelpseekerapp.misc.*
 import com.c22ps099.relasiahelpseekerapp.model.Mission
-import com.c22ps099.relasiahelpseekerapp.view.setDate
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
-import kotlinx.coroutines.*
-import java.util.*
-import android.R.attr.data
-import android.app.Dialog
-import android.util.Patterns
-import android.view.*
-import android.widget.Button
-import android.widget.TextView
 import com.c22ps099.relasiahelpseekerapp.ui.main.MainActivity
 import com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
+import com.c22ps099.relasiahelpseekerapp.view.setDate
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.*
+import java.io.File
 import java.text.SimpleDateFormat
+import java.util.*
 
 
 class FormFragment : Fragment() {
@@ -54,15 +50,11 @@ class FormFragment : Fragment() {
     private var category: String? = ""
     private var citySelected: String? = ""
     private var provinceSelected: String? = ""
-    private var imagesUri = mutableListOf<Uri>()
+    private var imagesFiles = mutableListOf<File>()
     private var imagesLink = mutableListOf<String?>()
-
-    private var requirements: String? = ""
-    private var notes: String? = ""
 
     private val scope = CoroutineScope(Job() + Dispatchers.Main)
     private var binding: FragmentFormBinding? = null
-    private lateinit var googleAuth: FirebaseAuth
 
     private var uploadError: Boolean = false
 
@@ -245,13 +237,13 @@ class FormFragment : Fragment() {
     ) { result ->
         if (result.resultCode == RESULT_OK) {
             if (result.data?.clipData != null) {
-                imagesUri.clear()
+                imagesFiles.clear()
                 val count = result.data!!.clipData!!.itemCount
 
                 for (i in 0 until count) {
                     val imageUri: Uri = result.data!!.clipData!!.getItemAt(i).uri
-
-                    imagesUri.add(imageUri)
+                    val myFile = uriToFile(imageUri, requireContext())
+                    imagesFiles.add(myFile)
                     binding?.apply {
 //                        btnUploadImage.visibility = visibility(false)
                         tvUploadImages.apply {
@@ -266,7 +258,8 @@ class FormFragment : Fragment() {
                 }
             } else if (result.data?.data != null) {
                 var imageUri: Uri = result.data?.data as Uri
-                imagesUri.add(imageUri)
+                val myFile = uriToFile(imageUri, requireContext())
+                imagesFiles.add(myFile)
                 binding?.apply {
 //                        btnUploadImage.visibility = visibility(false)
                     tvUploadImages.apply {
@@ -304,7 +297,7 @@ class FormFragment : Fragment() {
             }
         }
         lifecycleScope.launch {
-            uploadToFirebaseStorage(imagesUri as List<Uri>?)
+            uploadToFirebaseStorage(imagesFiles as List<File>?)
         }
     }
 
@@ -330,11 +323,7 @@ class FormFragment : Fragment() {
                 it.getContentIfNotHandled()?.let { success ->
                     if (success) {
                         showSuccessDialog()
-                        imagesUri.clear()
-                    } else {
-                        Toast.makeText(activity, "Error when upload form", Toast.LENGTH_SHORT)
-                            .show()
-                        imagesUri.clear()
+                        imagesFiles.clear()
                     }
                 }
             }
@@ -364,13 +353,14 @@ class FormFragment : Fragment() {
 //        }
 //    }
 
-    private fun uploadToFirebaseStorage(listUri: List<Uri>?) {
+    private fun uploadToFirebaseStorage(listFile: List<File>?) {
         var link: String
         val fileName = UUID.randomUUID().toString()
         var countImages = 0
-        for (i in 0 until listUri?.size!!) {
+        for (i in 0 until listFile?.size!!) {
+            val file = reduceFileImage(listFile[i])
             val ref = FirebaseStorage.getInstance().getReference("images/${fileName}(${i + 1})")
-            val uploadTask = ref.putFile(listUri[i]!!)
+            val uploadTask = ref.putFile(Uri.fromFile(file))
             uploadTask.continueWithTask { task ->
                 if (!task.isSuccessful) {
                     task.exception?.let {
@@ -386,7 +376,7 @@ class FormFragment : Fragment() {
                     Log.v("Link", "===>$link")
                     Toast.makeText(activity, link, Toast.LENGTH_SHORT).show()
                     countImages++
-                    if (countImages == listUri.size) {
+                    if (countImages == listFile.size) {
                         uploadForm()
                     }
                     uploadError = false

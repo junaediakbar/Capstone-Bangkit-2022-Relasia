@@ -66,4 +66,13 @@ interface ApiService {
     ): Call<HelpseekerDataResponse>
 
 
+    @GET("mission")
+    fun getFilteredMissions(
+        @Query("helpseeker") id:String,
+        @Query("active") active:String,
+        @Query("data_on_page") countPage:Int=20,
+    ): Call<MissionsResponse>
+
+
+
 }

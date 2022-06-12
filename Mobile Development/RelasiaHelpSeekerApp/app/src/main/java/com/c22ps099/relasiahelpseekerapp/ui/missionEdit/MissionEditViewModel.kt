@@ -26,6 +26,9 @@ class MissionEditViewModel(private val token: String) : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
+    private val _isSuccess = MutableLiveData<Event<Boolean>>()
+    val isSuccess: LiveData<Event<Boolean>> = _isSuccess
+
     private val _isUpdating = MutableLiveData<Boolean>()
     val isUpdating: LiveData<Boolean> = _isUpdating
 
@@ -44,8 +47,10 @@ class MissionEditViewModel(private val token: String) : ViewModel() {
                     _isLoading.value = false
 
                     if (response.isSuccessful) {
+                        _isSuccess.value= Event(true)
                         Log.v("ini adalah mission:", "${_volunteers.value?.size}")
                     } else {
+                        _isSuccess.value= Event(false)
                         Log.e("err", "${_error.value}")
                     }
                 }

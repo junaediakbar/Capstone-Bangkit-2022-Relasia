@@ -19,8 +19,8 @@
 
         <ImageView
             android:id="@+id/iv_mission_photo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:layout_margin="16dp"
             android:contentDescription="@string/mission_photo"
             android:scaleType="centerCrop"
@@ -58,18 +58,15 @@
             android:id="@+id/tv_mission_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/status_border"
+            android:background="@drawable/category_border"
             android:fontFamily="@font/roboto_bold"
             android:paddingHorizontal="9dp"
             android:paddingVertical="3dp"
-            android:text="Aktif"
-            android:textColor="@color/light_green"
+            android:text="Bencana Alam"
+            android:textColor="@color/blue_munshell"
             android:textSize="8sp"
-            card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintStart_toStartOf="@+id/tv_volunteer_place"
-            card_view:layout_constraintTop_toBottomOf="@+id/tv_volunteer_place" />
+            card_view:layout_constraintBottom_toBottomOf="@+id/iv_mission_photo"
+            card_view:layout_constraintStart_toStartOf="@+id/tv_volunteer_place" />
 
         <TextView
             android:id="@+id/tv_volunteer_place"
