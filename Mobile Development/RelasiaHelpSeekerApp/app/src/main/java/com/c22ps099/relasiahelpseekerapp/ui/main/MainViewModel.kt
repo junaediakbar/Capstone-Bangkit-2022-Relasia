@@ -9,12 +9,6 @@ class SessionViewModel (private val pref: SessionPreferences) : ViewModel() {
         return pref.getSavedToken().asLiveData()
     }
 
-    fun saveToken(token: String) {
-        viewModelScope.launch {
-            pref.saveToken(token)
-        }
-    }
-
     @Suppress("UNCHECKED_CAST")
     class Factory(private val pref: SessionPreferences) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {

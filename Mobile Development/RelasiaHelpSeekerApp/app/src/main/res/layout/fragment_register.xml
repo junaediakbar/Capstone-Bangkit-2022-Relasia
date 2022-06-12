@@ -129,42 +129,17 @@
             android:visibility="invisible"
             app:constraint_referenced_ids="loading_text,progressBar" />
 
-        <ImageView
-            android:id="@+id/or_line"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:src="@drawable/or_line"
-            app:layout_constraintEnd_toEndOf="@+id/btn_register"
-            app:layout_constraintStart_toStartOf="@+id/btn_register"
-            app:layout_constraintTop_toBottomOf="@+id/btn_register"
-            tools:ignore="ImageContrastCheck,ImageContrastCheck" />
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/round_button"
-            android:padding="12dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_google"
-            app:layout_constraintEnd_toEndOf="@+id/or_line"
-            app:layout_constraintStart_toStartOf="@+id/or_line"
-            app:layout_constraintTop_toBottomOf="@+id/or_line"
-            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
-
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="84dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/or_line"
-            app:layout_constraintStart_toStartOf="@+id/or_line"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton">
+            app:layout_constraintEnd_toEndOf="@+id/btn_register"
+            app:layout_constraintStart_toStartOf="@+id/btn_register"
+            app:layout_constraintTop_toBottomOf="@+id/btn_register">
 
 
             <TextView
