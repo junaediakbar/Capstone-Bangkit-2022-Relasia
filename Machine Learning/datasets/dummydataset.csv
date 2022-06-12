@@ -1,0 +1,255 @@
+,volunteer_id,keahlian,pengalaman
+0,1,Bantuan Hukum,5
+1,1,Difabilitas/Disabilitas,1
+2,1,Hak Asasi Manusia,4
+3,1,Kepemimpinan & Organisasi,4
+4,1,Kesehatan,4
+5,1,Kesetaraan Gender,7
+6,1,Lingkungan,8
+7,1,Olahraga,10
+8,1,Penanggulangan Bencana,7
+9,1,Pengembangan Anak Muda,7
+10,1,Perdamaian dan Toleransi,4
+11,1,Pertanian,4
+12,1,Sains dan Teknologi,9
+13,1,Seni dan Budaya,1
+14,2,Hak Asasi Manusia,9
+15,2,Kesehatan,2
+16,2,Kesetaraan Gender,5
+17,2,Ketenagakerjaan,8
+18,2,Lingkungan,9
+19,2,Olahraga,2
+20,2,Penanggulangan Bencana,5
+21,2,Pengembangan Anak Muda,1
+22,2,Pengembangan Masyarakat,3
+23,2,Perdamaian dan Toleransi,6
+24,2,Pusat Informasi dan Kajian,8
+25,2,Seni dan Budaya,1
+26,3,Difabilitas/Disabilitas,5
+27,3,Hak Asasi Manusia,2
+28,3,Kepemimpinan & Organisasi,1
+29,3,Kesehatan,8
+30,3,Kesejahteraan Hewan,7
+31,3,Kesetaraan Gender,2
+32,3,Ketenagakerjaan,9
+33,3,Lingkungan,10
+34,3,Penanggulangan Bencana,9
+35,3,Pengembangan Masyarakat,1
+36,3,Perdamaian dan Toleransi,7
+37,3,Pertanian,2
+38,3,Pusat Informasi dan Kajian,8
+39,3,Sains dan Teknologi,10
+40,3,Seni dan Budaya,6
+41,4,Bantuan Hukum,3
+42,4,Hak Asasi Manusia,4
+43,4,Kepemimpinan & Organisasi,7
+44,4,Kesehatan,3
+45,4,Kesejahteraan Hewan,7
+46,4,Ketenagakerjaan,10
+47,4,Lingkungan,7
+48,4,Olahraga,6
+49,4,Pendidikan,8
+50,4,Pengembangan Anak Muda,8
+51,4,Pengembangan Masyarakat,10
+52,4,Perdamaian dan Toleransi,4
+53,4,Sains dan Teknologi,5
+54,4,Seni dan Budaya,8
+55,5,Bantuan Hukum,2
+56,5,Difabilitas/Disabilitas,3
+57,5,Kesehatan,1
+58,5,Olahraga,1
+59,5,Penanggulangan Bencana,2
+60,5,Pendidikan,5
+61,5,Pengembangan Anak Muda,2
+62,5,Perdamaian dan Toleransi,9
+63,5,Pertanian,2
+64,5,Sains dan Teknologi,1
+65,6,Difabilitas/Disabilitas,7
+66,6,Hak Asasi Manusia,2
+67,6,Kepemimpinan & Organisasi,3
+68,6,Ketenagakerjaan,5
+69,6,Lingkungan,1
+70,6,Olahraga,6
+71,6,Penanggulangan Bencana,6
+72,6,Pengembangan Masyarakat,5
+73,6,Perdamaian dan Toleransi,2
+74,6,Pertanian,4
+75,6,Pusat Informasi dan Kajian,8
+76,6,Sains dan Teknologi,4
+77,7,Difabilitas/Disabilitas,7
+78,7,Hak Asasi Manusia,2
+79,7,Kepemimpinan & Organisasi,5
+80,7,Kesejahteraan Hewan,1
+81,7,Kesetaraan Gender,3
+82,7,Olahraga,6
+83,7,Pengembangan Anak Muda,1
+84,7,Pengembangan Masyarakat,8
+85,7,Perdamaian dan Toleransi,3
+86,7,Pertanian,1
+87,7,Pusat Informasi dan Kajian,4
+88,7,Sains dan Teknologi,6
+89,7,Seni dan Budaya,2
+90,8,Bantuan Hukum,6
+91,8,Kepemimpinan & Organisasi,2
+92,8,Kesehatan,3
+93,8,Kesejahteraan Hewan,5
+94,8,Kesetaraan Gender,9
+95,8,Ketenagakerjaan,1
+96,8,Lingkungan,4
+97,8,Olahraga,1
+98,8,Penanggulangan Bencana,5
+99,8,Pendidikan,10
+100,8,Pengembangan Masyarakat,8
+101,8,Pertanian,9
+102,8,Sains dan Teknologi,8
+103,8,Seni dan Budaya,7
+104,9,Bantuan Hukum,8
+105,9,Kepemimpinan & Organisasi,10
+106,9,Kesetaraan Gender,3
+107,9,Ketenagakerjaan,7
+108,9,Lingkungan,1
+109,9,Penanggulangan Bencana,5
+110,9,Pendidikan,4
+111,9,Pengembangan Anak Muda,9
+112,9,Pengembangan Masyarakat,6
+113,9,Perdamaian dan Toleransi,6
+114,9,Pertanian,7
+115,9,Pusat Informasi dan Kajian,7
+116,9,Sains dan Teknologi,7
+117,9,Seni dan Budaya,10
+118,10,Bantuan Hukum,5
+119,10,Difabilitas/Disabilitas,7
+120,10,Hak Asasi Manusia,7
+121,10,Kepemimpinan & Organisasi,9
+122,10,Kesehatan,10
+123,10,Kesejahteraan Hewan,2
+124,10,Kesetaraan Gender,9
+125,10,Olahraga,8
+126,10,Penanggulangan Bencana,1
+127,10,Pengembangan Anak Muda,5
+128,10,Pengembangan Masyarakat,5
+129,10,Pusat Informasi dan Kajian,5
+130,10,Seni dan Budaya,1
+131,11,Bantuan Hukum,10
+132,11,Difabilitas/Disabilitas,6
+133,11,Kepemimpinan & Organisasi,5
+134,11,Kesejahteraan Hewan,6
+135,11,Ketenagakerjaan,1
+136,11,Lingkungan,5
+137,11,Olahraga,10
+138,11,Pengembangan Anak Muda,4
+139,11,Perdamaian dan Toleransi,6
+140,11,Pertanian,5
+141,11,Pusat Informasi dan Kajian,9
+142,11,Seni dan Budaya,9
+143,12,Hak Asasi Manusia,10
+144,12,Kepemimpinan & Organisasi,9
+145,12,Kesehatan,8
+146,12,Kesejahteraan Hewan,9
+147,12,Ketenagakerjaan,5
+148,12,Lingkungan,7
+149,12,Olahraga,3
+150,12,Penanggulangan Bencana,6
+151,12,Pengembangan Masyarakat,2
+152,12,Perdamaian dan Toleransi,10
+153,12,Pertanian,1
+154,12,Pusat Informasi dan Kajian,9
+155,12,Sains dan Teknologi,9
+156,12,Seni dan Budaya,8
+157,13,Bantuan Hukum,8
+158,13,Difabilitas/Disabilitas,3
+159,13,Ketenagakerjaan,8
+160,13,Penanggulangan Bencana,3
+161,13,Pendidikan,10
+162,13,Pengembangan Anak Muda,7
+163,13,Pengembangan Masyarakat,4
+164,13,Perdamaian dan Toleransi,2
+165,13,Pertanian,9
+166,13,Pusat Informasi dan Kajian,6
+167,13,Sains dan Teknologi,10
+168,13,Seni dan Budaya,4
+169,14,Bantuan Hukum,6
+170,14,Kepemimpinan & Organisasi,10
+171,14,Kesetaraan Gender,2
+172,14,Ketenagakerjaan,4
+173,14,Lingkungan,5
+174,14,Pendidikan,7
+175,14,Pengembangan Anak Muda,1
+176,14,Pengembangan Masyarakat,3
+177,14,Perdamaian dan Toleransi,8
+178,14,Pusat Informasi dan Kajian,3
+179,14,Sains dan Teknologi,4
+180,14,Seni dan Budaya,10
+181,15,Bantuan Hukum,6
+182,15,Difabilitas/Disabilitas,8
+183,15,Kesehatan,8
+184,15,Kesejahteraan Hewan,1
+185,15,Lingkungan,6
+186,15,Penanggulangan Bencana,9
+187,15,Pendidikan,8
+188,15,Pengembangan Anak Muda,10
+189,15,Pusat Informasi dan Kajian,2
+190,15,Sains dan Teknologi,8
+191,15,Seni dan Budaya,5
+192,16,Bantuan Hukum,1
+193,16,Difabilitas/Disabilitas,5
+194,16,Hak Asasi Manusia,1
+195,16,Kepemimpinan & Organisasi,10
+196,16,Kesejahteraan Hewan,9
+197,16,Kesetaraan Gender,4
+198,16,Ketenagakerjaan,4
+199,16,Lingkungan,8
+200,16,Pendidikan,1
+201,16,Pengembangan Anak Muda,6
+202,16,Perdamaian dan Toleransi,4
+203,16,Pertanian,8
+204,16,Pusat Informasi dan Kajian,9
+205,16,Sains dan Teknologi,8
+206,16,Seni dan Budaya,1
+207,17,Difabilitas/Disabilitas,2
+208,17,Hak Asasi Manusia,10
+209,17,Kepemimpinan & Organisasi,6
+210,17,Kesehatan,4
+211,17,Kesejahteraan Hewan,6
+212,17,Kesetaraan Gender,6
+213,17,Lingkungan,1
+214,17,Penanggulangan Bencana,8
+215,17,Pengembangan Anak Muda,7
+216,17,Pengembangan Masyarakat,1
+217,17,Perdamaian dan Toleransi,4
+218,17,Pertanian,4
+219,17,Pusat Informasi dan Kajian,1
+220,18,Bantuan Hukum,2
+221,18,Difabilitas/Disabilitas,3
+222,18,Hak Asasi Manusia,2
+223,18,Kesehatan,3
+224,18,Kesetaraan Gender,6
+225,18,Ketenagakerjaan,3
+226,18,Pengembangan Anak Muda,2
+227,18,Pengembangan Masyarakat,8
+228,18,Pertanian,8
+229,18,Pusat Informasi dan Kajian,4
+230,18,Sains dan Teknologi,1
+231,18,Seni dan Budaya,8
+232,19,Bantuan Hukum,2
+233,19,Difabilitas/Disabilitas,7
+234,19,Kesejahteraan Hewan,4
+235,19,Olahraga,8
+236,19,Penanggulangan Bencana,4
+237,19,Pengembangan Anak Muda,3
+238,19,Pengembangan Masyarakat,9
+239,19,Pertanian,2
+240,19,Pusat Informasi dan Kajian,8
+241,19,Sains dan Teknologi,7
+242,20,Difabilitas/Disabilitas,3
+243,20,Hak Asasi Manusia,6
+244,20,Kepemimpinan & Organisasi,10
+245,20,Kesejahteraan Hewan,7
+246,20,Kesetaraan Gender,1
+247,20,Ketenagakerjaan,2
+248,20,Penanggulangan Bencana,7
+249,20,Pendidikan,2
+250,20,Pengembangan Masyarakat,5
+251,20,Perdamaian dan Toleransi,1
+252,20,Sains dan Teknologi,4
+253,20,Seni dan Budaya,9
