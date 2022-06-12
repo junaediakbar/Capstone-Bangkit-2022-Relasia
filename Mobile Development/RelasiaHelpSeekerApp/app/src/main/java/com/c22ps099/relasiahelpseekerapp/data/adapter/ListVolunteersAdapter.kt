@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.VolunteersItem
 import com.c22ps099.relasiahelpseekerapp.databinding.ItemRegisteredVolunteerBinding
@@ -61,8 +62,11 @@ class ListVolunteersAdapter(
             binding.apply {
                 ivMissionPhoto.let {
                     Glide.with(itemView)
-                        .load("https://i.pravatar.cc/300").circleCrop()
-                        .placeholder(R.drawable.ic_baseline_account_circle_24)
+                        .load( "${volunteer.picture}").circleCrop()
+                        .apply(
+                            RequestOptions.placeholderOf(R.drawable.ic_loading)
+                                .error(R.drawable.ic_error)
+                        )
                         .into(it)
                 }
                 tvVolunteerName.text = volunteer.name

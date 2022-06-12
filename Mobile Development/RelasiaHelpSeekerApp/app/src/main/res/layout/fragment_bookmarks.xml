@@ -14,8 +14,8 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/inter_bold"
         android:paddingVertical="8dp"
-        android:text="Favorite Volunteers"
-        android:textSize="28sp"
+        android:text="Favorites"
+        android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

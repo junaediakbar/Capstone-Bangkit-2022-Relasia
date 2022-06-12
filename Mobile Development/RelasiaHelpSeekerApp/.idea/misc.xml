@@ -42,7 +42,7 @@
         <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/dialog_dates.xml" value="0.1421875" />
         <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/dialog_fill_profile.xml" value="0.22" />
         <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/dialog_form_success.xml" value="0.22" />
-        <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/fragment_account.xml" value="0.1" />
+        <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/fragment_account.xml" value="0.4466666666666667" />
         <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/fragment_bookmark.xml" value="0.10208333333333333" />
         <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/fragment_bookmarks.xml" value="0.2" />
         <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/fragment_detail_mission.xml" value="0.22" />
@@ -55,7 +55,7 @@
         <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/fragment_location_maps.xml" value="0.22" />
         <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/fragment_login.xml" value="0.22" />
         <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/fragment_mission.xml" value="0.16666666666666666" />
-        <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/fragment_mission_detail.xml" value="0.3333333333333333" />
+        <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/fragment_mission_detail.xml" value="0.16666666666666666" />
         <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/fragment_mission_edit.xml" value="0.22" />
         <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/fragment_mission_status.xml" value="0.2" />
         <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/fragment_missions.xml" value="0.2" />
@@ -64,10 +64,10 @@
         <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/fragment_requirement_dialog.xml" value="0.16666666666666666" />
         <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/fragment_requirements_dialog.xml" value="0.3333333333333333" />
         <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/fragment_splash.xml" value="0.14010416666666667" />
-        <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/fragment_volunteer_account.xml" value="0.3979706877113867" />
+        <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/fragment_volunteer_account.xml" value="0.3333333333333333" />
         <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/item_image_slide.xml" value="0.22" />
         <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/item_mission_status.xml" value="0.3333333333333333" />
-        <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/item_post.xml" value="0.5" />
+        <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/item_post.xml" value="0.4466666666666667" />
         <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/item_registered_volunteer.xml" value="0.3333333333333333" />
         <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/layout/item_spinner.xml" value="0.4466666666666667" />
         <entry key="..\:/01. Kuliah Tc/Bangkit/Studi/Capstone-Bangkit-2022-Relasia/Mobile Development/RelasiaHelpSeekerApp/app/src/main/res/menu/bottom_menu.xml" value="0.16666666666666666" />

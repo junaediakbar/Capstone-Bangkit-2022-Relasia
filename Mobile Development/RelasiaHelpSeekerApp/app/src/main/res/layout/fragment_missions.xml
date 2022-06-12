@@ -27,9 +27,9 @@
         android:paddingHorizontal="32dp"
         android:paddingVertical="16dp"
         android:text="Missions"
-        android:textColor="@color/black"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

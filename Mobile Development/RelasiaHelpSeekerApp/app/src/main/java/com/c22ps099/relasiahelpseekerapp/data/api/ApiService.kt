@@ -70,9 +70,7 @@ interface ApiService {
     fun getFilteredMissions(
         @Query("helpseeker") id:String,
         @Query("active") active:String,
-        @Query("data_on_page") countPage:Int=20,
+        @Query("paginate") paginate:Int=100,
     ): Call<MissionsResponse>
-
-
 
 }

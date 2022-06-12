@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.VolunteersItem
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentVolunteerAccountBinding
@@ -66,10 +67,13 @@ class VolunteerAccountFragment : Fragment() {
     private fun showVolunteerData(volunteer: VolunteersItem) {
         binding?.apply {
             imgAccProfile.let {
-                Glide.with(requireActivity())
-                    .load( "https://i.pravatar.cc/300").circleCrop()
-                    .placeholder(R.drawable.ic_baseline_account_circle_24)
-                    .into(it)
+                Glide.with(imgAccProfile.context)
+                    .load( "${volunteer.picture}").circleCrop()
+                    .apply(
+                        RequestOptions.placeholderOf(R.drawable.ic_loading)
+                            .error(R.drawable.ic_error)
+                    )
+                    .into(imgAccProfile)
             }
 
             val year = Calendar.getInstance().get(Calendar.YEAR);
@@ -83,7 +87,6 @@ class VolunteerAccountFragment : Fragment() {
             if (volunteer.gender=="female"){
                 tvAccName.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_woman, 0);
             }
-
         }
     }
 

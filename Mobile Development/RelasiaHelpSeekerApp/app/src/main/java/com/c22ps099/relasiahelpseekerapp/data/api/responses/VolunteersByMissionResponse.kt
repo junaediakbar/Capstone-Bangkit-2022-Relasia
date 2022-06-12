@@ -20,6 +20,9 @@ data class VolunteersByMissionResponse(
 @Parcelize
 data class VolunteersItem(
 
+	@field:SerializedName("picture")
+	val picture: String? = null,
+
 	@field:SerializedName("address")
 	val address: String? = null,
 

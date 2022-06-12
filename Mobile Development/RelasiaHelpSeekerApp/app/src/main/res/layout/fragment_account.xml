@@ -133,9 +133,10 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/round_button"
+            android:padding="4dp"
             app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
             app:layout_constraintEnd_toEndOf="@+id/iv_profile"
-            app:srcCompat="@drawable/ic_add"
+            app:srcCompat="@drawable/ic_baseline_edit_24"
             app:tint="@color/white"
             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 

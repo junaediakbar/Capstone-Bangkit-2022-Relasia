@@ -409,7 +409,7 @@ class FormFragment : Fragment() {
         val sdf = SimpleDateFormat("dd MMM yyyy")
         val currentDate = sdf.format(Date())
         tvTime.text = "$currentDate"
-        tvDesc.text = "Welcome to Relasia, Let's get help!"
+        tvDesc.text = "Please wait the volunteers"
         tvId.text = "${auth.currentUser?.uid}"
         dialog.show()
 
