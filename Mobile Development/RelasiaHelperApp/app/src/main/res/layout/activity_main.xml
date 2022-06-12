@@ -11,35 +11,34 @@
         android:id="@+id/iv_logo"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="240dp"
         android:src="@drawable/logo"
         android:contentDescription="@string/image_view"
-        android:padding="16dp"
+        android:padding="12dp"
         android:background="@drawable/round_logo"
-        app:layout_constraintBottom_toTopOf="@+id/tv_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/lemonmilk_bold"
+        android:fontFamily="@font/montserrat_bold"
         android:text="@string/relasia"
         android:textColor="@color/white"
-        android:textSize="48sp"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/inter_regular"
+        android:layout_height="0dp"
+        android:fontFamily="@font/montserrat_regular"
         android:text="@string/let_s_help_someone"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_logo" />

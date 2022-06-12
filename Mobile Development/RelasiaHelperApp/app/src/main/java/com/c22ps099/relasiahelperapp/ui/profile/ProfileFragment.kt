@@ -31,7 +31,6 @@ import com.c22ps099.relasiahelperapp.network.responses.VolunteerDetailData
 import com.c22ps099.relasiahelperapp.ui.custom.MyEditTextValidation
 import com.c22ps099.relasiahelperapp.ui.login.LoginFragment
 import com.c22ps099.relasiahelperapp.ui.main.BaseActivity
-import com.c22ps099.relasiahelperapp.ui.missionDetail.MissionDetailFragmentDirections
 import com.c22ps099.relasiahelperapp.utils.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -220,7 +219,9 @@ class ProfileFragment : Fragment() {
                 }
             }
             btnFoundation.setOnClickListener {
-                findNavController().navigate(R.id.foundationDataFragment)
+                val navigateAction = ProfileFragmentDirections
+                    .actionProfileFragmentToFoundationDataFragment()
+                findNavController().navigate(navigateAction)
             }
             btnSave.setOnClickListener {
                 if (getFile != null) {

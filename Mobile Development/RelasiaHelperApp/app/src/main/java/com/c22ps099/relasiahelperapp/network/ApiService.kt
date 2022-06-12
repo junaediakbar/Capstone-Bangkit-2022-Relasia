@@ -1,5 +1,6 @@
 package com.c22ps099.relasiahelperapp.network
 
+import com.c22ps099.relasiahelperapp.data.Foundation
 import com.c22ps099.relasiahelperapp.data.Mission
 import com.c22ps099.relasiahelperapp.data.Volunteer
 import com.c22ps099.relasiahelperapp.network.responses.*
@@ -93,4 +94,11 @@ interface ApiService {
     @Headers("Content-Type: application/json")
     @GET("foundation")
     fun getFoundation(): Call<FoundationResponse>
+
+    @Headers("Content-Type: application/json")
+    @PUT("volunteer/{volunteerId}/foundation")
+    fun registToFoundation(
+        @Path("volunteerId") volunteerId: String,
+        @Body foundation: Foundation
+    ): Call<GeneralResponse>
 }
