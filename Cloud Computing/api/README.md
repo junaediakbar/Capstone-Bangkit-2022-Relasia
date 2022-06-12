@@ -37,8 +37,7 @@ Relasia REST-API: App to Database
         "missions": [_List of All Mission Data_],
         "name": "Helpseeker Name",
         "phone": "083876012340",
-        "province": "Helpseeker province",
-        "picture": "Foudation Picture"
+        "picture": ""
     }
     ```
 
@@ -51,8 +50,7 @@ Relasia REST-API: App to Database
         "id": "helpseeker.id",
         "name": "Helpseeker Name",
         "city": "Helpseeker City",
-        "phone": "082123456789",
-        "province": "Foundation province"
+        "phone": "082123456789"
     }
     ```
 
@@ -67,7 +65,6 @@ Relasia REST-API: App to Database
             "missions": [],
             "name": "Helpseeker Name",
             "phone": "083876012340",
-            "province": "Helpseeker province",
             "picture": ""
         }
     }
@@ -82,9 +79,8 @@ Relasia REST-API: App to Database
         "id": "helpseeker.id",
         "name": "Helpseeker Name", (optional)
         "city": "Helpseeker City", (optional)
-        "phone": "082123456789", (optional)
-        "picture": "image.jpg", (optional)
-        "province": "Helpseeker province" (optional)
+        "phone": "082123456789" (optional)
+        "picture": "image.jpg" (optional)
     }
     ```
 
@@ -154,7 +150,6 @@ Relasia REST-API: App to Database
         "name": "Volunteer baru",
         "phone": "0821123456789",
         "picture": "image.jpg",
-        "province": "Province Volunteer",
         "verified": "false"
 
     }
@@ -172,9 +167,7 @@ Relasia REST-API: App to Database
         "birthyear": "2000",
         "phone" : "0821123456789",
         "address": "Volunteer Address",
-        "city": "Volunteer City",
-        "province": "Volunteer Province",
-        "picture": "Volunteer Picture" (Optional)
+        "city": "Volunteer City"
     }
     ```
 
@@ -194,8 +187,7 @@ Relasia REST-API: App to Database
             "name": "Volunteer baru",
             "phone": "0821123456789",
             "picture": "",
-            "verified": "false",
-            "province": "Volunteer Province"
+            "verified": "false"
         }
     }
     ```
@@ -213,8 +205,7 @@ Relasia REST-API: App to Database
         "gender": "male", (optional)
         "name": "Volunteer Name", (optional)
         "phone": "0821123456787", (optional)
-        "picture": "image.jpg", (optional)
-        "province": "Volunteer Province" (optional)
+        "picture": "image.jpg" (optional)
     }
     ```
 
@@ -230,7 +221,6 @@ Relasia REST-API: App to Database
             "birthyear": "2000",
             "address": "Volunteer Address",
             "city": "Volunteer City",
-            "province": "Volunteer Province",
             "verified": "true"
         }
     }
@@ -321,7 +311,6 @@ Relasia REST-API: App to Database
         "phone": "082199998888",
         "address": "Foundation Address",
         "city": "Foundation City",
-        "province": "Foundation Province",
         "volunteers": [
             {
                 "id": "volunteer.id",
@@ -355,8 +344,7 @@ Relasia REST-API: App to Database
         "name": "Foundation Name",
         "phone": "082199998888",
         "address": "Foundation Address",
-        "city": "Foundation City",
-        "province": "Foundation Province"
+        "city": "Foundation City"
     }
     ```
 
@@ -371,7 +359,6 @@ Relasia REST-API: App to Database
             "phone": "082199998888",
             "address": "Foundation Address",
             "city": "Foundation City",
-            "province": "Foundation Province",
             "volunteers": []
         }
     }
@@ -387,8 +374,7 @@ Relasia REST-API: App to Database
         "name": "Foundation Name", (optional)
         "phone": "082199998888", (optional)
         "address": "Foundation Address", (optional)
-        "city": "Foundation City", (optional)
-        "province": "Foundation Province" (optional)
+        "city": "Foundation City" (optional)
     }
     ```
 
@@ -477,7 +463,6 @@ Relasia REST-API: App to Database
     - province: mission.province (for filter by province)
     - status: "accepted" or "pending" or "rejected" (for filter by volunteers applied status)
     - active: "active" or "inactive" (for filter by mission active or inactive)
-    - title: "mission name" (for filter by title or search query)
 
     Request:
 

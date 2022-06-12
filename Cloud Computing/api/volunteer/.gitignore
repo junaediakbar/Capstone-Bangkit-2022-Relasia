@@ -1,0 +1,10 @@
+# Ignore venv directory
+relasia/
+__pycache__/
+
+# Ignore logs
+logs
+*.log
+
+# Ignore credentials
+credentials.*
