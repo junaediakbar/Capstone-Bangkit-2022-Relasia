@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RelasiaHelpSeekerApp</string>
+    <string name="app_name">Relasia for Helpseeker</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="login">Login</string>
     <string name="email_hint">Email</string>
@@ -88,5 +88,6 @@
     <string name="general_invalid_input">Please fill out the required inputs!</string>
     <string name="tab_text_1">Active</string>
     <string name="tab_text_2">Inactive</string>
+    <string name="msg_token_fmt">fcm: token %s</string>
 
 </resources>

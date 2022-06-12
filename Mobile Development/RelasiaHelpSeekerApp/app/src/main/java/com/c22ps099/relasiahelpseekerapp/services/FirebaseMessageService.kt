@@ -19,8 +19,7 @@ class FirebaseMessageService : FirebaseMessagingService() {
     private val mNotifyManager: NotificationManager? = null
     override fun onNewToken(s: String) {
         super.onNewToken(s)
-
-
+//        Log.e("FCM token",s)
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {

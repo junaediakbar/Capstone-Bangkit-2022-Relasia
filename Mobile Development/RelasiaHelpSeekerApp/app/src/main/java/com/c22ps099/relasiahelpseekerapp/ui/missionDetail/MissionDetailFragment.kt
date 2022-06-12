@@ -19,12 +19,15 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import com.c22ps099.relasiahelpseekerapp.R
+import com.c22ps099.relasiahelpseekerapp.data.adapter.ListMissionsAdapter
 import com.c22ps099.relasiahelpseekerapp.data.adapter.ListVolunteersAdapter
 import com.c22ps099.relasiahelpseekerapp.data.adapter.SlideImageAdapter
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.MissionItem
+import com.c22ps099.relasiahelpseekerapp.data.api.responses.VolunteersItem
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentMissionDetailBinding
 import com.c22ps099.relasiahelpseekerapp.misc.DateFormatter
 import com.c22ps099.relasiahelpseekerapp.ui.account.AccountViewModel
+import com.c22ps099.relasiahelpseekerapp.ui.account.VolunteerAccountFragment
 import com.c22ps099.relasiahelpseekerapp.ui.login.LoginFragment
 import com.c22ps099.relasiahelpseekerapp.ui.main.MainActivity
 import com.c22ps099.relasiahelpseekerapp.ui.missionEdit.MissionEditFragment
@@ -88,6 +91,15 @@ class MissionDetailFragment : Fragment() {
             }
         }
 
+        accountViewModel.getHelpseeker(googleAuth.currentUser?.uid!!)
+        accountViewModel.helpseeker.observe(viewLifecycleOwner) {
+            if (it == null) {
+                accountViewModel.getHelpseeker(googleAuth.currentUser?.uid!!)
+            }
+            phone = it?.phone
+            name = it?.name
+        }
+
         val mission = arguments?.getParcelable<MissionItem>(EXTRA_MISSION) as MissionItem
         showMissionDetail(mission)
         viewModel.getVolunteersbyMissions(mission.id)
@@ -99,7 +111,7 @@ class MissionDetailFragment : Fragment() {
             }
             btnDelete.setOnClickListener {
                 val listImages = mission.featuredImage as List<String?>
-                for(i in 0 until listImages.size-1){
+                for (i in 0 until listImages.size - 1) {
                     val storageReference: StorageReference = FirebaseStorage.getInstance()
                         .getReferenceFromUrl(listImages[i]!!)
                     storageReference.delete().addOnSuccessListener {
@@ -117,27 +129,30 @@ class MissionDetailFragment : Fragment() {
     private fun showMissionDetail(mission: MissionItem) {
         binding?.apply {
 
-            val photoUrl = if(mission.featuredImage?.size!=0){
-                    mission.featuredImage?.get(0)
-            }else{
-                    listOf("")
-                    mission.featuredImage=  listOf("")
+            val photoUrl = if (mission.featuredImage?.size != 0) {
+                mission.featuredImage?.get(0)
+            } else {
+                listOf("")
+                mission.featuredImage = listOf("")
             }
             rvImages.apply {
                 setHasFixedSize(true)
-                layoutManager=LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                adapter=SlideImageAdapter(mission.featuredImage as List<String>)
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                adapter = SlideImageAdapter(mission.featuredImage as List<String>)
             }
 
             var snapHelper = LinearSnapHelper()
             snapHelper.attachToRecyclerView(rvImages)
 
             tvMissionTitle.text = mission.title
-            tvMissionDate.text = DateFormatter.formatDate(mission.startDate) + " - " + DateFormatter.formatDate(mission.endDate)
+            tvMissionDate.text =
+                DateFormatter.formatDate(mission.startDate) + " - " + DateFormatter.formatDate(
+                    mission.endDate
+                )
             tvMissionCity.text = mission.city + ", " + mission.province
             tvMissionReq.text = mission.requirement
             tvMissionNote.text = mission.note
-            ibEdit.setOnClickListener{
+            ibEdit.setOnClickListener {
                 val bundle = bundleOf(MissionEditFragment.EXTRA_MISSION to mission)
                 view?.findNavController()?.navigate(R.id.missionEditFragment, bundle)
             }
@@ -157,40 +172,47 @@ class MissionDetailFragment : Fragment() {
                 layoutManager = setLayoutManager
             }
         }
-        accountViewModel.getHelpseeker(googleAuth.currentUser?.uid!!)
-        accountViewModel.helpseeker.observe(viewLifecycleOwner){
-            phone = it?.phone
-            name = it?.name
-        }
 
-        viewModel.volunteers.observe(viewLifecycleOwner){
-                binding?.rvVolunteersStatus?.apply {
-                    adapter = ListVolunteersAdapter(mission.id!!,viewModel,it)
-                    Log.v("ukuran", "${it.size}")
-                }
-                binding?.apply {
-                    tvMissionTitle.text = mission.title
-                    tvMissionDate.text =
-                        DateFormatter.formatDate(mission.startDate) + " - " + DateFormatter.formatDate(
-                            mission.endDate
-                        )
-                    tvMissionCity.text = mission.city + ", " + mission.province
 
-                    tvMissionReq.text = mission.requirement
-                    tvMissionNote.text = mission.note
-                    tvMissionCp.text = phone + " (" + name + ")"
-                    tvMissionCategory.text = mission.category
-
-                    val acceptedList  = it.filter{it.status=="accepted"}
-                    tvApplicant.text = acceptedList.size.toString() + "/" + mission.numberOfNeeds
-                    pbApplicant.max = mission.numberOfNeeds?.toInt()!!
-                    pbApplicant.progress = acceptedList.size
-                    if (acceptedList.size == mission.numberOfNeeds.toInt()) {
-                        pbApplicant.progressTintList =
-                            ColorStateList.valueOf(resources.getColor(R.color.warm_red))
+        viewModel.volunteers.observe(viewLifecycleOwner) {
+            binding?.rvVolunteersStatus?.apply {
+                adapter = ListVolunteersAdapter(mission.id!!, viewModel, it).apply {
+                    setOnItemClickCallback(object :
+                        ListVolunteersAdapter.OnItemClickCallback {
+                        override fun onItemClicked(data: VolunteersItem) {
+                            val bundle =
+                                bundleOf(VolunteerAccountFragment.EXTRA_VOLUNTEER to data)
+                            view?.findNavController()
+                                ?.navigate(R.id.volunteerAccountFragment, bundle)
+                        }
                     }
-
+                    )
                 }
+                Log.v("ukuran", "${it.size}")
+            }
+            binding?.apply {
+                tvMissionTitle.text = mission.title
+                tvMissionDate.text =
+                    DateFormatter.formatDate(mission.startDate) + " - " + DateFormatter.formatDate(
+                        mission.endDate
+                    )
+                tvMissionCity.text = mission.city + ", " + mission.province
+
+                tvMissionReq.text = mission.requirement
+                tvMissionNote.text = mission.note
+                tvMissionCp.text = phone + " (" + name + ")"
+                tvMissionCategory.text = mission.category
+
+                val acceptedList = it.filter { it.status == "accepted" }
+                tvApplicant.text = acceptedList.size.toString() + "/" + mission.numberOfNeeds
+                pbApplicant.max = mission.numberOfNeeds?.toInt()!!
+                pbApplicant.progress = acceptedList.size
+                if (acceptedList.size == mission.numberOfNeeds.toInt()) {
+                    pbApplicant.progressTintList =
+                        ColorStateList.valueOf(resources.getColor(R.color.warm_red))
+                }
+
+            }
         }
         viewModel.apply {
             isSuccess.observe(viewLifecycleOwner) {

@@ -24,7 +24,7 @@
 
         <TextView
             android:id="@+id/tv_acc_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:drawableEnd="@drawable/ic_man"
@@ -34,6 +34,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             app:drawableTint="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/btn_acc_unbookmark"
             app:layout_constraintStart_toStartOf="@+id/img_acc_profile"
             app:layout_constraintTop_toBottomOf="@+id/img_acc_profile" />
 
@@ -54,18 +55,21 @@
             android:id="@+id/btn_acc_unbookmark"
             android:layout_width="42dp"
             android:layout_height="42dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="28dp"
             android:background="@drawable/ic_favorited"
             android:backgroundTint="@color/warm_red"
             android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@+id/tv_acc_name"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btn_acc_bookmark"
+            app:layout_constraintVertical_bias="0.0"
             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
         <ImageButton
             android:id="@+id/btn_acc_bookmark"
             android:layout_width="42dp"
             android:layout_height="42dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/ic_unfavorited"
             android:backgroundTint="@color/warm_red"
             android:visibility="visible"

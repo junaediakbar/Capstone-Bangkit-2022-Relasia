@@ -1,5 +1,6 @@
 package com.c22ps099.relasiahelpseekerapp.ui.register
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.transition.TransitionInflater
 import android.util.Log
@@ -15,10 +16,13 @@ import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentRegisterBinding
 import com.c22ps099.relasiahelpseekerapp.ui.home.HomeFragment
 import com.c22ps099.relasiahelpseekerapp.ui.login.LoginFragment
+import com.c22ps099.relasiahelpseekerapp.ui.login.LoginFragment.Companion.TAG
 import com.c22ps099.relasiahelpseekerapp.ui.login.LoginFragmentDirections
 import com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.messaging.FirebaseMessaging
 
 
 class RegisterFragment : Fragment() {
@@ -33,8 +37,6 @@ class RegisterFragment : Fragment() {
 
         auth = FirebaseAuth.getInstance()
     }
-
-
 
     private var binding: FragmentRegisterBinding? = null
 
@@ -87,8 +89,10 @@ class RegisterFragment : Fragment() {
         }
     }
 
+    @SuppressLint("StringFormatInvalid")
     private fun signUp() {
         showLoading(true)
+
         binding?.apply {
             val email =etEmail.text.toString()
             val pass = etPassword.text.toString()

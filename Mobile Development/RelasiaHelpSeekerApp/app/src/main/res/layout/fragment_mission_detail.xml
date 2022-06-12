@@ -90,9 +90,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/roboto_regular"
+            android:maxLines="1"
             android:text="@string/mission_date"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@id/tv_mission_title"
+            app:layout_constraintEnd_toEndOf="@+id/ib_edit"
             app:layout_constraintStart_toStartOf="@id/tv_mission_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_mission_category" />
 
@@ -102,9 +103,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/roboto_bold"
+            android:maxLines="1"
             android:text="Kota, Provinsi"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@id/tv_mission_title"
+            app:layout_constraintEnd_toEndOf="@+id/ib_edit"
             app:layout_constraintStart_toStartOf="@id/tv_mission_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_mission_date" />
 

@@ -359,7 +359,7 @@ class FormFragment : Fragment() {
         var countImages = 0
         for (i in 0 until listFile?.size!!) {
             val file = reduceFileImage(listFile[i])
-            val ref = FirebaseStorage.getInstance().getReference("images/${fileName}(${i + 1})")
+            val ref = FirebaseStorage.getInstance().getReference("images/mission/${fileName}(${i + 1})")
             val uploadTask = ref.putFile(Uri.fromFile(file))
             uploadTask.continueWithTask { task ->
                 if (!task.isSuccessful) {

@@ -13,6 +13,7 @@ import com.c22ps099.relasiahelpseekerapp.R
 import com.c22ps099.relasiahelpseekerapp.data.api.responses.VolunteersItem
 import com.c22ps099.relasiahelpseekerapp.databinding.FragmentVolunteerAccountBinding
 import com.c22ps099.relasiahelpseekerapp.misc.visibility
+import java.util.*
 
 class VolunteerAccountFragment : Fragment() {
 
@@ -70,8 +71,11 @@ class VolunteerAccountFragment : Fragment() {
                     .placeholder(R.drawable.ic_baseline_account_circle_24)
                     .into(it)
             }
+
+            val year = Calendar.getInstance().get(Calendar.YEAR);
+            tvAccBirthyear.text = "${year - (volunteer.birthyear?.toInt() ?: 2022)} Years Old"
+
             tvAccName.text = volunteer.name
-            tvAccBirthyear.text=volunteer.name
             tvAccAddress.text=volunteer.address
             tvAccMission.text="${volunteer.missions?.size} Missions Applied"
             tvAccPhone.text= volunteer.phone

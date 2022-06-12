@@ -46,6 +46,8 @@ class ListMissionsAdapter(private var listMissionResponse: List<MissionItem>) :
                 tvVolunteerName.text = mission.title
                 tvVolunteerAge.text = DateFormatter.formatDate(mission.startDate) + " - " + DateFormatter.formatDate(mission.endDate)
                 tvMissionStatus.text = mission.category
+                tvVolunteerPlace.text = mission.city + ", " + mission.province
+
             }
             Glide.with(itemView.context)
                 .load(photoUrl)

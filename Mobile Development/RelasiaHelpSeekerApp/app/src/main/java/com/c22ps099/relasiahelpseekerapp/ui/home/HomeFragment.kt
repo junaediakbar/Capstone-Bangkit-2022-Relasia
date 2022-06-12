@@ -30,6 +30,7 @@ import com.c22ps099.relasiahelpseekerapp.ui.foundationDetail.FoundationDetailFra
 import com.c22ps099.relasiahelpseekerapp.ui.login.LoginFragment
 import com.c22ps099.relasiahelpseekerapp.ui.missionDetail.MissionDetailFragment
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.messaging.FirebaseMessaging
 
 class HomeFragment : Fragment() {
 
@@ -72,6 +73,7 @@ class HomeFragment : Fragment() {
                 commit()
             }
         }
+
         if (auth.currentUser != null) viewModel.checkHelpseeker(auth.currentUser?.uid.toString())
         viewModel.isRegistered.observe(viewLifecycleOwner) { success ->
             if (!success) {
@@ -82,6 +84,16 @@ class HomeFragment : Fragment() {
             }
         }
 
+//        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+//            if (!task.isSuccessful) {
+//                Log.w(LoginFragment.TAG, "Fetching FCM registration token failed", task.exception)
+//                return@OnCompleteListener
+//            }
+//            val token = task.result
+//            val msg = getString(R.string.msg_token_fmt, token)
+//            Log.d(LoginFragment.TAG, msg)
+//            Toast.makeText(activity, msg, Toast.LENGTH_SHORT).show()
+//        })
 
         binding?.apply {
             btnAskHelp.setOnClickListener {
