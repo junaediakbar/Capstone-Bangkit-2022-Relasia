@@ -19,9 +19,9 @@ The model is a rankings model consists of 2 submodels; retreival model and ranke
 
 ## Retrieval Model
 Retrieval model is used to map the keahlian or the volunteer's mission category and volunteer_id into embeddings. Therefore, a TensorFlow embedding algorithm is used for each of the 2 variables. Then at the final layers, a sequential model is used which consists of:
-     -	`Dense(units=16, activation='relu')` layer
-     -	`Dense(units=32, activation='relu')` layer
-     -	`Dense(1)` layer
+    - `Dense(units=16, activation='relu')` layer
+    - `Dense(units=32, activation='relu')` layer
+    - `Dense(1)` layer
 
 ## Rankings Model
 The rankings model is then used as the second submodels to rank the possible recommendation to the user based on the most to the least recommended.
