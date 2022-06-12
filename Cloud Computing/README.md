@@ -34,4 +34,4 @@
 
   For API documentation, see the following link
 
-  https://github.com/junaediakbar/Capstone-Bangkit-2022-Relasia/tree/master/Cloud%20Computing/RelasiaREST
+  <a href="https://github.com/junaediakbar/Capstone-Bangkit-2022-Relasia/tree/cc/Cloud%20Computing/api">REST API Documentation
