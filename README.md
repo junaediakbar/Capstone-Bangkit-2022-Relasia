@@ -22,9 +22,9 @@
     ·
     <a href="">Video Presentation</a>
     ·
-    <a href="">Presentation Slide</a>
+    <a href="https://docs.google.com/presentation/d/1Xw9VBM9u5exyosNxbdv_F2FPDP9E5ZXqFzSAf9pMVMs/edit?usp=sharing">Presentation Slide</a>
     ·
-    <a href="">Go To Market Slide</a>
+    <a href="https://docs.google.com/presentation/d/1CfEd3o9Z3rinhXMAO3FpqT9ID7RvAk8ircxr2RZcSmk/edit?usp=sharing">Go To Market Slide</a>
     <br />
     © C22 - PS099 Bangkit Capstone Team
   </p>
