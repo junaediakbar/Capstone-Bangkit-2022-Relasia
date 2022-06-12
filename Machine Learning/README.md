@@ -5,7 +5,7 @@ Product Based Capstone Bangkit 2022
 
 The project is based from Google Colab and laptop/PC. Using Machine Learning with Tensorflow as framework to recommendation system Collaborative Filtering . 
 
-Collaborative Filtering illustration
+# Collaborative Filtering illustration
 ![Collaborative Filtering](https://user-images.githubusercontent.com/92794664/173233343-f585e8bd-693f-45cd-b71c-7021dc98b77d.png)
 
 
