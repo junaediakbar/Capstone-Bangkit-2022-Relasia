@@ -89,3 +89,6 @@ Product Based Capstone Bangkit 2022
     └── view                        # For Custom view handlers
     
 ## Architecture
+This app uses [***MVVM (Model View View-Model)***](https://developer.android.com/jetpack/docs/guide#recommended-app-arch) architecture.
+
+<img src="https://github.com/junaediakbar/Capstone-Bangkit-2022-Relasia/blob/4fe9956e2d916815f1868e370bb6aa1347077906/Mobile%20Development/assets/mvvm.jpg" width="700"/>
