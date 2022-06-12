@@ -97,7 +97,7 @@ Our project aims to solve the effectiveness problem by building an application t
 
 ### There is the link for Machine Learning Documentation:
 
-https://github.com/junaediakbar/Capstone-Bangkit-2022-Relasia/tree/machine-learning
+https://github.com/junaediakbar/Capstone-Bangkit-2022-Relasia/tree/machine-learning/Machine%20Learning
 
 ## Mobile Development Documentation
 
