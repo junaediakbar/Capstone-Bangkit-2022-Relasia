@@ -51,9 +51,10 @@
 <details open="open">
   <summary>Table of Contents</summary>
   <ol>
+    <a href="#about-the-project">About The Project</a>
     <li><a href="#app-overview">App Overview</a></li>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#documentation">Documentation</a>
       <ul>
         <li><a href="#machine-learning-development-documentation">Machine Learning Development Documentation</a></li>
         <li><a href="#mobile-development-documentation">Mobile Development Documentation</a></li>
@@ -91,7 +92,7 @@ Our project aims to solve the effectiveness problem by building an application t
 
 - **Screenshot**
 
-<!-- Machine Learning Development Documentation -->
+# Documentation
 
 ## Machine Learning Development Documentation
 
