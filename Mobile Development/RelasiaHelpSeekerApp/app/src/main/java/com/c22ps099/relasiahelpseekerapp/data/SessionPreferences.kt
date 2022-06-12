@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import kotlinx.coroutines.flow.map
 
+
 class SessionPreferences private constructor(private val dataStore: DataStore<Preferences>) {
     private val tokenKey = stringPreferencesKey("token")
 

@@ -4,15 +4,9 @@ import androidx.lifecycle.*
 import com.c22ps099.relasiahelpseekerapp.data.SessionPreferences
 import kotlinx.coroutines.launch
 
-class SessionViewModel(private val pref: SessionPreferences) : ViewModel() {
+class SessionViewModel (private val pref: SessionPreferences) : ViewModel() {
     fun getToken(): LiveData<String> {
         return pref.getSavedToken().asLiveData()
-    }
-
-    fun saveToken(token: String) {
-        viewModelScope.launch {
-            pref.saveToken(token)
-        }
     }
 
     @Suppress("UNCHECKED_CAST")

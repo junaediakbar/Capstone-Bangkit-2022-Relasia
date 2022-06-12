@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.missionEdit.MissionEditFragment">
+
+    <TextView
+        android:id="@+id/form_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/title_edit_mission"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/form_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/subtitle_edit_mission"
+        app:layout_constraintStart_toStartOf="@+id/form_title"
+        app:layout_constraintTop_toBottomOf="@+id/form_title" />
+
+    <com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
+        android:id="@+id/et_form_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:drawableStart="@drawable/ic_baseline_people_alt_24"
+        android:drawablePadding="4dp"
+        android:hint="@string/amount_hint"
+        android:minHeight="48dp"
+        android:transitionName="email_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/form_subtitle"
+        tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_title_notes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/notes"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/et_requirement"
+        app:layout_constraintStart_toStartOf="@+id/et_requirement"
+        app:layout_constraintTop_toBottomOf="@id/et_requirement" />
+
+    <EditText
+        android:id="@+id/et_notes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_edittext"
+        android:gravity="top|left"
+        android:hint="@string/notes_hint"
+        android:inputType="textMultiLine"
+        android:lines="8"
+        android:maxLines="10"
+        android:minLines="6"
+        android:padding="8dp"
+        android:scrollbars="vertical"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_title_notes"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_title_notes"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_notes"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_title_requirements"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/requirements"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_form_amount" />
+
+    <EditText
+        android:id="@+id/et_requirement"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_edittext"
+        android:gravity="top|left"
+        android:hint="@string/requirements_hint"
+        android:inputType="textMultiLine"
+        android:lines="8"
+        android:maxLines="10"
+        android:minLines="6"
+        android:padding="8dp"
+        android:scrollbars="vertical"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_title_requirements"
+        app:layout_constraintStart_toStartOf="@+id/tv_title_requirements"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_requirements"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/rounded_shape"
+        android:text="@string/submit"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:transitionName="action_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/et_notes"
+        app:layout_constraintStart_toStartOf="@+id/et_notes"
+        app:layout_constraintTop_toBottomOf="@+id/et_notes"
+        tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

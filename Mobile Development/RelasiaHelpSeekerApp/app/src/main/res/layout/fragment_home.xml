@@ -1,28 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-
-    <Button
-        android:id="@+id/btn_ask_help"
-        android:layout_width="0dp"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/rounded_shape"
-        android:text="@string/ask_for_help"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:transitionName="action_btn"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_latest_posts"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="false"
+                android:layout_marginTop="8dp"
+                android:clipToPadding="false"
+                android:minHeight="100dp"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sec_post"
+                tools:listitem="@layout/item_post" />
+
+            <TextView
+                android:id="@+id/tv_greetings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/inter_regular"
+                android:text="Hello, Relasian"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_profile" />
+
+            <TextView
+                android:id="@+id/tv_greetings_sub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/inter_bold"
+                android:text="Good people always beside you!"
+                android:textSize="28sp"
+                app:layout_constraintEnd_toEndOf="@id/tv_greetings"
+                app:layout_constraintStart_toStartOf="@id/tv_greetings"
+                app:layout_constraintTop_toBottomOf="@id/tv_greetings" />
+
+            <ImageButton
+                android:id="@+id/btn_profile"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/ic_baseline_account_circle_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
+
+            <ImageButton
+                android:id="@+id/btn_logout"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="32dp"
+                android:background="@drawable/ic_logout"
+                android:rotationY="180"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btn_profile"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
+
+            <Button
+                android:id="@+id/btn_ask_help"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/rounded_shape"
+                android:text="@string/ask_for_help"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:transitionName="action_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_home"
+                tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+            <ImageView
+                android:id="@+id/img_home"
+                android:layout_width="181dp"
+                android:layout_height="129dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/img_home_helpseeker"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_greetings_sub" />
+
+            <TextView
+                android:id="@+id/tv_sec_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Latest Posts"
+                app:layout_constraintStart_toStartOf="@+id/btn_ask_help"
+                app:layout_constraintTop_toBottomOf="@+id/btn_ask_help" />
+
+            <TextView
+                android:id="@+id/tv_sec_post2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Foundation Patners"
+                app:layout_constraintStart_toStartOf="@+id/btn_ask_help"
+                app:layout_constraintTop_toBottomOf="@+id/rv_latest_posts" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_nearest_instantion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="false"
+                android:layout_marginTop="8dp"
+                android:clipToPadding="false"
+                android:minHeight="100dp"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/rv_latest_posts"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sec_post2"
+                tools:listitem="@layout/item_post" />
+
+            <TextView
+                android:id="@+id/tv_no_foundation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="No Foundation Founded."
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/rv_nearest_instantion"
+                app:layout_constraintStart_toStartOf="@+id/tv_sec_post2"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sec_post2"
+                app:layout_constraintVertical_bias="0.505" />
+
+            <TextView
+                android:id="@+id/tv_no_mission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="No Mission Founded."
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/tv_sec_post2"
+                app:layout_constraintStart_toStartOf="@+id/tv_sec_post"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sec_post" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/nestedScrollView"
+        app:layout_constraintEnd_toEndOf="@+id/nestedScrollView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
-        tools:ignore="TextContrastCheck,TextContrastCheck" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:title="Home"
         android:id="@+id/homeFragment"
+        app:showAsAction="always"
+        android:orderInCategory="1"
         android:icon="@drawable/ic_home"/>
     <item android:title="Bookmark"
         android:id="@+id/bookmarkFragment"
+        app:showAsAction="always"
+        android:orderInCategory="2"
         android:icon="@drawable/ic_bookmark"/>
     <item android:title="Mission"
         android:id="@+id/missionFragment"
+        app:showAsAction="always"
+        android:orderInCategory="3"
         android:icon="@drawable/ic_list"/>
     <item android:title="Account"
         android:id="@+id/accountFragment"
+        app:showAsAction="always"
+        android:orderInCategory="4"
         android:icon="@drawable/ic_person"/>
 </menu>

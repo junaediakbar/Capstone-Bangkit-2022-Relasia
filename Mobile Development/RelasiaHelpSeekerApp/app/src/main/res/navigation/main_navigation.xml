@@ -3,7 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.c22ps099.relasiahelpseekerapp.ui.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.c22ps099.relasiahelpseekerapp.ui.login.LoginFragment"
@@ -22,7 +38,14 @@
         android:id="@+id/registerFragment"
         android:name="com.c22ps099.relasiahelpseekerapp.ui.register.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.c22ps099.relasiahelpseekerapp.ui.home.HomeFragment"
@@ -30,6 +53,10 @@
         tools:layout="@layout/fragment_home" >
         <argument
             android:name="token"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="userId"
             android:defaultValue=""
             app:argType="string" />
         <action
@@ -44,6 +71,17 @@
         <action
             android:id="@+id/action_homeFragment_to_missionFragment"
             app:destination="@id/missionFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailMissionFragment"
+            app:destination="@id/detailMissionFragment" >
+        </action>
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_foundationDetailFragment"
+            app:destination="@id/foundationDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/formFragment"
@@ -53,11 +91,13 @@
         <argument
             android:name="token"
             app:argType="string"
-            android:defaultValue=""/>
+            android:defaultValue="token"
+            app:nullable="true"/>
         <argument
             android:name="location"
             app:argType="string"
-            android:defaultValue=""/>
+            android:defaultValue=""
+            app:nullable="true"/>
         <argument
             android:name="latitude"
             android:defaultValue="0.0"
@@ -80,12 +120,21 @@
         android:id="@+id/accountFragment"
         android:name="com.c22ps099.relasiahelpseekerapp.ui.account.AccountFragment"
         android:label="fragment_account"
-        tools:layout="@layout/fragment_account" />
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_accountFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/bookmarkFragment"
         android:name="com.c22ps099.relasiahelpseekerapp.ui.bookmarks.BookmarksFragment"
         android:label="fragment_bookmark"
-        tools:layout="@layout/fragment_bookmarks" />
+        tools:layout="@layout/fragment_bookmarks" >
+        <action
+            android:id="@+id/action_bookmarkFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/missionFragment"
         android:name="com.c22ps099.relasiahelpseekerapp.ui.missions.MissionsFragment"
@@ -101,17 +150,57 @@
         android:name="com.c22ps099.relasiahelpseekerapp.ui.form.FormLocationFragment"
         android:label="fragment_form_location"
         tools:layout="@layout/fragment_form_location" >
+        <argument
+            android:name="address"
+            app:argType="string"
+            app:nullable="true"/>
         <action
             android:id="@+id/action_formLocationFragment_to_formFragment"
             app:destination="@id/formFragment" />
     </fragment>
     <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.c22ps099.relasiahelpseekerapp.ui.splash.SplashFragment"
-        android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
+        android:id="@+id/detailMissionFragment"
+        android:name="com.c22ps099.relasiahelpseekerapp.ui.missionDetail.MissionDetailFragment"
+        android:label="fragment_detail_mission"
+        tools:layout="@layout/fragment_mission_detail" >
         <action
-            android:id="@+id/action_splashFragment_to_loginFragment"
+            android:id="@+id/action_detailMissionFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_detailMissionFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+        <action
+            android:id="@+id/action_detailMissionFragment_to_volunteerAccountFragment"
+            app:destination="@id/volunteerAccountFragment" />
+        <action
+            android:id="@+id/action_detailMissionFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_detailMissionFragment_to_missionEditFragment"
+            app:destination="@id/missionEditFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/volunteerAccountFragment"
+        android:name="com.c22ps099.relasiahelpseekerapp.ui.account.VolunteerAccountFragment"
+        android:label="VolunteerAccountFragment" >
+        <action
+            android:id="@+id/action_volunteerAccountFragment_to_foundationDetailFragment"
+            app:destination="@id/foundationDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/foundationDetailFragment"
+        android:name="com.c22ps099.relasiahelpseekerapp.ui.foundationDetail.FoundationDetailFragment"
+        android:label="fragment_foundation_detail"
+        tools:layout="@layout/fragment_foundation_detail" >
+        <action
+            android:id="@+id/action_foundationDetailFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/missionEditFragment"
+        android:name="com.c22ps099.relasiahelpseekerapp.ui.missionEdit.MissionEditFragment"
+        android:label="fragment_mission_edit"
+        tools:layout="@layout/fragment_mission_edit" />
 </navigation>

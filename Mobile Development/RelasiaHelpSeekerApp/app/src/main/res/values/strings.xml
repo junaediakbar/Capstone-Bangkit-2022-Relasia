@@ -1,22 +1,19 @@
 <resources>
-    <string name="app_name">RelasiaHelpSeekerApp</string>
+    <string name="app_name">Relasia for Helpseeker</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login">Login</string>
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
     <string name="login_btn">Login</string>
-    <string name="go_to_register_btn">Register Now</string>
     <string name="logging_in">loading...</string>
     <string name="register">Register</string>
     <string name="username_hint">Username</string>
     <string name="confirm_password_hint">Confirm Password</string>
     <string name="requirements">Requirements</string>
-    <string name="requirements_description">Input your requirements</string>
     <string name="submit">Submit</string>
     <string name="cancel">Cancel</string>
     <string name="name_hint">Nama</string>
-    <string name="name_kegiatan_hint">Nama Kegiatan</string>
+    <string name="name_kegiatan_hint">Activity Name</string>
     <string name="ask_for_help">Ask for help</string>
     <string name="form_subtitle">Please make sure your input is valid</string>
     <string name="location_hint">Location</string>
@@ -25,13 +22,10 @@
     <string name="amount_hint">Amount of helper</string>
     <string name="date_start_hint">Start date</string>
     <string name="date_end_hint">Due to</string>
-    <string name="photo_hint">Photo</string>
     <string name="notes">Notes</string>
     <string name="mission">Missions</string>
-    <string name="account">Account</string>
     <string name="bookmarks">Bookmarks</string>
     <string name="useremail_hint">johndoe@gmail.com</string>
-    <string name="real_name">Fullname</string>
     <string name="birthdate_hint">Birthdate</string>
     <string name="address_hint">Address</string>
     <string name="phone_hint">Phone Number</string>
@@ -41,8 +35,6 @@
     <string name="mission_title">Semeru Eruption 2021</string>
     <string name="mission_date">24 Agustus 2021</string>
     <string name="mission_place">Lumajang, Jawa Timur</string>
-    <string name="mission_req">1. Berusia 18 tahun ke atas\n 2.Diutamakan laki-laki\n 3.Bersedia/berdomisili di Lumajang/sekitarnya</string>
-    <string name="mission_note">Diutamakan laki-laki</string>
     <string name="mission_cp">Contact Person</string>
     <string name="mission_photo">mission photo</string>
     <string name="volunteer_name">Agus Raharjo</string>
@@ -60,23 +52,42 @@
     <string name="form_volunteer_subtitle2">Form Instantion</string>
     <string name="file_hint">Choose a File</string>
     <string name="sk_description">* Masukkan file SK dari instansi relawan, sesuai dengan format berikut : Template SK</string>
+    <string name="post_name">Semeru Eruption 2021</string>
+    <string name="post_date">21/5/2021-12/2/2022</string>
+    <string name="auth">Bearer %1$s</string>
+    <string name="upload_image_file">Image File</string>
+    <string name="permission_denied">Access Denied</string>
+    <string name="validation_error">Password must have at least 6 characters</string>
+    <string name="mission_note">Note</string>
+    <string name="mission_req">Requirements</string>
+    <string name="mission_volunteers">Volunteers</string>
+    <string name="success_add_favorite">Added to bookmark successfully</string>
+    <string name="removed_from_favorite">remove from bookmark successfully</string>
+    <string name="message_validation_email">Please input valid email!</string>
+    <string name="message_validation_password">Password Minimum 6 Character</string>
     <string-array name="Genders">
         <item>Man</item>
         <item>Woman</item>
     </string-array>
 
     <string-array name="Categories">
-        <item>Natural Disaster</item>
-        <item>Leadership and Organization	</item>
-        <item>Social Development</item>
-        <item>Environment</item>
-        <item>Education</item>
-        <item>Human Rights</item>
-        <item>Science and Technology</item>
-        <item>Youth Development</item>
-        <item>Gender Equality</item>
-        <item>Legal Support</item>
-        <item>Difability/Disability</item>
+        <item>Disabilitas</item>
+        <item>Kesehatan	</item>
+        <item>Kesejahteraan Hewan</item>
+        <item>Lingkungan</item>
+        <item>Pendidikan</item>
+        <item>Penanggulangan Bencana</item>
+        <item>Pertanian</item>
+        <item>Pengembangan Masyarakat</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_edit_mission">Edit Mission</string>
+    <string name="subtitle_edit_mission">"There are some fields that you can edit. "</string>
+    <string name="input_cant_blank">This input can\'t be blank</string>
+    <string name="general_invalid_input">Please fill out the required inputs!</string>
+    <string name="tab_text_1">Active</string>
+    <string name="tab_text_2">Inactive</string>
+    <string name="msg_token_fmt">fcm: token %s</string>
 
 </resources>

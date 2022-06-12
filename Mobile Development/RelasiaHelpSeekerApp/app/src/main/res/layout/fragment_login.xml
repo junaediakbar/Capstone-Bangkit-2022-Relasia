@@ -35,12 +35,12 @@
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/username_input"
+            app:layout_constraintStart_toStartOf="@+id/et_email"
             app:layout_constraintTop_toBottomOf="@+id/img_login" />
 
 
         <com.c22ps099.relasiahelpseekerapp.view.editText.EditTextWithValidation
-            android:id="@+id/username_input"
+            android:id="@+id/et_email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -57,7 +57,7 @@
             tools:ignore="TextContrastCheck,TextContrastCheck" />
 
         <com.c22ps099.relasiahelpseekerapp.view.editText.PasswordEditText
-            android:id="@+id/password_input"
+            android:id="@+id/et_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -67,9 +67,9 @@
             android:inputType="textPassword"
             android:minHeight="48dp"
             android:transitionName="password_input"
-            app:layout_constraintEnd_toEndOf="@+id/username_input"
-            app:layout_constraintStart_toStartOf="@+id/username_input"
-            app:layout_constraintTop_toBottomOf="@+id/username_input" />
+            app:layout_constraintEnd_toEndOf="@+id/et_email"
+            app:layout_constraintStart_toStartOf="@+id/et_email"
+            app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
         <Button
             android:id="@+id/btn_login"
@@ -82,21 +82,21 @@
             android:textColor="@color/white"
             android:textSize="16sp"
             android:transitionName="action_btn"
-            app:layout_constraintEnd_toEndOf="@+id/password_input"
+            app:layout_constraintEnd_toEndOf="@+id/et_password"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/password_input"
+            app:layout_constraintStart_toStartOf="@+id/et_password"
             app:layout_constraintTop_toBottomOf="@+id/tv_forgot_password"
             tools:ignore="TextContrastCheck,TextContrastCheck" />
 
         <ProgressBar
-            android:id="@+id/progress"
+            android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/username_input"
-            app:layout_constraintEnd_toEndOf="@+id/password_input"
+            app:layout_constraintBottom_toTopOf="@+id/et_email"
+            app:layout_constraintEnd_toEndOf="@+id/et_password"
             app:layout_constraintHorizontal_bias="0.515"
-            app:layout_constraintStart_toStartOf="@+id/password_input" />
+            app:layout_constraintStart_toStartOf="@+id/et_password" />
 
         <TextView
             android:id="@+id/loading_text"
@@ -104,16 +104,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/logging_in"
-            app:layout_constraintEnd_toEndOf="@+id/progress"
-            app:layout_constraintStart_toStartOf="@+id/progress"
-            app:layout_constraintTop_toBottomOf="@+id/progress" />
+            app:layout_constraintEnd_toEndOf="@+id/progressBar"
+            app:layout_constraintStart_toStartOf="@+id/progressBar"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
         <androidx.constraintlayout.widget.Group
             android:id="@+id/loading_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="invisible"
-            app:constraint_referenced_ids="loading_text,progress" />
+            app:constraint_referenced_ids="loading_text,progressBar" />
 
         <ImageView
             android:id="@+id/or_line"
@@ -127,11 +127,11 @@
             tools:ignore="ImageContrastCheck,ImageContrastCheck" />
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/ib_gmail"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginTop="24dp"
-            android:background="@drawable/round_button"
+            android:background="@drawable/round_button_gmail"
             android:padding="12dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_google"
@@ -149,7 +149,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/or_line"
             app:layout_constraintStart_toStartOf="@+id/or_line"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton">
+            app:layout_constraintTop_toBottomOf="@+id/ib_gmail">
 
 
             <TextView
@@ -178,8 +178,8 @@
             android:layout_marginTop="8dp"
 
             android:text="Forgot password?"
-            app:layout_constraintEnd_toEndOf="@+id/password_input"
-            app:layout_constraintTop_toBottomOf="@+id/password_input" />
+            app:layout_constraintEnd_toEndOf="@+id/et_password"
+            app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
