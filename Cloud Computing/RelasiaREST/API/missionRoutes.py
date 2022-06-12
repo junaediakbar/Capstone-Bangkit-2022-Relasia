@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from firebase_admin import firestore
 from datetime import datetime
+import hashlib
 
 # Initialization Database Reference
 db = firestore.client()
@@ -17,10 +18,6 @@ def addMission():
         # Composite mission_id from hash(helpseeker_id$title)
         title = request.json['title']
         helpseeker_id = request.json['helpseeker']
-        
-        # Hashing Mission ID
-        import hashlib
-
         mission_id = hashlib.sha1(
             (helpseeker_id + "$" + title).encode("utf-8")).hexdigest()
 
@@ -33,7 +30,8 @@ def addMission():
             else:
                 # Add new mission to mission collection
                 mission_data = request.json
-                mission_data["timestamp"] = datetime.now()
+                mission_data["timestamp"] = datetime.now().strftime(
+                    "%Y/%m/%d/%H:%M:%S")
                 mission_data["id"] = mission_id
                 mission_data["volunteers"] = []
                 mission_Ref.document(mission_id).set(mission_data)
@@ -85,6 +83,8 @@ def confirmVolunteers(mission_id):
             for data in mission_data["volunteers"]:
                 if volunteer_id == data["id"]:
                     data["status"] = status
+                    data["timestamp"] = datetime.now().strftime(
+                        "%Y/%m/%d/%H:%M:%S")
                     break
 
             mission_Ref.document(mission_id).update(mission_data)
@@ -132,14 +132,15 @@ def deleteMission():
 @missionRoutes.route('/', methods=['GET'])
 def getMission():
     try:
-        page = request.args.get("page", default=1, type=int)
-        paginate = request.args.get("paginate", default=5, type=int)
-        volunteer_id = request.args.get("volunteer", default="", type=str)
-        helpseeker_id = request.args.get("helpseeker", default="", type=str)
-        city = request.args.get("city", default="", type=str)
-        province = request.args.get("province", default="", type=str)
-        status = request.args.get("status", default="", type=str)
-        active = request.args.get("active", default="", type=str)
+        page = request.args.get("page",          default=1,  type=int)
+        paginate = request.args.get("paginate",  default=5,  type=int)
+        volunteer_id = request.args.get("volunteer",     default="", type=str)
+        helpseeker_id = request.args.get("helpseeker",    default="", type=str)
+        city = request.args.get("city",          default="", type=str)
+        province = request.args.get("province",      default="", type=str)
+        status = request.args.get("status",        default="", type=str)
+        active = request.args.get("active",        default="", type=str)
+        title = request.args.get("title",        default="", type=str)
 
         missions = []
         if volunteer_id:
@@ -158,6 +159,21 @@ def getMission():
                             temp.append(mission)
                 missions = temp
 
+            def orderVolunteerByTimestamp(mission):
+                for volunteer in mission["volunteers"]:
+                    if volunteer["id"] == volunteer_id:
+                        return volunteer["timestamp"]
+
+            missions = sorted(missions, key=orderVolunteerByTimestamp)
+
+            def orderVolunteerByTimestamp(mission):
+                for volunteer in mission["volunteers"]:
+                    if volunteer["id"] == volunteer_id:
+                        return volunteer["timestamp"]
+
+            missions = sorted(
+                missions, key=lambda mission: mission["volunteers"][0]["timestamp"], reverse=True)
+
         elif helpseeker_id:
             helpseeker_data = helpseeker_Ref.document(
                 helpseeker_id).get().to_dict()
@@ -166,9 +182,13 @@ def getMission():
             for data in mission_id:
                 missions.append(mission_Ref.document(data).get().to_dict())
 
+            missions = sorted(
+                missions, key=lambda x: x["timestamp"], reverse=True)
         else:
             # Get all missions from mission collection
             missions = [doc.to_dict() for doc in mission_Ref.stream()]
+            missions = sorted(
+                missions, key=lambda x: x["timestamp"], reverse=True)
 
         if city:
             missions = [
@@ -190,6 +210,11 @@ def getMission():
                 elif active == "inactive" and current > compare:
                     temp.append(mission)
             missions = temp
+
+        if title:
+            missions = [
+                mission for mission in missions if
+                mission["title"].lower().find(title.lower()) != -1]
 
         length = len(missions)
         if page > 1:

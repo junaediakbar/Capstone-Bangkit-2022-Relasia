@@ -14,6 +14,49 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 # Routing
+@app.route('/<string:id>', methods=["GET"])
+def getFoundation(id):
+    try:
+        try:
+            foundation_id = id
+        except:
+            foundation_id = ""
+
+        if foundation_id:
+            foundation_data = foundation_Ref.document(
+                foundation_id).get().to_dict()
+
+            # Get all volunteer of foundation from volunteer collection
+            volunteers = foundation_data["volunteers"]
+            foundation_data["volunteers"] = {}
+
+            for volunteer in volunteers:
+                print(volunteer["status"])
+                volunteer_data = volunteer_Ref.document(
+                    volunteer["id"]).get().to_dict()
+
+                foundation_data["volunteers"][volunteer["id"]] = {
+                    "status": volunteer_data["id"],
+                    "name": volunteer_data["name"],
+                    "gender": volunteer_data["gender"],
+                    "missions": volunteer_data["missions"],
+                    "city": volunteer_data["city"],
+                    "province": volunteer_data["province"],
+                    "address": volunteer_data["address"]
+                }
+
+            data = foundation_Ref.document(foundation_id).get().to_dict()
+
+            # HTTP response code: 200 OK
+            return data, 200
+        else:
+            # HTTP response code: 400 Bad Request
+            return jsonify(message="Bad Request"), 400
+
+    except Exception as e:
+        return f"An Error Occurred: {e}"
+
+
 @app.route('/', methods=["GET"])
 def getFilteredFoundation():
     try:
@@ -27,6 +70,8 @@ def getFilteredFoundation():
             foundations = [doc.to_dict() for doc in foundation_Ref.stream()]
             for data in foundations:
                 if filter == data["city"]:
+                    foundation_id.append(data["id"])
+                if filter == data["province"]:
                     foundation_id.append(data["id"])
 
             foundation_id = list(dict.fromkeys(foundation_id))
@@ -43,55 +88,18 @@ def getFilteredFoundation():
         }
 
         return response, 200
-    
     except Exception as e:
         return f"An Error Occurred: {e}"
 
-@app.route('/<string:id>', methods=["GET"])
-def getFoundation(id):
-    try:
-        try:
-            foundation_id = id
-        except:
-            foundation_id = ""
-
-        if foundation_id:
-            foundation_data = foundation_Ref.document(foundation_id).get().to_dict()
-
-            # Get all volunteer of foundation from volunteer collection
-            volunteers = foundation_data["volunteers"]
-            foundation_data["volunteers"] = {}
-
-            for volunteer in volunteers:
-                print(volunteer["status"])
-                volunteer_data = volunteer_Ref.document(volunteer["id"]).get().to_dict()
-
-                foundation_data["volunteers"][volunteer["id"]] = {
-                    "status": volunteer_data["id"],
-                    "name": volunteer_data["name"],
-                    "gender": volunteer_data["gender"],
-                    "missions": volunteer_data["missions"],
-                    "city": volunteer_data["city"],
-                    "province": volunteer_data["province"],
-                    "address": volunteer_data["address"]
-                }
-
-            data = foundation_Ref.document(foundation_id).get().to_dict()
-
-            # HTTP response code: 200 OK
-            return data, 200
-        
-        else:
-            # HTTP response code: 400 Bad Request
-            return jsonify(message="Bad Request"), 400
-
-    except Exception as e:
-        return f"An Error Occurred: {e}"
 
 @app.route('/', methods=["POST"])
 def addFoundation():
     try:
         data = request.json
+        try:
+            data["picture"] = request.json["picture"]
+        except:
+            data["picture"] = ""
         data["volunteers"] = []
 
         foundation = foundation_Ref.document(data["id"]).get()
@@ -104,9 +112,9 @@ def addFoundation():
 
         # HTTP response code: 200 OK
         return jsonify(message="Successfully Created", data=data), 200
-    
     except Exception as e:
         return f"An Error Occurred: {e}"
+
 
 @app.route("/", methods=['PUT'])
 def editFoundation():
@@ -121,13 +129,13 @@ def editFoundation():
 
             # HTTP response code: 200 OK
             return jsonify(message="Successfully Updated", data=data), 200
-        
         else:
             # HTTP response code: 400 Bad Request
             return jsonify(message="Bad Request"), 400
 
     except Exception as e:
         return f"An Error Occurred: {e}"
+
 
 @app.route('/<string:foundation_id>', methods=['PUT'])
 def validateMember(foundation_id):
@@ -156,13 +164,13 @@ def validateMember(foundation_id):
 
             # HTTP response code: 200 OK
             return jsonify(message="Successfully Updated"), 200
-        
         else:
             # HTTP response code: 400 Bad Request
             return jsonify(message="Bad Request"), 400
 
     except Exception as e:
         return f"An Error Occurred: {e}"
+
 
 @app.route('/', methods=['DELETE'])
 def deleteFoundation():
@@ -188,11 +196,9 @@ def deleteFoundation():
 
             # HTTP response code: 200 OK
             return jsonify(message="Successfully Deleted"), 200
-        
         else:
             # HTTP response code: 400 Bad Request
             return jsonify(message="Bad Request"), 400
-    
     except Exception as e:
         return f"An Error Occurred: {e}"
 

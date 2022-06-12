@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Birthyear</th>
+            <th>Phone</th>
+            <th>City</th>
+            <th>Address</th>
+            <th>Legal</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+      {% for member in members %}
+        <tr>
+            <td>{{ member.name }}</td>
+            <td>{{ member.gender }}</td>
+            <td>{{ member.birthyear }}</td>
+            <td>{{ member.phone }}</td>
+            <td>{{ member.city }}</td>
+            <td>{{ member.address }}</td>
+            <td><button type="button" class="accepted">download</button></td>
+            {% if member.status == "pending" %}
+            <td><button type="button" class="pending">{{ member.status }}</button></td>
+            {% else %}
+            <td><button type="button" class="accepted">{{ member.status }}</button></td>
+            {% endif %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable({
+        columns: [
+          null,
+          {orderable: false, searchable: false},
+          {orderable: false, searchable: false},
+          {orderable: false, searchable: false},
+          {orderable: false, searchable: false},
+          {orderable: false, searchable: false},
+          {orderable: false, searchable: false},
+          null
+        ],
+      });
+    });
+  </script>
+{% endblock %}

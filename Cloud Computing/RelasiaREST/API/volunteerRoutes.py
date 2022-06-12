@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from firebase_admin import firestore
+from datetime import datetime
 
 db = firestore.client()
 volunteer_Ref = db.collection('volunteer')
@@ -13,7 +14,10 @@ volunteerRoutes = Blueprint('volunteerRoutes', __name__)
 def addVolunteer():
     try:
         data = request.json
-        data["picture"] = ""
+        try:
+            data["picture"] = request.json["picture"]
+        except:
+            data["picture"] = ""
         data["foundations"] = []
         data["missions"] = []
         data["verified"] = "false"
@@ -104,7 +108,11 @@ def applyMission(volunteer_id):
 
             # Update volunteer of a mission on mission collection
             mission_data["volunteers"].append(
-                {"id": volunteer_id, "status": "pending"})
+                {
+                    "id": volunteer_id,
+                    "status": "pending",
+                    "timestamp": datetime.now().strftime("%Y/%m/%d/%H:%M:%S")
+                })
             mission_Ref.document(mission_id).update(mission_data)
 
             # Update mission of a volunteer on volunteer collection
