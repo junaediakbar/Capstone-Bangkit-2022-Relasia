@@ -38,10 +38,10 @@ Dummydataset dataset is used to try and train the model. For the deployment a di
 # Deployment
 The model architecture then deployed to backend service / google cloud for then the model will get the data and process it and finally send the recommendation to the application
 
-## train
+## train.py
 The train file is used to constantly train the model so that it can adapt to the updated dataset from the user. After training the model with the updated data, the file will then save the model to the google cloud storage, which then be used by the predict file to send the recommendation to the Android application
 
-## predict
+## predict.py
 Predict is used to get the model that is saved for predictions. The file will get the updated data based on a specific volunteer id. The predict will return the recommendations prediction in a JSON format.
 
 # Prerequisites
