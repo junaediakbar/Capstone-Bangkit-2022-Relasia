@@ -3,12 +3,10 @@
 # Recommendation System Model 
 Recommendation System or Recommender System is a information filtering system based on machine learning which is made to predict user preference. The recommendation system is based on collaborative filtering techniques, which tried to predict user behaviour or preference based on collaborative data from all the user in the application
 
-# Datasets 
-=======
-The project is based from Google Colab and laptop/PC. Using Machine Learning with Tensorflow as framework to recommendation system Collaborative Filtering . 
-
-# Collaborative Filtering illustration
+## Collaborative Filtering illustration
 ![Collaborative Filtering](https://user-images.githubusercontent.com/92794664/173233343-f585e8bd-693f-45cd-b71c-7021dc98b77d.png)
+
+# Datasets 
 
 ## 1. Indorelawan
 Indorelawan dataset consists of data scrapped from indorelawan.org website. The dataset consist of four columns, which is nomor, nama, keahlian, and lokasi. Nomor is the index of the dataset, nama is the foundation's name, keahlian is the category of the mission (i.e. health, law, etc.), and lokasi is the location of the foundation. This data is further used to create dummy dataset for backend database and machine learning model building.
