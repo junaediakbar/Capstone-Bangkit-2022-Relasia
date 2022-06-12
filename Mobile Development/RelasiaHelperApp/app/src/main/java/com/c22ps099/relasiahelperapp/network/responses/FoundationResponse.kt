@@ -29,9 +29,6 @@ data class FoundationDataItem(
 	@field:SerializedName("name")
 	val name: String,
 
-	@field:SerializedName("volunteers")
-	val volunteers: VolunteersGroup,
-
 	@field:SerializedName("id")
 	val id: String
 ) : Parcelable

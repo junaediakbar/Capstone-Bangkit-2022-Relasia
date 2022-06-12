@@ -89,4 +89,8 @@ interface ApiService {
     fun updateVolunteer(
         @Body volunteer: Volunteer
     ): Call<AddNewVolunteerResponse>
+
+    @Headers("Content-Type: application/json")
+    @GET("foundation")
+    fun getFoundation(): Call<FoundationResponse>
 }

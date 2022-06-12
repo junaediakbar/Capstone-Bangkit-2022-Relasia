@@ -34,6 +34,7 @@ class BaseActivity : AppCompatActivity() {
                 R.id.loginFragment -> binding?.navView?.visibility = View.GONE
                 R.id.registerFragment -> binding?.navView?.visibility = View.GONE
                 R.id.missionDetailFragment -> binding?.navView?.visibility = View.GONE
+                R.id.foundationDataFragment -> binding?.navView?.visibility = View.GONE
                 else -> binding?.navView?.visibility = View.VISIBLE
             }
         }

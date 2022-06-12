@@ -97,6 +97,17 @@
             app:destination="@id/loginFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_profileFragment_to_foundationDataFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/profileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/foundationDataFragment"
+        android:name="com.c22ps099.relasiahelperapp.ui.profile.FoundationDataFragment"
+        android:label="Foundation"
+        tools:layout="@layout/fragment_foundation_data">
     </fragment>
 
     <fragment

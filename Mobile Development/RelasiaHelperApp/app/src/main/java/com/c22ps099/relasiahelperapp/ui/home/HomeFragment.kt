@@ -2,9 +2,11 @@ package com.c22ps099.relasiahelperapp.ui.home
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.provider.Settings
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -132,23 +134,8 @@ class HomeFragment : Fragment() {
                 }
 
             })
-            btnNotification.setOnClickListener {
-                val navigateAction = HomeFragmentDirections
-                    .actionHomeFragmentToProfileFragment()
-                findNavController().navigate(navigateAction)
-
-                val mProfileFragment = ProfileFragment()
-                val mFragmentManager = parentFragmentManager
-                mFragmentManager.beginTransaction().apply {
-                    replace(
-                        R.id.nav_host_fragment,
-                        mProfileFragment,
-                        ProfileFragment::class.java.simpleName
-                    )
-                    addToBackStack(null)
-                    setReorderingAllowed(true)
-                    commit()
-                }
+            btnSettings.setOnClickListener {
+                startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
             }
         }
     }

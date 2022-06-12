@@ -44,15 +44,16 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="@color/blue_500" />
 
-            <ImageView
-                android:id="@+id/iv_detail_mission"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_images"
                 android:layout_width="match_parent"
                 android:layout_height="360dp"
-                android:scaleType="fitCenter"
-                android:contentDescription="@string/image_view"
-                android:src="@drawable/no_image_placeholder"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                tools:listitem="@layout/item_image_slide"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <View
@@ -61,7 +62,7 @@
                 android:layout_height="0.5dp"
                 android:background="@drawable/line_bottom_img"
                 android:translationZ="90dp"
-                app:layout_constraintTop_toBottomOf="@+id/iv_detail_mission" />
+                app:layout_constraintTop_toBottomOf="@+id/rv_images" />
 
             <TextView
                 android:id="@+id/tv_mission_title"

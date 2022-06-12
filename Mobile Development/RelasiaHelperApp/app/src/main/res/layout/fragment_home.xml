@@ -18,17 +18,17 @@
         android:iconifiedByDefault="false"
         android:queryBackground="@android:color/transparent"
         android:queryHint="Search Mission"
-        app:layout_constraintEnd_toStartOf="@id/btn_notification"
+        app:layout_constraintEnd_toStartOf="@id/btn_settings"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/btn_notification"
+        android:id="@+id/btn_settings"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginEnd="32dp"
-        android:contentDescription="@string/button_notification"
-        android:background="@drawable/ic_baseline_notifications_24"
+        android:contentDescription="@string/button_settings"
+        android:background="@drawable/ic_baseline_settings_24"
         app:layout_constraintBottom_toBottomOf="@id/sv_home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/sv_home"

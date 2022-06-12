@@ -20,8 +20,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
 import com.c22ps099.relasiahelperapp.R
+import com.c22ps099.relasiahelperapp.adapter.SlideImageAdapter
 import com.c22ps099.relasiahelperapp.data.Mission
 import com.c22ps099.relasiahelperapp.databinding.FragmentMissionDetailBinding
 import com.c22ps099.relasiahelperapp.network.responses.MissionDataItem
@@ -165,18 +167,21 @@ class MissionDetailFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun setMissionDetailData(mission: MissionDetailResponse) {
         binding?.apply {
-            ivDetailMission.let {
-                val url = if (mission.featuredImage?.size != 0) {
-                    mission.featuredImage?.get(0)
-                } else {
-                    listOf("")
-                    mission.featuredImage = listOf("")
-                }
-                Glide.with(requireActivity())
-                    .load(url)
-                    .placeholder(R.drawable.no_image_placeholder)
-                    .into(it)
+            if (mission.featuredImage?.size != 0) {
+                mission.featuredImage?.get(0)
+            } else {
+                listOf("")
+                mission.featuredImage = listOf("")
             }
+            rvImages.apply {
+                setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                adapter = SlideImageAdapter(mission.featuredImage as List<String>)
+            }
+
+            val snapHelper = LinearSnapHelper()
+            snapHelper.attachToRecyclerView(rvImages)
+
             tvMissionTitle.text = mission.title
             tvMissionDate.text =
                 DateFormatter.formatDate(mission.startDate) + " - " + DateFormatter.formatDate(
@@ -235,7 +240,10 @@ class MissionDetailFragment : Fragment() {
         try {
             context?.packageManager?.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA)
             helpseekerWa.drop(1)
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://wa.me/62${helpseekerWa}?text=Hello%20I'm%20volunteer%20from%20Relasia"))
+            val intent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://wa.me/62${helpseekerWa}?text=Hello%20I'm%20volunteer%20from%20Relasia")
+            )
             startActivity(intent)
         } catch (e: PackageManager.NameNotFoundException) {
             Toast.makeText(context, "WhatsApp not Installed", Toast.LENGTH_SHORT).show()

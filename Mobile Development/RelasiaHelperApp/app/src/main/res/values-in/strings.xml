@@ -1,0 +1,97 @@
+<resources>
+    <string name="app_name">RelasiaHelperApp</string>
+    <!-- Strings related to login -->
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_home">Home</string>
+    <string name="title_bookmarks">Bookmarks</string>
+    <string name="title_missions">Missions</string>
+    <string name="title_profile">Profile</string>
+    <string name="mission_photo">Foto Mission</string>
+    <string name="mission_title">Judul Mission</string>
+    <string name="mission_date">Tanggal Mulai - Tanggal Selesai</string>
+    <string name="mission_req">Persyaratan</string>
+    <string name="mission_note">Catatan</string>
+    <string name="mission_cp">Kontak</string>
+    <string name="loading_data">Memuat…</string>
+    <string name="error">Terdapat kesalahan. Mohon coba lagi.</string>
+    <string name="refresh">Muat ulang</string>
+    <string name="title_mission_detail">Detail Mission</string>
+    <string name="add_bookmark">Bookmark berhasil</string>
+    <string name="delete_bookmark">Unbookmark berhasil</string>
+    <string name="useremail_hint">username@mail.com</string>
+    <string name="name_hint">Nama</string>
+    <string name="birthdate_hint">Tanggal Lahir</string>
+    <string name="address_hint">Alamat</string>
+    <string name="province_hint">Provinsi</string>
+    <string name="phone_hint">No HP</string>
+    <string name="save">Simpan</string>
+    <string name="fill_data_foundation">Isi Data Foundation</string>
+    <string name="logout">Keluar</string>
+    <string name="auth">Bearer %1$s</string>
+    <string name="permission_denied">Permission Ditolak</string>
+    <string name="message_validation_email">Format email Anda tidak valid</string>
+    <string name="message_validation_password">Password Anda harus minimal 6 karakter</string>
+    <string name="tab_text_1">Menunggu</string>
+    <string name="tab_text_2">Ditolak</string>
+    <string name="tab_text_3">Diterima</string>
+    <string name="input_cant_blank">Kolom input tidak boleh kosong</string>
+    <string name="city_province">Kota, Provinsi</string>
+    <string name="category">Kategori</string>
+    <string name="_5">5</string>
+    <string name="details">Detail</string>
+    <string name="status">Status</string>
+    <string name="image_view">Image View</string>
+    <string name="register">Daftar</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Konfirmasi Password</string>
+    <string name="do_you_have_an_account">Apakah anda telah mendaftar?</string>
+    <string name="login_now">Masuk sekarang</string>
+    <string name="image_button">Image Button</string>
+    <string name="missions">Missions</string>
+    <string name="missions_could_not_be_loaded">Missions tidak dapat dimuat</string>
+    <string name="retry">Muat Ulang</string>
+    <string name="no_missions_you_applied">Belum ada mission yang Anda daftari</string>
+    <string name="back_button">Tombol Kembali</string>
+    <string name="button_bookmark">Tombol Bookmark</string>
+    <string name="_4_5">4/5</string>
+    <string name="fill_requirement">1. Syarat pertama\n2. Syarat kedua</string>
+    <string name="fill_notes">Isi catatan</string>
+    <string name="fill_phone">No HP (Helpseeker)</string>
+    <string name="apply">Daftar</string>
+    <string name="login">Masuk</string>
+    <string name="forgot_password">Lupa Password?</string>
+    <string name="or">atau</string>
+    <string name="gmail_login">Masuk dengan Gmail</string>
+    <string name="don_t_have_an_account">Tidak punya akun?</string>
+    <string name="register_now">Daftar sekarang</string>
+    <string name="button_settings">Tombol Pengaturan</string>
+    <string name="no_results_found_for_this_query">Tidak ada hasil</string>
+    <string name="hello_volunteer_name">Halo, Nama Relawan</string>
+    <string name="quotes">Langkahmu membuat hidup seseorang lebih baik</string>
+    <string name="bookmarks">Bookmarks</string>
+    <string name="example_date">23 Jun 2022</string>
+    <string name="example_desc">ID Mission: 112122112</string>
+    <string name="your_application_is_successful">Pendaftaranmu berhasil</string>
+    <string name="approval_will_be_processed_no_later_than_24_hours">Persetujuan akan diproses paling lambat 24 jam</string>
+    <string name="back_to_home">Kembali ke Home</string>
+    <string name="data_submitted_successfully">Data berhasil disubmit</string>
+    <string name="your_data_will_be_verified_at_least_24_hours">Data Anda akan diverifikasi paling lambat 24 jam</string>
+    <string name="welcome_to_relasia">Selamat Datang di Relasia</string>
+    <string name="please_fill_your_profile_before_looking_for_missions_to_help_someone">Mohon lengkapi profil Kamu sebelum mencari mission</string>
+    <string name="fill_profile">Lengkapi Profil</string>
+    <string name="relasia">RELASIA</string>
+    <string name="let_s_help_someone">Let’s help someone!</string>
+
+    <string-array name="Genders">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sk_description">*Mohon kirimkan file SK dari foundation Anda.</string>
+    <string name="foundation_data">Data Foundation</string>
+    <string name="upload_file">Unggah File</string>
+    <string name="attach_file_pdf">Lampirkan file PDF</string>
+
+</resources>

@@ -65,7 +65,7 @@
     <string name="gmail_login">Gmail Login</string>
     <string name="don_t_have_an_account">Don’t have an account?</string>
     <string name="register_now">Register Now</string>
-    <string name="button_notification">Button Notification</string>
+    <string name="button_settings">Button Settings</string>
     <string name="no_results_found_for_this_query">No results found for this query</string>
     <string name="hello_volunteer_name">Hello, Volunteer Name</string>
     <string name="quotes">Your move make someone life better</string>
@@ -87,5 +87,11 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sk_description">*Please submit SK file from your foundation.</string>
+    <string name="foundation_data">Foundation Data</string>
+    <string name="upload_file">Upload File</string>
+    <string name="attach_file_pdf">Attach file PDF</string>
 
 </resources>
