@@ -16,7 +16,7 @@
     <a href="https://github.com/junaediakbar/Capstone-Bangkit-2022-Relasia"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="">Project Brief</a>
+    <a href="https://docs.google.com/document/d/1gTVpHvih4-n0Zz15Q_lf2WUzdGcisrBXuGFCLfJ1s6A/edit?usp=sharing">Project Brief</a>
     ·
     <a href="https://drive.google.com/file/d/11AbFoH_wf3kvYRrSVPP4e_mInSJuD5si/view?usp=sharing">Volunteers APK Link</a>
     ·
