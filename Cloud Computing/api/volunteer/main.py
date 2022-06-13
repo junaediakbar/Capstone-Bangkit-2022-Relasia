@@ -15,7 +15,7 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 # Routing
-@volunteerRoutes.route('/', methods=['POST'])
+@app.route('/', methods=['POST'])
 def addVolunteer():
     try:
         data = request.json
@@ -40,7 +40,7 @@ def addVolunteer():
         return f"An Error Occurred: {e}"
 
 
-@volunteerRoutes.route('/', methods=['PUT'])
+@app.route('/', methods=['PUT'])
 def editVolunteer():
     try:
         volunteer_id = request.json["id"]
@@ -61,7 +61,7 @@ def editVolunteer():
         return f"An Error Occurred: {e}"
 
 
-@volunteerRoutes.route('/<string:volunteer_id>/foundation', methods=['PUT'])
+@app.route('/<string:volunteer_id>/foundation', methods=['PUT'])
 def registerFoundation(volunteer_id):
     try:
         foundation_id = request.json['foundation']
@@ -96,7 +96,7 @@ def registerFoundation(volunteer_id):
         return f"An Error Occurred: {e}"
 
 
-@volunteerRoutes.route('/<string:volunteer_id>/mission', methods=['PUT'])
+@app.route('/<string:volunteer_id>/mission', methods=['PUT'])
 def applyMission(volunteer_id):
     try:
         volunteer = volunteer_Ref.document(volunteer_id).get()
@@ -134,7 +134,7 @@ def applyMission(volunteer_id):
         return f"An Error Occured: {e}"
 
 
-@volunteerRoutes.route('/', methods=['DELETE'])
+@app.route('/', methods=['DELETE'])
 def deleteVolunteer():
     volunteer_id = request.json['id']
     try:
@@ -174,7 +174,7 @@ def deleteVolunteer():
         return f"An Error Occurred: {e}"
 
 
-@volunteerRoutes.route('/<string:id>', methods=['GET'])
+@app.route('/<string:id>', methods=['GET'])
 def getVolunteer(id):
     try:
         try:
