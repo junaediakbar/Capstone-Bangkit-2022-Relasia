@@ -7,7 +7,7 @@ Relasia REST-API: App to Database
 - Local Host: Run with python, local IP and Port:5000
   `http://127.0.0.1:5000/` or `http://localhost:5000/`
 - Online Domain:
-  `https://relasia-api.herokuapp.com/`
+  `https://relasia-api-gateway-3fo42ffl.uc.gateway.dev/`
 
 # Endpoint Route
 
@@ -16,7 +16,7 @@ Relasia REST-API: App to Database
   URL Route:
   `http://127.0.0.1:5000/helpseeker/`
   or
-  `https://relasia-api.herokuapp.com/helpseeker/`
+  `https://relasia-api-gateway-3fo42ffl.uc.gateway.dev/helpseeker/`
 
   - **[GET]** _Get Specific Helpseeker_
 
@@ -37,7 +37,8 @@ Relasia REST-API: App to Database
         "missions": [_List of All Mission Data_],
         "name": "Helpseeker Name",
         "phone": "083876012340",
-        "picture": ""
+        "province": "Helpseeker province",
+        "picture": "Foudation Picture"
     }
     ```
 
@@ -50,7 +51,8 @@ Relasia REST-API: App to Database
         "id": "helpseeker.id",
         "name": "Helpseeker Name",
         "city": "Helpseeker City",
-        "phone": "082123456789"
+        "phone": "082123456789",
+        "province": "Foundation province"
     }
     ```
 
@@ -65,6 +67,7 @@ Relasia REST-API: App to Database
             "missions": [],
             "name": "Helpseeker Name",
             "phone": "083876012340",
+            "province": "Helpseeker province",
             "picture": ""
         }
     }
@@ -79,8 +82,9 @@ Relasia REST-API: App to Database
         "id": "helpseeker.id",
         "name": "Helpseeker Name", (optional)
         "city": "Helpseeker City", (optional)
-        "phone": "082123456789" (optional)
-        "picture": "image.jpg" (optional)
+        "phone": "082123456789", (optional)
+        "picture": "image.jpg", (optional)
+        "province": "Helpseeker province" (optional)
     }
     ```
 
@@ -124,7 +128,7 @@ Relasia REST-API: App to Database
 
   Example:
 
-  `http://127.0.0.1:5000/volunteer/` or `https://relasia-api.herokuapp.com/volunteer/`
+  `http://127.0.0.1:5000/volunteer/` or `https://relasia-api-gateway-3fo42ffl.uc.gateway.dev/volunteer/`
 
   - **[GET]** _Get Specific Volunteer_
 
@@ -150,6 +154,7 @@ Relasia REST-API: App to Database
         "name": "Volunteer baru",
         "phone": "0821123456789",
         "picture": "image.jpg",
+        "province": "Province Volunteer",
         "verified": "false"
 
     }
@@ -167,7 +172,9 @@ Relasia REST-API: App to Database
         "birthyear": "2000",
         "phone" : "0821123456789",
         "address": "Volunteer Address",
-        "city": "Volunteer City"
+        "city": "Volunteer City",
+        "province": "Volunteer Province",
+        "picture": "Volunteer Picture" (Optional)
     }
     ```
 
@@ -187,7 +194,8 @@ Relasia REST-API: App to Database
             "name": "Volunteer baru",
             "phone": "0821123456789",
             "picture": "",
-            "verified": "false"
+            "verified": "false",
+            "province": "Volunteer Province"
         }
     }
     ```
@@ -205,7 +213,8 @@ Relasia REST-API: App to Database
         "gender": "male", (optional)
         "name": "Volunteer Name", (optional)
         "phone": "0821123456787", (optional)
-        "picture": "image.jpg" (optional)
+        "picture": "image.jpg", (optional)
+        "province": "Volunteer Province" (optional)
     }
     ```
 
@@ -221,6 +230,7 @@ Relasia REST-API: App to Database
             "birthyear": "2000",
             "address": "Volunteer Address",
             "city": "Volunteer City",
+            "province": "Volunteer Province",
             "verified": "true"
         }
     }
@@ -290,7 +300,7 @@ Relasia REST-API: App to Database
 
   Example:
 
-  `http://127.0.0.1:5000/foundation/` or `https://relasia-api.herokuapp.com/foundation/`
+  `http://127.0.0.1:5000/foundation/` or `https://relasia-api-gateway-3fo42ffl.uc.gateway.dev/foundation/`
 
   - **[GET]** _Get Foundation_
 
@@ -311,6 +321,7 @@ Relasia REST-API: App to Database
         "phone": "082199998888",
         "address": "Foundation Address",
         "city": "Foundation City",
+        "province": "Foundation Province",
         "volunteers": [
             {
                 "id": "volunteer.id",
@@ -344,7 +355,8 @@ Relasia REST-API: App to Database
         "name": "Foundation Name",
         "phone": "082199998888",
         "address": "Foundation Address",
-        "city": "Foundation City"
+        "city": "Foundation City",
+        "province": "Foundation Province"
     }
     ```
 
@@ -359,6 +371,7 @@ Relasia REST-API: App to Database
             "phone": "082199998888",
             "address": "Foundation Address",
             "city": "Foundation City",
+            "province": "Foundation Province",
             "volunteers": []
         }
     }
@@ -374,7 +387,8 @@ Relasia REST-API: App to Database
         "name": "Foundation Name", (optional)
         "phone": "082199998888", (optional)
         "address": "Foundation Address", (optional)
-        "city": "Foundation City" (optional)
+        "city": "Foundation City", (optional)
+        "province": "Foundation Province" (optional)
     }
     ```
 
@@ -446,7 +460,7 @@ Relasia REST-API: App to Database
 
   Example:
 
-  `http://127.0.0.1:5000/mission/` or `https://relasia-api.herokuapp.com/mission/`
+  `http://127.0.0.1:5000/mission/` or `https://relasia-api-gateway-3fo42ffl.uc.gateway.dev/mission/`
 
   - **[GET]** _Get All Mission or Filtered Mission_
 
@@ -463,6 +477,7 @@ Relasia REST-API: App to Database
     - province: mission.province (for filter by province)
     - status: "accepted" or "pending" or "rejected" (for filter by volunteers applied status)
     - active: "active" or "inactive" (for filter by mission active or inactive)
+    - title: "mission name" (for filter by title or search query)
 
     Request:
 
