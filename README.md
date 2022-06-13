@@ -20,7 +20,7 @@
     ·
     <a href="https://drive.google.com/file/d/1zhuleb28CFmpMcE-Sz9kToYMzGL7OnGu/view?usp=sharing">Help Seekers APK Link</a>
     ·
-    <a href="">Video Presentation</a>
+    <a href="https://youtu.be/QrIgG2bFTN4">Video Presentation</a>
     ·
     <a href="https://docs.google.com/presentation/d/1Xw9VBM9u5exyosNxbdv_F2FPDP9E5ZXqFzSAf9pMVMs/edit?usp=sharing">Presentation Slide</a>
     ·
