@@ -94,13 +94,17 @@ Our project aims to solve the effectiveness problem by building an application t
 
 - **Screenshot**
   ### Project Architecture
+  
   <img src="https://cdn.discordapp.com/attachments/990072695599288360/995323897945784351/arch.png" alt="Project Arch" >
+  
   ### Volunteer Sided App
+  
   <img src="https://cdn.discordapp.com/attachments/990072695599288360/995323896863658134/Volunteer1.png" alt="Volunteer Sided1" >
   
   <img src="https://cdn.discordapp.com/attachments/990072695599288360/995323897098551316/Volunteer2.png" alt="Volunteer Sided2" >
   
   ### Helpseeker Sided App
+  
   <img src="https://cdn.discordapp.com/attachments/990072695599288360/995323897283096637/Helpseeker1.png" alt="Helpseeker Sided App1" >
   
   <img src="https://cdn.discordapp.com/attachments/990072695599288360/995323897501208637/Helpseeker2.png" alt="Helpseeker Sided App2" >
